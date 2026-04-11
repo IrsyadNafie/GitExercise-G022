@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://qbi4bmmalddp"]
+
+[ext_resource type="Texture2D" uid="uid://ddxmxgyyfy8mn" path="res://icon.svg" id="1_0fbet"]
+[ext_resource type="Script" uid="uid://3m6e7iskiw8v" path="res://control.gd" id="2_62e2m"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1626845871]
+
+[node name="Node" type="Node" parent="." unique_id=1580275602]
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=889369376]
+position = Vector2(1005, 348)
+texture = ExtResource("1_0fbet")
+
+[node name="BattleUI" type="Control" parent="." unique_id=731373505]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_62e2m")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BattleUI" unique_id=317636213]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 939.0
+offset_top = -428.0
+offset_right = 979.0
+offset_bottom = -370.0
+grow_vertical = 0
+
+[node name="HPBar" type="ProgressBar" parent="BattleUI/VBoxContainer" unique_id=1021747278]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.8153955, 0, 1)
+value = 50.0
+
+[node name="SPBar" type="ProgressBar" parent="BattleUI/VBoxContainer" unique_id=1806566675]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
+value = 50.0
