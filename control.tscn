@@ -34,9 +34,13 @@ grow_vertical = 0
 [node name="HPBar" type="ProgressBar" parent="BattleUI/VBoxContainer" unique_id=1021747278]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.8153955, 0, 1)
-value = 50.0
+max_value = 10.0
+value = 10.0
+show_percentage = false
 
 [node name="SPBar" type="ProgressBar" parent="BattleUI/VBoxContainer" unique_id=1806566675]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
-value = 50.0
+max_value = 10.0
+value = 10.0
+show_percentage = false

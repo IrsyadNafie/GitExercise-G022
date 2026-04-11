@@ -13,7 +13,7 @@ func update_sp(current_sp, max_sp):
 
 func _input(event):
 	if event.is_action_pressed("ui_up"):
-		update_hp(hp_bar.value - 10, hp_bar.max_value)
+		update_hp(hp_bar.value - 1, hp_bar.max_value)
 	
-	if event.is_action_pressed("ui_right"):
-		update_sp(sp_bar.value - 10, sp_bar.max_value)
+	if event.is_action_pressed("ui_down"):
+		update_sp(sp_bar.value - 1, sp_bar.max_value)
