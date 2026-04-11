@@ -1,5 +1,0 @@
-# Godot-specific ignores
-.godot/
-*.translation
-*.node_ids
-*.library_index
