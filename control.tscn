@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://ddxmxgyyfy8mn" path="res://icon.svg" id="1_0fbet"]
 [ext_resource type="Script" uid="uid://3m6e7iskiw8v" path="res://control.gd" id="2_62e2m"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ee4bf"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qtu10"]
 bg_color = Color(0, 1, 0.23529412, 1)
 border_width_left = 1
@@ -16,6 +19,9 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 corner_detail = 1
 anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kbped"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62e2m"]
 bg_color = Color(0.5662547, 0.7385063, 0.8171331, 1)
@@ -60,6 +66,7 @@ offset_right = 971.00006
 offset_bottom = 233.0
 scale = Vector2(3.6730995, 5.8853974)
 theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_ee4bf")
 theme_override_styles/fill = SubResource("StyleBoxFlat_qtu10")
 max_value = 10.0
 value = 10.0
@@ -73,6 +80,7 @@ offset_right = 971.0
 offset_bottom = 260.0
 scale = Vector2(3.6730995, 5.8853974)
 theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_kbped")
 theme_override_styles/fill = SubResource("StyleBoxFlat_62e2m")
 max_value = 10.0
 value = 10.0
