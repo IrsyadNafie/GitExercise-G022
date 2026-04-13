@@ -1,8 +1,7 @@
 extends Control
 
-@onready var hp_bar = $VBoxContainer/HPBar
-@onready var sp_bar = $VBoxContainer/SPBar
-
+@onready var hp_bar = $HPBar
+@onready var sp_bar = $SPBar
 func update_hp(current_hp, max_hp):
 	hp_bar.max_value = max_hp
 	hp_bar.value = current_hp
