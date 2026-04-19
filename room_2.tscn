@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [gd_scene format=3 uid="uid://b6uq4c5nqtnci"]
 
 [ext_resource type="Script" uid="uid://bu6infk68sg7v" path="res://player.gd" id="1_h83ob"]
@@ -6,6 +7,16 @@
 [ext_resource type="Texture2D" path="res://floorgodot.png" id="3_qfw8o"]
 [ext_resource type="Script" path="res://door.gd" id="4_qfw8o"]
 [ext_resource type="Texture2D" path="res://door.webp" id="5_w3sgd"]
+=======
+[gd_scene format=3 uid="uid://dcwm66fqkxywo"]
+
+[ext_resource type="Script" uid="uid://bu6infk68sg7v" path="res://player.gd" id="1_h83ob"]
+[ext_resource type="Script" uid="uid://cqtim6r1iim0a" path="res://room_2.gd" id="1_w3sgd"]
+[ext_resource type="Texture2D" uid="uid://cn4oafs7ljlev" path="res://icon.svg" id="2_ttdm0"]
+[ext_resource type="Texture2D" uid="uid://7vay88im8nml" path="res://floorgodot.png" id="3_qfw8o"]
+[ext_resource type="Script" uid="uid://rqjgk0rln81" path="res://door.gd" id="4_qfw8o"]
+[ext_resource type="Texture2D" uid="uid://bw8myfm63w853" path="res://door.webp" id="5_w3sgd"]
+>>>>>>> c6c2f76e91fb229fcb3e8322a627096f88fa8eb1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w3sgd"]
 size = Vector2(131, 127)
