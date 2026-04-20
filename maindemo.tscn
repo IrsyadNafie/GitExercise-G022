@@ -1,14 +1,16 @@
 [gd_scene format=3 uid="uid://ekggwac31s7i"]
 
 [ext_resource type="Script" uid="uid://bu6infk68sg7v" path="res://player.gd" id="1_rqp8c"]
-[ext_resource type="Script" uid="uid://bk34skrfx6gjs" path="res://maindemo.gd" id="1_x3oty"]
+[ext_resource type="Script" path="res://maindemo.gd" id="1_x3oty"]
 [ext_resource type="Texture2D" uid="uid://cn4oafs7ljlev" path="res://icon.svg" id="2_55mso"]
 [ext_resource type="Script" uid="uid://cu7qik8cmlvju" path="res://interactable.gd" id="3_8fv7m"]
 [ext_resource type="Texture2D" uid="uid://8hqj18qnoef1" path="res://npcgodot.png" id="4_u5bvf"]
 [ext_resource type="Texture2D" uid="uid://dtmqbk5yv5lhu" path="res://treegodot.png" id="5_r5i1b"]
 [ext_resource type="Texture2D" uid="uid://7vay88im8nml" path="res://floorgodot.png" id="6_u5bvf"]
-[ext_resource type="Script" uid="uid://rqjgk0rln81" path="res://door.gd" id="7_xwoao"]
+[ext_resource type="Script" path="res://door.gd" id="7_xwoao"]
 [ext_resource type="Texture2D" uid="uid://bw8myfm63w853" path="res://door.webp" id="8_x3oty"]
+[ext_resource type="Script" uid="uid://25n7qtud6y3r" path="res://ui.gd" id="10_6od6g"]
+[ext_resource type="PackedScene" uid="uid://e5jasvkh87ml" path="res://coin.tscn" id="11_dp0dc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fv7m"]
 size = Vector2(131, 127)
@@ -129,12 +131,12 @@ next_scene = "res://room_2.tscn"
 
 [node name="Sprite2D" type="Sprite2D" parent="Door" unique_id=1431791068]
 z_index = -1
-position = Vector2(1390, 171)
+position = Vector2(1390.0001, 193)
 scale = Vector2(0.29416665, 0.26166666)
 texture = ExtResource("8_x3oty")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door" unique_id=719618350]
-position = Vector2(1393, 145.25)
+position = Vector2(1390, 166)
 shape = SubResource("RectangleShape2D_xwoao")
 
 [node name="PressE" type="Label" parent="Door" unique_id=64407164]
@@ -144,3 +146,22 @@ offset_top = 42.0
 offset_right = 1431.0
 offset_bottom = 88.0
 text = "Press E"
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=2110791678]
+script = ExtResource("10_6od6g")
+
+[node name="CoinLabel" type="Label" parent="UI" unique_id=1110180801]
+offset_left = 15.0
+offset_top = 16.0
+offset_right = 233.0
+offset_bottom = 128.0
+text = "Coins: 0"
+
+[node name="Coin" parent="." unique_id=871590875 instance=ExtResource("11_dp0dc")]
+position = Vector2(161, 187)
+
+[node name="Coin2" parent="." unique_id=978468050 instance=ExtResource("11_dp0dc")]
+position = Vector2(270, 187)
+
+[node name="Coin3" parent="." unique_id=1064261510 instance=ExtResource("11_dp0dc")]
+position = Vector2(1211, 186)
