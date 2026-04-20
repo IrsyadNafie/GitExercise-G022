@@ -150,7 +150,6 @@ theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
 theme_override_styles/background = SubResource("StyleBoxFlat_fj5cn")
 theme_override_styles/fill = SubResource("StyleBoxFlat_iy58a")
 max_value = 10.0
-value = 10.0
 show_percentage = false
 
 [node name="Panel" type="Panel" parent="BattleUI/PlayerPanel" unique_id=982045289]
@@ -172,14 +171,16 @@ offset_bottom = 193.0
 scale = Vector2(3.3200006, 1)
 theme_override_styles/panel = SubResource("StyleBoxFlat_6a6wx")
 
-[node name="move" type="VBoxContainer" parent="BattleUI/PlayerPanel" unique_id=1197442552]
+[node name="move" type="VBoxContainer" parent="BattleUI/PlayerPanel" unique_id=1197442552 node_paths=PackedStringArray("selection_arrow")]
 layout_mode = 0
 offset_left = 887.9999
 offset_top = 26.0
 offset_right = 941.9999
 offset_bottom = 183.0
 scale = Vector2(1.2013763, 0.9952018)
+pivot_offset = Vector2(-106.54437, -174.8389)
 script = ExtResource("2_qtu10")
+selection_arrow = NodePath("../arrow")
 
 [node name="attack" type="Button" parent="BattleUI/PlayerPanel/move" unique_id=1641483636]
 layout_mode = 2
@@ -260,5 +261,6 @@ uv = PackedVector2Array(-264, -27, -269, 63, -216, 19)
 
 [node name="arrow" type="Polygon2D" parent="BattleUI/PlayerPanel" unique_id=1750960156]
 top_level = true
-position = Vector2(121, 38)
-polygon = PackedVector2Array(0, 0, 8, -6, 8, 0, 8, 6)
+position = Vector2(66, -16)
+scale = Vector2(1, 0.8181818)
+polygon = PackedVector2Array(0, 0, 7, -6.1111107, 7, 0, 7, 7.333333)

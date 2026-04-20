@@ -8,13 +8,12 @@ func _ready():
 		if btn is Button:
 			btn.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			btn.focus_mode = Control.FOCUS_ALL
-			
 			btn.focus_entered.connect(_on_button_focus_entered.bind(btn))
-
+	
 	if get_child_count() > 0:
 		var first_btn = get_child(0)
 		first_btn.grab_focus()
-		_on_button_focus_entered(first_btn)
+		call_deferred("_on_button_focus_entered", first_btn)
 
 func _input(event):
 	if event is InputEventKey:
