@@ -172,7 +172,7 @@ offset_bottom = 193.0
 scale = Vector2(3.3200006, 1)
 theme_override_styles/panel = SubResource("StyleBoxFlat_6a6wx")
 
-[node name="move" type="VBoxContainer" parent="BattleUI/PlayerPanel" unique_id=1197442552 node_paths=PackedStringArray("selection_arrow")]
+[node name="move" type="VBoxContainer" parent="BattleUI/PlayerPanel" unique_id=1197442552]
 layout_mode = 0
 offset_left = 887.9999
 offset_top = 26.0
@@ -180,7 +180,6 @@ offset_right = 941.9999
 offset_bottom = 183.0
 scale = Vector2(1.2013763, 0.9952018)
 script = ExtResource("2_qtu10")
-selection_arrow = NodePath("../arrow")
 
 [node name="attack" type="Button" parent="BattleUI/PlayerPanel/move" unique_id=1641483636]
 layout_mode = 2
