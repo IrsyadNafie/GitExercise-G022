@@ -1,14 +1,13 @@
 extends VBoxContainer
 
-@export var selection_arrow: Node2D 
-@export var arrow_offset_x: float = -150.0 
+@export var selection_arrow: Node2D
+@export var arrow_offset_x: float = 20
 
 func _ready():
-	# 1. Setup all buttons
 	for btn in get_children():
 		if btn is Button:
 			btn.mouse_filter = Control.MOUSE_FILTER_IGNORE
-			btn.focus_mode = Control.FOCUS_ALL 
+			btn.focus_mode = Control.FOCUS_ALL
 			
 			btn.focus_entered.connect(_on_button_focus_entered.bind(btn))
 
@@ -27,15 +26,21 @@ func _input(event):
 
 func _on_button_focus_entered(btn: Button):
 	if selection_arrow:
-
-		var btn_pos = btn.global_position
+		var min_size = btn.get_combined_minimum_size()
+		var style = btn.get_theme_stylebox("normal")
+		var right_padding = style.content_margin_right
+		var text_end_x = min_size.x - right_padding
+		var extra_space = 0.0
 		
-		var new_pos = Vector2(
-			btn_pos.x + arrow_offset_x,
-			btn_pos.y + (btn.size.y / 1)
-		)
+		if btn.alignment == HORIZONTAL_ALIGNMENT_CENTER:
+			extra_space = (btn.size.x - min_size.x) / 2.0
+		elif btn.alignment == HORIZONTAL_ALIGNMENT_RIGHT:
+			extra_space = btn.size.x - min_size.x
 		
-		selection_arrow.global_position = new_pos
+		var target_x = btn.global_position.x + text_end_x + extra_space + arrow_offset_x
+		var target_y = btn.global_position.y + (btn.size.y / 2.0)
+		
+		selection_arrow.global_position = Vector2(target_x, target_y)
 
 func _execute_selection(btn_name: String):
 	match btn_name:
