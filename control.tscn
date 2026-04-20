@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://qbi4bmmalddp"]
 
-[ext_resource type="Texture2D" uid="uid://ddxmxgyyfy8mn" path="res://icon.svg" id="1_0fbet"]
-[ext_resource type="Script" uid="uid://3m6e7iskiw8v" path="res://control.gd" id="2_62e2m"]
+[ext_resource type="Texture2D" uid="uid://s4058h0fha6l" path="res://icon.svg" id="1_0fbet"]
+[ext_resource type="Script" uid="uid://d0rbe5b0xvmth" path="res://control.gd" id="2_62e2m"]
 [ext_resource type="Script" uid="uid://c3b82mndsqjip" path="res://move.gd" id="2_qtu10"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ee4bf"]
@@ -79,6 +79,9 @@ bg_color = Color(1.3266667, 1.3266667, 1.3266667, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sky72"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pxugv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1626845871]
 
 [node name="BattleUI" type="Control" parent="." unique_id=731373505]
@@ -110,10 +113,10 @@ grow_vertical = 0
 
 [node name="HPBar" type="ProgressBar" parent="BattleUI/PlayerPanel" unique_id=1549539151]
 layout_mode = 0
-offset_left = 66.0
-offset_top = -315.0
-offset_right = 105.4762
-offset_bottom = -310.92212
+offset_left = 972.0
+offset_top = -309.99997
+offset_right = 1011.4762
+offset_bottom = -305.9221
 scale = Vector2(3.6730995, 5.8853974)
 theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
 theme_override_styles/background = SubResource("StyleBoxFlat_ee4bf")
@@ -124,9 +127,9 @@ show_percentage = false
 
 [node name="SPBar" type="ProgressBar" parent="BattleUI/PlayerPanel" unique_id=632621949]
 layout_mode = 0
-offset_left = 68.0
+offset_left = 972.0
 offset_top = -286.0
-offset_right = 107.4762
+offset_right = 1011.4762
 offset_bottom = -281.92212
 scale = Vector2(3.6730995, 5.8853974)
 theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
@@ -138,44 +141,44 @@ show_percentage = false
 
 [node name="EXP" type="ProgressBar" parent="BattleUI/PlayerPanel" unique_id=1620098009]
 layout_mode = 0
-offset_left = 72.0
-offset_top = -323.34372
-offset_right = 107.93695
-offset_bottom = -322.34372
+offset_left = 977.0
+offset_top = -316.0
+offset_right = 1013.75366
+offset_bottom = -315.0
 scale = Vector2(3.6730995, 5.8853974)
 theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
 theme_override_styles/background = SubResource("StyleBoxFlat_fj5cn")
 theme_override_styles/fill = SubResource("StyleBoxFlat_iy58a")
 max_value = 10.0
-value = 10.0
+value = 1.0
 show_percentage = false
 
 [node name="Panel" type="Panel" parent="BattleUI/PlayerPanel" unique_id=982045289]
 z_index = -1
 layout_mode = 0
-offset_left = 17.0
+offset_left = 883.0
 offset_top = 17.0
-offset_right = 251.0
+offset_right = 1117.0
 offset_bottom = 193.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_6a6wx")
 
 [node name="Panel2" type="Panel" parent="BattleUI/PlayerPanel" unique_id=1329826349]
 z_index = -1
 layout_mode = 0
-offset_left = 333.0
+offset_left = 50.0
 offset_top = 17.0
-offset_right = 567.0
+offset_right = 284.0
 offset_bottom = 193.0
 scale = Vector2(3.3200006, 1)
 theme_override_styles/panel = SubResource("StyleBoxFlat_6a6wx")
 
 [node name="move" type="VBoxContainer" parent="BattleUI/PlayerPanel" unique_id=1197442552 node_paths=PackedStringArray("selection_arrow")]
 layout_mode = 0
-offset_left = 26.0
+offset_left = 891.9999
 offset_top = 26.0
-offset_right = 80.0
+offset_right = 945.9999
 offset_bottom = 183.0
-scale = Vector2(1.2013763, 0.9952018)
+scale = Vector2(1.2348788, 0.9952018)
 script = ExtResource("2_qtu10")
 selection_arrow = NodePath("../arrow")
 
@@ -184,6 +187,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_sky72")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pxugv")
 action_mode = 0
 button_mask = 0
 text = "attack"
@@ -194,6 +198,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_sky72")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pxugv")
 action_mode = 0
 button_mask = 0
 text = "rest
@@ -205,6 +210,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_sky72")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pxugv")
 action_mode = 0
 button_mask = 0
 text = "special
@@ -217,6 +223,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_sky72")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pxugv")
 action_mode = 0
 button_mask = 0
 text = "item
@@ -230,6 +237,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_sky72")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pxugv")
 action_mode = 0
 button_mask = 0
 text = "flee
@@ -239,19 +247,20 @@ text = "flee
 "
 alignment = 0
 
-[node name="Icon" type="Sprite2D" parent="BattleUI/PlayerPanel" unique_id=889369376]
-position = Vector2(136, -196)
+[node name="square" type="Sprite2D" parent="BattleUI/PlayerPanel" unique_id=889369376]
+position = Vector2(1046, -194)
 texture = ExtResource("1_0fbet")
 
-[node name="Polygon2D" type="Polygon2D" parent="BattleUI/PlayerPanel" unique_id=617226332]
-position = Vector2(245.00009, -194.00005)
-rotation = 0.0011824294
-scale = Vector2(-1.7526538, -1.7694623)
+[node name="turn" type="Polygon2D" parent="BattleUI/PlayerPanel" unique_id=617226332]
+position = Vector2(933, -193)
+rotation = -3.140231
+scale = Vector2(-1.5820612, -1.7694547)
 offset = Vector2(247.77422, -13.139282)
-polygon = PackedVector2Array(-260, -3, -236, 13, -260, 29, -246, 13)
+polygon = PackedVector2Array(-259.80627, -1.5398788, -236, 13, -259.75977, 28.977966, -259.78302, 13.71904)
 uv = PackedVector2Array(-264, -27, -269, 63, -216, 19)
 
 [node name="arrow" type="Polygon2D" parent="BattleUI/PlayerPanel" unique_id=1750960156]
 top_level = true
-position = Vector2(-153, 53)
-polygon = PackedVector2Array(252, -21, 252, -9, 241, -15)
+position = Vector2(-83, 31)
+polygon = PackedVector2Array(0, 0, 10, -5, 10, 5)
+uv = PackedVector2Array(252, -21, 252, -9, 241, -15)
