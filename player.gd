@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var equipped_item = $EquippedItem
+
 # Movement speed
 var speed = 200
 
@@ -11,6 +13,17 @@ var gravity = 900
 
 func _ready():
 	$Camera2D.make_current()
+	
+func update_equipped_item(item_name):
+
+	if item_name == "Key":
+		equipped_item.texture = preload("res://yellowkeygodot.png")
+
+	elif item_name == "Potion":
+		equipped_item.texture = preload("res://potiongodot.png")
+
+	else:
+		equipped_item.texture = null
 
 func _physics_process(delta):
 	
@@ -34,4 +47,6 @@ func _physics_process(delta):
 		velocity.y = jump_force
 
 	move_and_slide()
+	
+
 	

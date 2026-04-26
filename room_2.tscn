@@ -1,22 +1,13 @@
-<<<<<<< HEAD
-[gd_scene format=3 uid="uid://b6uq4c5nqtnci"]
+[gd_scene format=3 uid="uid://dcwm66fqkxywo"]
 
 [ext_resource type="Script" uid="uid://bu6infk68sg7v" path="res://player.gd" id="1_h83ob"]
 [ext_resource type="Script" path="res://room_2.gd" id="1_w3sgd"]
 [ext_resource type="Texture2D" uid="uid://cn4oafs7ljlev" path="res://icon.svg" id="2_ttdm0"]
-[ext_resource type="Texture2D" path="res://floorgodot.png" id="3_qfw8o"]
-[ext_resource type="Script" path="res://door.gd" id="4_qfw8o"]
-[ext_resource type="Texture2D" path="res://door.webp" id="5_w3sgd"]
-=======
-[gd_scene format=3 uid="uid://dcwm66fqkxywo"]
-
-[ext_resource type="Script" uid="uid://bu6infk68sg7v" path="res://player.gd" id="1_h83ob"]
-[ext_resource type="Script" uid="uid://cqtim6r1iim0a" path="res://room_2.gd" id="1_w3sgd"]
-[ext_resource type="Texture2D" uid="uid://cn4oafs7ljlev" path="res://icon.svg" id="2_ttdm0"]
 [ext_resource type="Texture2D" uid="uid://7vay88im8nml" path="res://floorgodot.png" id="3_qfw8o"]
-[ext_resource type="Script" uid="uid://rqjgk0rln81" path="res://door.gd" id="4_qfw8o"]
+[ext_resource type="Script" path="res://door.gd" id="4_qfw8o"]
 [ext_resource type="Texture2D" uid="uid://bw8myfm63w853" path="res://door.webp" id="5_w3sgd"]
->>>>>>> c6c2f76e91fb229fcb3e8322a627096f88fa8eb1
+[ext_resource type="Script" uid="uid://25n7qtud6y3r" path="res://ui.gd" id="7_vy8vn"]
+[ext_resource type="PackedScene" uid="uid://e5jasvkh87ml" path="res://coin.tscn" id="8_1untl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w3sgd"]
 size = Vector2(131, 127)
@@ -76,3 +67,19 @@ text = "Press E"
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Door" unique_id=774090604]
 position = Vector2(152, 536)
 shape = SubResource("RectangleShape2D_qfw8o")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=371716478]
+script = ExtResource("7_vy8vn")
+
+[node name="CoinLabel" type="Label" parent="UI" unique_id=1601608206]
+offset_left = 15.0
+offset_top = 16.0
+offset_right = 233.0
+offset_bottom = 128.0
+text = "Coins: 0"
+
+[node name="Coin" parent="." unique_id=871590875 instance=ExtResource("8_1untl")]
+position = Vector2(407, 584)
+
+[node name="Coin2" parent="." unique_id=1423775823 instance=ExtResource("8_1untl")]
+position = Vector2(670, 585)

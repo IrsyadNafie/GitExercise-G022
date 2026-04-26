@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://c8rfj43xdhn5j"]
+[gd_scene format=3 uid="uid://sajldxi2uhy1"]
 
-[ext_resource type="Script" path="res://pickup_item.gd" id="1_iedf3"]
-[ext_resource type="Texture2D" path="res://potiongodot.png" id="2_iedf3"]
+[ext_resource type="Script" uid="uid://doj37r6vkoarq" path="res://pickup_item.gd" id="1_iedf3"]
+[ext_resource type="Texture2D" uid="uid://db4xy1etgndcx" path="res://potiongodot.png" id="2_iedf3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85ps6"]
 size = Vector2(57, 100)
