@@ -5,12 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://cn4oafs7ljlev" path="res://icon.svg" id="2_55mso"]
 [ext_resource type="Script" uid="uid://cu7qik8cmlvju" path="res://interactable.gd" id="3_8fv7m"]
 [ext_resource type="Texture2D" uid="uid://8hqj18qnoef1" path="res://npcgodot.png" id="4_u5bvf"]
+[ext_resource type="Texture2D" uid="uid://b4dbupg8jhcmr" path="res://yellowkeygodot.png" id="4_un21y"]
 [ext_resource type="Texture2D" uid="uid://dtmqbk5yv5lhu" path="res://treegodot.png" id="5_r5i1b"]
 [ext_resource type="Texture2D" uid="uid://7vay88im8nml" path="res://floorgodot.png" id="6_u5bvf"]
 [ext_resource type="Script" path="res://door.gd" id="7_xwoao"]
 [ext_resource type="Texture2D" uid="uid://bw8myfm63w853" path="res://door.webp" id="8_x3oty"]
 [ext_resource type="Script" uid="uid://25n7qtud6y3r" path="res://ui.gd" id="10_6od6g"]
 [ext_resource type="PackedScene" uid="uid://e5jasvkh87ml" path="res://coin.tscn" id="11_dp0dc"]
+[ext_resource type="PackedScene" uid="uid://sajldxi2uhy1" path="res://pickup_item.tscn" id="13_n1gp7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fv7m"]
 size = Vector2(131, 127)
@@ -40,6 +42,12 @@ position = Vector2(-294, 156)
 shape = SubResource("RectangleShape2D_8fv7m")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=716806772]
+
+[node name="EquippedItem" type="Sprite2D" parent="Player" unique_id=1213675201]
+position = Vector2(-223, 153)
+rotation = -2.4320476
+scale = Vector2(0.1826043, 0.15068357)
+texture = ExtResource("4_un21y")
 
 [node name="WallTop" type="StaticBody2D" parent="." unique_id=155962429]
 
@@ -151,11 +159,97 @@ text = "Press E"
 script = ExtResource("10_6od6g")
 
 [node name="CoinLabel" type="Label" parent="UI" unique_id=1110180801]
-offset_left = 15.0
-offset_top = 16.0
-offset_right = 233.0
-offset_bottom = 128.0
+offset_left = 1023.0
+offset_top = 9.0
+offset_right = 1241.0
+offset_bottom = 121.0
 text = "Coins: 0"
+
+[node name="Hotbar" type="Control" parent="UI" unique_id=1674893204]
+layout_mode = 3
+anchor_right = 0.86100006
+anchor_bottom = 0.062000003
+offset_left = 75.0
+offset_top = 3.0
+offset_right = -876.8721
+offset_bottom = 2.8239975
+
+[node name="Slots" type="HBoxContainer" parent="UI/Hotbar" unique_id=1422027577]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Slot1" type="Panel" parent="UI/Hotbar/Slots" unique_id=882408198]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="UI/Hotbar/Slots/Slot1" unique_id=138946336]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 84.0
+offset_bottom = 84.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot2" type="Panel" parent="UI/Hotbar/Slots" unique_id=1630777354]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="UI/Hotbar/Slots/Slot2" unique_id=873637704]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot3" type="Panel" parent="UI/Hotbar/Slots" unique_id=392388292]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="UI/Hotbar/Slots/Slot3" unique_id=342260514]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot4" type="Panel" parent="UI/Hotbar/Slots" unique_id=719479801]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="UI/Hotbar/Slots/Slot4" unique_id=282058630]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot5" type="Panel" parent="UI/Hotbar/Slots" unique_id=654288905]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="UI/Hotbar/Slots/Slot5" unique_id=1685443550]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ItemName" type="Label" parent="UI" unique_id=1465647051]
+offset_left = 6.0
+offset_top = 9.0
+offset_right = 46.0
+offset_bottom = 32.0
+
+[node name="FullMessage" type="Label" parent="UI" unique_id=1279964606]
+offset_left = 164.0
+offset_top = 87.0
+offset_right = 204.0
+offset_bottom = 110.0
 
 [node name="Coin" parent="." unique_id=871590875 instance=ExtResource("11_dp0dc")]
 position = Vector2(161, 187)
@@ -165,3 +259,15 @@ position = Vector2(270, 187)
 
 [node name="Coin3" parent="." unique_id=1064261510 instance=ExtResource("11_dp0dc")]
 position = Vector2(1211, 186)
+
+[node name="PickupItem" parent="." unique_id=1808496137 instance=ExtResource("13_n1gp7")]
+position = Vector2(-138, 198)
+
+[node name="PickupItem2" parent="." unique_id=717110004 instance=ExtResource("13_n1gp7")]
+position = Vector2(76, 192)
+
+[node name="PickupItem3" parent="." unique_id=194775727 instance=ExtResource("13_n1gp7")]
+position = Vector2(366, 190)
+
+[node name="PickupItem4" parent="." unique_id=301743778 instance=ExtResource("13_n1gp7")]
+position = Vector2(634, 192)
