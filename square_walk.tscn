@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8sih6ljgrddi"]
+[gd_scene load_steps=6 format=3 uid="uid://b8sih6ljgrddi"]
 
 [ext_resource type="Texture2D" uid="uid://j3w0eq6e6tkm" path="res://square-walk.png" id="1_fhaoq"]
+[ext_resource type="Script" uid="uid://c8uqnov7ujh84" path="res://square_walk.gd" id="2_4nlve"]
 
 [sub_resource type="Animation" id="Animation_rb15e"]
 length = 0.001
@@ -44,12 +45,16 @@ _data = {
 
 [node name="square walk" type="Sprite2D" parent="."]
 z_index = 7
+position = Vector2(241, 334)
+scale = Vector2(0.48, 0.48)
 texture = ExtResource("1_fhaoq")
 flip_h = true
 hframes = 4
 vframes = 3
+script = ExtResource("2_4nlve")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="square walk"]
+root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_c5r2u")
 }
