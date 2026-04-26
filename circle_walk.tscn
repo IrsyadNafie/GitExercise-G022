@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvwhbiihmtorc"]
+
+[ext_resource type="Texture2D" uid="uid://bgkkcqut43udj" path="res://Circle_Walk.png" id="1_6ipmm"]
+
+[sub_resource type="Animation" id="Animation_cw3yn"]
+resource_name = "circle_walk"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("circle walk:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_a4jru"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("circle walk:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_myruv"]
+_data = {
+&"RESET": SubResource("Animation_a4jru"),
+&"circle_walk": SubResource("Animation_cw3yn")
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="circle walk" type="Sprite2D" parent="."]
+texture = ExtResource("1_6ipmm")
+flip_h = true
+hframes = 3
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_myruv")
+}
