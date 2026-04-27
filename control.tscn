@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://qbi4bmmalddp"]
 
 [ext_resource type="Texture2D" uid="uid://ddxmxgyyfy8mn" path="res://icon.svg" id="1_0fbet"]
+[ext_resource type="Script" uid="uid://cqhoo3kidcmp5" path="res://battle_manager.gd" id="1_qtu10"]
+[ext_resource type="Script" uid="uid://caaw1u1s0vq3p" path="res://actors.gd" id="2_kbped"]
 [ext_resource type="Script" uid="uid://c3b82mndsqjip" path="res://move.gd" id="2_qtu10"]
+[ext_resource type="Script" uid="uid://bjrulpksiensb" path="res://enemy_1.gd" id="3_ee4bf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ee4bf"]
 bg_color = Color(0, 1, 0.23529412, 0.49411765)
@@ -82,11 +85,13 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="BattleScene" type="Node2D" unique_id=1752474127]
+script = ExtResource("1_qtu10")
 
 [node name="Actors" type="Node2D" parent="." unique_id=1497777895]
 position = Vector2(24, -158)
 
 [node name="Player1" type="Node2D" parent="Actors" unique_id=267814346]
+script = ExtResource("2_kbped")
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Player1" unique_id=1549539151]
 offset_left = 944.00006
@@ -126,13 +131,23 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_iy58a")
 max_value = 10.0
 show_percentage = false
 
+[node name="TurnArrow" type="Polygon2D" parent="Actors/Player1" unique_id=617226332]
+z_index = 5
+position = Vector2(875.00006, 257)
+rotation = -3.1404102
+scale = Vector2(1.7526537, 1.7694622)
+offset = Vector2(247.77422, -13.139282)
+polygon = PackedVector2Array(-260.3462, -3.2351837, -284.86145, 12.617569, -260.30774, 28.977982, -260.3266, 13.153976)
+uv = PackedVector2Array(-264, -27, -269, 63, -216, 19)
+
 [node name="Player1" type="Sprite2D" parent="Actors/Player1" unique_id=889369376]
 position = Vector2(1017.5, 259.24)
-scale = Vector2(0.8984374, 0.87125015)
+scale = Vector2(0.926, 0.898)
 texture = ExtResource("1_0fbet")
 
 [node name="Player2" type="Node2D" parent="Actors" unique_id=1507940198]
 position = Vector2(-31, 151)
+script = ExtResource("2_kbped")
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Player2" unique_id=237377493]
 offset_left = 944.00006
@@ -172,13 +187,23 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_iy58a")
 max_value = 10.0
 show_percentage = false
 
+[node name="TurnArrow" type="Polygon2D" parent="Actors/Player2" unique_id=1588602166]
+z_index = 5
+position = Vector2(868.00006, 250.99998)
+rotation = -3.1404102
+scale = Vector2(1.7526536, 1.7694621)
+offset = Vector2(247.77422, -13.139282)
+polygon = PackedVector2Array(-260.3462, -3.2351837, -284.86145, 12.617569, -260.30774, 28.977982, -260.3266, 13.153976)
+uv = PackedVector2Array(-264, -27, -269, 63, -216, 19)
+
 [node name="Player2" type="Sprite2D" parent="Actors/Player2" unique_id=1390481869]
 position = Vector2(1017.5, 259.24)
-scale = Vector2(0.8984374, 0.87125015)
+scale = Vector2(0.926, 0.898)
 texture = ExtResource("1_0fbet")
 
 [node name="Player3" type="Node2D" parent="Actors" unique_id=2036492965]
 position = Vector2(-5, 301)
+script = ExtResource("2_kbped")
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Player3" unique_id=1730966093]
 offset_left = 944.00006
@@ -218,13 +243,24 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_iy58a")
 max_value = 10.0
 show_percentage = false
 
+[node name="TurnArrow" type="Polygon2D" parent="Actors/Player3" unique_id=400633545]
+z_index = 5
+position = Vector2(880, 255.99997)
+rotation = -3.1404102
+scale = Vector2(1.7526535, 1.769462)
+offset = Vector2(247.77422, -13.139282)
+polygon = PackedVector2Array(-260.3462, -3.2351837, -284.86145, 12.617569, -260.30774, 28.977982, -260.3266, 13.153976)
+uv = PackedVector2Array(-264, -27, -269, 63, -216, 19)
+
 [node name="Player3" type="Sprite2D" parent="Actors/Player3" unique_id=1933053050]
 position = Vector2(1017.5, 259.24)
-scale = Vector2(0.8984374, 0.87125015)
+scale = Vector2(0.926, 0.898)
 texture = ExtResource("1_0fbet")
 
 [node name="Enemy1" type="Node2D" parent="Actors" unique_id=907974663]
 position = Vector2(-869, 157)
+script = ExtResource("3_ee4bf")
+is_player = false
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Enemy1" unique_id=1405507110]
 offset_left = 944.00006
@@ -244,6 +280,15 @@ position = Vector2(1017.5, 259.24)
 scale = Vector2(0.8984374, 0.87125015)
 texture = ExtResource("1_0fbet")
 
+[node name="TurnArrow" type="Polygon2D" parent="Actors/Enemy1" unique_id=1763664194]
+z_index = 5
+position = Vector2(1167.0001, 255.99998)
+rotation = -3.1404102
+scale = Vector2(-1.7677237, 1.7694619)
+offset = Vector2(247.77422, -13.139282)
+polygon = PackedVector2Array(-260.3462, -3.2351837, -284.86145, 12.617569, -260.30774, 28.977982, -260.3266, 13.153976)
+uv = PackedVector2Array(-264, -27, -269, 63, -216, 19)
+
 [node name="UI" type="CanvasLayer" parent="." unique_id=970283716]
 
 [node name="PlayerPanel" type="Panel" parent="UI" unique_id=1471211882]
@@ -258,7 +303,7 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Panel" type="Panel" parent="UI/PlayerPanel" unique_id=982045289]
+[node name="MoveAction" type="Panel" parent="UI/PlayerPanel" unique_id=982045289]
 z_index = -1
 layout_mode = 0
 offset_left = 879.0
@@ -267,15 +312,23 @@ offset_right = 1113.0
 offset_bottom = 162.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_6a6wx")
 
-[node name="Panel2" type="Panel" parent="UI/PlayerPanel" unique_id=1329826349]
+[node name="BattleLog" type="Panel" parent="UI/PlayerPanel" unique_id=1329826349]
 z_index = -1
 layout_mode = 0
 offset_left = 24.0
 offset_top = 17.0
-offset_right = 264.62653
+offset_right = 813.0
 offset_bottom = 161.0
-scale = Vector2(3.3200006, 1)
 theme_override_styles/panel = SubResource("StyleBoxFlat_6a6wx")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/PlayerPanel/BattleLog" unique_id=2134862162]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 789.0
+offset_bottom = 141.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+scroll_following = true
 
 [node name="move" type="VBoxContainer" parent="UI/PlayerPanel" unique_id=1197442552 node_paths=PackedStringArray("selection_arrow")]
 layout_mode = 0
@@ -352,14 +405,6 @@ text = "flee
 
 "
 alignment = 0
-
-[node name="Polygon2D" type="Polygon2D" parent="UI/PlayerPanel" unique_id=617226332]
-position = Vector2(1298, -190)
-rotation = 0.0011824294
-scale = Vector2(-1.7526538, -1.7694623)
-offset = Vector2(247.77422, -13.139282)
-polygon = PackedVector2Array(-260.3462, -3.2351837, -284.86145, 12.617569, -260.30774, 28.977982, -260.3266, 13.153976)
-uv = PackedVector2Array(-264, -27, -269, 63, -216, 19)
 
 [node name="arrow" type="Polygon2D" parent="UI/PlayerPanel" unique_id=1750960156]
 top_level = true

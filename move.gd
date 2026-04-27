@@ -1,5 +1,7 @@
 extends VBoxContainer
 
+signal action_selected(action_name: String)
+
 @export var selection_arrow: Node2D
 @export var arrow_offset_x: float = 20
 
@@ -8,14 +10,17 @@ func _ready():
 		if btn is Button:
 			btn.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			btn.focus_mode = Control.FOCUS_ALL
-			btn.focus_entered.connect(_on_button_focus_entered.bind(btn))
-	
+			btn.focus_entered.connect(func(): _on_button_focus_entered(btn))
+
 	if get_child_count() > 0:
 		var first_btn = get_child(0)
 		first_btn.grab_focus()
-		call_deferred("_on_button_focus_entered", first_btn)
+		_on_button_focus_entered.call_deferred(first_btn)
 
 func _input(event):
+	if not is_visible_in_tree():
+		return
+		
 	if event is InputEventKey:
 		if event.physical_keycode == KEY_Z and event.pressed and not event.is_echo():
 			var focused_node = get_viewport().gui_get_focus_owner()
@@ -23,6 +28,7 @@ func _input(event):
 			if focused_node is Button and is_ancestor_of(focused_node):
 				_execute_selection(focused_node.name)
 
+# This is the function that went missing!
 func _on_button_focus_entered(btn: Button):
 	if selection_arrow:
 		var min_size = btn.get_combined_minimum_size()
@@ -45,11 +51,16 @@ func _execute_selection(btn_name: String):
 	match btn_name:
 		"attack":
 			print("swing")
+			action_selected.emit("attack")
 		"rest":
 			print("rest sp")
+			action_selected.emit("rest")
 		"special":
 			print("sp")
+			action_selected.emit("special")
 		"item":
 			print("items")
+			action_selected.emit("item")
 		"flee":
 			print("flee")
+			action_selected.emit("flee")
