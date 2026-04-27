@@ -14,6 +14,7 @@ var gravity = 900
 func _ready():
 	$Camera2D.make_current()
 	
+#For Inventory (Need update for every new items
 func update_equipped_item(item_name):
 
 	if item_name == "Key":
@@ -21,6 +22,9 @@ func update_equipped_item(item_name):
 
 	elif item_name == "Potion":
 		equipped_item.texture = preload("res://potiongodot.png")
+	
+	elif item_name == "Axe":
+		equipped_item.texture = preload("res://axegodot.png")
 
 	else:
 		equipped_item.texture = null

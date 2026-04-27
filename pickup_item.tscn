@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://sajldxi2uhy1"]
+[gd_scene format=3 uid="uid://c8rfj43xdhn5j"]
 
 [ext_resource type="Script" uid="uid://doj37r6vkoarq" path="res://pickup_item.gd" id="1_iedf3"]
 [ext_resource type="Texture2D" uid="uid://db4xy1etgndcx" path="res://potiongodot.png" id="2_iedf3"]
@@ -23,5 +23,7 @@ offset_top = -89.0
 offset_right = 21.0
 offset_bottom = -66.0
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="child_entered_tree" from="Label" to="." method="_on_label_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Label" to="." method="_on_label_child_exiting_tree"]

@@ -12,8 +12,11 @@ func _ready():
 func _process(delta):
 	if player_near and Input.is_action_just_pressed("interact"):
 		var ui = get_tree().current_scene.get_node("UI")
-		ui.add_item(item_name)
-		queue_free()
+
+		var success = ui.add_item(item_name)
+
+		if success:
+			queue_free()
 
 func _on_body_entered(body):
 	if body.name == "Player":
@@ -26,8 +29,7 @@ func _on_body_exited(body):
 		$Label.text = ""
 
 func _on_label_child_entered_tree(node: Node) -> void:
-	pass # Replace with function body.
-
+	pass
 
 func _on_label_child_exiting_tree(node: Node) -> void:
-	pass # Replace with function body.
+	pass

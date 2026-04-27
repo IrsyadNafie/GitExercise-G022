@@ -4,10 +4,11 @@
 [ext_resource type="Script" path="res://room_2.gd" id="1_w3sgd"]
 [ext_resource type="Texture2D" uid="uid://cn4oafs7ljlev" path="res://icon.svg" id="2_ttdm0"]
 [ext_resource type="Texture2D" uid="uid://7vay88im8nml" path="res://floorgodot.png" id="3_qfw8o"]
+[ext_resource type="Texture2D" uid="uid://b4dbupg8jhcmr" path="res://yellowkeygodot.png" id="4_f7hpu"]
 [ext_resource type="Script" path="res://door.gd" id="4_qfw8o"]
 [ext_resource type="Texture2D" uid="uid://bw8myfm63w853" path="res://door.webp" id="5_w3sgd"]
 [ext_resource type="Script" uid="uid://25n7qtud6y3r" path="res://ui.gd" id="7_vy8vn"]
-[ext_resource type="PackedScene" uid="uid://e5jasvkh87ml" path="res://coin.tscn" id="8_1untl"]
+[ext_resource type="PackedScene" uid="uid://owx0maw7mufd" path="res://coin.tscn" id="8_1untl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w3sgd"]
 size = Vector2(131, 127)
@@ -34,6 +35,12 @@ shape = SubResource("RectangleShape2D_w3sgd")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1410834349]
 position = Vector2(582, 319)
+
+[node name="EquippedItem" type="Sprite2D" parent="Player" unique_id=1186414104]
+position = Vector2(194, 547)
+rotation = -2.4320476
+scale = Vector2(0.1826043, 0.15068357)
+texture = ExtResource("4_f7hpu")
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=1224619748]
 
@@ -68,18 +75,104 @@ text = "Press E"
 position = Vector2(152, 536)
 shape = SubResource("RectangleShape2D_qfw8o")
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=371716478]
-script = ExtResource("7_vy8vn")
-
-[node name="CoinLabel" type="Label" parent="UI" unique_id=1601608206]
-offset_left = 15.0
-offset_top = 16.0
-offset_right = 233.0
-offset_bottom = 128.0
-text = "Coins: 0"
-
 [node name="Coin" parent="." unique_id=871590875 instance=ExtResource("8_1untl")]
 position = Vector2(407, 584)
 
 [node name="Coin2" parent="." unique_id=1423775823 instance=ExtResource("8_1untl")]
 position = Vector2(670, 585)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1708865286]
+script = ExtResource("7_vy8vn")
+
+[node name="CoinLabel" type="Label" parent="UI" unique_id=245404416]
+offset_left = 1023.0
+offset_top = 9.0
+offset_right = 1241.0
+offset_bottom = 121.0
+text = "Coins: 0"
+
+[node name="Hotbar" type="Control" parent="UI" unique_id=902448952]
+layout_mode = 3
+anchor_right = 0.86100006
+anchor_bottom = 0.062000003
+offset_left = 75.0
+offset_top = 3.0
+offset_right = -876.8721
+offset_bottom = 2.8239975
+
+[node name="Slots" type="HBoxContainer" parent="UI/Hotbar" unique_id=236674576]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Slot1" type="Panel" parent="UI/Hotbar/Slots" unique_id=1741544596]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="UI/Hotbar/Slots/Slot1" unique_id=1086017897]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot2" type="Panel" parent="UI/Hotbar/Slots" unique_id=1257331792]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="UI/Hotbar/Slots/Slot2" unique_id=1178399919]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot3" type="Panel" parent="UI/Hotbar/Slots" unique_id=65966331]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="UI/Hotbar/Slots/Slot3" unique_id=1269689966]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot4" type="Panel" parent="UI/Hotbar/Slots" unique_id=658362122]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="UI/Hotbar/Slots/Slot4" unique_id=829588000]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot5" type="Panel" parent="UI/Hotbar/Slots" unique_id=2052130169]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="UI/Hotbar/Slots/Slot5" unique_id=993119671]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ItemName" type="Label" parent="UI" unique_id=1602026931]
+offset_left = 6.0
+offset_top = 9.0
+offset_right = 46.0
+offset_bottom = 32.0
+
+[node name="FullMessage" type="Label" parent="UI" unique_id=1354426499]
+offset_left = 164.0
+offset_top = 87.0
+offset_right = 204.0
+offset_bottom = 110.0

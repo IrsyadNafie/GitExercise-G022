@@ -11,8 +11,9 @@
 [ext_resource type="Script" path="res://door.gd" id="7_xwoao"]
 [ext_resource type="Texture2D" uid="uid://bw8myfm63w853" path="res://door.webp" id="8_x3oty"]
 [ext_resource type="Script" uid="uid://25n7qtud6y3r" path="res://ui.gd" id="10_6od6g"]
-[ext_resource type="PackedScene" uid="uid://e5jasvkh87ml" path="res://coin.tscn" id="11_dp0dc"]
-[ext_resource type="PackedScene" uid="uid://sajldxi2uhy1" path="res://pickup_item.tscn" id="13_n1gp7"]
+[ext_resource type="PackedScene" uid="uid://owx0maw7mufd" path="res://coin.tscn" id="11_dp0dc"]
+[ext_resource type="PackedScene" uid="uid://c8rfj43xdhn5j" path="res://pickup_item.tscn" id="13_n1gp7"]
+[ext_resource type="Texture2D" uid="uid://cgym4qx4agsbe" path="res://axegodot.png" id="14_oa7cc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fv7m"]
 size = Vector2(131, 127)
@@ -183,11 +184,11 @@ offset_bottom = 40.0
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
-[node name="Icon" type="TextureRect" parent="UI/Hotbar/Slots/Slot1" unique_id=138946336]
+[node name="Icon" type="TextureRect" parent="UI/Hotbar/Slots/Slot1" unique_id=1590712375]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 0
-offset_right = 84.0
-offset_bottom = 84.0
+offset_right = 40.0
+offset_bottom = 40.0
 expand_mode = 1
 stretch_mode = 5
 
@@ -263,11 +264,28 @@ position = Vector2(1211, 186)
 [node name="PickupItem" parent="." unique_id=1808496137 instance=ExtResource("13_n1gp7")]
 position = Vector2(-138, 198)
 
-[node name="PickupItem2" parent="." unique_id=717110004 instance=ExtResource("13_n1gp7")]
+[node name="KeyPickup" parent="." unique_id=717110004 instance=ExtResource("13_n1gp7")]
 position = Vector2(76, 192)
+item_name = "Key"
 
-[node name="PickupItem3" parent="." unique_id=194775727 instance=ExtResource("13_n1gp7")]
+[node name="Sprite2D" parent="KeyPickup" index="0" unique_id=1266786810]
+texture = ExtResource("4_un21y")
+
+[node name="AxePickup" parent="." unique_id=194775727 instance=ExtResource("13_n1gp7")]
 position = Vector2(366, 190)
+item_name = "Axe"
+
+[node name="Sprite2D" parent="AxePickup" index="0" unique_id=1266786810]
+texture = ExtResource("14_oa7cc")
 
 [node name="PickupItem4" parent="." unique_id=301743778 instance=ExtResource("13_n1gp7")]
-position = Vector2(634, 192)
+position = Vector2(684, 192)
+
+[node name="PickupItem2" parent="." unique_id=85270018 instance=ExtResource("13_n1gp7")]
+position = Vector2(919, 197)
+
+[node name="PickupItem3" parent="." unique_id=1995495730 instance=ExtResource("13_n1gp7")]
+position = Vector2(572, 192)
+
+[editable path="KeyPickup"]
+[editable path="AxePickup"]
