@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b8sih6ljgrddi"]
 
-[ext_resource type="Texture2D" uid="uid://j3w0eq6e6tkm" path="res://square-walk.png" id="1_fhaoq"]
-[ext_resource type="Script" uid="uid://c8uqnov7ujh84" path="res://square_walk.gd" id="2_4nlve"]
+[ext_resource type="Texture2D" uid="uid://j3w0eq6e6tkm" path="res://character/square-walk.png" id="1_fhaoq"]
+[ext_resource type="Script" uid="uid://c8uqnov7ujh84" path="res://character/square_walk.gd" id="2_4nlve"]
 
 [sub_resource type="Animation" id="Animation_rb15e"]
 length = 0.001

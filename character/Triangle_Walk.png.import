@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8hqj18qnoef1"
-path="res://.godot/imported/npcgodot.png-9d0bbf0bf1bb4d34d8eb59b8da579848.ctex"
+uid="uid://dojd6xg1e04gj"
+path="res://.godot/imported/Triangle_Walk.png-cf318bd217beb4e5700afe729c09f643.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://npcgodot.png"
-dest_files=["res://.godot/imported/npcgodot.png-9d0bbf0bf1bb4d34d8eb59b8da579848.ctex"]
+source_file="res://character/Triangle_Walk.png"
+dest_files=["res://.godot/imported/Triangle_Walk.png-cf318bd217beb4e5700afe729c09f643.ctex"]
 
 [params]
 

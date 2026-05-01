@@ -13,7 +13,6 @@ config_version=5
 config/name="MINI IT"
 run/main_scene="uid://b8sih6ljgrddi"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
 
 [rendering]
 

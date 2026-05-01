@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7vay88im8nml"
-path="res://.godot/imported/floorgodot.png-ae8c6fd32dc2773607118989839986fb.ctex"
+uid="uid://j3w0eq6e6tkm"
+path="res://.godot/imported/square-walk.png-d5c8dead22554733e74e8f8eb9a35bbe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://floorgodot.png"
-dest_files=["res://.godot/imported/floorgodot.png-ae8c6fd32dc2773607118989839986fb.ctex"]
+source_file="res://character/square-walk.png"
+dest_files=["res://.godot/imported/square-walk.png-d5c8dead22554733e74e8f8eb9a35bbe.ctex"]
 
 [params]
 

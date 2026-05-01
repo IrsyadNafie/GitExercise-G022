@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bvwhbiihmtorc"]
 
-[ext_resource type="Texture2D" uid="uid://bgkkcqut43udj" path="res://Circle_Walk.png" id="1_6ipmm"]
+[ext_resource type="Texture2D" uid="uid://bgkkcqut43udj" path="res://character/Circle_Walk.png" id="1_0s0y4"]
 
 [sub_resource type="Animation" id="Animation_a4jru"]
 length = 1.2
@@ -46,7 +46,7 @@ _data = {
 [node name="circle walk" type="Sprite2D" parent="."]
 position = Vector2(238, 371)
 scale = Vector2(0.47, 0.47)
-texture = ExtResource("1_6ipmm")
+texture = ExtResource("1_0s0y4")
 flip_h = true
 hframes = 3
 vframes = 3
