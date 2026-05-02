@@ -1,6 +1,93 @@
-[gd_scene load_steps=7 format=3 uid="uid://buy7a1wlgudr"]
+[gd_scene load_steps=8 format=3 uid="uid://buy7a1wlgudr"]
 
 [ext_resource type="Texture2D" uid="uid://c4niwytdid7qs" path="res://character/Arrow.png" id="1_3bfdf"]
+
+[sub_resource type="Animation" id="Animation_1yqfv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(889.583, 133.333)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_3bfdf")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.573808, 0.55833)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.122173]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../arrow rain:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_3bfdf")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../arrow rain:one_shot")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_0w5s7"]
 resource_name = "arrow 1"
@@ -66,8 +153,9 @@ tracks/4/keys = {
 "values": [-0.122173]
 }
 
-[sub_resource type="Animation" id="Animation_1yqfv"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_06fgv"]
+resource_name = "arrow rain"
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -75,58 +163,70 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0]
+"values": [0, 0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
+tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(889.583, 133.333)]
+"values": [-1.69297]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:texture")
+tracks/2/path = NodePath(".:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_3bfdf")]
+"update": 0,
+"values": [Vector2(0.4, 0.389)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:scale")
+tracks/3/path = NodePath(".:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.573808, 0.55833)]
+"values": [Vector2(800, -950), Vector2(800, 200)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath(".:rotation")
+tracks/4/path = NodePath("../arrow rain:texture")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.122173]
+"update": 1,
+"values": [ExtResource("1_3bfdf")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../arrow rain:one_shot")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_3bfdf"]
@@ -181,58 +281,6 @@ tracks/3/keys = {
 "values": [-0.122173]
 }
 
-[sub_resource type="Animation" id="Animation_06fgv"]
-resource_name = "arrow rain"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-1.69297]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.4, 0.389)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(800, -950), Vector2(800, 200)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_06fgv"]
 _data = {
 &"RESET": SubResource("Animation_1yqfv"),
@@ -241,11 +289,26 @@ _data = {
 &"heavy arrow": SubResource("Animation_3bfdf")
 }
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3bfdf"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(100, -1100, 0)
+emission_shape_scale = Vector3(100, 10, 1)
+emission_shape = 3
+emission_box_extents = Vector3(2, 1, 1)
+angle_min = -100.0
+angle_max = -100.0
+inherit_velocity_ratio = 1.015
+spread = 180.0
+gravity = Vector3(0, 900, 0)
+scale_min = 0.2
+scale_max = 0.3
+
 [node name="Node2D" type="CharacterBody2D"]
 position = Vector2(245, 377)
 scale = Vector2(0.48, 0.48)
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(889.583, 133.333)
 rotation = -0.122173
 scale = Vector2(0.573808, 0.55833)
@@ -256,3 +319,12 @@ flip_h = true
 libraries = {
 &"": SubResource("AnimationLibrary_06fgv")
 }
+
+[node name="arrow rain" type="GPUParticles2D" parent="."]
+position = Vector2(62.5, 166.667)
+rotation = -0.122173
+emitting = false
+amount = 9
+texture = ExtResource("1_3bfdf")
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_3bfdf")
