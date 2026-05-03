@@ -23,11 +23,16 @@ func _ready() -> void:
 
 func start_next_turn() -> void:
 	var current_actor: Actor = turn_queue[current_actor_index]
+	
 	_on_actor_logged("[color=black]----" + current_actor.character_name + " turn----[/color]")
+	
 	current_actor.start_turn()
+	
 	if current_actor.is_player:
-		action_menu.show()
 		var first_btn = action_menu.get_child(0)
+		if first_btn:
+			first_btn.text = current_actor.attack_name
+		action_menu.show()
 		if first_btn:
 			first_btn.grab_focus()
 	else:
@@ -36,11 +41,11 @@ func start_next_turn() -> void:
 func _on_ui_action_selected(action: String) -> void:
 	action_menu.hide()
 	var current_actor: Actor = turn_queue[current_actor_index]
-	current_actor.action_logged.emit("[color=black]>" + current_actor.character_name + " " + action + "[/color]")
-	if action == "attack":
-		current_actor.action_logged.emit("[color=blue]>dealing 15 damage[/color]")
+	current_actor.action_logged.emit("[color=white]>" + current_actor.character_name + " uses " + action + "[/color]")
+	if action == current_actor.attack_name:
+		current_actor.action_logged.emit("[color=white]>dealing 15 damage[/color]")
 	elif action == "rest":
-		current_actor.action_logged.emit("[color=blue]>restoring some hp and sp[/color]")
+		current_actor.action_logged.emit("[color=white]>restoring some hp and sp[/color]")
 	current_actor.end_turn()
 
 func _on_actor_turn_finished() -> void:

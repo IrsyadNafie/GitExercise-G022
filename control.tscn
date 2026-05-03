@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://bjrulpksiensb" path="res://enemy_1.gd" id="3_ee4bf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ee4bf"]
-bg_color = Color(0, 1, 0.23529412, 0.49411765)
+bg_color = Color(1, 0.21568628, 0.1254902, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -75,8 +75,24 @@ border_color = Color(0.6830772, 0.6830774, 0.6830771, 1)
 corner_detail = 1
 anti_aliasing = false
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eh0v1"]
+bg_color = Color(1, 0.21568628, 0.1254902, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 1
+anti_aliasing = false
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6a6wx"]
 bg_color = Color(1.3266667, 1.3266667, 1.3266667, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_kbped"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sky72"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -92,6 +108,8 @@ position = Vector2(24, -158)
 
 [node name="Player1" type="Node2D" parent="Actors" unique_id=267814346]
 script = ExtResource("2_kbped")
+attack_name = "swing"
+max_sp = 8
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Player1" unique_id=1549539151]
 offset_left = 944.00006
@@ -115,8 +133,8 @@ scale = Vector2(3.6730995, 5.8853974)
 theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
 theme_override_styles/background = SubResource("StyleBoxFlat_kbped")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0ytqx")
-max_value = 10.0
-value = 10.0
+max_value = 5.0
+value = 5.0
 show_percentage = false
 
 [node name="EXP" type="ProgressBar" parent="Actors/Player1" unique_id=1620098009]
@@ -148,6 +166,8 @@ texture = ExtResource("1_0fbet")
 [node name="Player2" type="Node2D" parent="Actors" unique_id=1507940198]
 position = Vector2(-31, 151)
 script = ExtResource("2_kbped")
+max_hp = 15
+max_sp = 6
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Player2" unique_id=237377493]
 offset_left = 944.00006
@@ -171,8 +191,8 @@ scale = Vector2(3.6730995, 5.8853974)
 theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
 theme_override_styles/background = SubResource("StyleBoxFlat_kbped")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0ytqx")
-max_value = 10.0
-value = 10.0
+max_value = 5.0
+value = 5.0
 show_percentage = false
 
 [node name="EXP" type="ProgressBar" parent="Actors/Player2" unique_id=1637285977]
@@ -204,6 +224,8 @@ texture = ExtResource("1_0fbet")
 [node name="Player3" type="Node2D" parent="Actors" unique_id=2036492965]
 position = Vector2(-5, 301)
 script = ExtResource("2_kbped")
+max_hp = 8
+max_sp = 10
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Player3" unique_id=1730966093]
 offset_left = 944.00006
@@ -227,8 +249,8 @@ scale = Vector2(3.6730995, 5.8853974)
 theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
 theme_override_styles/background = SubResource("StyleBoxFlat_kbped")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0ytqx")
-max_value = 10.0
-value = 10.0
+max_value = 5.0
+value = 5.0
 show_percentage = false
 
 [node name="EXP" type="ProgressBar" parent="Actors/Player3" unique_id=1430725651]
@@ -253,12 +275,12 @@ polygon = PackedVector2Array(-260.3462, -3.2351837, -284.86145, 12.617569, -260.
 uv = PackedVector2Array(-264, -27, -269, 63, -216, 19)
 
 [node name="Player3" type="Sprite2D" parent="Actors/Player3" unique_id=1933053050]
-position = Vector2(1017.5, 259.24)
+position = Vector2(1017, 261.00003)
 scale = Vector2(0.926, 0.898)
 texture = ExtResource("1_0fbet")
 
 [node name="Enemy1" type="Node2D" parent="Actors" unique_id=907974663]
-position = Vector2(-869, 157)
+position = Vector2(-911, 9)
 script = ExtResource("3_ee4bf")
 is_player = false
 
@@ -270,7 +292,7 @@ offset_bottom = 189.71857
 scale = Vector2(3.6730995, 5.8853974)
 theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
 theme_override_styles/background = SubResource("StyleBoxFlat_ee4bf")
-theme_override_styles/fill = SubResource("StyleBoxFlat_qtu10")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eh0v1")
 max_value = 10.0
 value = 10.0
 show_percentage = false
@@ -281,6 +303,70 @@ scale = Vector2(0.8984374, 0.87125015)
 texture = ExtResource("1_0fbet")
 
 [node name="TurnArrow" type="Polygon2D" parent="Actors/Enemy1" unique_id=1763664194]
+z_index = 5
+position = Vector2(1167.0001, 255.99998)
+rotation = -3.1404102
+scale = Vector2(-1.7677237, 1.7694619)
+offset = Vector2(247.77422, -13.139282)
+polygon = PackedVector2Array(-260.3462, -3.2351837, -284.86145, 12.617569, -260.30774, 28.977982, -260.3266, 13.153976)
+uv = PackedVector2Array(-264, -27, -269, 63, -216, 19)
+
+[node name="Enemy2" type="Node2D" parent="Actors" unique_id=503890181]
+position = Vector2(-869, 157)
+script = ExtResource("3_ee4bf")
+is_player = false
+
+[node name="HPBar" type="ProgressBar" parent="Actors/Enemy2" unique_id=1893942757]
+offset_left = 944.00006
+offset_top = 186.99998
+offset_right = 983.47626
+offset_bottom = 189.71857
+scale = Vector2(3.6730995, 5.8853974)
+theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_ee4bf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eh0v1")
+max_value = 10.0
+value = 10.0
+show_percentage = false
+
+[node name="Enemy2" type="Sprite2D" parent="Actors/Enemy2" unique_id=1773977145]
+position = Vector2(1017.5, 259.24)
+scale = Vector2(0.8984374, 0.87125015)
+texture = ExtResource("1_0fbet")
+
+[node name="TurnArrow" type="Polygon2D" parent="Actors/Enemy2" unique_id=425525242]
+z_index = 5
+position = Vector2(1167.0001, 255.99998)
+rotation = -3.1404102
+scale = Vector2(-1.7677237, 1.7694619)
+offset = Vector2(247.77422, -13.139282)
+polygon = PackedVector2Array(-260.3462, -3.2351837, -284.86145, 12.617569, -260.30774, 28.977982, -260.3266, 13.153976)
+uv = PackedVector2Array(-264, -27, -269, 63, -216, 19)
+
+[node name="Enemy3" type="Node2D" parent="Actors" unique_id=1296802778]
+position = Vector2(-911, 295)
+script = ExtResource("3_ee4bf")
+is_player = false
+
+[node name="HPBar" type="ProgressBar" parent="Actors/Enemy3" unique_id=289262223]
+offset_left = 944.00006
+offset_top = 186.99998
+offset_right = 983.47626
+offset_bottom = 189.71857
+scale = Vector2(3.6730995, 5.8853974)
+theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_ee4bf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eh0v1")
+max_value = 10.0
+value = 10.0
+show_percentage = false
+
+[node name="Enemy3" type="Sprite2D" parent="Actors/Enemy3" unique_id=1616723685]
+position = Vector2(1017.5, 259.24)
+scale = Vector2(0.8984374, 0.87125015)
+texture = ExtResource("1_0fbet")
+
+[node name="TurnArrow" type="Polygon2D" parent="Actors/Enemy3" unique_id=176406233]
 z_index = 5
 position = Vector2(1167.0001, 255.99998)
 rotation = -3.1404102
@@ -345,6 +431,7 @@ selection_arrow = NodePath("../arrow")
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_kbped")
 theme_override_styles/normal = SubResource("StyleBoxFlat_sky72")
 theme_override_styles/focus = SubResource("StyleBoxFlat_pxugv")
 action_mode = 0

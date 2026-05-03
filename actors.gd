@@ -6,8 +6,9 @@ signal action_logged(text_to_display: String)
 
 @export var character_name: String = "Player"
 @export var is_player: bool = true
-@export var max_hp: int = 100
-@export var max_sp: int = 50
+@export var attack_name: String = "attack"
+@export var max_hp: int = 10
+@export var max_sp: int = 5
 
 var current_hp: int
 var current_sp: int
