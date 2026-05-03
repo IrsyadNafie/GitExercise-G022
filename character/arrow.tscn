@@ -455,6 +455,7 @@ libraries = {
 }
 
 [node name="shield" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0)
 position = Vector2(1087.5, -89.5833)
 scale = Vector2(0.2, 0.2)
