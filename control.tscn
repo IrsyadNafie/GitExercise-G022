@@ -108,8 +108,11 @@ position = Vector2(24, -158)
 
 [node name="Player1" type="Node2D" parent="Actors" unique_id=267814346]
 script = ExtResource("2_kbped")
+character_name = "Square"
 attack_name = "swing"
 max_sp = 8
+base_attack = 4
+sp_attack = 2
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Player1" unique_id=1549539151]
 offset_left = 944.00006
@@ -166,8 +169,12 @@ texture = ExtResource("1_0fbet")
 [node name="Player2" type="Node2D" parent="Actors" unique_id=1507940198]
 position = Vector2(-31, 151)
 script = ExtResource("2_kbped")
+character_name = "Circle"
+attack_name = "bash"
+is_aoe_attack = true
 max_hp = 15
 max_sp = 6
+sp_attack = 1
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Player2" unique_id=237377493]
 offset_left = 944.00006
@@ -224,8 +231,12 @@ texture = ExtResource("1_0fbet")
 [node name="Player3" type="Node2D" parent="Actors" unique_id=2036492965]
 position = Vector2(-5, 301)
 script = ExtResource("2_kbped")
+character_name = "Triangle"
+attack_name = "shoot"
 max_hp = 8
 max_sp = 10
+base_attack = 5
+sp_attack = 3
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Player3" unique_id=1730966093]
 offset_left = 944.00006
@@ -282,6 +293,7 @@ texture = ExtResource("1_0fbet")
 [node name="Enemy1" type="Node2D" parent="Actors" unique_id=907974663]
 position = Vector2(-911, 9)
 script = ExtResource("3_ee4bf")
+character_name = "Enemy1"
 is_player = false
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Enemy1" unique_id=1405507110]
@@ -314,6 +326,7 @@ uv = PackedVector2Array(-264, -27, -269, 63, -216, 19)
 [node name="Enemy2" type="Node2D" parent="Actors" unique_id=503890181]
 position = Vector2(-869, 157)
 script = ExtResource("3_ee4bf")
+character_name = "Enemy2"
 is_player = false
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Enemy2" unique_id=1893942757]
@@ -346,6 +359,7 @@ uv = PackedVector2Array(-264, -27, -269, 63, -216, 19)
 [node name="Enemy3" type="Node2D" parent="Actors" unique_id=1296802778]
 position = Vector2(-911, 295)
 script = ExtResource("3_ee4bf")
+character_name = "Enemy3"
 is_player = false
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Enemy3" unique_id=289262223]

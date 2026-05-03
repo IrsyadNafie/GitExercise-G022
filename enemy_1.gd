@@ -2,7 +2,6 @@ extends Actor
 
 func _ready() -> void:
 	super()
-	character_name = "Enemy1"
 	is_player = false
 
 func start_turn() -> void:
