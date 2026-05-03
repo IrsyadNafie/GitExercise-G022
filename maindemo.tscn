@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://owx0maw7mufd" path="res://coin.tscn" id="11_dp0dc"]
 [ext_resource type="PackedScene" uid="uid://c8rfj43xdhn5j" path="res://pickup_item.tscn" id="13_n1gp7"]
 [ext_resource type="Texture2D" uid="uid://cgym4qx4agsbe" path="res://axegodot.png" id="14_oa7cc"]
+[ext_resource type="PackedScene" uid="uid://maigb36gp0oq" path="res://shop_ui.tscn" id="15_fge8v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fv7m"]
 size = Vector2(131, 127)
@@ -160,9 +161,9 @@ text = "Press E"
 script = ExtResource("10_6od6g")
 
 [node name="CoinLabel" type="Label" parent="UI" unique_id=1110180801]
-offset_left = 1023.0
+offset_left = 982.0
 offset_top = 9.0
-offset_right = 1241.0
+offset_right = 1200.0
 offset_bottom = 121.0
 text = "Coins: 0"
 
@@ -286,6 +287,8 @@ position = Vector2(919, 197)
 
 [node name="PickupItem3" parent="." unique_id=1995495730 instance=ExtResource("13_n1gp7")]
 position = Vector2(572, 192)
+
+[node name="ShopUI" parent="." unique_id=2053593405 instance=ExtResource("15_fge8v")]
 
 [editable path="KeyPickup"]
 [editable path="AxePickup"]

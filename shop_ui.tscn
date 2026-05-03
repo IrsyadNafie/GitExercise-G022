@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://maigb36gp0oq"]
+
+[ext_resource type="Script" uid="uid://ckqu7h5twrnwe" path="res://shop_ui.gd" id="1_fscwk"]
+
+[node name="ShopUI" type="CanvasLayer" unique_id=2053593405]
+script = ExtResource("1_fscwk")
+
+[node name="Panel" type="Panel" parent="." unique_id=1564187771]
+offset_left = 35.0
+offset_top = 68.0
+offset_right = 1096.0
+offset_bottom = 537.0
+
+[node name="Title" type="Label" parent="Panel" unique_id=1326209611]
+layout_mode = 0
+offset_left = 514.0
+offset_top = 13.0
+offset_right = 558.0
+offset_bottom = 36.0
+text = "SHOP"
+
+[node name="HealthBtn" type="Button" parent="Panel" unique_id=572072304]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 47.0
+offset_right = 209.0
+offset_bottom = 78.0
+text = "Health Potion (3 coins)"
+
+[node name="StrengthBtn" type="Button" parent="Panel" unique_id=669953258]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 91.0
+offset_right = 225.0
+offset_bottom = 122.0
+text = "Strength Potion (4 coins)"
+
+[node name="QuantityLabel" type="Label" parent="Panel" unique_id=1404428137]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 391.0
+offset_right = 99.0
+offset_bottom = 414.0
+text = "Selected:"
+
+[node name="TotalCost" type="Label" parent="Panel" unique_id=850505461]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 432.0
+offset_right = 86.0
+offset_bottom = 455.0
+text = "Total: 0"
+
+[node name="ConfirmBtn" type="Button" parent="Panel" unique_id=1441858263]
+layout_mode = 0
+offset_left = 978.0
+offset_top = 431.0
+offset_right = 1049.0
+offset_bottom = 462.0
+text = "Confirm"
+
+[node name="CloseBtn" type="Button" parent="Panel" unique_id=330398729]
+layout_mode = 0
+offset_left = 1002.0
+offset_top = 13.0
+offset_right = 1052.0
+offset_bottom = 44.0
+text = "Close"
+
+[connection signal="pressed" from="Panel/HealthBtn" to="." method="_on_health_btn_pressed"]
+[connection signal="pressed" from="Panel/StrengthBtn" to="." method="_on_strength_btn_pressed"]
+[connection signal="pressed" from="Panel/ConfirmBtn" to="." method="_on_confirm_btn_pressed"]
+[connection signal="pressed" from="Panel/CloseBtn" to="." method="_on_close_btn_pressed"]

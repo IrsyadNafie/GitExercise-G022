@@ -1,6 +1,6 @@
 extends Node
 
-var coins = 0
+var coins = 20
 
 # 5 inventory slots
 var inventory = ["", "", "", "", ""]
