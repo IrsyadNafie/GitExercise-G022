@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://c2wjiwvprx6l0"]
+
+[ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="1_ur2un"]
+
+[resource]
+script = ExtResource("1_ur2un")
+name = "courage"
+damage = 3
+hits = 3
+metadata/_custom_type_script = "uid://c04p4kwhd0jof"

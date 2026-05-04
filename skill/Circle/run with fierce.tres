@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://bcyup6tjom3vt"]
+
+[ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="1_0trx7"]
+
+[resource]
+script = ExtResource("1_0trx7")
+name = "run with fierce"
+damage = 7
+target_type = 1
+metadata/_custom_type_script = "uid://c04p4kwhd0jof"

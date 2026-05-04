@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://djawe21ingrd3"]
+
+[ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="1_y1cnk"]
+
+[resource]
+script = ExtResource("1_y1cnk")
+name = "commandment"
+sp_cost = 3
+damage = 3
+target_type = 5
+metadata/_custom_type_script = "uid://c04p4kwhd0jof"

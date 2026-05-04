@@ -27,6 +27,7 @@ var current_sp: int
 @onready var hp_bar: ProgressBar = get_node_or_null("HPBar")
 @onready var sp_bar: ProgressBar = get_node_or_null("SPBar")
 @onready var turn_arrow: Node2D = get_node_or_null("TurnArrow")
+@export var skills: Array[Skill] = []
 
 func _ready() -> void:
 	current_hp = max_hp

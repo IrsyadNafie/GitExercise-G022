@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://3a61wiqsaj3g"]
+
+[ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="1_haw1s"]
+
+[resource]
+script = ExtResource("1_haw1s")
+name = "enchant"
+sp_cost = 3
+target_type = 4
+metadata/_custom_type_script = "uid://c04p4kwhd0jof"
