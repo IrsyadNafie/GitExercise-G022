@@ -28,7 +28,6 @@ func _input(event):
 			if focused_node is Button and is_ancestor_of(focused_node):
 				_execute_selection(focused_node.name)
 
-# This is the function that went missing!
 func _on_button_focus_entered(btn: Button):
 	if selection_arrow:
 		var min_size = btn.get_combined_minimum_size()

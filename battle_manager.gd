@@ -126,7 +126,6 @@ func handle_skill_choice(action: String):
 		if current_actor.current_sp >= selected.sp_cost:
 			selected_skill_to_execute = selected
 			is_in_skill_menu = false 
-			
 			if selected.target_type == Skill.TargetType.SINGLE_ENEMY:
 				action_menu.hide()
 				get_viewport().gui_release_focus()
