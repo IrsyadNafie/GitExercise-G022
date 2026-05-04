@@ -6,8 +6,6 @@
 [ext_resource type="Script" uid="uid://cu7qik8cmlvju" path="res://interactable.gd" id="3_8fv7m"]
 [ext_resource type="Texture2D" uid="uid://8hqj18qnoef1" path="res://npcgodot.png" id="4_u5bvf"]
 [ext_resource type="Texture2D" uid="uid://b4dbupg8jhcmr" path="res://yellowkeygodot.png" id="4_un21y"]
-[ext_resource type="Texture2D" uid="uid://dtmqbk5yv5lhu" path="res://treegodot.png" id="5_r5i1b"]
-[ext_resource type="Texture2D" uid="uid://7vay88im8nml" path="res://floorgodot.png" id="6_u5bvf"]
 [ext_resource type="Script" path="res://door.gd" id="7_xwoao"]
 [ext_resource type="Texture2D" uid="uid://bw8myfm63w853" path="res://door.webp" id="8_x3oty"]
 [ext_resource type="Script" uid="uid://25n7qtud6y3r" path="res://ui.gd" id="10_6od6g"]
@@ -15,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://c8rfj43xdhn5j" path="res://pickup_item.tscn" id="13_n1gp7"]
 [ext_resource type="Texture2D" uid="uid://cgym4qx4agsbe" path="res://axegodot.png" id="14_oa7cc"]
 [ext_resource type="PackedScene" uid="uid://maigb36gp0oq" path="res://shop_ui.tscn" id="15_fge8v"]
+[ext_resource type="Texture2D" uid="uid://cveoxtjt1ukje" path="res://floorgodot2.png" id="16_dd4ef"]
+[ext_resource type="Texture2D" uid="uid://co44rx27w348x" path="res://Backgound1godot.png" id="16_v1pl3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fv7m"]
 size = Vector2(131, 127)
@@ -105,35 +105,6 @@ offset_top = 19.0
 offset_right = 855.0
 offset_bottom = 42.0
 text = "Help! I'm Lost :("
-
-[node name="Tree" type="Sprite2D" parent="." unique_id=701954962]
-z_index = -1
-position = Vector2(-19.25, 137.75)
-scale = Vector2(1.4288889, 1.5266666)
-texture = ExtResource("5_r5i1b")
-
-[node name="Tree2" type="Sprite2D" parent="." unique_id=1094061834]
-z_index = -1
-position = Vector2(482.75, 145.75)
-scale = Vector2(1.4288889, 1.5266666)
-texture = ExtResource("5_r5i1b")
-
-[node name="Tree3" type="Sprite2D" parent="." unique_id=943850283]
-z_index = -1
-position = Vector2(1056.75, 145.75)
-scale = Vector2(1.4288889, 1.5266666)
-texture = ExtResource("5_r5i1b")
-
-[node name="Tree4" type="Sprite2D" parent="." unique_id=481037113]
-z_index = -1
-position = Vector2(1691.75, 142.75)
-scale = Vector2(1.4288889, 1.5266666)
-texture = ExtResource("5_r5i1b")
-
-[node name="Floorgodot" type="Sprite2D" parent="." unique_id=1328764805]
-position = Vector2(780.00006, 320)
-scale = Vector2(5.4319997, 1)
-texture = ExtResource("6_u5bvf")
 
 [node name="Door" type="Area2D" parent="." unique_id=485634795]
 script = ExtResource("7_xwoao")
@@ -289,6 +260,49 @@ position = Vector2(919, 197)
 position = Vector2(572, 192)
 
 [node name="ShopUI" parent="." unique_id=2053593405 instance=ExtResource("15_fge8v")]
+
+[node name="Backgound1Godot" type="Sprite2D" parent="." unique_id=1316828865]
+modulate = Color(0.9126203, 0.78263485, 0.7549795, 1)
+z_index = -5
+position = Vector2(-88, -80.75)
+scale = Vector2(1, 0.93870014)
+texture = ExtResource("16_v1pl3")
+
+[node name="Backgound1Godot4" type="Sprite2D" parent="." unique_id=631464234]
+modulate = Color(0.9126203, 0.78263485, 0.7549795, 1)
+z_index = -5
+position = Vector2(-1463, -78)
+scale = Vector2(1, 0.93870014)
+texture = ExtResource("16_v1pl3")
+
+[node name="Backgound1Godot3" type="Sprite2D" parent="." unique_id=1363874898]
+modulate = Color(0.9126203, 0.78263485, 0.7549795, 1)
+z_index = -5
+position = Vector2(1285, -81)
+scale = Vector2(1, 0.93870014)
+texture = ExtResource("16_v1pl3")
+
+[node name="Backgound1Godot2" type="Sprite2D" parent="." unique_id=149429]
+z_index = -5
+position = Vector2(-86, 557)
+scale = Vector2(1, 0.93870014)
+texture = ExtResource("16_v1pl3")
+
+[node name="Floorgodot2" type="Sprite2D" parent="." unique_id=936547779]
+position = Vector2(40, 363)
+texture = ExtResource("16_dd4ef")
+
+[node name="Floorgodot3" type="Sprite2D" parent="." unique_id=1901008702]
+position = Vector2(1272, 362)
+texture = ExtResource("16_dd4ef")
+
+[node name="Floorgodot4" type="Sprite2D" parent="." unique_id=961110028]
+position = Vector2(-1195, 361)
+texture = ExtResource("16_dd4ef")
+
+[node name="Floorgodot5" type="Sprite2D" parent="." unique_id=2139611684]
+position = Vector2(2508, 362)
+texture = ExtResource("16_dd4ef")
 
 [editable path="KeyPickup"]
 [editable path="AxePickup"]
