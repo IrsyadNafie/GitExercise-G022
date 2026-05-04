@@ -33,6 +33,7 @@ position = Vector2(428, 383)
 script = ExtResource("1_x3oty")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1924342707]
+z_index = 3
 script = ExtResource("1_rqp8c")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=620179317]
