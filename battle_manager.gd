@@ -7,6 +7,8 @@ var active_enemies: Array[Actor] = []
 var is_targeting: bool = false
 var is_targeting_ally: bool = false
 var target_index: int = 0
+var total_battle_exp: int = 0
+var battle_won: bool = false
 
 var is_in_skill_menu: bool = false
 var current_skills: Array[Skill] = []
@@ -122,7 +124,6 @@ func handle_skill_choice(action: String):
 		selected = current_skills[clicked_index]
 	if selected:
 		if current_actor.current_sp >= selected.sp_cost:
-			# We DO NOT consume SP here anymore! Just prep the skill.
 			selected_skill_to_execute = selected
 			is_in_skill_menu = false 
 			
@@ -251,6 +252,7 @@ func execute_targeted_attack() -> void:
 func execute_aoe_attack() -> void:
 	var current_actor: Actor = turn_queue[current_actor_index]
 	current_actor.action_logged.emit("[color=black]>" + current_actor.character_name + " uses " + current_actor.attack_name + " on EVERYONE![/color]")
+	current_actor.action_logged.emit("[color=black]>dealing " + str(current_actor.base_attack) + " damage to all![/color]")
 	@warning_ignore("unused_variable")
 	var enemies_to_hit = active_enemies.duplicate()
 	for enemy in enemies_to_hit:
@@ -300,6 +302,8 @@ func execute_party_heal(skill: Skill):
 
 func finish_action() -> void:
 	clear_all_arrows()
+	if battle_won:
+		return
 	var current_actor: Actor = turn_queue[current_actor_index]
 	await get_tree().create_timer(1.5).timeout
 	current_actor.end_turn()
@@ -317,6 +321,8 @@ func _on_actor_logged(text: String) -> void:
 func check_death(target: Actor) -> void:
 	if target.current_hp <= 0:
 		_on_actor_logged("[color=yellow]>" + target.character_name + " was defeated.[/color]")
+		if not target.is_player:
+			total_battle_exp += target.exp_reward
 		if active_enemies.has(target):
 			active_enemies.erase(target)
 		var dead_index = turn_queue.find(target)
@@ -327,6 +333,7 @@ func check_death(target: Actor) -> void:
 		target.hide()
 		if active_enemies.size() == 0:
 			_on_actor_logged("[color=green]>Purified.[/color]")
+			distribute_victory_exp()
 
 func open_skill_sub_menu(actor: Actor):
 	if actor.skills.size() == 0: return
@@ -397,3 +404,17 @@ func execute_random_skill(skill: Skill) -> void:
 		
 	selected_skill_to_execute = null
 	finish_action()
+
+func distribute_victory_exp() -> void:
+	battle_won = true
+	action_menu.hide()
+	menu_arrow.hide()
+	
+	_on_actor_logged("[color=yellow]>Battle Won! Earned " + str(total_battle_exp) + " EXP![/color]")
+	
+	for player in get_active_players():
+		player.gain_exp(total_battle_exp)
+		
+	await get_tree().create_timer(4.0).timeout
+	
+	_on_actor_logged(">Returning to map...")

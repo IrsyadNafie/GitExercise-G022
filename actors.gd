@@ -20,6 +20,7 @@ signal action_logged(text_to_display: String)
 @export var level: int = 1
 @export var current_exp: int = 0
 @export var max_exp: int = 10
+@export var exp_reward: int = 5
 
 var current_hp: int
 var current_sp: int
@@ -58,23 +59,21 @@ func gain_exp(amount: int) -> void:
 		return
 	current_exp += amount
 	action_logged.emit("[color=cyan]>" + character_name + " gained " + str(amount) + " EXP![/color]")
-	if current_exp >= max_exp:
+	while current_exp >= max_exp and level < 5:
 		level_up()
 
 func level_up() -> void:
-	level += 1
 	current_exp -= max_exp
-	max_exp += 5
-	max_hp += 2
-	max_sp += 1
-	base_attack += 1
-	sp_attack += 2
-
-	current_hp = max_hp
+	level += 1
+	max_exp = int(max_exp * 1.5)
+	max_hp += 5
+	max_sp += 3
+	base_attack += 2
+	sp_attack += 2 
+	current_hp = max_hp 
 	current_sp = max_sp
 	update_bars()
-
-	action_logged.emit("[color=yellow]>LEVEL UP! " + character_name + " grew to Level " + str(level) + "![/color]")
+	action_logged.emit("[color=gold]>LEVEL UP! " + character_name + " is now Level " + str(level) + "![/color]")
 
 func take_damage(amount: int) -> void:
 	current_hp -= amount

@@ -20,13 +20,14 @@
 [ext_resource type="Resource" uid="uid://yui17fuafvpq" path="res://skill/Triangle/pots o heal.tres" id="16_858bn"]
 [ext_resource type="Texture2D" uid="uid://btr557rvi03rv" path="res://dither-ripple-pixel-5s-1777867142802-ezgif.com-gif-to-sprite-converter.png" id="19_pi4e7"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ee4bf"]
-bg_color = Color(0.556742, 0.046965577, 0, 0.4862745)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pi4e7"]
+bg_color = Color(0.298866, 0.5509334, 0, 0.4862745)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
+border_blend = true
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 6
@@ -56,6 +57,7 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
+border_blend = true
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 3
@@ -87,6 +89,21 @@ anti_aliasing = false
 bg_color = Color(1, 1, 1, 1)
 border_width_left = 1
 border_color = Color(0.6830772, 0.6830774, 0.6830771, 1)
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ee4bf"]
+bg_color = Color(0.82544905, 0.22903332, 2.8878452e-07, 0.4862745)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 corner_detail = 1
 anti_aliasing = false
 
@@ -390,7 +407,7 @@ offset_right = 983.47626
 offset_bottom = 175.71858
 scale = Vector2(3.6730995, 5.8853974)
 theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
-theme_override_styles/background = SubResource("StyleBoxFlat_ee4bf")
+theme_override_styles/background = SubResource("StyleBoxFlat_pi4e7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_qtu10")
 max_value = 10.0
 value = 10.0
@@ -453,7 +470,7 @@ offset_right = 983.47626
 offset_bottom = 175.71858
 scale = Vector2(3.6730995, 5.8853974)
 theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
-theme_override_styles/background = SubResource("StyleBoxFlat_ee4bf")
+theme_override_styles/background = SubResource("StyleBoxFlat_pi4e7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_qtu10")
 max_value = 10.0
 value = 10.0
@@ -516,7 +533,7 @@ offset_right = 983.47626
 offset_bottom = 175.71858
 scale = Vector2(3.6730995, 5.8853974)
 theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
-theme_override_styles/background = SubResource("StyleBoxFlat_ee4bf")
+theme_override_styles/background = SubResource("StyleBoxFlat_pi4e7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_qtu10")
 max_value = 10.0
 value = 10.0
