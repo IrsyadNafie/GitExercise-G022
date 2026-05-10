@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var coin_label = $CoinLabel
 @onready var item_name = $ItemName
 @onready var full_message = $FullMessage
+@onready var fade = $Fade
 
 func _ready():
 	connect_slots()
@@ -136,3 +137,15 @@ func drop_item():
 		update_inventory()
 
 		print("Dropped:", dropped_name)
+		
+#Death/Alive Transition
+
+func fade_out():
+	var tween = create_tween()
+	tween.tween_property(fade, "color:a", 1.0, 0.5) # fade to black
+	await tween.finished
+
+func fade_in():
+	var tween = create_tween()
+	tween.tween_property(fade, "color:a", 0.0, 0.5) # fade back
+	await tween.finished

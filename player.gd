@@ -57,10 +57,17 @@ func _physics_process(delta):
 func die():
 	print("Player died")
 
+	var ui = get_tree().current_scene.get_node("UI")
+
+	await ui.fade_out()
+
+	# teleport to checkpoint
 	if GameManager.checkpoint_position != Vector2.ZERO:
 		global_position = GameManager.checkpoint_position
-	else:
-		print("No checkpoint yet")
+
+	await get_tree().create_timer(0.2).timeout
+
+	await ui.fade_in()
 		
 #Debug (Death)
 func _process(delta):

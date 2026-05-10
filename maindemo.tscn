@@ -234,6 +234,13 @@ offset_top = 306.0
 offset_right = 587.0
 offset_bottom = 329.0
 
+[node name="Fade" type="ColorRect" parent="UI" unique_id=1647247283]
+offset_left = -151.0
+offset_top = -105.0
+offset_right = 1348.0
+offset_bottom = 834.0
+color = Color(0, 0, 0, 0)
+
 [node name="Coin" parent="." unique_id=871590875 instance=ExtResource("11_dp0dc")]
 position = Vector2(161, 187)
 
