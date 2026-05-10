@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c8rfj43xdhn5j" path="res://pickup_item.tscn" id="13_n1gp7"]
 [ext_resource type="Texture2D" uid="uid://cgym4qx4agsbe" path="res://axegodot.png" id="14_oa7cc"]
 [ext_resource type="PackedScene" uid="uid://maigb36gp0oq" path="res://shop_ui.tscn" id="15_fge8v"]
+[ext_resource type="PackedScene" uid="uid://bvayd54elqvfa" path="res://checkpoint.tscn" id="16_c7fif"]
 [ext_resource type="Texture2D" uid="uid://cveoxtjt1ukje" path="res://floorgodot2.png" id="16_dd4ef"]
 [ext_resource type="Texture2D" uid="uid://co44rx27w348x" path="res://Backgound1godot.png" id="16_v1pl3"]
 
@@ -59,6 +60,8 @@ position = Vector2(785, -393)
 shape = SubResource("RectangleShape2D_r5i1b")
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=880095133]
+z_index = 1
+scale = Vector2(-12.406719, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1518819027]
 position = Vector2(782.5, 251.06812)
@@ -67,7 +70,7 @@ shape = SubResource("RectangleShape2D_r5i1b")
 [node name="WallLeft" type="StaticBody2D" parent="." unique_id=399392157]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft" unique_id=2063697838]
-position = Vector2(1996, 26)
+position = Vector2(2528, 32)
 rotation = -1.5782504
 shape = SubResource("RectangleShape2D_r5i1b")
 
@@ -225,6 +228,12 @@ offset_top = 87.0
 offset_right = 204.0
 offset_bottom = 110.0
 
+[node name="CheckpointLabel" type="Label" parent="UI" unique_id=1488122838]
+offset_left = 547.0
+offset_top = 306.0
+offset_right = 587.0
+offset_bottom = 329.0
+
 [node name="Coin" parent="." unique_id=871590875 instance=ExtResource("11_dp0dc")]
 position = Vector2(161, 187)
 
@@ -283,6 +292,13 @@ position = Vector2(1285, -81)
 scale = Vector2(1, 0.93870014)
 texture = ExtResource("16_v1pl3")
 
+[node name="Backgound1Godot5" type="Sprite2D" parent="." unique_id=704509279]
+modulate = Color(0.9126203, 0.78263485, 0.7549795, 1)
+z_index = -5
+position = Vector2(2657, -77)
+scale = Vector2(1, 0.93870014)
+texture = ExtResource("16_v1pl3")
+
 [node name="Backgound1Godot2" type="Sprite2D" parent="." unique_id=149429]
 z_index = -5
 position = Vector2(-86, 557)
@@ -304,6 +320,9 @@ texture = ExtResource("16_dd4ef")
 [node name="Floorgodot5" type="Sprite2D" parent="." unique_id=2139611684]
 position = Vector2(2508, 362)
 texture = ExtResource("16_dd4ef")
+
+[node name="Checkpoint" parent="." unique_id=96501528 instance=ExtResource("16_c7fif")]
+position = Vector2(1687, 162)
 
 [editable path="KeyPickup"]
 [editable path="AxePickup"]

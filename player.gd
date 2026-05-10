@@ -13,6 +13,8 @@ var gravity = 900
 
 func _ready():
 	$Camera2D.make_current()
+	if GameManager.checkpoint_position == Vector2.ZERO:
+		GameManager.checkpoint_position = global_position
 	
 #For Inventory (Need update for every new items
 func update_equipped_item(item_name):
@@ -52,5 +54,15 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
+func die():
+	print("Player died")
 
-	
+	if GameManager.checkpoint_position != Vector2.ZERO:
+		global_position = GameManager.checkpoint_position
+	else:
+		print("No checkpoint yet")
+		
+#Debug (Death)
+func _process(delta):
+	if Input.is_action_just_pressed("ui_accept"):  # Enter key
+		die()
