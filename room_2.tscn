@@ -192,6 +192,12 @@ z_index = -5
 position = Vector2(2066, 304)
 texture = ExtResource("10_vdo4q")
 
+[node name="Background2Godot4" type="Sprite2D" parent="." unique_id=1782120633]
+modulate = Color(0.99483484, 0.9144794, 0.8857334, 1)
+z_index = -5
+position = Vector2(3439, 303)
+texture = ExtResource("10_vdo4q")
+
 [node name="Background2Godot3" type="Sprite2D" parent="." unique_id=1933919293]
 modulate = Color(0.99483484, 0.9144794, 0.8857334, 1)
 z_index = -5
