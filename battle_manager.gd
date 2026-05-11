@@ -18,6 +18,7 @@ var selected_skill_to_execute: Skill = null
 @onready var ui_layer = $UI
 @onready var action_menu = $UI/PlayerPanel/move
 @onready var battle_log = $UI/PlayerPanel/BattleLog/RichTextLabel
+@export var burn_status_resource: StatusEffect
 
 func _ready() -> void:
 	action_menu.hide()
@@ -43,22 +44,33 @@ func start_next_turn() -> void:
 	is_in_skill_menu = false
 	selected_skill_to_execute = null
 	
+	if turn_queue.size() == 0: return
+	
 	var current_actor: Actor = turn_queue[current_actor_index]
 	_on_actor_logged("[color=red]---- " + current_actor.character_name + " turn ----[/color]")
 	current_actor.start_turn()
+	var is_stunned = current_actor.process_statuses()
+	if current_actor.current_hp <= 0:
+		check_death(current_actor)
+		if battle_won: return
+		finish_action()
+		return
+	if is_stunned:
+		finish_action()
+		return
 	
 	if current_actor.is_player:
 		reset_main_menu(current_actor)
 		var first_btn = action_menu.get_child(0)
 		if first_btn:
 			first_btn.text = current_actor.attack_name
-		
 		action_menu.show()
 		menu_arrow.show()
 		if first_btn:
 			first_btn.grab_focus()
 	else:
 		action_menu.hide()
+		execute_enemy_ai()
 
 func _on_ui_action_selected(action: String) -> void:
 	var current_actor: Actor = turn_queue[current_actor_index]
@@ -107,6 +119,8 @@ func execute_targeted_ally() -> void:
 		current_actor.action_logged.emit("[color=green]>Restored HP![/color]")
 	else:
 		current_actor.action_logged.emit("[color=blue]>" + target.character_name + " is boosted![/color]")
+	if selected_skill_to_execute.status_to_apply:
+		target.apply_status(selected_skill_to_execute.status_to_apply)
 	target.update_bars()
 	selected_skill_to_execute = null
 	finish_action()
@@ -225,40 +239,60 @@ func execute_targeted_attack() -> void:
 	var current_actor: Actor = turn_queue[current_actor_index]
 	var target = active_enemies[target_index]
 	if target.turn_arrow: target.turn_arrow.hide()
+	
 	var dmg = current_actor.base_attack
 	var msg = " attacks "
 	var hits = 1
+	
 	if selected_skill_to_execute:
 		current_actor.current_sp -= selected_skill_to_execute.sp_cost
 		current_actor.update_bars()
 		dmg = selected_skill_to_execute.damage
 		msg = " uses " + selected_skill_to_execute.name + " on "
 		hits = selected_skill_to_execute.hits
-		# triangle heavy arrow special
 		if selected_skill_to_execute.name == "heavy-arrow":
 			if randf() < 0.3:
 				_on_actor_logged(">The arrow flew wide! MISS!")
 				selected_skill_to_execute = null
 				finish_action()
 				return
+				
+	var has_magic_sword = current_actor.is_enchanted()
+	if has_magic_sword:
+		dmg += 3
+		msg = " strikes with a FLAMING weapon at "
+		
 	current_actor.action_logged.emit("[color=black]>" + current_actor.character_name + msg + target.character_name + "![/color]")
+	
 	for i in range(hits):
-		target.take_damage(dmg)
+		var final_dmg = dmg
+		if randf() <= current_actor.crit_chance:
+			final_dmg = int(final_dmg * current_actor.crit_multiplier)
+			current_actor.action_logged.emit("[color=red]>CRITICAL HIT![/color]")
+			
+		target.take_damage(final_dmg)
+		
+		if selected_skill_to_execute and selected_skill_to_execute.status_to_apply:
+			target.apply_status(selected_skill_to_execute.status_to_apply)
+		if has_magic_sword and burn_status_resource:
+			target.apply_status(burn_status_resource)
+			
 		check_death(target)
 		if hits > 1: await get_tree().create_timer(0.2).timeout
-	finish_action()
+		
+	finish_action() # ONLY ONE CALL HERE NOW
 
 func execute_aoe_attack() -> void:
 	var current_actor: Actor = turn_queue[current_actor_index]
 	current_actor.action_logged.emit("[color=black]>" + current_actor.character_name + " uses " + current_actor.attack_name + " on EVERYONE![/color]")
 	current_actor.action_logged.emit("[color=black]>dealing " + str(current_actor.base_attack) + " damage to all![/color]")
-	@warning_ignore("unused_variable")
+	
 	var enemies_to_hit = active_enemies.duplicate()
 	for enemy in enemies_to_hit:
 		if is_instance_valid(enemy) and enemy.current_hp > 0:
 			enemy.take_damage(current_actor.base_attack)
 			check_death(enemy)
-	current_actor.action_logged.emit("[color=black]>dealing " + str(current_actor.base_attack) + " damage to all![/color]")
+			
 	finish_action()
 
 func execute_aoe_skill(skill: Skill):
@@ -380,6 +414,9 @@ func execute_self_skill(skill: Skill) -> void:
 	else:
 		current_actor.action_logged.emit("[color=blue]>" + current_actor.character_name + " is boosted![/color]")
 		
+	if skill.status_to_apply:
+		current_actor.apply_status(skill.status_to_apply)
+		
 	current_actor.update_bars()
 	selected_skill_to_execute = null
 	finish_action()
@@ -417,3 +454,11 @@ func distribute_victory_exp() -> void:
 	await get_tree().create_timer(4.0).timeout
 	
 	_on_actor_logged(">Returning to map...")
+
+func execute_enemy_ai() -> void:
+	if battle_won: return
+	var current_actor: Actor = turn_queue[current_actor_index]
+	
+	_on_actor_logged(">" + current_actor.character_name + " glares menacingly...")
+	
+	finish_action()

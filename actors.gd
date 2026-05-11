@@ -16,6 +16,9 @@ signal action_logged(text_to_display: String)
 @export var base_attack: int = 3
 @export var sp_attack: int = 5
 
+@export var crit_chance: float = 50
+@export var crit_multiplier: float = 1.5
+
 @export_category("Progression")
 @export var level: int = 1
 @export var current_exp: int = 0
@@ -24,7 +27,9 @@ signal action_logged(text_to_display: String)
 
 var current_hp: int
 var current_sp: int
+var active_statuses: Array[Dictionary] = []
 
+@onready var status_container: HBoxContainer = get_node_or_null("StatusContainer")
 @onready var hp_bar: ProgressBar = get_node_or_null("HPBar")
 @onready var sp_bar: ProgressBar = get_node_or_null("SPBar")
 @onready var turn_arrow: Node2D = get_node_or_null("TurnArrow")
@@ -80,3 +85,60 @@ func take_damage(amount: int) -> void:
 	if current_hp < 0:
 		current_hp = 0
 	update_bars()
+
+func apply_status(new_effect: StatusEffect) -> void:
+	active_statuses.append({
+		"effect": new_effect,
+		"turns_left": new_effect.duration
+	})
+	action_logged.emit("[color=purple]>" + character_name + " was inflicted with " + new_effect.name + "![/color]")
+	
+	update_status_ui()
+
+func process_statuses() -> bool:
+	var is_stunned = false
+	
+	for i in range(active_statuses.size() - 1, -1, -1):
+		var status = active_statuses[i]
+		var effect = status["effect"]
+		
+		if effect.type == StatusEffect.EffectType.FIRE:
+			take_damage(effect.amount)
+			action_logged.emit("[color=orange]>" + character_name + " takes " + str(effect.amount) + " damage from " + effect.name + "![/color]")
+			
+		elif effect.type == StatusEffect.EffectType.STUN:
+			is_stunned = true
+			action_logged.emit("[color=yellow]>" + character_name + " is paralyzed by " + effect.name + " and cannot move![/color]")
+		
+		if not effect.is_permanent:
+			status["turns_left"] -= 1
+			if status["turns_left"] <= 0:
+				action_logged.emit("[color=gray]>" + effect.name + " wore off on " + character_name + ".[/color]")
+				active_statuses.remove_at(i)
+			
+	update_status_ui()
+	
+	return is_stunned
+
+func update_status_ui() -> void:
+	if not status_container: 
+		return
+		
+	for child in status_container.get_children():
+		child.queue_free()
+		
+	for status in active_statuses:
+		var effect: StatusEffect = status["effect"]
+		
+		if effect.icon:
+			var icon_rect = TextureRect.new()
+			icon_rect.texture = effect.icon
+			icon_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			icon_rect.custom_minimum_size = Vector2(40, 40) 
+			status_container.add_child(icon_rect)
+
+func is_enchanted() -> bool:
+	for status in active_statuses:
+		if status["effect"].type == StatusEffect.EffectType.ENCHANT:
+			return true
+	return false

@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="Skill" format=3 uid="uid://3a61wiqsaj3g"]
 
 [ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="1_haw1s"]
+[ext_resource type="Resource" uid="uid://dj05pdm8klim6" path="res://status/enchant_buff.tres" id="2_bqjq5"]
 
 [resource]
 script = ExtResource("1_haw1s")
+status_to_apply = ExtResource("2_bqjq5")
 name = "enchant"
 sp_cost = 3
 target_type = 4
