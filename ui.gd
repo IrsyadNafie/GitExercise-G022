@@ -38,6 +38,9 @@ func _process(delta):
 		drop_item()
 
 
+# =========================
+# SLOT CONNECTION
+# =========================
 func connect_slots():
 	for i in range(5):
 		var slot = $Hotbar/Slots.get_child(i)
@@ -61,7 +64,10 @@ func connect_slots():
 func show_item_name(index):
 	item_name.text = GameManager.inventory[index]
 
-#Inventory update everytime new items added
+
+# =========================
+# INVENTORY UPDATE
+# =========================
 func update_inventory():
 	for i in range(5):
 		var slot = $Hotbar/Slots.get_child(i)
@@ -86,6 +92,9 @@ func update_inventory():
 	)
 
 
+# =========================
+# ADD ITEM
+# =========================
 func add_item(new_item):
 	for i in range(5):
 		if GameManager.inventory[i] == "":
@@ -98,54 +107,73 @@ func add_item(new_item):
 	print("Inventory Full")
 	return false
 
-	show_full_message()
-	return false
 
-
+# =========================
+# INVENTORY FULL MESSAGE
+# =========================
 func show_full_message():
 	full_message.text = "Inventory Full!"
 	await get_tree().create_timer(2.0).timeout
 	full_message.text = ""
 
 
+# =========================
+# DROP ITEM
+# =========================
 func drop_item():
 	if GameManager.inventory[GameManager.selected_slot] != "":
 
-		# Save item name first
 		var dropped_name = GameManager.inventory[GameManager.selected_slot]
 
-		# Load PickupItem scene
 		var pickup_scene = preload("res://pickup_item.tscn")
-
-		# Create new item in world
 		var dropped_item = pickup_scene.instantiate()
 
-		# Give dropped item its correct name
 		dropped_item.item_name = dropped_name
 
-		# Spawn near player
 		var player = get_parent().get_node("Player")
 		dropped_item.global_position = player.global_position + Vector2(60, 0)
 
-		# Add dropped item into current scene
 		get_tree().current_scene.add_child(dropped_item)
 
-		# Remove from inventory
 		GameManager.inventory[GameManager.selected_slot] = ""
 
-		# Refresh UI
 		update_inventory()
 
 		print("Dropped:", dropped_name)
-		
-#Death/Alive Transition
 
+
+# =========================
+# CHECK ITEM (FOR CHEST)
+# =========================
+func has_item(item_name):
+	for item in GameManager.inventory:
+		if item == item_name:
+			return true
+	return false
+
+
+# =========================
+# REMOVE ITEM (FOR CHEST)
+# =========================
+func remove_item(item_name):
+	for i in range(5):
+		if GameManager.inventory[i] == item_name:
+			GameManager.inventory[i] = ""
+			update_inventory()
+			print("Removed:", item_name)
+			return true
+	return false
+
+
+# =========================
+# FADE SYSTEM
+# =========================
 func fade_out():
 	var tween = create_tween()
-	tween.tween_property(fade, "color:a", 1.0, 0.5) # fade to black
+	tween.tween_property(fade, "color:a", 1.0, 0.5)
 	await tween.finished
 
 func fade_in():
 	var tween = create_tween()
-	tween.tween_property(fade, "color:a", 0.0, 0.5) # fade back
+	tween.tween_property(fade, "color:a", 0.0, 0.5)
 	await tween.finished

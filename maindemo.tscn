@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cveoxtjt1ukje" path="res://floorgodot2.png" id="16_dd4ef"]
 [ext_resource type="Texture2D" uid="uid://co44rx27w348x" path="res://Backgound1godot.png" id="16_v1pl3"]
 [ext_resource type="PackedScene" uid="uid://dl4r2nr1jqdsk" path="res://npc.tscn" id="17_dd4ef"]
+[ext_resource type="PackedScene" uid="uid://cwfxnnamkxe70" path="res://chest.tscn" id="18_c7fif"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fv7m"]
 size = Vector2(131, 127)
@@ -258,7 +259,7 @@ position = Vector2(1211, 186)
 position = Vector2(-138, 806)
 
 [node name="KeyPickup" parent="." unique_id=717110004 instance=ExtResource("13_n1gp7")]
-position = Vector2(76, 192)
+position = Vector2(93, 190)
 item_name = "Key"
 
 [node name="Sprite2D" parent="KeyPickup" index="0" unique_id=1266786810]
@@ -335,6 +336,9 @@ position = Vector2(434, 164)
 
 [node name="NPC" parent="." unique_id=1906512404 instance=ExtResource("17_dd4ef")]
 position = Vector2(884, 173)
+
+[node name="Chest" parent="." unique_id=988839848 instance=ExtResource("18_c7fif")]
+position = Vector2(-128, 194)
 
 [connection signal="child_entered_tree" from="NPC" to="." method="_on_npc_child_entered_tree"]
 
