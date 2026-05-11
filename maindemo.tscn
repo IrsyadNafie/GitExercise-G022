@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ekggwac31s7i"]
 
 [ext_resource type="Script" uid="uid://bu6infk68sg7v" path="res://player.gd" id="1_rqp8c"]
-[ext_resource type="Script" path="res://maindemo.gd" id="1_x3oty"]
+[ext_resource type="Script" uid="uid://bk34skrfx6gjs" path="res://maindemo.gd" id="1_x3oty"]
 [ext_resource type="Texture2D" uid="uid://cn4oafs7ljlev" path="res://icon.svg" id="2_55mso"]
 [ext_resource type="Script" uid="uid://cu7qik8cmlvju" path="res://interactable.gd" id="3_8fv7m"]
 [ext_resource type="Texture2D" uid="uid://8hqj18qnoef1" path="res://npcgodot.png" id="4_u5bvf"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bvayd54elqvfa" path="res://checkpoint.tscn" id="16_c7fif"]
 [ext_resource type="Texture2D" uid="uid://cveoxtjt1ukje" path="res://floorgodot2.png" id="16_dd4ef"]
 [ext_resource type="Texture2D" uid="uid://co44rx27w348x" path="res://Backgound1godot.png" id="16_v1pl3"]
+[ext_resource type="PackedScene" uid="uid://dl4r2nr1jqdsk" path="res://npc.tscn" id="17_dd4ef"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fv7m"]
 size = Vector2(131, 127)
@@ -82,6 +83,7 @@ rotation = -1.5631804
 shape = SubResource("RectangleShape2D_r5i1b")
 
 [node name="Interactable" type="Area2D" parent="." unique_id=1685064170]
+position = Vector2(838, -2)
 script = ExtResource("3_8fv7m")
 
 [node name="Sprite2D" type="Sprite2D" parent="Interactable" unique_id=1506532025]
@@ -241,6 +243,8 @@ offset_right = 1348.0
 offset_bottom = 834.0
 color = Color(0, 0, 0, 0)
 
+[node name="ShopUI" parent="UI" unique_id=2053593405 instance=ExtResource("15_fge8v")]
+
 [node name="Coin" parent="." unique_id=871590875 instance=ExtResource("11_dp0dc")]
 position = Vector2(161, 187)
 
@@ -251,7 +255,7 @@ position = Vector2(270, 187)
 position = Vector2(1211, 186)
 
 [node name="PickupItem" parent="." unique_id=1808496137 instance=ExtResource("13_n1gp7")]
-position = Vector2(-138, 198)
+position = Vector2(-138, 806)
 
 [node name="KeyPickup" parent="." unique_id=717110004 instance=ExtResource("13_n1gp7")]
 position = Vector2(76, 192)
@@ -261,22 +265,20 @@ item_name = "Key"
 texture = ExtResource("4_un21y")
 
 [node name="AxePickup" parent="." unique_id=194775727 instance=ExtResource("13_n1gp7")]
-position = Vector2(366, 190)
+position = Vector2(386, 814)
 item_name = "Axe"
 
 [node name="Sprite2D" parent="AxePickup" index="0" unique_id=1266786810]
 texture = ExtResource("14_oa7cc")
 
 [node name="PickupItem4" parent="." unique_id=301743778 instance=ExtResource("13_n1gp7")]
-position = Vector2(684, 192)
+position = Vector2(728, 819)
 
 [node name="PickupItem2" parent="." unique_id=85270018 instance=ExtResource("13_n1gp7")]
-position = Vector2(919, 197)
+position = Vector2(930, 825)
 
 [node name="PickupItem3" parent="." unique_id=1995495730 instance=ExtResource("13_n1gp7")]
-position = Vector2(572, 192)
-
-[node name="ShopUI" parent="." unique_id=2053593405 instance=ExtResource("15_fge8v")]
+position = Vector2(567, 808)
 
 [node name="Backgound1Godot" type="Sprite2D" parent="." unique_id=1316828865]
 modulate = Color(0.9126203, 0.78263485, 0.7549795, 1)
@@ -329,7 +331,12 @@ position = Vector2(2508, 362)
 texture = ExtResource("16_dd4ef")
 
 [node name="Checkpoint" parent="." unique_id=96501528 instance=ExtResource("16_c7fif")]
-position = Vector2(1687, 162)
+position = Vector2(434, 164)
+
+[node name="NPC" parent="." unique_id=1906512404 instance=ExtResource("17_dd4ef")]
+position = Vector2(884, 173)
+
+[connection signal="child_entered_tree" from="NPC" to="." method="_on_npc_child_entered_tree"]
 
 [editable path="KeyPickup"]
 [editable path="AxePickup"]
