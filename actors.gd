@@ -16,7 +16,7 @@ signal action_logged(text_to_display: String)
 @export var base_attack: int = 3
 @export var sp_attack: int = 5
 
-@export var crit_chance: float = 50
+@export var crit_chance: float = 0.5
 @export var crit_multiplier: float = 1.5
 
 @export_category("Progression")
