@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://dl7r8br2evilk"]
+
+[ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="1_fclwv"]
+
+[resource]
+script = ExtResource("1_fclwv")
+name = "heal dust"
+heal_amount = 7
+target_type = 2
+metadata/_custom_type_script = "uid://c04p4kwhd0jof"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3 uid="uid://ch6lc7asa1x6b"]
+
+[ext_resource type="Texture2D" uid="uid://ddxmxgyyfy8mn" path="res://icon.svg" id="1_jipos"]
+[ext_resource type="Script" uid="uid://cxl1csb5v1m8r" path="res://status_effect.gd" id="1_t702c"]
+
+[resource]
+script = ExtResource("1_t702c")
+icon = ExtResource("1_jipos")
+name = "Stun"
+type = 1
+metadata/_custom_type_script = "uid://cxl1csb5v1m8r"

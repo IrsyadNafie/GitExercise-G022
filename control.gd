@@ -16,6 +16,10 @@ func update_xp(current_xp, max_xp):
 	exp_bar.max_value = max_xp
 	if current_xp >= max_xp:
 		exp_bar.value = current_xp - max_xp
+<<<<<<< HEAD
+=======
+		print("xp reached go back to ", exp_bar.value)
+>>>>>>> 8acd2005fa674197f3fac22133938a4dfbeee215
 	else:
 		exp_bar.value = current_xp
 
