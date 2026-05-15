@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://cvo1jo4k0h2ji"]
+
+[ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="1_t70di"]
+
+[resource]
+script = ExtResource("1_t70di")
+name = "arrow rain"
+sp_cost = 3
+damage = 2
+target_type = 1
+hits = 3
+metadata/_custom_type_script = "uid://c04p4kwhd0jof"
