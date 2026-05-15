@@ -1,0 +1,50 @@
+[33m8acd200[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmeow[m[33m, [m[1;31morigin/meow[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/Nino[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mNino[m[33m)[m HEAD@{0}: reset: moving to origin/main
+[33m8acd200[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmeow[m[33m, [m[1;31morigin/meow[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/Nino[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mNino[m[33m)[m HEAD@{1}: checkout: moving from meow to meow
+[33m8acd200[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmeow[m[33m, [m[1;31morigin/meow[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/Nino[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mNino[m[33m)[m HEAD@{2}: checkout: moving from main to meow
+[33m8acd200[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmeow[m[33m, [m[1;31morigin/meow[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/Nino[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mNino[m[33m)[m HEAD@{3}: checkout: moving from meow to main
+[33m8acd200[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmeow[m[33m, [m[1;31morigin/meow[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/Nino[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mNino[m[33m)[m HEAD@{4}: checkout: moving from Nino to meow
+[33m8acd200[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmeow[m[33m, [m[1;31morigin/meow[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/Nino[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mNino[m[33m)[m HEAD@{5}: checkout: moving from main to Nino
+[33m8acd200[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmeow[m[33m, [m[1;31morigin/meow[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/Nino[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mNino[m[33m)[m HEAD@{6}: reset: moving to origin/Nino
+[33m2163cf3[m HEAD@{7}: commit (merge): Fixed conflicts and restored project file
+[33mbc9640b[m HEAD@{8}: checkout: moving from main to main
+[33mbc9640b[m HEAD@{9}: reset: moving to HEAD
+[33mbc9640b[m HEAD@{10}: checkout: moving from Nino to main
+[33m8acd200[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmeow[m[33m, [m[1;31morigin/meow[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/Nino[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mNino[m[33m)[m HEAD@{11}: commit: safe
+[33m2bd5b9c[m HEAD@{12}: commit: status 90% fix
+[33m8ca6b6e[m HEAD@{13}: checkout: moving from Cinda to Nino
+[33mb6b079d[m[33m ([m[1;32mCinda[m[33m)[m HEAD@{14}: commit: test
+[33mb6ca75b[m[33m ([m[1;31morigin/Cinda[m[33m)[m HEAD@{15}: checkout: moving from Nino to Cinda
+[33m8ca6b6e[m HEAD@{16}: commit: FIXes things
+[33ma9238d5[m HEAD@{17}: commit: fixes things
+[33m21e0a38[m HEAD@{18}: commit: moveset done, background added temporary
+[33m8133ff4[m HEAD@{19}: commit: attacks work
+[33ma0e70fc[m HEAD@{20}: commit: added different attact functions
+[33m9b3df1f[m HEAD@{21}: commit: battle ui plus progress
+[33mf0c75dd[m HEAD@{22}: commit: starting enemy/player123
+[33m4652e55[m HEAD@{23}: commit: UI
+[33mbbb9a22[m HEAD@{24}: checkout: moving from Nino to Nino
+[33mbbb9a22[m HEAD@{25}: commit: UI
+[33md558605[m HEAD@{26}: checkout: moving from Nino to Nino
+[33md558605[m HEAD@{27}: commit: UI
+[33m786c162[m HEAD@{28}: commit: UI
+[33mf6d7ce5[m HEAD@{29}: checkout: moving from Nino to Nino
+[33mf6d7ce5[m HEAD@{30}: checkout: moving from main to Nino
+[33mbc9640b[m HEAD@{31}: commit: UI
+[33m74832e1[m HEAD@{32}: checkout: moving from Nino to main
+[33mf6d7ce5[m HEAD@{33}: checkout: moving from main to Nino
+[33m74832e1[m HEAD@{34}: commit (merge): fix
+[33mfb6d565[m HEAD@{35}: pull origin main: Fast-forward
+[33mc4a6829[m HEAD@{36}: checkout: moving from Nino to main
+[33mf6d7ce5[m HEAD@{37}: commit: test
+[33me59e59f[m HEAD@{38}: commit: HP/SP Bar
+[33m4f46e0b[m HEAD@{39}: commit: HP/SP Bar Update
+[33m22a893a[m HEAD@{40}: commit: SP/BAR update
+[33m9fb97cd[m HEAD@{41}: commit: HP and SP Demo
+[33mc4a6829[m HEAD@{42}: checkout: moving from main to Nino
+[33mc4a6829[m HEAD@{43}: commit: test
+[33mb82240a[m HEAD@{44}: pull origin main --rebase (finish): returning to refs/heads/main
+[33mb82240a[m HEAD@{45}: pull origin main --rebase (pick): Movement
+[33m1188918[m HEAD@{46}: pull origin main --rebase (start): checkout 1188918674896eb441637ac375238efdb827660d
+[33m41f38f4[m HEAD@{47}: Branch: renamed refs/heads/main to refs/heads/main
+[33m41f38f4[m HEAD@{49}: Branch: renamed refs/heads/master to refs/heads/main
+[33m41f38f4[m HEAD@{51}: commit (initial): Movement

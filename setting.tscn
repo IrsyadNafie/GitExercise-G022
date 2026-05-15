@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bcs2j4l7daxee"]
+[gd_scene format=3 uid="uid://bcs2j4l7daxee"]
 
 [ext_resource type="Script" uid="uid://c2dr85dtd8ks4" path="res://setting.gd" id="1_110nh"]
 [ext_resource type="FontFile" uid="uid://b6lro2q7ygs7h" path="res://Symtext.ttf" id="1_a42w7"]
