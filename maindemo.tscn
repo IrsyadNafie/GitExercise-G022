@@ -38,7 +38,7 @@ script = ExtResource("1_x3oty")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1924342707]
 z_index = 3
-position = Vector2(277, -1051)
+position = Vector2(271, -1564)
 script = ExtResource("1_rqp8c")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=620179317]
@@ -262,7 +262,6 @@ color = Color(0, 0, 0, 0)
 metadata/_edit_use_anchors_ = true
 
 [node name="ShopUI" parent="UI" unique_id=2053593405 instance=ExtResource("15_fge8v")]
-visible = false
 
 [node name="Coin" parent="." unique_id=871590875 instance=ExtResource("11_dp0dc")]
 position = Vector2(161, 187)
@@ -353,7 +352,7 @@ texture = ExtResource("16_dd4ef")
 position = Vector2(434, 164)
 
 [node name="NPC" parent="." unique_id=1906512404 instance=ExtResource("17_dd4ef")]
-position = Vector2(884, 173)
+position = Vector2(716, -474)
 
 [node name="Chest" parent="." unique_id=988839848 instance=ExtResource("18_c7fif")]
 position = Vector2(-128, 194)
