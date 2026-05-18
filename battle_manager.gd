@@ -9,6 +9,7 @@ var is_targeting_ally: bool = false
 var target_index: int = 0
 var total_battle_exp: int = 0
 var battle_won: bool = false
+var is_ending_turn: bool = false
 
 var is_in_skill_menu: bool = false
 var current_skills: Array[Skill] = []
@@ -32,7 +33,6 @@ func _ready() -> void:
 	for node in actor_nodes:
 		if node is Actor:
 			turn_queue.append(node)
-			node.turn_finished.connect(_on_actor_turn_finished)
 			node.action_logged.connect(_on_actor_logged)
 			
 			if not node.is_player:
@@ -50,11 +50,13 @@ func start_next_turn() -> void:
 	_on_actor_logged("[color=red]---- " + current_actor.character_name + " turn ----[/color]")
 	current_actor.start_turn()
 	var is_stunned = current_actor.process_statuses()
+	
 	if current_actor.current_hp <= 0:
 		check_death(current_actor)
 		if battle_won: return
 		finish_action()
 		return
+		
 	if is_stunned:
 		finish_action()
 		return
@@ -70,6 +72,7 @@ func start_next_turn() -> void:
 			first_btn.grab_focus()
 	else:
 		action_menu.hide()
+		await get_tree().create_timer(1.0).timeout
 		execute_enemy_ai()
 
 func _on_ui_action_selected(action: String) -> void:
@@ -334,12 +337,23 @@ func execute_party_heal(skill: Skill):
 	finish_action()
 
 func finish_action() -> void:
+	if is_ending_turn or battle_won: return
+	is_ending_turn = true
+	
 	clear_all_arrows()
-	if battle_won:
-		return
+	
 	var current_actor: Actor = turn_queue[current_actor_index]
 	await get_tree().create_timer(1.5).timeout
-	current_actor.end_turn()
+	
+	if is_instance_valid(current_actor):
+		current_actor.end_turn()
+		
+	current_actor_index += 1
+	if current_actor_index >= turn_queue.size():
+		current_actor_index = 0
+		
+	is_ending_turn = false
+	start_next_turn()
 
 func _on_actor_turn_finished() -> void:
 	current_actor_index += 1
@@ -456,9 +470,79 @@ func distribute_victory_exp() -> void:
 	_on_actor_logged(">Returning to map...")
 
 func execute_enemy_ai() -> void:
-	if battle_won: return
+	if is_ending_turn or battle_won: return
 	var current_actor: Actor = turn_queue[current_actor_index]
 	
-	_on_actor_logged(">" + current_actor.character_name + " glares menacingly...")
+	var players = get_active_players()
+	if players.size() == 0:
+		finish_action()
+		return
+		
+	var decision = current_actor.execute_ai(players, active_enemies)
+	var target: Actor = decision["target"]
+	var skill: Skill = decision["skill"]
+	if current_actor.turn_arrow: current_actor.turn_arrow.hide()
+	var is_basic_aoe = (decision["action"] == "attack" and current_actor.is_aoe_attack)
 	
+	if is_basic_aoe:
+		for p in players:
+			if p.turn_arrow: p.turn_arrow.show()
+	elif target and is_instance_valid(target) and target.turn_arrow:
+		target.turn_arrow.show()
+		
+	await get_tree().create_timer(1.0).timeout 
+	
+	if is_basic_aoe:
+		for p in players:
+			if p.turn_arrow: p.turn_arrow.hide()
+	elif target and is_instance_valid(target) and target.turn_arrow:
+		target.turn_arrow.hide()
+		
+	if decision["action"] == "attack":
+		if current_actor.is_aoe_attack:
+			
+			_on_actor_logged("[color=black]>" + current_actor.character_name + " attacks EVERYONE![/color]")
+			for p in players:
+				var dmg = current_actor.base_attack
+				if randf() <= current_actor.crit_chance:
+					dmg = int(dmg * current_actor.crit_multiplier)
+				p.take_damage(dmg)
+				check_death(p)
+		else:
+			
+			_on_actor_logged("[color=black]>" + current_actor.character_name + " attacks " + target.character_name + "![/color]")
+			var dmg = current_actor.base_attack
+			if randf() <= current_actor.crit_chance:
+				dmg = int(dmg * current_actor.crit_multiplier)
+				_on_actor_logged("[color=red]>CRITICAL HIT![/color]")
+			target.take_damage(dmg)
+			check_death(target)
+		
+	elif decision["action"] == "skill":
+		current_actor.current_sp -= skill.sp_cost
+		current_actor.update_bars()
+		
+		if skill.target_type == Skill.TargetType.SINGLE_ENEMY or skill.target_type == Skill.TargetType.RANDOM:
+			_on_actor_logged("[color=black]>" + current_actor.character_name + " uses " + skill.name + " on " + target.character_name + "![/color]")
+			for i in range(skill.hits):
+				target.take_damage(skill.damage)
+				if skill.status_to_apply: target.apply_status(skill.status_to_apply)
+				check_death(target)
+				if skill.hits > 1: await get_tree().create_timer(0.2).timeout
+				
+		elif skill.target_type == Skill.TargetType.ALL_ENEMY:
+			_on_actor_logged("[color=black]>" + current_actor.character_name + " uses " + skill.name + " on EVERYONE![/color]")
+			for p in players:
+				p.take_damage(skill.damage)
+				if skill.status_to_apply: p.apply_status(skill.status_to_apply)
+				check_death(p)
+				
+		elif skill.target_type == Skill.TargetType.SINGLE_ALLY or skill.target_type == Skill.TargetType.SELF:
+			_on_actor_logged("[color=black]>" + current_actor.character_name + " uses " + skill.name + " on " + target.character_name + "![/color]")
+			if skill.heal_amount > 0:
+				target.current_hp = min(target.current_hp + skill.heal_amount, target.max_hp)
+				_on_actor_logged("[color=green]>Restored HP![/color]")
+			if skill.status_to_apply: target.apply_status(skill.status_to_apply)
+			target.update_bars()
+			
 	finish_action()

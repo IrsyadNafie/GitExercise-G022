@@ -142,3 +142,29 @@ func is_enchanted() -> bool:
 		if status["effect"].type == StatusEffect.EffectType.ENCHANT:
 			return true
 	return false
+	
+func execute_ai(players: Array[Actor], allies: Array[Actor]) -> Dictionary:
+	var valid_skills: Array[Skill] = []
+	for s in skills:
+		if s != null and current_sp >= s.sp_cost:
+			valid_skills.append(s)
+
+	var decision = {
+		"action": "attack",
+		"skill": null,
+		"target": players.pick_random()
+	}
+
+	if valid_skills.size() > 0 and randf() > 0.4:
+		var chosen_skill = valid_skills.pick_random()
+		decision["action"] = "skill"
+		decision["skill"] = chosen_skill
+		
+		if chosen_skill.target_type == Skill.TargetType.SINGLE_ENEMY:
+			decision["target"] = players.pick_random()
+		elif chosen_skill.target_type == Skill.TargetType.SINGLE_ALLY:
+			decision["target"] = allies.pick_random() # Heals/Buffs another enemy
+		elif chosen_skill.target_type == Skill.TargetType.SELF:
+			decision["target"] = self
+			
+	return decision
