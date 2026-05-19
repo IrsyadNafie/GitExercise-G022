@@ -10,6 +10,16 @@ config_version=5
 
 [application]
 
+<<<<<<< HEAD
+config/name="MINI IT"
+run/main_scene="uid://b8sih6ljgrddi"
+config/features=PackedStringArray("4.4", "GL Compatibility")
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+=======
 config/name="Demo"
 run/main_scene="uid://ekggwac31s7i"
 config/features=PackedStringArray("4.6", "Forward Plus")
@@ -84,3 +94,4 @@ ui_accept={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+>>>>>>> main
