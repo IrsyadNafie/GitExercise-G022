@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://dfyc77p4j2ht7"]
+
+[ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="1_slner"]
+
+[resource]
+script = ExtResource("1_slner")
+name = "heavy-arrow"
+sp_cost = 3
+damage = 9
+metadata/_custom_type_script = "uid://c04p4kwhd0jof"
