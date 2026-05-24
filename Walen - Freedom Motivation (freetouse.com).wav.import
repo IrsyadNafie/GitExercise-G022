@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cnjqtw02uuyp0"
+path="res://.godot/imported/Walen - Freedom Motivation (freetouse.com).wav-11174dfd72392065b8b2ea11189f5711.sample"
+
+[deps]
+
+source_file="res://Walen - Freedom Motivation (freetouse.com).wav"
+dest_files=["res://.godot/imported/Walen - Freedom Motivation (freetouse.com).wav-11174dfd72392065b8b2ea11189f5711.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
