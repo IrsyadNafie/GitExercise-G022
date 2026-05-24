@@ -11,6 +11,12 @@ var jump_force = -400
 # Gravity strength
 var gravity = 900
 
+# Player Health
+var health = 100
+
+# Fall speed
+var max_fall_speed = 0
+
 func _ready():
 	$Camera2D.make_current()
 	if GameManager.checkpoint_position == Vector2.ZERO:
@@ -36,6 +42,10 @@ func _physics_process(delta):
 	# Apply gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
+		
+	# Track highest fall speed
+	if velocity.y > max_fall_speed:
+		max_fall_speed = velocity.y
 
 	# Move left and right
 	var direction = 0
@@ -54,6 +64,30 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
+	# Player landed
+	if is_on_floor():
+		# Check if fall was dangerous
+		if max_fall_speed > 700:
+			take_fall_damage()
+			
+		# Reset tracking
+		max_fall_speed = 0
+
+func take_fall_damage():
+
+	var damage = int((max_fall_speed - 700) / 20)
+
+	health -= damage
+
+	print("Fall Damage:", damage)
+	print("HP Left:", health)
+
+	# Optional death
+	if health <= 0:
+		print("Player Died")
+		die()
+	
+	
 func die():
 	print("Player died")
 
@@ -70,6 +104,6 @@ func die():
 	await ui.fade_in()
 		
 #Debug (Death)
-func _process(delta):
-	if Input.is_action_just_pressed("ui_accept"):  # Enter key
-		die()
+#func _process(delta):
+	#if Input.is_action_just_pressed("ui_accept"):  # Enter key
+		#die()
