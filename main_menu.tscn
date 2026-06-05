@@ -60,7 +60,11 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
+<<<<<<< HEAD
 [node name="MainMenu" type="Control" unique_id=1670822916]
+=======
+[node name="MainMenu" type="Control" unique_id=1501162982]
+>>>>>>> cb54a30 (volume, fullscreen)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,7 +73,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fu7sn")
 
+<<<<<<< HEAD
 [node name="Panel" type="Panel" parent="." unique_id=1368243633]
+=======
+[node name="Panel" type="Panel" parent="." unique_id=1393335584]
+>>>>>>> cb54a30 (volume, fullscreen)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -78,7 +86,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_jix8l")
 
+<<<<<<< HEAD
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1100027783]
+=======
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=148379372]
+>>>>>>> cb54a30 (volume, fullscreen)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -93,7 +105,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 15
 
+<<<<<<< HEAD
 [node name="start" type="Button" parent="VBoxContainer" unique_id=1079595130]
+=======
+[node name="start" type="Button" parent="VBoxContainer" unique_id=1696402121]
+>>>>>>> cb54a30 (volume, fullscreen)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -107,7 +123,11 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_7vrkn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
 text = "Start"
 
+<<<<<<< HEAD
 [node name="setting" type="Button" parent="VBoxContainer" unique_id=822069844]
+=======
+[node name="setting" type="Button" parent="VBoxContainer" unique_id=642528501]
+>>>>>>> cb54a30 (volume, fullscreen)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -121,7 +141,11 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_fu7sn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
 text = "Setting"
 
+<<<<<<< HEAD
 [node name="exit" type="Button" parent="VBoxContainer" unique_id=117958235]
+=======
+[node name="exit" type="Button" parent="VBoxContainer" unique_id=1687257388]
+>>>>>>> cb54a30 (volume, fullscreen)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -135,7 +159,11 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_jix8l")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
 text = "Exit"
 
+<<<<<<< HEAD
 [node name="Label" type="Label" parent="." unique_id=1196726230]
+=======
+[node name="Label" type="Label" parent="." unique_id=733505182]
+>>>>>>> cb54a30 (volume, fullscreen)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -154,7 +182,11 @@ text = "Geometric"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+<<<<<<< HEAD
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=886417612]
+=======
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2128873576]
+>>>>>>> cb54a30 (volume, fullscreen)
 stream = ExtResource("4_jix8l")
 autoplay = true
 

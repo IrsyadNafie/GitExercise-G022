@@ -9,17 +9,36 @@
 config_version=5
 
 [animation]
+<<<<<<< HEAD
 
 compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 config/name="main menu"
+=======
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
+[application]
+
+config/name="main menu (4.4)"
+>>>>>>> cb54a30 (volume, fullscreen)
 run/main_scene="uid://4madllmctewe"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 config/name="MINI IT"
 run/main_scene="uid://b8sih6ljgrddi"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+
+[audio]
+
+buses/default_bus_layout="uid://dffwmab4gdawy"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="viewport"
 
 [rendering]
 
