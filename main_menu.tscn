@@ -1,0 +1,195 @@
+[gd_scene format=3 uid="uid://4madllmctewe"]
+
+[ext_resource type="Texture2D" uid="uid://cirq1qum383cc" path="res://background.jpg" id="1_7vrkn"]
+[ext_resource type="Script" uid="uid://c0l82ohkoacon" path="res://main_menu.gd" id="1_fu7sn"]
+[ext_resource type="FontFile" uid="uid://b6lro2q7ygs7h" path="res://Symtext.ttf" id="2_fu7sn"]
+[ext_resource type="AudioStream" uid="uid://cnjqtw02uuyp0" path="res://Walen - Freedom Motivation (freetouse.com).wav" id="4_jix8l"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jix8l"]
+texture = ExtResource("1_7vrkn")
+modulate_color = Color(0.350924, 0.0747523, 0.0939132, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhts7"]
+bg_color = Color(0.992157, 0.92549, 0.913725, 0.737255)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glbon"]
+bg_color = Color(0.188235, 0, 0.00392157, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vrkn"]
+bg_color = Color(0.384161, 0.211895, 0.192408, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7vrkn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nlkkf"]
+bg_color = Color(0.187516, 0, 0.00413218, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fu7sn"]
+bg_color = Color(0.384314, 0.211765, 0.192157, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qe12f"]
+bg_color = Color(0.188235, 0, 0.00392157, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jix8l"]
+bg_color = Color(0.384314, 0.211765, 0.192157, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+<<<<<<< HEAD
+[node name="MainMenu" type="Control" unique_id=1670822916]
+=======
+[node name="MainMenu" type="Control" unique_id=1501162982]
+>>>>>>> cb54a30 (volume, fullscreen)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fu7sn")
+
+<<<<<<< HEAD
+[node name="Panel" type="Panel" parent="." unique_id=1368243633]
+=======
+[node name="Panel" type="Panel" parent="." unique_id=1393335584]
+>>>>>>> cb54a30 (volume, fullscreen)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_jix8l")
+
+<<<<<<< HEAD
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1100027783]
+=======
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=148379372]
+>>>>>>> cb54a30 (volume, fullscreen)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -54.0
+offset_right = 175.0
+offset_bottom = 185.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+<<<<<<< HEAD
+[node name="start" type="Button" parent="VBoxContainer" unique_id=1079595130]
+=======
+[node name="start" type="Button" parent="VBoxContainer" unique_id=1696402121]
+>>>>>>> cb54a30 (volume, fullscreen)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.691357, 0.691357, 0.691357, 1)
+theme_override_colors/font_hover_color = Color(0.117959, 0.00940276, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_glbon")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7vrkn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
+text = "Start"
+
+<<<<<<< HEAD
+[node name="setting" type="Button" parent="VBoxContainer" unique_id=822069844]
+=======
+[node name="setting" type="Button" parent="VBoxContainer" unique_id=642528501]
+>>>>>>> cb54a30 (volume, fullscreen)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.691357, 0.691357, 0.691357, 1)
+theme_override_colors/font_hover_color = Color(0.117959, 0.00940276, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nlkkf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fu7sn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
+text = "Setting"
+
+<<<<<<< HEAD
+[node name="exit" type="Button" parent="VBoxContainer" unique_id=117958235]
+=======
+[node name="exit" type="Button" parent="VBoxContainer" unique_id=1687257388]
+>>>>>>> cb54a30 (volume, fullscreen)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.691357, 0.691357, 0.691357, 1)
+theme_override_colors/font_hover_color = Color(0.117959, 0.00940276, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qe12f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jix8l")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
+text = "Exit"
+
+<<<<<<< HEAD
+[node name="Label" type="Label" parent="." unique_id=1196726230]
+=======
+[node name="Label" type="Label" parent="." unique_id=733505182]
+>>>>>>> cb54a30 (volume, fullscreen)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -302.0
+offset_top = 83.0
+offset_right = 327.0
+offset_bottom = 201.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.840027, 0.813055, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("2_fu7sn")
+theme_override_font_sizes/font_size = 80
+text = "Geometric"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+<<<<<<< HEAD
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=886417612]
+=======
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2128873576]
+>>>>>>> cb54a30 (volume, fullscreen)
+stream = ExtResource("4_jix8l")
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/setting" to="." method="_on_setting_pressed"]
+[connection signal="pressed" from="VBoxContainer/exit" to="." method="_on_exit_pressed"]
