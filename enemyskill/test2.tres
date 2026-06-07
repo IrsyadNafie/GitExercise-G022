@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://b6f8egt07ww7j"]
+
+[ext_resource type="Script" path="res://skill.gd" id="1_xmtsk"]
+
+[resource]
+script = ExtResource("1_xmtsk")
+name = "heal"
+sp_cost = 0
+heal_amount = 5
+target_type = 2

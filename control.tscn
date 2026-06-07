@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dyhdmqm81bhp4"]
 
-[ext_resource type="Texture2D" uid="uid://ddxmxgyyfy8mn" path="res://icon.svg" id="1_0fbet"]
+[ext_resource type="Texture2D" uid="uid://cn4oafs7ljlev" path="res://icon.svg" id="1_0fbet"]
 [ext_resource type="Script" uid="uid://cqhoo3kidcmp5" path="res://battle_manager.gd" id="1_qtu10"]
 [ext_resource type="Script" uid="uid://caaw1u1s0vq3p" path="res://actors.gd" id="2_kbped"]
-[ext_resource type="Script" path="res://move.gd" id="2_qtu10"]
-[ext_resource type="Script" path="res://enemy_1.gd" id="3_ee4bf"]
-[ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="3_fj5cn"]
+[ext_resource type="Script" uid="uid://c3b82mndsqjip" path="res://move.gd" id="2_qtu10"]
+[ext_resource type="Script" uid="uid://bjrulpksiensb" path="res://enemy_1.gd" id="3_ee4bf"]
+[ext_resource type="Script" path="res://skill.gd" id="3_fj5cn"]
 [ext_resource type="Resource" uid="uid://c2wjiwvprx6l0" path="res://skill/Square/courage.tres" id="4_m4egf"]
 [ext_resource type="Resource" uid="uid://cmrmqnjd3u4ub" path="res://skill/Square/psy.tres" id="4_sky72"]
 [ext_resource type="Resource" uid="uid://bus1adte2ib6a" path="res://skill/Square/rally.tres" id="5_0ytqx"]
@@ -18,7 +18,10 @@
 [ext_resource type="Resource" uid="uid://dl7r8br2evilk" path="res://skill/Triangle/heal dust.tres" id="14_v61lp"]
 [ext_resource type="Resource" uid="uid://cvo1jo4k0h2ji" path="res://skill/Triangle/arrow rain.tres" id="15_dgp6r"]
 [ext_resource type="Resource" uid="uid://yui17fuafvpq" path="res://skill/Triangle/pots o heal.tres" id="16_858bn"]
+[ext_resource type="Resource" uid="uid://dt2epdujkhgrc" path="res://enemyskill/test1.tres" id="18_kuuv8"]
+[ext_resource type="Resource" uid="uid://b6f8egt07ww7j" path="res://enemyskill/test2.tres" id="19_ou021"]
 [ext_resource type="Texture2D" uid="uid://btr557rvi03rv" path="res://dither-ripple-pixel-5s-1777867142802-ezgif.com-gif-to-sprite-converter.png" id="19_pi4e7"]
+[ext_resource type="AudioStream" uid="uid://1la6n0h5isye" path="res://His Friends Call Him Spuder (Don't Call Him Spuder) (Beta Mix) - Bug Fables_ The Everlasting Sapling.mp3" id="22_3fl80"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pi4e7"]
 bg_color = Color(0.298866, 0.5509334, 0, 0.4862745)
@@ -603,8 +606,8 @@ scale = Vector2(0.6000098, 0.59999967)
 position = Vector2(-911, 9)
 script = ExtResource("3_ee4bf")
 character_name = "Enemy1"
-is_player = false
-skills = Array[ExtResource("3_fj5cn")]([null, null])
+base_attack = 5
+skills = Array[ExtResource("3_fj5cn")]([ExtResource("18_kuuv8")])
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Enemy1" unique_id=1405507110]
 offset_left = 944.00006
@@ -645,7 +648,8 @@ scale = Vector2(0.6000098, 0.59999967)
 position = Vector2(-869, 157)
 script = ExtResource("3_ee4bf")
 character_name = "Enemy2"
-is_player = false
+base_attack = 5
+skills = Array[ExtResource("3_fj5cn")]([ExtResource("19_ou021")])
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Enemy2" unique_id=1893942757]
 offset_left = 944.00006
@@ -686,7 +690,7 @@ scale = Vector2(0.6000098, 0.59999967)
 position = Vector2(-911, 295)
 script = ExtResource("3_ee4bf")
 character_name = "Enemy3"
-is_player = false
+is_aoe_attack = true
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Enemy3" unique_id=289262223]
 offset_left = 944.00006
@@ -856,3 +860,8 @@ sprite_frames = SubResource("SpriteFrames_b6gc8")
 autoplay = "default"
 frame = 1
 frame_progress = 0.034803513
+
+[node name="BattleMusic" type="AudioStreamPlayer" parent="." unique_id=2142939030]
+stream = ExtResource("22_3fl80")
+autoplay = true
+parameters/looping = true
