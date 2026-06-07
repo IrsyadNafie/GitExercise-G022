@@ -4,10 +4,12 @@ extends CanvasLayer
 @onready var item_name = $ItemName
 @onready var full_message = $FullMessage
 @onready var fade = $Fade
+@onready var save_menu = $SaveMenu
 
 func _ready():
 	connect_slots()
 	update_inventory()
+	save_menu.visible = false
 
 func _process(delta):
 	coin_label.text = "Coins: " + str(GameManager.coins)
@@ -32,6 +34,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("slot_5"):
 		GameManager.selected_slot = 4
 		update_inventory()
+
+	if Input.is_action_just_pressed("open_save_menu"):
+		save_menu.visible = !save_menu.visible
 
 	# Press G to drop
 	if Input.is_action_just_pressed("drop_item"):
@@ -177,3 +182,27 @@ func fade_in():
 	var tween = create_tween()
 	tween.tween_property(fade, "color:a", 0.0, 0.5)
 	await tween.finished
+	
+func _on_save_slot_1_btn_pressed():
+	SaveManager.save_game(1)
+
+func _on_load_slot_1_btn_pressed():
+	SaveManager.load_game(1)
+	update_inventory()
+
+func _on_save_slot_2_btn_pressed():
+	SaveManager.save_game(2)
+
+func _on_load_slot_2_btn_pressed():
+	SaveManager.load_game(2)
+	update_inventory()
+
+func _on_save_slot_3_btn_pressed():
+	SaveManager.save_game(3)
+
+func _on_load_slot_3_btn_pressed():
+	SaveManager.load_game(3)
+	update_inventory()
+
+func _on_close_save_btn_pressed():
+	save_menu.visible = false

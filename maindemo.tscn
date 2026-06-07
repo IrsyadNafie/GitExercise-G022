@@ -38,7 +38,7 @@ script = ExtResource("1_x3oty")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1924342707]
 z_index = 3
-position = Vector2(271, -1564)
+position = Vector2(-9, -9)
 script = ExtResource("1_rqp8c")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=620179317]
@@ -262,6 +262,78 @@ color = Color(0, 0, 0, 0)
 metadata/_edit_use_anchors_ = true
 
 [node name="ShopUI" parent="UI" unique_id=2053593405 instance=ExtResource("15_fge8v")]
+visible = false
+
+[node name="SaveMenu" type="Panel" parent="UI" unique_id=943248483]
+offset_left = 83.0
+offset_top = 85.0
+offset_right = 945.0
+offset_bottom = 495.0
+
+[node name="SaveSlot1Btn" type="Button" parent="UI/SaveMenu" unique_id=1290308934]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 231.0
+offset_right = 217.0
+offset_bottom = 262.0
+text = "Save Slot 1"
+
+[node name="LoadSlot1Btn" type="Button" parent="UI/SaveMenu" unique_id=343850234]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 292.0
+offset_right = 218.0
+offset_bottom = 323.0
+text = "Load Slot 1"
+
+[node name="SaveSlot2Btn" type="Button" parent="UI/SaveMenu" unique_id=351708404]
+layout_mode = 0
+offset_left = 374.0
+offset_top = 232.0
+offset_right = 465.0
+offset_bottom = 263.0
+text = "Save Slot 2"
+
+[node name="LoadSlot2Btn" type="Button" parent="UI/SaveMenu" unique_id=258901904]
+layout_mode = 0
+offset_left = 374.0
+offset_top = 296.0
+offset_right = 467.0
+offset_bottom = 327.0
+text = "Load Slot 2"
+
+[node name="SaveSlot3Btn" type="Button" parent="UI/SaveMenu" unique_id=34006879]
+layout_mode = 0
+offset_left = 623.0
+offset_top = 233.0
+offset_right = 714.0
+offset_bottom = 264.0
+text = "Save Slot 3"
+
+[node name="LoadSlot3Btn" type="Button" parent="UI/SaveMenu" unique_id=1048414487]
+layout_mode = 0
+offset_left = 624.0
+offset_top = 289.0
+offset_right = 717.0
+offset_bottom = 320.0
+text = "Load Slot 3"
+
+[node name="CloseSaveBtn" type="Button" parent="UI/SaveMenu" unique_id=1593491945]
+layout_mode = 0
+offset_left = 827.0
+offset_top = -13.0
+offset_right = 877.0
+offset_bottom = 18.0
+text = "Close"
+
+[node name="Text" type="Label" parent="UI/SaveMenu" unique_id=271993642]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 98.0
+offset_right = 479.0
+offset_bottom = 147.0
+text = "Save/Load game
+"
 
 [node name="Coin" parent="." unique_id=871590875 instance=ExtResource("11_dp0dc")]
 position = Vector2(161, 187)
@@ -404,6 +476,13 @@ scale = Vector2(0.073503636, 1.0451952)
 position = Vector2(-5428.3027, -195.17883)
 shape = SubResource("RectangleShape2D_r5i1b")
 
+[connection signal="pressed" from="UI/SaveMenu/SaveSlot1Btn" to="UI" method="_on_save_slot_1_btn_pressed"]
+[connection signal="pressed" from="UI/SaveMenu/LoadSlot1Btn" to="UI" method="_on_load_slot_1_btn_pressed"]
+[connection signal="pressed" from="UI/SaveMenu/SaveSlot2Btn" to="UI" method="_on_save_slot_2_btn_pressed"]
+[connection signal="pressed" from="UI/SaveMenu/LoadSlot2Btn" to="UI" method="_on_load_slot_2_btn_pressed"]
+[connection signal="pressed" from="UI/SaveMenu/SaveSlot3Btn" to="." method="_on_save_slot_3_btn_pressed"]
+[connection signal="pressed" from="UI/SaveMenu/LoadSlot3Btn" to="." method="_on_load_slot_3_btn_pressed"]
+[connection signal="pressed" from="UI/SaveMenu/CloseSaveBtn" to="UI" method="_on_close_save_btn_pressed"]
 [connection signal="child_entered_tree" from="NPC" to="." method="_on_npc_child_entered_tree"]
 
 [editable path="KeyPickup"]

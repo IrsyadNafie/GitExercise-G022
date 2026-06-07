@@ -32,7 +32,14 @@ func _ready():
 	if GameManager.checkpoint_position == Vector2.ZERO:
 		GameManager.checkpoint_position = global_position
 
+#Save/Load Game
+func _process(delta):
 
+	if Input.is_action_just_pressed("save_game"):
+		SaveManager.save_game(1)
+
+	if Input.is_action_just_pressed("load_game"):
+		SaveManager.load_game(1)
 
 # EQUIPPED ITEM VISUAL
 
@@ -186,3 +193,5 @@ func die():
 	await get_tree().create_timer(0.2).timeout
 
 	await ui.fade_in()
+	
+	
