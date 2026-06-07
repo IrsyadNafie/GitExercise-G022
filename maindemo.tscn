@@ -36,6 +36,14 @@ size = Vector2(134, 174.5)
 position = Vector2(428, 383)
 script = ExtResource("1_x3oty")
 
+[node name="Coin1" parent="." unique_id=871590875 instance=ExtResource("11_dp0dc")]
+position = Vector2(197, 189)
+coin_id = "main_coin_1"
+
+[node name="Coin2" parent="." unique_id=1157558685 instance=ExtResource("11_dp0dc")]
+position = Vector2(305, 189)
+coin_id = "main_coin_2"
+
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1924342707]
 z_index = 3
 position = Vector2(-9, -9)
@@ -333,21 +341,13 @@ offset_top = 98.0
 offset_right = 479.0
 offset_bottom = 147.0
 
-[node name="Coin" parent="." unique_id=871590875 instance=ExtResource("11_dp0dc")]
-position = Vector2(161, 187)
-
-[node name="Coin2" parent="." unique_id=978468050 instance=ExtResource("11_dp0dc")]
-position = Vector2(270, 187)
-
-[node name="Coin3" parent="." unique_id=1064261510 instance=ExtResource("11_dp0dc")]
-position = Vector2(1211, 186)
-
 [node name="PickupItem" parent="." unique_id=1808496137 instance=ExtResource("13_n1gp7")]
 position = Vector2(-138, 806)
 
 [node name="KeyPickup" parent="." unique_id=717110004 instance=ExtResource("13_n1gp7")]
 position = Vector2(93, 190)
 item_name = "Key"
+item_id = "main_key_1"
 
 [node name="Sprite2D" parent="KeyPickup" index="0" unique_id=1266786810]
 texture = ExtResource("4_un21y")
