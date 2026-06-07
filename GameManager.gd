@@ -2,6 +2,7 @@ extends Node
 
 var coins = 20
 var checkpoint_position = Vector2.ZERO
+var load_player_position = Vector2.ZERO
 
 # 5 inventory slots
 var inventory = ["", "", "", "", ""]

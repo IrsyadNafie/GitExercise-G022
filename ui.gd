@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var full_message = $FullMessage
 @onready var fade = $Fade
 @onready var save_menu = $SaveMenu
+@onready var save_message = $SaveMenu/SaveMessage
 
 func _ready():
 	connect_slots()
@@ -182,27 +183,34 @@ func fade_in():
 	var tween = create_tween()
 	tween.tween_property(fade, "color:a", 0.0, 0.5)
 	await tween.finished
-	
+
+#Save/Load
 func _on_save_slot_1_btn_pressed():
 	SaveManager.save_game(1)
+	show_save_message("Saved Slot 1!")
 
 func _on_load_slot_1_btn_pressed():
 	SaveManager.load_game(1)
-	update_inventory()
 
 func _on_save_slot_2_btn_pressed():
 	SaveManager.save_game(2)
+	show_save_message("Saved Slot 2!")
 
 func _on_load_slot_2_btn_pressed():
 	SaveManager.load_game(2)
-	update_inventory()
 
 func _on_save_slot_3_btn_pressed():
 	SaveManager.save_game(3)
+	show_save_message("Saved Slot 3!")
 
 func _on_load_slot_3_btn_pressed():
 	SaveManager.load_game(3)
-	update_inventory()
 
 func _on_close_save_btn_pressed():
 	save_menu.visible = false
+	
+#Save/Load Text
+func show_save_message(text):
+	save_message.text = text
+	await get_tree().create_timer(2.0).timeout
+	save_message.text = ""

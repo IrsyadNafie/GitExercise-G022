@@ -326,14 +326,12 @@ offset_right = 877.0
 offset_bottom = 18.0
 text = "Close"
 
-[node name="Text" type="Label" parent="UI/SaveMenu" unique_id=271993642]
+[node name="SaveMessage" type="Label" parent="UI/SaveMenu" unique_id=271993642]
 layout_mode = 0
 offset_left = 352.0
 offset_top = 98.0
 offset_right = 479.0
 offset_bottom = 147.0
-text = "Save/Load game
-"
 
 [node name="Coin" parent="." unique_id=871590875 instance=ExtResource("11_dp0dc")]
 position = Vector2(161, 187)

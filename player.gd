@@ -25,12 +25,19 @@ var max_fall_speed = 0
 
 
 func _ready():
+	
 
 	$Camera2D.make_current()
 
 	# Starting checkpoint
 	if GameManager.checkpoint_position == Vector2.ZERO:
 		GameManager.checkpoint_position = global_position
+	
+	if GameManager.load_player_position != Vector2.ZERO:
+		global_position = GameManager.load_player_position
+		GameManager.load_player_position = Vector2.ZERO
+	
+	
 
 #Save/Load Game
 func _process(delta):
