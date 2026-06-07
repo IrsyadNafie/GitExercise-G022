@@ -459,7 +459,7 @@ func distribute_victory_exp() -> void:
 	battle_won = true
 	action_menu.hide()
 	menu_arrow.hide()
-	
+	$BattleMusic.stop()
 	_on_actor_logged("[color=yellow]>Battle Won! Earned " + str(total_battle_exp) + " EXP![/color]")
 	
 	for player in get_active_players():
