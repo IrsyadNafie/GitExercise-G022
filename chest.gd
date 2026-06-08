@@ -4,7 +4,8 @@ var player_near = false
 var opened = false
 
 func _ready():
-	$Label.text = ""
+	# No local label needed anymore
+	pass
 
 func _process(delta):
 	if player_near and Input.is_action_just_pressed("interact") and not opened:
@@ -13,28 +14,35 @@ func _process(delta):
 func open_chest():
 	var ui = get_tree().current_scene.get_node("UI")
 
-	# check if player has key
 	if ui.has_item("Key"):
-		ui.remove_item("Key")   # consume key
+		ui.remove_item("Key")
 		GameManager.coins += 10
 		opened = true
 
-		$Label.text = "Opened! +10 coins"
-		print("Chest opened")
+		ui.show_interaction("Opened! +10 coins")
+		print("Chest opened! +10 coins")
 
-		# OPTIONAL: change sprite if I plan in future
+		# Optional: change chest sprite after opening
 		# $Sprite2D.texture = preload("res://chest_open.png")
 
 	else:
-		$Label.text = "Need a key"
-		print("No key")
+		ui.show_interaction("Need a key")
+		print("Need a key")
 
 func _on_body_entered(body):
 	if body.name == "Player":
 		player_near = true
-		$Label.text = "Press E to open"
+
+		var ui = get_tree().current_scene.get_node("UI")
+
+		if opened:
+			ui.show_interaction("Chest already opened")
+		else:
+			ui.show_interaction("[E] Open Chest")
 
 func _on_body_exited(body):
 	if body.name == "Player":
 		player_near = false
-		$Label.text = ""
+
+		var ui = get_tree().current_scene.get_node("UI")
+		ui.hide_interaction()

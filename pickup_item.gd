@@ -6,12 +6,7 @@ extends Area2D
 var player_near = false
 
 func _ready():
-	$Label.text = ""
-
-	print("Pickup loaded:", item_name, " ID:", item_id)
-
 	if item_id != "" and item_id in GameManager.picked_items:
-		print("Already picked, removing:", item_id)
 		queue_free()
 		return
 
@@ -28,18 +23,22 @@ func _process(delta):
 		if success:
 			if item_id != "" and not item_id in GameManager.picked_items:
 				GameManager.picked_items.append(item_id)
-				print("Saved picked item:", item_id)
 
+			ui.hide_interaction()
 			queue_free()
 
 
 func _on_body_entered(body):
 	if body.name == "Player":
 		player_near = true
-		$Label.text = "Press E"
+
+		var ui = get_tree().current_scene.get_node("UI")
+		ui.show_interaction("[E] Pick Up " + item_name)
 
 
 func _on_body_exited(body):
 	if body.name == "Player":
 		player_near = false
-		$Label.text = ""
+
+		var ui = get_tree().current_scene.get_node("UI")
+		ui.hide_interaction()
