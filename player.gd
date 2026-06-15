@@ -3,9 +3,14 @@ extends CharacterBody2D
 @onready var equipped_item = $EquippedItem
 @onready var camera = $Camera2D
 
+
 # PLAYER STATES
 var stunned = false
 
+# LEVEL CLEAR
+var level_clear_mode = false
+var level_clear_target = Vector2.ZERO
+var level_clear_next_scene = ""
 
 # MOVEMENT
 
@@ -73,7 +78,12 @@ func _physics_process(delta):
 	if velocity.y > max_fall_speed:
 		max_fall_speed = velocity.y
 
-	
+	# Auto walk during level clear
+	if level_clear_mode:
+		handle_level_clear()
+		move_and_slide()
+		return
+		
 	# MOVEMENT
 	
 	if not stunned:
@@ -196,37 +206,43 @@ func die():
 
 	await ui.fade_in()
 	
-#Ending Scene
-func level_complete(next_scene):
-	print("Level Complete!")
+func level_clear_walk_to_door(door_pos, next_scene):
+
+	level_clear_mode = true
+	level_clear_target = door_pos
+	level_clear_next_scene = next_scene
 
 	stunned = true
-	velocity = Vector2.ZERO
+
+	print("Walking to exit...")
+
+
+func handle_level_clear():
+	var distance = level_clear_target.x - global_position.x
+
+	if abs(distance) > 8:
+		var direction = sign(distance)
+		velocity.x = direction * 120
+	else:
+		global_position.x = level_clear_target.x
+		velocity.x = 0
+		level_clear_mode = false
+		stage_clear()
+
+
+func stage_clear():
 
 	var ui = get_tree().current_scene.get_node("UI")
 
-	ui.show_interaction("Level Complete!")
+	ui.show_interaction("STAGE CLEAR!")
 
-	await focus_camera_on_target(global_position + Vector2(250, 0))
+	# Zoom camera
+	var tween = create_tween()
+	tween.tween_property(camera, "zoom", Vector2(0.6, 0.6), 0.8)
 
+	await tween.finished
 	await get_tree().create_timer(1.0).timeout
 
 	await ui.fade_out()
 
-	get_tree().change_scene_to_file(next_scene)
-	
-
-#Ending Scene Camera
-func focus_camera_on_target(target_position):
-	var original_position = camera.global_position
-
-	var tween = create_tween()
-	tween.tween_property(camera, "global_position", target_position, 1.0)
-	await tween.finished
-
-	await get_tree().create_timer(0.7).timeout
-
-	var tween_back = create_tween()
-	tween_back.tween_property(camera, "global_position", original_position, 1.0)
-	await tween_back.finished
-	
+	get_tree().change_scene_to_file(level_clear_next_scene)

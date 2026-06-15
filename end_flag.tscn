@@ -4,25 +4,25 @@
 [ext_resource type="Texture2D" uid="uid://pne7kr2jijrp" path="res://flag.png" id="2_4anwy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jv4ou"]
-size = Vector2(234, 269)
+size = Vector2(139, 189)
 
 [node name="EndFlag" type="Area2D" unique_id=1532750655]
 script = ExtResource("1_5enru")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1941609623]
-position = Vector2(10, -24)
-scale = Vector2(0.46484375, 0.5253906)
+position = Vector2(6, 45.000004)
+scale = Vector2(0.22484404, 0.26493004)
 texture = ExtResource("2_4anwy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=619760739]
-position = Vector2(-10, -26.5)
+position = Vector2(48.5, 13.5)
 shape = SubResource("RectangleShape2D_jv4ou")
 
 [node name="Label" type="Label" parent="." unique_id=1415279063]
-offset_left = -110.0
-offset_top = -193.0
-offset_right = 69.0
-offset_bottom = -166.0
+offset_left = -81.0
+offset_top = -64.0
+offset_right = 98.0
+offset_bottom = -37.0
 text = "EndFlag"
 horizontal_alignment = 1
 uppercase = true

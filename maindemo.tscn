@@ -36,6 +36,9 @@ size = Vector2(134, 174.5)
 [sub_resource type="LabelSettings" id="LabelSettings_8ss1e"]
 font_size = 24
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5doro"]
+size = Vector2(112.42731, 199.50769)
+
 [node name="Main" type="Node2D" unique_id=1948883537]
 position = Vector2(428, 383)
 script = ExtResource("1_x3oty")
@@ -495,8 +498,24 @@ shape = SubResource("RectangleShape2D_r5i1b")
 [node name="Coin" parent="." unique_id=1044615110 instance=ExtResource("11_dp0dc")]
 position = Vector2(67, 182)
 
-[node name="EndFlag" parent="." unique_id=1532750655 instance=ExtResource("20_5doro")]
-position = Vector2(2525, 126)
+[node name="DoorExit" type="Node2D" parent="." unique_id=590830687]
+position = Vector2(2686, 186)
+scale = Vector2(-0.42694077, 0.26565385)
+
+[node name="Sprite2D" type="Sprite2D" parent="DoorExit" unique_id=83169517]
+scale = Vector2(0.9062873, 0.8494235)
+texture = ExtResource("8_x3oty")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorExit" unique_id=185858885]
+position = Vector2(-4.6847534, 101.63596)
+shape = SubResource("RectangleShape2D_5doro")
+
+[node name="ExitPoint" type="Marker2D" parent="DoorExit" unique_id=1012928849]
+position = Vector2(-737.80725, -33.878674)
+
+[node name="EndFlag" parent="." unique_id=1532750655 node_paths=PackedStringArray("exit_door") instance=ExtResource("20_5doro")]
+position = Vector2(2068, 133)
+exit_door = NodePath("../DoorExit/ExitPoint")
 
 [connection signal="pressed" from="UI/SaveMenu/SaveSlot1Btn" to="UI" method="_on_save_slot_1_btn_pressed"]
 [connection signal="pressed" from="UI/SaveMenu/LoadSlot1Btn" to="UI" method="_on_load_slot_1_btn_pressed"]
