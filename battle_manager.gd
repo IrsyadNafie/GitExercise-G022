@@ -10,7 +10,7 @@ var target_index: int = 0
 var total_battle_exp: int = 0
 var battle_won: bool = false
 var is_ending_turn: bool = false
-
+var is_in_item_menu: bool = false
 var is_in_skill_menu: bool = false
 var current_skills: Array[Skill] = []
 var selected_skill_to_execute: Skill = null
@@ -108,8 +108,13 @@ func _on_ui_action_selected(action: String) -> void:
 		handle_skill_choice(action)
 		return
 		
+	if is_in_item_menu:
+		handle_item_choice(action)
+		return
 	if action == "special":
 		open_skill_sub_menu(current_actor)
+	elif action == "item":
+		open_item_sub_menu()
 	elif action == current_actor.attack_name or action == "attack":
 		selected_skill_to_execute = null
 		
@@ -134,6 +139,21 @@ func _on_ui_action_selected(action: String) -> void:
 		current_actor.update_bars()
 		current_actor.action_logged.emit("[color=black]>" + current_actor.character_name + " rests...[/color]")
 		finish_action()
+		
+	elif action == "flee":
+		menu_arrow.hide()
+		action_menu.hide()
+		current_actor.action_logged.emit("[color=gray]>" + current_actor.character_name + " runs away![/color]")
+		
+		await get_tree().create_timer(1.0).timeout
+		
+		GameManager.enemy_just_defeated = "" 
+		GameManager.just_fled = true
+		_on_actor_logged(">Escaped successfully!")
+		await get_tree().create_timer(1.0).timeout
+		
+		if GameManager.last_overworld_scene != "":
+			get_tree().change_scene_to_file(GameManager.last_overworld_scene)
 
 func execute_targeted_ally() -> void:
 	action_menu.hide()
@@ -231,19 +251,7 @@ func update_target_visuals() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
-		if is_targeting:
-			is_targeting = false
-			for enemy in active_enemies:
-				if enemy.turn_arrow: enemy.turn_arrow.hide()
-			for player in get_active_players():
-				if player.turn_arrow: player.turn_arrow.hide()
-			action_menu.show()
-			menu_arrow.show()
-			action_menu.get_child(0).grab_focus()
-		elif is_in_skill_menu:
-			is_in_skill_menu = false
-			reset_main_menu(turn_queue[current_actor_index])
-			action_menu.get_child(0).grab_focus()
+		go_back()
 		return
 		
 	if not is_targeting: return
@@ -440,6 +448,36 @@ func open_skill_sub_menu(actor: Actor):
 			btn.hide()
 			
 	action_menu.get_child(0).grab_focus()
+	
+func open_item_sub_menu():
+	is_in_item_menu = true
+	var items = GameManager.inventory
+	
+	for i in range(action_menu.get_child_count()):
+		var btn = action_menu.get_child(i)
+		if i < items.size() and items[i] != "":
+			btn.text = items[i]
+			btn.show()
+		else:
+			btn.hide()
+			
+	action_menu.get_child(0).grab_focus()
+
+func handle_item_choice(action: String):
+	var current_actor: Actor = turn_queue[current_actor_index]
+	
+	if action == "Potion":
+		var item_index = GameManager.inventory.find("Potion")
+		if item_index != -1:
+			GameManager.inventory[item_index] = "" 
+			
+		current_actor.current_hp = min(current_actor.current_hp + 20, current_actor.max_hp)
+		current_actor.update_bars()
+		
+		is_in_item_menu = false
+		action_menu.hide()
+		current_actor.action_logged.emit("[color=green]>" + current_actor.character_name + " drinks a Potion! Restored 20 HP![/color]")
+		finish_action()
 
 func reset_main_menu(actor: Actor):
 	var labels = [actor.attack_name, "rest", "special", "item", "flee"]
@@ -620,3 +658,35 @@ func execute_end_of_round() -> void:
 		
 	is_ending_turn = false
 	start_next_turn()
+
+func go_back() -> void:
+	var current_actor: Actor = turn_queue[current_actor_index]
+	
+	if is_targeting:
+		is_targeting = false
+		clear_all_arrows()
+		
+		if selected_skill_to_execute != null:
+			selected_skill_to_execute = null
+			open_skill_sub_menu(current_actor)
+		else:
+			reset_main_menu(current_actor)
+			action_menu.show()
+			menu_arrow.show()
+			action_menu.get_child(0).grab_focus()
+			var back_btn = get_node_or_null("UI/PlayerPanel/BackButton")
+			if back_btn: back_btn.hide()
+			
+	elif is_in_skill_menu:
+		is_in_skill_menu = false
+		reset_main_menu(current_actor)
+		action_menu.get_child(0).grab_focus()
+		var back_btn = get_node_or_null("UI/PlayerPanel/BackButton")
+		if back_btn: back_btn.hide()
+		
+	elif is_in_item_menu:
+		is_in_item_menu = false
+		reset_main_menu(current_actor)
+		action_menu.get_child(0).grab_focus()
+		var back_btn = get_node_or_null("UI/PlayerPanel/BackButton")
+		if back_btn: back_btn.hide()
