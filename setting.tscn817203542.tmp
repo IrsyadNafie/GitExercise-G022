@@ -129,8 +129,7 @@ theme_override_fonts/font = ExtResource("1_a42w7")
 theme_override_font_sizes/font_size = 25
 text = "Volume"
 
-[node name="\'control\'" type="Button" parent="Panel" unique_id=1582663351]
-visible = false
+[node name="\'control\'" type="Button" parent="Panel" unique_id=1373724841]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ekggwac31s7i"]
 
-[ext_resource type="Script" uid="uid://bu6infk68sg7v" path="res://player.gd" id="1_rqp8c"]
+[ext_resource type="Script" path="res://player.gd" id="1_rqp8c"]
 [ext_resource type="Script" path="res://maindemo.gd" id="1_x3oty"]
 [ext_resource type="Texture2D" uid="uid://dqqppc8dspppw" path="res://icon.svg" id="2_55mso"]
 [ext_resource type="Script" path="res://interactable.gd" id="3_8fv7m"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b4dbupg8jhcmr" path="res://yellowkeygodot.png" id="4_un21y"]
 [ext_resource type="Script" path="res://door.gd" id="7_xwoao"]
 [ext_resource type="Texture2D" uid="uid://bw8myfm63w853" path="res://door.webp" id="8_x3oty"]
-[ext_resource type="Script" uid="uid://25n7qtud6y3r" path="res://ui.gd" id="10_6od6g"]
+[ext_resource type="Script" path="res://ui.gd" id="10_6od6g"]
 [ext_resource type="PackedScene" path="res://room_2.tscn" id="13_n1gp7"]
 [ext_resource type="PackedScene" path="res://shop_ui.tscn" id="16_c7fif"]
 [ext_resource type="Texture2D" uid="uid://cveoxtjt1ukje" path="res://floorgodot2.png" id="16_dd4ef"]

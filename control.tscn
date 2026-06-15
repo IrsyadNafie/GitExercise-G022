@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dyhdmqm81bhp4"]
 
-[ext_resource type="Texture2D" uid="uid://cn4oafs7ljlev" path="res://icon.svg" id="1_0fbet"]
+[ext_resource type="Texture2D" uid="uid://dqqppc8dspppw" path="res://icon.svg" id="1_0fbet"]
 [ext_resource type="Script" uid="uid://cqhoo3kidcmp5" path="res://battle_manager.gd" id="1_qtu10"]
 [ext_resource type="Script" uid="uid://caaw1u1s0vq3p" path="res://actors.gd" id="2_kbped"]
 [ext_resource type="Script" uid="uid://c3b82mndsqjip" path="res://move.gd" id="2_qtu10"]
 [ext_resource type="Script" uid="uid://bjrulpksiensb" path="res://enemy_1.gd" id="3_ee4bf"]
-[ext_resource type="Script" path="res://skill.gd" id="3_fj5cn"]
+[ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="3_fj5cn"]
 [ext_resource type="Resource" uid="uid://c2wjiwvprx6l0" path="res://skill/Square/courage.tres" id="4_m4egf"]
 [ext_resource type="Resource" uid="uid://cmrmqnjd3u4ub" path="res://skill/Square/psy.tres" id="4_sky72"]
 [ext_resource type="Resource" uid="uid://bus1adte2ib6a" path="res://skill/Square/rally.tres" id="5_0ytqx"]
@@ -622,8 +622,7 @@ max_value = 10.0
 value = 10.0
 show_percentage = false
 
-[node name="Enemy1" type="Sprite2D" parent="Actors/Enemy1" unique_id=472621428]
-modulate = Color(0.88235295, 0, 0.63529414, 1)
+[node name="Sprite" type="Sprite2D" parent="Actors/Enemy1" unique_id=472621428]
 position = Vector2(1017.5, 259.24)
 scale = Vector2(0.8984374, 0.87125015)
 texture = ExtResource("1_0fbet")
@@ -664,8 +663,7 @@ max_value = 10.0
 value = 10.0
 show_percentage = false
 
-[node name="Enemy2" type="Sprite2D" parent="Actors/Enemy2" unique_id=1773977145]
-modulate = Color(0.88235295, 0, 0, 1)
+[node name="Sprite" type="Sprite2D" parent="Actors/Enemy2" unique_id=1773977145]
 position = Vector2(1017.5, 259.24)
 scale = Vector2(0.8984374, 0.87125015)
 texture = ExtResource("1_0fbet")
@@ -705,8 +703,7 @@ max_value = 10.0
 value = 10.0
 show_percentage = false
 
-[node name="Enemy3" type="Sprite2D" parent="Actors/Enemy3" unique_id=1616723685]
-modulate = Color(0.42249924, 0.51131356, 0.1532611, 1)
+[node name="Sprite" type="Sprite2D" parent="Actors/Enemy3" unique_id=1616723685]
 position = Vector2(1017.5, 259.24)
 scale = Vector2(0.8984374, 0.87125015)
 texture = ExtResource("1_0fbet")
@@ -737,16 +734,15 @@ anchor_bottom = 1.0
 offset_left = -2.0
 offset_top = -184.0
 offset_right = 2.0
-offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="MoveAction" type="Panel" parent="UI/PlayerPanel" unique_id=982045289]
 z_index = -1
 layout_mode = 0
-offset_left = 879.0
+offset_left = 1009.0
 offset_top = 17.0
-offset_right = 1113.0
+offset_right = 1243.0
 offset_bottom = 162.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_6a6wx")
 
@@ -770,9 +766,9 @@ scroll_following = true
 
 [node name="move" type="VBoxContainer" parent="UI/PlayerPanel" unique_id=1197442552 node_paths=PackedStringArray("selection_arrow")]
 layout_mode = 0
-offset_left = 869.00006
+offset_left = 999.00006
 offset_top = 28.0
-offset_right = 923.00006
+offset_right = 1053.0
 offset_bottom = 185.0
 scale = Vector2(1.2013763, 0.9952018)
 pivot_offset = Vector2(-106.54437, -174.8389)
@@ -854,8 +850,8 @@ polygon = PackedVector2Array(0, 0, 7, -6.1111107, 7, 0, 7, 7.333333)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=849006240]
 modulate = Color(1, 0.61960787, 1, 1)
 z_index = -9
-position = Vector2(576.00006, 323.99997)
-scale = Vector2(0.5999999, 0.59999996)
+position = Vector2(640.0001, 359.99997)
+scale = Vector2(0.66666657, 0.66666657)
 sprite_frames = SubResource("SpriteFrames_b6gc8")
 autoplay = "default"
 frame = 1

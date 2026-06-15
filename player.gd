@@ -19,6 +19,9 @@ var max_fall_speed = 0
 
 func _ready():
 	$Camera2D.make_current()
+	if GameManager.last_player_position != Vector2.ZERO:
+		global_position = GameManager.last_player_position
+		GameManager.last_player_position = Vector2.ZERO 
 	if GameManager.checkpoint_position == Vector2.ZERO:
 		GameManager.checkpoint_position = global_position
 	

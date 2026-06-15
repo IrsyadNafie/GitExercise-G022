@@ -32,6 +32,7 @@ var active_statuses: Array[Dictionary] = []
 @onready var status_container: HBoxContainer = get_node_or_null("StatusContainer")
 @onready var hp_bar: ProgressBar = get_node_or_null("HPBar")
 @onready var sp_bar: ProgressBar = get_node_or_null("SPBar")
+@onready var exp_bar: ProgressBar = get_node_or_null("EXP")
 @onready var turn_arrow: Node2D = get_node_or_null("TurnArrow")
 @export var skills: Array[Skill] = []
 
@@ -50,6 +51,9 @@ func update_bars() -> void:
 	if sp_bar:
 		sp_bar.max_value = max_sp
 		sp_bar.value = current_sp
+	if exp_bar:
+		exp_bar.max_value = max_exp
+		exp_bar.value = current_exp
 
 func start_turn() -> void:
 	if turn_arrow: turn_arrow.show()
@@ -62,10 +66,20 @@ func end_turn() -> void:
 func gain_exp(amount: int) -> void:
 	if level >= 5:
 		return
-	current_exp += amount
+		
 	action_logged.emit("[color=cyan]>" + character_name + " gained " + str(amount) + " EXP![/color]")
-	while current_exp >= max_exp and level < 5:
-		level_up()
+	for i in range(amount):
+		if level >= 5: break 
+		
+		current_exp += 1
+		
+		if exp_bar:
+			exp_bar.value = current_exp
+		
+		await get_tree().create_timer(0.05).timeout 
+		
+		if current_exp >= max_exp:
+			await level_up()
 
 func level_up() -> void:
 	current_exp -= max_exp
@@ -79,11 +93,20 @@ func level_up() -> void:
 	current_sp = max_sp
 	update_bars()
 	action_logged.emit("[color=gold]>LEVEL UP! " + character_name + " is now Level " + str(level) + "![/color]")
+	await get_tree().create_timer(1.0).timeout
 
 func take_damage(amount: int) -> void:
+	print("--- HIT DETECTED ---")
+	print(character_name + " was hit for " + str(amount) + " damage!")
+	print("HP BEFORE: " + str(current_hp) + " / " + str(max_hp))
+	
 	current_hp -= amount
 	if current_hp < 0:
 		current_hp = 0
+		
+	print("HP AFTER: " + str(current_hp) + " / " + str(max_hp))
+	print("--------------------")
+	
 	update_bars()
 
 func apply_status(new_effect: StatusEffect) -> void:
@@ -95,30 +118,29 @@ func apply_status(new_effect: StatusEffect) -> void:
 	
 	update_status_ui()
 
-func process_statuses() -> bool:
-	var is_stunned = false
-	
+func check_if_stunned() -> bool:
+	for status in active_statuses:
+		if status["effect"].type == StatusEffect.EffectType.STUN:
+			action_logged.emit("[color=yellow]>" + character_name + " is paralyzed and cannot move![/color]")
+			return true
+	return false
+
+func process_end_of_round_statuses() -> void:
 	for i in range(active_statuses.size() - 1, -1, -1):
 		var status = active_statuses[i]
 		var effect = status["effect"]
-		
+
 		if effect.type == StatusEffect.EffectType.FIRE:
 			take_damage(effect.amount)
 			action_logged.emit("[color=orange]>" + character_name + " takes " + str(effect.amount) + " damage from " + effect.name + "![/color]")
-			
-		elif effect.type == StatusEffect.EffectType.STUN:
-			is_stunned = true
-			action_logged.emit("[color=yellow]>" + character_name + " is paralyzed by " + effect.name + " and cannot move![/color]")
-		
+
 		if not effect.is_permanent:
 			status["turns_left"] -= 1
 			if status["turns_left"] <= 0:
 				action_logged.emit("[color=gray]>" + effect.name + " wore off on " + character_name + ".[/color]")
 				active_statuses.remove_at(i)
-			
+				
 	update_status_ui()
-	
-	return is_stunned
 
 func update_status_ui() -> void:
 	if not status_container: 
