@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://7vay88im8nml" path="res://floorgodot.png" id="19_8ss1e"]
 [ext_resource type="PackedScene" uid="uid://cvxvijo2mu3la" path="res://end_flag.tscn" id="20_5doro"]
 [ext_resource type="PackedScene" uid="uid://cbexr00mj6ot7" path="res://lava.tscn" id="20_ksnl0"]
+[ext_resource type="PackedScene" uid="uid://cs06ws5ieeg6e" path="res://moving_platform.tscn" id="22_jyd4l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fv7m"]
 size = Vector2(131, 127)
@@ -521,6 +522,10 @@ scale = Vector2(2.8982346, 4.552844)
 [node name="EndFlag" parent="." unique_id=1532750655 node_paths=PackedStringArray("exit_door") instance=ExtResource("20_5doro")]
 position = Vector2(2068, 133)
 exit_door = NodePath("../DoorExit/ExitPoint")
+
+[node name="MovingPlatform" parent="." unique_id=449081552 instance=ExtResource("22_jyd4l")]
+position = Vector2(830, 202)
+move_speed = 1.0
 
 [connection signal="pressed" from="UI/SaveMenu/SaveSlot1Btn" to="UI" method="_on_save_slot_1_btn_pressed"]
 [connection signal="pressed" from="UI/SaveMenu/LoadSlot1Btn" to="UI" method="_on_load_slot_1_btn_pressed"]

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://me3ucybocble" path="res://lava-removebg-preview.png" id="2_jefjt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_duv81"]
-size = Vector2(473, 80)
+size = Vector2(457, 72)
 
 [node name="Lava" type="Area2D" unique_id=1195944981]
 script = ExtResource("1_gil3p")
@@ -14,5 +14,6 @@ scale = Vector2(0.56, 0.44000053)
 texture = ExtResource("2_jefjt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1718354054]
-position = Vector2(0.5, -4)
+position = Vector2(0.5, 0)
+scale = Vector2(0.99764854, 1)
 shape = SubResource("RectangleShape2D_duv81")
