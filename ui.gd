@@ -13,7 +13,7 @@ func _ready():
 	update_inventory()
 	save_menu.visible = false
 	interaction_label.text = ""
-	show_interaction("TEST INTERACTION LABEL")
+	
 
 func _process(delta):
 	coin_label.text = "Coins: " + str(GameManager.coins)

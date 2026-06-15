@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dl4r2nr1jqdsk" path="res://npc.tscn" id="17_dd4ef"]
 [ext_resource type="PackedScene" uid="uid://cwfxnnamkxe70" path="res://chest.tscn" id="18_c7fif"]
 [ext_resource type="Texture2D" uid="uid://7vay88im8nml" path="res://floorgodot.png" id="19_8ss1e"]
+[ext_resource type="PackedScene" uid="uid://cvxvijo2mu3la" path="res://end_flag.tscn" id="20_5doro"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fv7m"]
 size = Vector2(131, 127)
@@ -94,7 +95,7 @@ shape = SubResource("RectangleShape2D_r5i1b")
 [node name="WallLeft" type="StaticBody2D" parent="." unique_id=399392157]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft" unique_id=2063697838]
-position = Vector2(2528, 32)
+position = Vector2(3026.9998, 68)
 rotation = -1.5782504
 shape = SubResource("RectangleShape2D_r5i1b")
 
@@ -493,6 +494,9 @@ shape = SubResource("RectangleShape2D_r5i1b")
 
 [node name="Coin" parent="." unique_id=1044615110 instance=ExtResource("11_dp0dc")]
 position = Vector2(67, 182)
+
+[node name="EndFlag" parent="." unique_id=1532750655 instance=ExtResource("20_5doro")]
+position = Vector2(2525, 126)
 
 [connection signal="pressed" from="UI/SaveMenu/SaveSlot1Btn" to="UI" method="_on_save_slot_1_btn_pressed"]
 [connection signal="pressed" from="UI/SaveMenu/LoadSlot1Btn" to="UI" method="_on_load_slot_1_btn_pressed"]

@@ -196,4 +196,37 @@ func die():
 
 	await ui.fade_in()
 	
+#Ending Scene
+func level_complete(next_scene):
+	print("Level Complete!")
+
+	stunned = true
+	velocity = Vector2.ZERO
+
+	var ui = get_tree().current_scene.get_node("UI")
+
+	ui.show_interaction("Level Complete!")
+
+	await focus_camera_on_target(global_position + Vector2(250, 0))
+
+	await get_tree().create_timer(1.0).timeout
+
+	await ui.fade_out()
+
+	get_tree().change_scene_to_file(next_scene)
+	
+
+#Ending Scene Camera
+func focus_camera_on_target(target_position):
+	var original_position = camera.global_position
+
+	var tween = create_tween()
+	tween.tween_property(camera, "global_position", target_position, 1.0)
+	await tween.finished
+
+	await get_tree().create_timer(0.7).timeout
+
+	var tween_back = create_tween()
+	tween_back.tween_property(camera, "global_position", original_position, 1.0)
+	await tween_back.finished
 	
