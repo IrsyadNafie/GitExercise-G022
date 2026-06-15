@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://cwfxnnamkxe70" path="res://chest.tscn" id="18_c7fif"]
 [ext_resource type="Texture2D" uid="uid://7vay88im8nml" path="res://floorgodot.png" id="19_8ss1e"]
 [ext_resource type="PackedScene" uid="uid://cvxvijo2mu3la" path="res://end_flag.tscn" id="20_5doro"]
+[ext_resource type="PackedScene" uid="uid://cbexr00mj6ot7" path="res://lava.tscn" id="20_ksnl0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fv7m"]
 size = Vector2(131, 127)
@@ -428,7 +429,7 @@ position = Vector2(40, 363)
 texture = ExtResource("16_dd4ef")
 
 [node name="Floorgodot3" type="Sprite2D" parent="." unique_id=1901008702]
-position = Vector2(1272, 362)
+position = Vector2(1277, 371)
 texture = ExtResource("16_dd4ef")
 
 [node name="Floorgodot4" type="Sprite2D" parent="." unique_id=961110028]
@@ -512,6 +513,10 @@ shape = SubResource("RectangleShape2D_5doro")
 
 [node name="ExitPoint" type="Marker2D" parent="DoorExit" unique_id=1012928849]
 position = Vector2(-737.80725, -33.878674)
+
+[node name="Lava" parent="DoorExit" unique_id=1195944981 instance=ExtResource("20_ksnl0")]
+position = Vector2(3916.234, 350.07977)
+scale = Vector2(2.8982346, 4.552844)
 
 [node name="EndFlag" parent="." unique_id=1532750655 node_paths=PackedStringArray("exit_door") instance=ExtResource("20_5doro")]
 position = Vector2(2068, 133)

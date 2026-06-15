@@ -119,7 +119,20 @@ func _physics_process(delta):
 
 		max_fall_speed = 0
 
+#Hit by a Lava
+func take_lava_damage(damage):
+	health -= damage
 
+	print("Lava Damage:", damage)
+	print("HP Left:", health)
+
+	screen_shake()
+
+	velocity.y = -350
+
+	if health <= 0:
+		print("Player died from lava")
+		die()
 
 # FALL DAMAGE
 
