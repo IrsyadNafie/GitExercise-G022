@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://owx0maw7mufd"]
+
+[ext_resource type="Script" uid="uid://o5fo4if7i7yl" path="res://coin.gd" id="1_0t63x"]
+[ext_resource type="Texture2D" uid="uid://djx53ywvyxydj" path="res://LevelDesign/coingodot.png" id="2_v7riw"]
+[ext_resource type="AudioStream" uid="uid://dmk5hwjbo0yhi" path="res://audio/Coin Sound Effect4.mp3" id="3_v7riw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pdq0q"]
+radius = 36.221542
+
+[node name="Coin" type="Area2D" unique_id=871590875]
+script = ExtResource("1_0t63x")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=865219831]
+position = Vector2(-9.536743e-07, 2)
+scale = Vector2(0.11308594, 0.13249998)
+texture = ExtResource("2_v7riw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=589334391]
+position = Vector2(1, 3)
+shape = SubResource("CircleShape2D_pdq0q")
+
+[node name="CoinSound" type="AudioStreamPlayer2D" parent="." unique_id=43500887]
+stream = ExtResource("3_v7riw")

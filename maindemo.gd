@@ -9,3 +9,31 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_save_slot_1_btn_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_load_slot_1_btn_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_save_slot_2_btn_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_load_slot_2_btn_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_save_slot_3_btn_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_load_slot_3_btn_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_close_save_btn_pressed() -> void:
+	pass # Replace with function body.
