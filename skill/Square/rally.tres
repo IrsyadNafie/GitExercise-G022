@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://bus1adte2ib6a"]
+
+[ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="1_5nhev"]
+
+[resource]
+script = ExtResource("1_5nhev")
+name = "rally"
+sp_cost = 4
+target_type = 2
+metadata/_custom_type_script = "uid://c04p4kwhd0jof"

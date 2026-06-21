@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3 uid="uid://dj05pdm8klim6"]
+
+[ext_resource type="Script" uid="uid://cxl1csb5v1m8r" path="res://status_effect.gd" id="1_p2qot"]
+[ext_resource type="Texture2D" uid="uid://ddxmxgyyfy8mn" path="res://icon.svg" id="1_wd4ns"]
+
+[resource]
+script = ExtResource("1_p2qot")
+icon = ExtResource("1_wd4ns")
+name = "Enchant"
+type = 2
+is_permanent = true
+metadata/_custom_type_script = "uid://cxl1csb5v1m8r"

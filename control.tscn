@@ -1,0 +1,867 @@
+[gd_scene format=3 uid="uid://dyhdmqm81bhp4"]
+
+[ext_resource type="Texture2D" uid="uid://cn4oafs7ljlev" path="res://icon.svg" id="1_0fbet"]
+[ext_resource type="Script" uid="uid://cqhoo3kidcmp5" path="res://battle_manager.gd" id="1_qtu10"]
+[ext_resource type="Script" uid="uid://caaw1u1s0vq3p" path="res://actors.gd" id="2_kbped"]
+[ext_resource type="Script" uid="uid://c3b82mndsqjip" path="res://move.gd" id="2_qtu10"]
+[ext_resource type="Script" uid="uid://bjrulpksiensb" path="res://enemy_1.gd" id="3_ee4bf"]
+[ext_resource type="Script" path="res://skill.gd" id="3_fj5cn"]
+[ext_resource type="Resource" uid="uid://c2wjiwvprx6l0" path="res://skill/Square/courage.tres" id="4_m4egf"]
+[ext_resource type="Resource" uid="uid://cmrmqnjd3u4ub" path="res://skill/Square/psy.tres" id="4_sky72"]
+[ext_resource type="Resource" uid="uid://bus1adte2ib6a" path="res://skill/Square/rally.tres" id="5_0ytqx"]
+[ext_resource type="Resource" uid="uid://3a61wiqsaj3g" path="res://skill/Square/enchant.tres" id="6_pxugv"]
+[ext_resource type="Resource" uid="uid://bcyup6tjom3vt" path="res://skill/Circle/run with fierce.tres" id="9_pi4e7"]
+[ext_resource type="Resource" uid="uid://djawe21ingrd3" path="res://skill/Circle/commandment.tres" id="10_kuuv8"]
+[ext_resource type="Resource" uid="uid://chhn5s7g6yi2h" path="res://skill/Circle/safeguard.tres" id="11_ou021"]
+[ext_resource type="Resource" uid="uid://c3bs3fv3nl5d3" path="res://skill/Circle/earthquake.tres" id="12_3fl80"]
+[ext_resource type="Resource" uid="uid://dfyc77p4j2ht7" path="res://skill/Triangle/heavy-arrow.tres" id="13_8jbwv"]
+[ext_resource type="Resource" uid="uid://dl7r8br2evilk" path="res://skill/Triangle/heal dust.tres" id="14_v61lp"]
+[ext_resource type="Resource" uid="uid://cvo1jo4k0h2ji" path="res://skill/Triangle/arrow rain.tres" id="15_dgp6r"]
+[ext_resource type="Resource" uid="uid://yui17fuafvpq" path="res://skill/Triangle/pots o heal.tres" id="16_858bn"]
+[ext_resource type="Resource" uid="uid://dt2epdujkhgrc" path="res://enemyskill/test1.tres" id="18_kuuv8"]
+[ext_resource type="Resource" uid="uid://b6f8egt07ww7j" path="res://enemyskill/test2.tres" id="19_ou021"]
+[ext_resource type="Texture2D" uid="uid://btr557rvi03rv" path="res://dither-ripple-pixel-5s-1777867142802-ezgif.com-gif-to-sprite-converter.png" id="19_pi4e7"]
+[ext_resource type="AudioStream" uid="uid://1la6n0h5isye" path="res://His Friends Call Him Spuder (Don't Call Him Spuder) (Beta Mix) - Bug Fables_ The Everlasting Sapling.mp3" id="22_3fl80"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pi4e7"]
+bg_color = Color(0.298866, 0.5509334, 0, 0.4862745)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qtu10"]
+bg_color = Color(0, 1, 0.23529412, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 1
+shadow_color = Color(1, 1, 1, 0.6)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kbped"]
+bg_color = Color(0.2975318, 0.45749313, 0.5279899, 0.47058824)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ytqx"]
+bg_color = Color(0.5647059, 0.7372549, 0.8156863, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fj5cn"]
+bg_color = Color(0.5647059, 0.7372549, 0.8156863, 0)
+border_color = Color(0.36076555, 0.36076555, 0.36076555, 1)
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iy58a"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_color = Color(0.6830772, 0.6830774, 0.6830771, 1)
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ee4bf"]
+bg_color = Color(0.82544905, 0.22903332, 2.8878452e-07, 0.4862745)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eh0v1"]
+bg_color = Color(1, 0.21568628, 0.1254902, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6a6wx"]
+bg_color = Color(1.3266667, 1.3266667, 1.3266667, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_kbped"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sky72"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pxugv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kuuv8"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou021"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(1920, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fl80"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(3840, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jbwv"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(5760, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v61lp"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(7680, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgp6r"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(0, 1080, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_858bn"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(1920, 1080, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pj6v"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(3840, 1080, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5605"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(5760, 1080, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87wg0"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(7680, 1080, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ag6a"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(0, 2160, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3rfh"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(1920, 2160, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5axgr"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(3840, 2160, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfgqd"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(5760, 2160, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkes7"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(7680, 2160, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqja0"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(0, 3240, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8v1s"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(1920, 3240, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bdvj"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(3840, 3240, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6xdd"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(5760, 3240, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqmkq"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(7680, 3240, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_il8ev"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(0, 4320, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l62jy"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(1920, 4320, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v3ii"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(3840, 4320, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3chmk"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(5760, 4320, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5pai"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(7680, 4320, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xhs3"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(0, 5400, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olwrp"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(1920, 5400, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chp0b"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(3840, 5400, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dain"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(5760, 5400, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7sq5"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(7680, 5400, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onbiu"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(0, 6480, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udbhq"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(1920, 6480, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgtu8"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(3840, 6480, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8j0qy"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(5760, 6480, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tedhf"]
+atlas = ExtResource("19_pi4e7")
+region = Rect2(7680, 6480, 1920, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b6gc8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kuuv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ou021")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fl80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jbwv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v61lp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dgp6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_858bn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pj6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5605")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_87wg0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ag6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3rfh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5axgr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfgqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkes7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqja0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8v1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bdvj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6xdd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqmkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_il8ev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l62jy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8v3ii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3chmk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5pai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xhs3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olwrp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chp0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dain")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7sq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onbiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udbhq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgtu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8j0qy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tedhf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BattleScene" type="Node2D" unique_id=1752474127]
+script = ExtResource("1_qtu10")
+
+[node name="Actors" type="Node2D" parent="." unique_id=1497777895]
+position = Vector2(24, -158)
+
+[node name="Player1" type="Node2D" parent="Actors" unique_id=267814346]
+script = ExtResource("2_kbped")
+character_name = "Square"
+attack_name = "swing"
+max_sp = 8
+base_attack = 4
+sp_attack = 2
+skills = Array[ExtResource("3_fj5cn")]([ExtResource("4_m4egf"), ExtResource("4_sky72"), ExtResource("5_0ytqx"), ExtResource("6_pxugv")])
+
+[node name="HPBar" type="ProgressBar" parent="Actors/Player1" unique_id=1549539151]
+offset_left = 944.00006
+offset_top = 173.0
+offset_right = 983.47626
+offset_bottom = 175.71858
+scale = Vector2(3.6730995, 5.8853974)
+theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_pi4e7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qtu10")
+max_value = 10.0
+value = 10.0
+show_percentage = false
+
+[node name="SPBar" type="ProgressBar" parent="Actors/Player1" unique_id=632621949]
+offset_left = 944.0
+offset_top = 188.0
+offset_right = 983.4762
+offset_bottom = 190.60707
+scale = Vector2(3.6730995, 5.8853974)
+theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_kbped")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0ytqx")
+max_value = 5.0
+value = 5.0
+show_percentage = false
+
+[node name="EXP" type="ProgressBar" parent="Actors/Player1" unique_id=1620098009]
+offset_left = 948.00006
+offset_top = 167.0
+offset_right = 985.026
+offset_bottom = 168.0
+scale = Vector2(3.6730995, 5.8853974)
+theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_fj5cn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_iy58a")
+max_value = 10.0
+show_percentage = false
+
+[node name="TurnArrow" type="Polygon2D" parent="Actors/Player1" unique_id=617226332]
+z_index = 5
+position = Vector2(875.00006, 257)
+rotation = -3.1404102
+scale = Vector2(1.7526537, 1.7694622)
+offset = Vector2(247.77422, -13.139282)
+polygon = PackedVector2Array(-260.3462, -3.2351837, -284.86145, 12.617569, -260.30774, 28.977982, -260.3266, 13.153976)
+uv = PackedVector2Array(-264, -27, -269, 63, -216, 19)
+
+[node name="Player1" type="Sprite2D" parent="Actors/Player1" unique_id=889369376]
+position = Vector2(1017.5, 259.24)
+scale = Vector2(0.926, 0.898)
+texture = ExtResource("1_0fbet")
+
+[node name="StatusContainer" type="HBoxContainer" parent="Actors/Player1" unique_id=340612998]
+offset_left = 916.0
+offset_top = 176.0
+offset_right = 956.0
+offset_bottom = 216.0
+scale = Vector2(0.6000098, 0.59999967)
+
+[node name="Player2" type="Node2D" parent="Actors" unique_id=1507940198]
+position = Vector2(-31, 151)
+script = ExtResource("2_kbped")
+character_name = "Circle"
+attack_name = "bash"
+is_aoe_attack = true
+max_hp = 15
+max_sp = 6
+sp_attack = 1
+skills = Array[ExtResource("3_fj5cn")]([ExtResource("9_pi4e7"), ExtResource("10_kuuv8"), ExtResource("11_ou021"), ExtResource("12_3fl80")])
+
+[node name="HPBar" type="ProgressBar" parent="Actors/Player2" unique_id=237377493]
+offset_left = 944.00006
+offset_top = 173.0
+offset_right = 983.47626
+offset_bottom = 175.71858
+scale = Vector2(3.6730995, 5.8853974)
+theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_pi4e7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qtu10")
+max_value = 10.0
+value = 10.0
+show_percentage = false
+
+[node name="SPBar" type="ProgressBar" parent="Actors/Player2" unique_id=890868213]
+offset_left = 944.0
+offset_top = 188.0
+offset_right = 983.4762
+offset_bottom = 190.60707
+scale = Vector2(3.6730995, 5.8853974)
+theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_kbped")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0ytqx")
+max_value = 5.0
+value = 5.0
+show_percentage = false
+
+[node name="EXP" type="ProgressBar" parent="Actors/Player2" unique_id=1637285977]
+offset_left = 948.00006
+offset_top = 167.0
+offset_right = 985.026
+offset_bottom = 168.0
+scale = Vector2(3.6730995, 5.8853974)
+theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_fj5cn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_iy58a")
+max_value = 10.0
+show_percentage = false
+
+[node name="TurnArrow" type="Polygon2D" parent="Actors/Player2" unique_id=1588602166]
+z_index = 5
+position = Vector2(868.00006, 250.99998)
+rotation = -3.1404102
+scale = Vector2(1.7526536, 1.7694621)
+offset = Vector2(247.77422, -13.139282)
+polygon = PackedVector2Array(-260.3462, -3.2351837, -284.86145, 12.617569, -260.30774, 28.977982, -260.3266, 13.153976)
+uv = PackedVector2Array(-264, -27, -269, 63, -216, 19)
+
+[node name="Player2" type="Sprite2D" parent="Actors/Player2" unique_id=1390481869]
+position = Vector2(1017.5, 259.24)
+scale = Vector2(0.926, 0.898)
+texture = ExtResource("1_0fbet")
+
+[node name="StatusContainer" type="HBoxContainer" parent="Actors/Player2" unique_id=1903895410]
+offset_left = 910.00006
+offset_top = 176.0
+offset_right = 950.00006
+offset_bottom = 216.0
+scale = Vector2(0.6000098, 0.59999967)
+
+[node name="Player3" type="Node2D" parent="Actors" unique_id=2036492965]
+position = Vector2(-5, 301)
+script = ExtResource("2_kbped")
+character_name = "Triangle"
+attack_name = "shoot"
+max_hp = 8
+max_sp = 10
+base_attack = 5
+sp_attack = 3
+skills = Array[ExtResource("3_fj5cn")]([ExtResource("13_8jbwv"), ExtResource("14_v61lp"), ExtResource("15_dgp6r"), ExtResource("16_858bn")])
+
+[node name="HPBar" type="ProgressBar" parent="Actors/Player3" unique_id=1730966093]
+offset_left = 944.00006
+offset_top = 173.0
+offset_right = 983.47626
+offset_bottom = 175.71858
+scale = Vector2(3.6730995, 5.8853974)
+theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_pi4e7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qtu10")
+max_value = 10.0
+value = 10.0
+show_percentage = false
+
+[node name="SPBar" type="ProgressBar" parent="Actors/Player3" unique_id=801490952]
+offset_left = 944.0
+offset_top = 188.0
+offset_right = 983.4762
+offset_bottom = 190.60707
+scale = Vector2(3.6730995, 5.8853974)
+theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_kbped")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0ytqx")
+max_value = 5.0
+value = 5.0
+show_percentage = false
+
+[node name="EXP" type="ProgressBar" parent="Actors/Player3" unique_id=1430725651]
+offset_left = 948.00006
+offset_top = 167.0
+offset_right = 985.026
+offset_bottom = 168.0
+scale = Vector2(3.6730995, 5.8853974)
+theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_fj5cn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_iy58a")
+max_value = 10.0
+show_percentage = false
+
+[node name="TurnArrow" type="Polygon2D" parent="Actors/Player3" unique_id=400633545]
+z_index = 5
+position = Vector2(880, 255.99997)
+rotation = -3.1404102
+scale = Vector2(1.7526535, 1.769462)
+offset = Vector2(247.77422, -13.139282)
+polygon = PackedVector2Array(-260.3462, -3.2351837, -284.86145, 12.617569, -260.30774, 28.977982, -260.3266, 13.153976)
+uv = PackedVector2Array(-264, -27, -269, 63, -216, 19)
+
+[node name="Player3" type="Sprite2D" parent="Actors/Player3" unique_id=1933053050]
+position = Vector2(1017, 261.00003)
+scale = Vector2(0.926, 0.898)
+texture = ExtResource("1_0fbet")
+
+[node name="StatusContainer" type="HBoxContainer" parent="Actors/Player3" unique_id=1014688815]
+offset_left = 913.00006
+offset_top = 177.00002
+offset_right = 953.00006
+offset_bottom = 217.00002
+scale = Vector2(0.6000098, 0.59999967)
+
+[node name="Enemy1" type="Node2D" parent="Actors" unique_id=907974663]
+position = Vector2(-911, 9)
+script = ExtResource("3_ee4bf")
+character_name = "Enemy1"
+base_attack = 5
+skills = Array[ExtResource("3_fj5cn")]([ExtResource("18_kuuv8")])
+
+[node name="HPBar" type="ProgressBar" parent="Actors/Enemy1" unique_id=1405507110]
+offset_left = 944.00006
+offset_top = 186.99998
+offset_right = 983.47626
+offset_bottom = 189.71857
+scale = Vector2(3.6730995, 5.8853974)
+theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_ee4bf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eh0v1")
+max_value = 10.0
+value = 10.0
+show_percentage = false
+
+[node name="Enemy1" type="Sprite2D" parent="Actors/Enemy1" unique_id=472621428]
+modulate = Color(0.88235295, 0, 0.63529414, 1)
+position = Vector2(1017.5, 259.24)
+scale = Vector2(0.8984374, 0.87125015)
+texture = ExtResource("1_0fbet")
+
+[node name="TurnArrow" type="Polygon2D" parent="Actors/Enemy1" unique_id=1763664194]
+z_index = 5
+position = Vector2(1167.0001, 255.99998)
+rotation = -3.1404102
+scale = Vector2(-1.7677237, 1.7694619)
+offset = Vector2(247.77422, -13.139282)
+polygon = PackedVector2Array(-260.3462, -3.2351837, -284.86145, 12.617569, -260.30774, 28.977982, -260.3266, 13.153976)
+uv = PackedVector2Array(-264, -27, -269, 63, -216, 19)
+
+[node name="StatusContainer" type="HBoxContainer" parent="Actors/Enemy1" unique_id=1238413458]
+offset_left = 1094.0
+offset_top = 183.0
+offset_right = 1134.0
+offset_bottom = 223.0
+scale = Vector2(0.6000098, 0.59999967)
+
+[node name="Enemy2" type="Node2D" parent="Actors" unique_id=503890181]
+position = Vector2(-869, 157)
+script = ExtResource("3_ee4bf")
+character_name = "Enemy2"
+base_attack = 5
+skills = Array[ExtResource("3_fj5cn")]([ExtResource("19_ou021")])
+
+[node name="HPBar" type="ProgressBar" parent="Actors/Enemy2" unique_id=1893942757]
+offset_left = 944.00006
+offset_top = 186.99998
+offset_right = 983.47626
+offset_bottom = 189.71857
+scale = Vector2(3.6730995, 5.8853974)
+theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_ee4bf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eh0v1")
+max_value = 10.0
+value = 10.0
+show_percentage = false
+
+[node name="Enemy2" type="Sprite2D" parent="Actors/Enemy2" unique_id=1773977145]
+modulate = Color(0.88235295, 0, 0, 1)
+position = Vector2(1017.5, 259.24)
+scale = Vector2(0.8984374, 0.87125015)
+texture = ExtResource("1_0fbet")
+
+[node name="TurnArrow" type="Polygon2D" parent="Actors/Enemy2" unique_id=425525242]
+z_index = 5
+position = Vector2(1167.0001, 255.99998)
+rotation = -3.1404102
+scale = Vector2(-1.7677237, 1.7694619)
+offset = Vector2(247.77422, -13.139282)
+polygon = PackedVector2Array(-260.3462, -3.2351837, -284.86145, 12.617569, -260.30774, 28.977982, -260.3266, 13.153976)
+uv = PackedVector2Array(-264, -27, -269, 63, -216, 19)
+
+[node name="StatusContainer" type="HBoxContainer" parent="Actors/Enemy2" unique_id=404209618]
+offset_left = 1095.0
+offset_top = 183.99998
+offset_right = 1135.0
+offset_bottom = 223.99998
+scale = Vector2(0.6000098, 0.59999967)
+
+[node name="Enemy3" type="Node2D" parent="Actors" unique_id=1296802778]
+position = Vector2(-911, 295)
+script = ExtResource("3_ee4bf")
+character_name = "Enemy3"
+is_aoe_attack = true
+
+[node name="HPBar" type="ProgressBar" parent="Actors/Enemy3" unique_id=289262223]
+offset_left = 944.00006
+offset_top = 186.99998
+offset_right = 983.47626
+offset_bottom = 189.71857
+scale = Vector2(3.6730995, 5.8853974)
+theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_ee4bf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eh0v1")
+max_value = 10.0
+value = 10.0
+show_percentage = false
+
+[node name="Enemy3" type="Sprite2D" parent="Actors/Enemy3" unique_id=1616723685]
+modulate = Color(0.42249924, 0.51131356, 0.1532611, 1)
+position = Vector2(1017.5, 259.24)
+scale = Vector2(0.8984374, 0.87125015)
+texture = ExtResource("1_0fbet")
+
+[node name="TurnArrow" type="Polygon2D" parent="Actors/Enemy3" unique_id=176406233]
+z_index = 5
+position = Vector2(1167.0001, 255.99998)
+rotation = -3.1404102
+scale = Vector2(-1.7677237, 1.7694619)
+offset = Vector2(247.77422, -13.139282)
+polygon = PackedVector2Array(-260.3462, -3.2351837, -284.86145, 12.617569, -260.30774, 28.977982, -260.3266, 13.153976)
+uv = PackedVector2Array(-264, -27, -269, 63, -216, 19)
+
+[node name="StatusContainer" type="HBoxContainer" parent="Actors/Enemy3" unique_id=501735749]
+offset_left = 1092.0
+offset_top = 183.00002
+offset_right = 1132.0
+offset_bottom = 223.00002
+scale = Vector2(0.6000098, 0.59999967)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=970283716]
+
+[node name="PlayerPanel" type="Panel" parent="UI" unique_id=1471211882]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -184.0
+offset_right = 2.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MoveAction" type="Panel" parent="UI/PlayerPanel" unique_id=982045289]
+z_index = -1
+layout_mode = 0
+offset_left = 879.0
+offset_top = 17.0
+offset_right = 1113.0
+offset_bottom = 162.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6a6wx")
+
+[node name="BattleLog" type="Panel" parent="UI/PlayerPanel" unique_id=1329826349]
+z_index = -1
+layout_mode = 0
+offset_left = 24.0
+offset_top = 17.0
+offset_right = 813.0
+offset_bottom = 161.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6a6wx")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/PlayerPanel/BattleLog" unique_id=2134862162]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 789.0
+offset_bottom = 141.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+scroll_following = true
+
+[node name="move" type="VBoxContainer" parent="UI/PlayerPanel" unique_id=1197442552 node_paths=PackedStringArray("selection_arrow")]
+layout_mode = 0
+offset_left = 869.00006
+offset_top = 28.0
+offset_right = 923.00006
+offset_bottom = 185.0
+scale = Vector2(1.2013763, 0.9952018)
+pivot_offset = Vector2(-106.54437, -174.8389)
+script = ExtResource("2_qtu10")
+selection_arrow = NodePath("../arrow")
+
+[node name="attack" type="Button" parent="UI/PlayerPanel/move" unique_id=1641483636]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_kbped")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sky72")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pxugv")
+action_mode = 0
+button_mask = 0
+text = "attack"
+alignment = 0
+
+[node name="rest" type="Button" parent="UI/PlayerPanel/move" unique_id=540296047]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_sky72")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pxugv")
+action_mode = 0
+button_mask = 0
+text = "rest
+"
+alignment = 0
+
+[node name="special" type="Button" parent="UI/PlayerPanel/move" unique_id=122746432]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_sky72")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pxugv")
+action_mode = 0
+button_mask = 0
+text = "special
+
+"
+alignment = 0
+
+[node name="item" type="Button" parent="UI/PlayerPanel/move" unique_id=1425932116]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_sky72")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pxugv")
+action_mode = 0
+button_mask = 0
+text = "item
+
+
+"
+alignment = 0
+
+[node name="flee" type="Button" parent="UI/PlayerPanel/move" unique_id=690689148]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_sky72")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pxugv")
+action_mode = 0
+button_mask = 0
+text = "flee
+
+
+
+"
+alignment = 0
+
+[node name="arrow" type="Polygon2D" parent="UI/PlayerPanel" unique_id=1750960156]
+top_level = true
+position = Vector2(66, -16)
+scale = Vector2(1, 0.8181818)
+polygon = PackedVector2Array(0, 0, 7, -6.1111107, 7, 0, 7, 7.333333)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=849006240]
+modulate = Color(1, 0.61960787, 1, 1)
+z_index = -9
+position = Vector2(576.00006, 323.99997)
+scale = Vector2(0.5999999, 0.59999996)
+sprite_frames = SubResource("SpriteFrames_b6gc8")
+autoplay = "default"
+frame = 1
+frame_progress = 0.034803513
+
+[node name="BattleMusic" type="AudioStreamPlayer" parent="." unique_id=2142939030]
+stream = ExtResource("22_3fl80")
+autoplay = true
+parameters/looping = true

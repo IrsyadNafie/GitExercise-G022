@@ -1,0 +1,150 @@
+[gd_scene load_steps=10 format=3 uid="uid://bcs2j4l7daxee"]
+
+[ext_resource type="Script" uid="uid://c2dr85dtd8ks4" path="res://setting.gd" id="1_110nh"]
+[ext_resource type="FontFile" uid="uid://b6lro2q7ygs7h" path="res://Symtext.ttf" id="1_a42w7"]
+[ext_resource type="Script" uid="uid://c5nevmmkqlx7y" path="res://volume.gd" id="3_lv82f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_110nh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lv82f"]
+bg_color = Color(0.384314, 0.211765, 0.192157, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twti6"]
+bg_color = Color(0.188235, 0, 0.00392157, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q554q"]
+bg_color = Color(0.992157, 0.92549, 0.913725, 0.737255)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_8cg5j"]
+color = Color(0.391331, 0.0587928, 0.0108181, 1)
+thickness = 2
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_4ynqn"]
+color = Color(1, 1, 1, 1)
+thickness = 4
+
+[node name="seting" type="CanvasLayer"]
+script = ExtResource("1_110nh")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -253.5
+offset_top = -188.0
+offset_right = 253.5
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="back" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -107.0
+offset_top = -59.0
+offset_right = -17.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0.117959, 0.00940276, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.691357, 0.691357, 0.691357, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_110nh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lv82f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_twti6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_q554q")
+text = "Back"
+
+[node name="\'setting\'" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -73.0
+offset_top = 35.5
+offset_right = 76.0
+offset_bottom = 80.5
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_a42w7")
+theme_override_font_sizes/font_size = 30
+text = "Setting"
+
+[node name="volume" type="HSlider" parent="Panel"]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 113.0
+offset_right = 444.0
+offset_bottom = 158.0
+theme_override_styles/slider = SubResource("StyleBoxLine_8cg5j")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_4ynqn")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_4ynqn")
+min_value = -80.0
+max_value = 1.0
+script = ExtResource("3_lv82f")
+audio_bus_name = "Music"
+
+[node name="fullscreen" type="CheckButton" parent="Panel"]
+layout_mode = 0
+offset_left = 53.5
+offset_top = 164.0
+offset_right = 447.5
+offset_bottom = 239.0
+theme_override_fonts/font = ExtResource("1_a42w7")
+theme_override_font_sizes/font_size = 25
+text = "Fullscreen"
+
+[node name="\'volume\'" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 60.5
+offset_top = 117.0
+offset_right = 174.5
+offset_bottom = 155.0
+theme_override_fonts/font = ExtResource("1_a42w7")
+theme_override_font_sizes/font_size = 25
+text = "Volume"
+
+[node name="\'control\'" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -198.0
+offset_top = -128.0
+offset_right = 198.0
+offset_bottom = -85.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_a42w7")
+theme_override_font_sizes/font_size = 20
+text = "Control"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+autoplay = true
+
+[connection signal="pressed" from="Panel/back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="Panel/volume" to="." method="_on_volume_value_changed"]
+[connection signal="value_changed" from="Panel/volume" to="Panel/volume" method="_on_value_changed"]
