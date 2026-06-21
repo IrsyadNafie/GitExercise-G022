@@ -85,4 +85,3 @@ open_save_menu={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
-

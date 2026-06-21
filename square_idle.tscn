@@ -1,5 +1,4 @@
-
-[gd_scene load_steps=5 format=3 uid="uid://dx7whbjljft1m"]
+[gd_scene format=3 uid="uid://dx7whbjljft1m"]
 
 [ext_resource type="Texture2D" uid="uid://d1i2h23am0me0" path="res://character/square-idle-ow.png" id="1_vopf3"]
 
