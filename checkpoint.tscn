@@ -1,11 +1,7 @@
-[gd_scene format=3 uid="uid://b5qa0lve4g28c"]
-
-[ext_resource type="Script" path="res://checkpoint.gd" id="1_r6hke"]
-[ext_resource type="Texture2D" path="res://flag.png" id="2_tnhlw"]
 [gd_scene format=3 uid="uid://bvayd54elqvfa"]
 
 [ext_resource type="Script" uid="uid://6sj550oqdao8" path="res://checkpoint.gd" id="1_r6hke"]
-[ext_resource type="Texture2D" uid="uid://pne7kr2jijrp" path="res://flag.png" id="2_tnhlw"]
+[ext_resource type="Texture2D" uid="uid://pne7kr2jijrp" path="res://InteractableObjects/flag.png" id="2_tnhlw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s20m7"]
 size = Vector2(105, 157)
