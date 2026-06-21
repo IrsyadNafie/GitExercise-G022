@@ -53,13 +53,13 @@ func _process(delta):
 func update_equipped_item(item_name):
 
 	if item_name == "Key":
-		equipped_item.texture = preload("res://yellowkeygodot.png")
+		equipped_item.texture = preload("res://InteractableObjects/yellowkeygodot.png")
 
 	elif item_name == "Potion":
 		equipped_item.texture = preload("res://potiongodot.png")
 
 	elif item_name == "Axe":
-		equipped_item.texture = preload("res://axegodot.png")
+		equipped_item.texture = preload("res://InteractableObjects/axegodot.png")
 
 	else:
 		equipped_item.texture = null

@@ -10,9 +10,6 @@ func _ready():
 		queue_free()
 		return
 
-	body_entered.connect(_on_body_entered)
-	body_exited.connect(_on_body_exited)
-
 
 func _process(delta):
 	if player_near and Input.is_action_just_pressed("interact"):

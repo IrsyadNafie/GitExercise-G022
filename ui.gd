@@ -91,13 +91,13 @@ func update_inventory():
 		var icon = slot.get_node("Icon")
 
 		if GameManager.inventory[i] == "Key":
-			icon.texture = preload("res://yellowkeygodot.png")
+			icon.texture = preload("res://InteractableObjects/yellowkeygodot.png")
 
 		elif GameManager.inventory[i] == "Potion":
 			icon.texture = preload("res://potiongodot.png")
 
 		elif GameManager.inventory[i] == "Axe":
-			icon.texture = preload("res://axegodot.png")
+			icon.texture = preload("res://InteractableObjects/axegodot.png")
 
 		else:
 			icon.texture = null
@@ -138,7 +138,7 @@ func drop_item():
 	if GameManager.inventory[GameManager.selected_slot] != "":
 		var dropped_name = GameManager.inventory[GameManager.selected_slot]
 
-		var pickup_scene = preload("res://pickup_item.tscn")
+		var pickup_scene = preload("res://LevelFeatures/pickup_item.tscn")
 		var dropped_item = pickup_scene.instantiate()
 
 		dropped_item.item_name = dropped_name

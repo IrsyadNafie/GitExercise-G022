@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var next_scene = "res://room_2.tscn"
+@export var next_scene = "res://Levels/room_2.tscn"
 @export var exit_door: Node2D
 
 var activated = false
