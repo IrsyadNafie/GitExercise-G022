@@ -1,14 +1,12 @@
-<<<<<<< HEAD
 [gd_scene format=3 uid="uid://cslpxdh4mp5c0"]
 
 [ext_resource type="Script" path="res://npc.gd" id="1_xxcha"]
 [ext_resource type="Texture2D" path="res://npcgodot.png" id="2_kh24r"]
-=======
+
 [gd_scene format=3 uid="uid://dl4r2nr1jqdsk"]
 
 [ext_resource type="Script" uid="uid://cwoho622gxwo0" path="res://npc.gd" id="1_xxcha"]
 [ext_resource type="Texture2D" uid="uid://8hqj18qnoef1" path="res://npcgodot.png" id="2_kh24r"]
->>>>>>> 5fb5689618ee457ba6d186bd9b5d692fedfcb000
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xxcha"]
 size = Vector2(92, 101)
