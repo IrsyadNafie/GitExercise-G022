@@ -3,9 +3,10 @@
 [ext_resource type="Script" uid="uid://bk34skrfx6gjs" path="res://maindemo.gd" id="1_ogcnq"]
 [ext_resource type="PackedScene" uid="uid://owx0maw7mufd" path="res://LevelFeatures/coin.tscn" id="2_se8t4"]
 [ext_resource type="Script" uid="uid://bu6infk68sg7v" path="res://player.gd" id="3_uje2u"]
-[ext_resource type="Texture2D" uid="uid://cn4oafs7ljlev" path="res://icon.svg" id="4_w3uln"]
+[ext_resource type="Texture2D" uid="uid://d1i2h23am0me0" path="res://character/square-idle-ow.png" id="4_ogcnq"]
 [ext_resource type="Texture2D" uid="uid://b4dbupg8jhcmr" path="res://InteractableObjects/yellowkeygodot.png" id="5_i7qtk"]
 [ext_resource type="Script" uid="uid://cu7qik8cmlvju" path="res://interactable.gd" id="6_rxyaw"]
+[ext_resource type="PackedScene" uid="uid://b8sih6ljgrddi" path="res://character/square_walk.tscn" id="6_se8t4"]
 [ext_resource type="Texture2D" uid="uid://8hqj18qnoef1" path="res://LevelDesign/npcgodot.png" id="7_rwm56"]
 [ext_resource type="Script" uid="uid://rqjgk0rln81" path="res://door.gd" id="8_i7fmn"]
 [ext_resource type="Texture2D" uid="uid://bw8myfm63w853" path="res://InteractableObjects/door.webp" id="9_4iyiw"]
@@ -58,9 +59,17 @@ z_index = 3
 position = Vector2(-9, -9)
 script = ExtResource("3_uje2u")
 
+[node name="AnimatedChar" parent="Player" unique_id=1129597056 instance=ExtResource("6_se8t4")]
+position = Vector2(-398, 3.8146973e-06)
+scale = Vector2(0.408, 0.408)
+
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=620179317]
-position = Vector2(-294, 158)
-texture = ExtResource("4_w3uln")
+visible = false
+position = Vector2(-302, 61.000004)
+scale = Vector2(0.408, 0.408)
+texture = ExtResource("4_ogcnq")
+flip_h = true
+hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=809875056]
 position = Vector2(-294, 156)
@@ -69,7 +78,7 @@ shape = SubResource("RectangleShape2D_8fv7m")
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=716806772]
 
 [node name="EquippedItem" type="Sprite2D" parent="Player" unique_id=1213675201]
-position = Vector2(-223, 153)
+position = Vector2(-257, 154)
 rotation = -2.4320476
 scale = Vector2(0.1826043, 0.15068357)
 texture = ExtResource("5_i7qtk")
@@ -143,7 +152,7 @@ text = "Help! I'm Lost :("
 
 [node name="Door" type="Area2D" parent="." unique_id=485634795]
 script = ExtResource("8_i7fmn")
-next_scene = "res://Levels/room_2.tscn"
+next_scene = "res://maze.tscn"
 
 [node name="Sprite2D" type="Sprite2D" parent="Door" unique_id=1431791068]
 z_index = -1
@@ -421,7 +430,7 @@ texture = ExtResource("14_3kwwn")
 
 [node name="Backgound1Godot2" type="Sprite2D" parent="." unique_id=149429]
 z_index = -5
-position = Vector2(-86, 557)
+position = Vector2(169, 662.00006)
 scale = Vector2(1, 0.93870014)
 texture = ExtResource("14_3kwwn")
 
