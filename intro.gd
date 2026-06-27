@@ -16,7 +16,7 @@ var next_block: Dictionary
 
 
 func _ready() -> void:
-	get_json("res://dialog.json")
+	get_json("res://intro.json")
 	load_block(current_block)
 	
 func get_json(src: String):

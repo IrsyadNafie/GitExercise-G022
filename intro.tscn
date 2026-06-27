@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://c5gka7oxdhfqs" path="res://intro.gd" id="1_s2ta7"]
 
-[node name="Node2D" type="Node2D" unique_id=520439839]
+[node name="Node2D" type="Node2D" unique_id=520439839 node_paths=PackedStringArray("char_text", "BaseLayer")]
 script = ExtResource("1_s2ta7")
+char_text = NodePath("CanvasLayer/Panel/text")
+BaseLayer = NodePath("CanvasLayer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=149814764]
 
@@ -22,7 +24,12 @@ grow_vertical = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="text" type="Label" parent="CanvasLayer/Panel" unique_id=1796966002]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.017718716
+anchor_top = -0.13333334
+anchor_right = 0.017718716
+anchor_bottom = -0.13333334
 offset_left = 27.0
 offset_top = 60.0
 offset_right = 868.0
