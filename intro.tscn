@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://crldaqjmiuy4h"]
+
+[ext_resource type="Script" uid="uid://c5gka7oxdhfqs" path="res://intro.gd" id="1_s2ta7"]
+
+[node name="Node2D" type="Node2D" unique_id=520439839]
+script = ExtResource("1_s2ta7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=149814764]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=2124908048]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -447.0
+offset_top = -244.0
+offset_right = 456.0
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="text" type="Label" parent="CanvasLayer/Panel" unique_id=1796966002]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 60.0
+offset_right = 868.0
+offset_bottom = 123.0
+text = "text"
+metadata/_edit_use_anchors_ = true
+
+[node name="_press enter_" type="Label" parent="CanvasLayer/Panel" unique_id=1827710247]
+layout_mode = 0
+offset_left = 683.0
+offset_top = 122.0
+offset_right = 878.0
+offset_bottom = 145.0
+text = "press \"enter\" to continue"
+metadata/_edit_use_anchors_ = true
