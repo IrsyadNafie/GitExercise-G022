@@ -10,6 +10,7 @@ config_version=5
 
 [application]
 
+<<<<<<< HEAD
 config/name="Demo"
 run/main_scene="uid://ekggwac31s7i"
 config/features=PackedStringArray("4.6", "Forward Plus")
@@ -77,6 +78,16 @@ open_save_menu={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":77,"key_label":0,"unicode":109,"location":0,"echo":false,"script":null)
 ]
 }
+=======
+config/name="dialog"
+run/main_scene="uid://sc1j37ad1r58"
+config/features=PackedStringArray("4.6", "GL Compatibility")
+config/icon="res://dialog/icon.svg"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogic-main.zip/plugin.cfg")
+>>>>>>> e08b1918da7a7c58746ae32cdddbe184b11ac2aa
 
 [physics]
 
@@ -85,4 +96,9 @@ open_save_menu={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+<<<<<<< HEAD
 
+=======
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+>>>>>>> e08b1918da7a7c58746ae32cdddbe184b11ac2aa
