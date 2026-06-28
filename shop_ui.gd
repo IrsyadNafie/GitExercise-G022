@@ -78,7 +78,7 @@ func _on_confirm_btn_pressed():
 # =========================
 
 func spawn_crate():
-	var crate_scene = preload("res://crate.tscn")
+	var crate_scene = preload("res://LevelFeatures/crate.tscn")
 	var crate = crate_scene.instantiate()
 
 	# Spawn above player

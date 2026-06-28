@@ -1,6 +1,7 @@
 extends Resource
 class_name EnemyData
 
+@export var is_static: bool = false
 @export_group("Visuals")
 @export var enemy_texture: Texture2D
 

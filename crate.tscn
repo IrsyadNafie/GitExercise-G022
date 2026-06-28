@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://bhk4rnmyhx8lm"]
+[gd_scene format=3 uid="uid://bdudxm1u5s6w0"]
 
-[ext_resource type="Script" uid="uid://dyo8rgiwlvmqf" path="res://crate.gd" id="1_mo0jf"]
-[ext_resource type="Texture2D" uid="uid://bu7yre6vt7o68" path="res://crategodot.png" id="2_ggnq6"]
+[ext_resource type="Script" path="res://crate.gd" id="1_mo0jf"]
+[ext_resource type="Texture2D" path="res://crategodot.png" id="2_ggnq6"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_mo0jf"]
 a = Vector2(53.713806, 43.32351)

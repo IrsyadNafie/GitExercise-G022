@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://gygpue02ndle"]
 
 [ext_resource type="Script" uid="uid://u1vhfv8hjeux" path="res://enemy_data.gd" id="1_pp6dl"]
-[ext_resource type="Texture2D" uid="uid://dqqppc8dspppw" path="res://icon.svg" id="1_x8xo1"]
+[ext_resource type="Texture2D" uid="uid://cy7l67be553ls" path="res://enemies/3.png" id="1_x8xo1"]
 [ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="2_x8xo1"]
 
 [resource]
 script = ExtResource("1_pp6dl")
+is_static = true
 enemy_texture = ExtResource("1_x8xo1")
-enemy_name = "Hiawa"
+enemy_name = "Watcher"
 metadata/_custom_type_script = "uid://u1vhfv8hjeux"

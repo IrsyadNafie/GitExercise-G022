@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dl4r2nr1jqdsk"]
+
+[ext_resource type="Script" uid="uid://cwoho622gxwo0" path="res://npc.gd" id="1_xxcha"]
+<<<<<<< HEAD:npc.tscn
+[ext_resource type="Texture2D" uid="uid://8hqj18qnoef1" path="res://npcgodot.png" id="2_kh24r"]
+=======
+[ext_resource type="Texture2D" uid="uid://8hqj18qnoef1" path="res://LevelDesign/npcgodot.png" id="2_kh24r"]
+>>>>>>> eabb5510be26fd55f8219f862eb40acca557781f:LevelFeatures/npc.tscn
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxcha"]
+size = Vector2(92, 101)
+
+[node name="NPC" type="Area2D" unique_id=1906512404]
+scale = Vector2(1.4311829, 1.4306915)
+script = ExtResource("1_xxcha")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=649740066]
+position = Vector2(9, -5)
+scale = Vector2(1.3385416, 1.2818182)
+texture = ExtResource("2_kh24r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=611367507]
+position = Vector2(-5, -6.5)
+shape = SubResource("RectangleShape2D_xxcha")
+
+[node name="Label" type="Label" parent="." unique_id=285408616]
+offset_left = -31.0
+offset_top = -98.0
+offset_right = 38.0
+offset_bottom = -75.0
+text = "Press \"E\""
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

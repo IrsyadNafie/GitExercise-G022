@@ -44,7 +44,6 @@ func _ready() -> void:
 	
 	for enemy_node in enemy_nodes:
 		if enemy_node != null:
-			# If we have files in the folder, load them!
 			if enemy_files.size() > 0:
 				var random_file = enemy_files.pick_random()
 				var random_data = load(random_file) as EnemyData
@@ -56,6 +55,18 @@ func _ready() -> void:
 			else:
 				enemy_node.queue_free()
 		
+	var camera = get_node_or_null("Camera2D")
+	if camera:
+		camera.anchor_mode = Camera2D.ANCHOR_MODE_DRAG_CENTER
+		var center_position = Vector2(576, 324)
+		camera.zoom = Vector2(5, 5)
+		camera.global_position = center_position + Vector2(350, 0)
+		var tween = create_tween()
+		tween.set_parallel(true)
+		tween.tween_property(camera, "zoom", Vector2(1, 1), 0.7).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+		tween.tween_property(camera, "global_position", center_position, 0.7).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+		tween.chain()
+		await tween.finished
 	var actor_nodes = $Actors.get_children()
 	for node in actor_nodes:
 		if node is Actor:
@@ -63,7 +74,7 @@ func _ready() -> void:
 			node.action_logged.connect(_on_actor_logged)
 			if not node.is_player:
 				active_enemies.append(node)
-				
+	
 	_on_actor_logged("Battle Start!")
 	start_next_turn()
 

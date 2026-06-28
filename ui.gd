@@ -4,15 +4,20 @@ extends CanvasLayer
 @onready var item_name = $ItemName
 @onready var full_message = $FullMessage
 @onready var fade = $Fade
+@onready var save_menu = $SaveMenu
+@onready var save_message = $SaveMenu/SaveMessage
+@onready var interaction_label = $InteractionLabel
 
 func _ready():
 	connect_slots()
 	update_inventory()
+	save_menu.visible = false
+	interaction_label.text = ""
+	
 
 func _process(delta):
 	coin_label.text = "Coins: " + str(GameManager.coins)
 
-	# Number keys 1 to 5
 	if Input.is_action_just_pressed("slot_1"):
 		GameManager.selected_slot = 0
 		update_inventory()
@@ -33,9 +38,21 @@ func _process(delta):
 		GameManager.selected_slot = 4
 		update_inventory()
 
-	# Press G to drop
+	if Input.is_action_just_pressed("open_save_menu"):
+		save_menu.visible = !save_menu.visible
+
 	if Input.is_action_just_pressed("drop_item"):
 		drop_item()
+
+
+# =========================
+# INTERACTION PROMPT
+# =========================
+func show_interaction(text):
+	interaction_label.text = text
+
+func hide_interaction():
+	interaction_label.text = ""
 
 
 # =========================
@@ -74,13 +91,13 @@ func update_inventory():
 		var icon = slot.get_node("Icon")
 
 		if GameManager.inventory[i] == "Key":
-			icon.texture = preload("res://yellowkeygodot.png")
+			icon.texture = preload("res://InteractableObjects/yellowkeygodot.png")
 
 		elif GameManager.inventory[i] == "Potion":
 			icon.texture = preload("res://potiongodot.png")
 
 		elif GameManager.inventory[i] == "Axe":
-			icon.texture = preload("res://axegodot.png")
+			icon.texture = preload("res://InteractableObjects/axegodot.png")
 
 		else:
 			icon.texture = null
@@ -108,9 +125,6 @@ func add_item(new_item):
 	return false
 
 
-# =========================
-# INVENTORY FULL MESSAGE
-# =========================
 func show_full_message():
 	full_message.text = "Inventory Full!"
 	await get_tree().create_timer(2.0).timeout
@@ -122,10 +136,9 @@ func show_full_message():
 # =========================
 func drop_item():
 	if GameManager.inventory[GameManager.selected_slot] != "":
-
 		var dropped_name = GameManager.inventory[GameManager.selected_slot]
 
-		var pickup_scene = preload("res://pickup_item.tscn")
+		var pickup_scene = preload("res://LevelFeatures/pickup_item.tscn")
 		var dropped_item = pickup_scene.instantiate()
 
 		dropped_item.item_name = dropped_name
@@ -136,14 +149,13 @@ func drop_item():
 		get_tree().current_scene.add_child(dropped_item)
 
 		GameManager.inventory[GameManager.selected_slot] = ""
-
 		update_inventory()
 
 		print("Dropped:", dropped_name)
 
 
 # =========================
-# CHECK ITEM (FOR CHEST)
+# ITEM CHECKING
 # =========================
 func has_item(item_name):
 	for item in GameManager.inventory:
@@ -152,9 +164,6 @@ func has_item(item_name):
 	return false
 
 
-# =========================
-# REMOVE ITEM (FOR CHEST)
-# =========================
 func remove_item(item_name):
 	for i in range(5):
 		if GameManager.inventory[i] == item_name:
@@ -173,7 +182,48 @@ func fade_out():
 	tween.tween_property(fade, "color:a", 1.0, 0.5)
 	await tween.finished
 
+
 func fade_in():
 	var tween = create_tween()
 	tween.tween_property(fade, "color:a", 0.0, 0.5)
 	await tween.finished
+
+
+# =========================
+# SAVE / LOAD
+# =========================
+func _on_save_slot_1_btn_pressed():
+	SaveManager.save_game(1)
+	show_save_message("Saved Slot 1!")
+
+
+func _on_load_slot_1_btn_pressed():
+	SaveManager.load_game(1)
+
+
+func _on_save_slot_2_btn_pressed():
+	SaveManager.save_game(2)
+	show_save_message("Saved Slot 2!")
+
+
+func _on_load_slot_2_btn_pressed():
+	SaveManager.load_game(2)
+
+
+func _on_save_slot_3_btn_pressed():
+	SaveManager.save_game(3)
+	show_save_message("Saved Slot 3!")
+
+
+func _on_load_slot_3_btn_pressed():
+	SaveManager.load_game(3)
+
+
+func _on_close_save_btn_pressed():
+	save_menu.visible = false
+
+
+func show_save_message(text):
+	save_message.text = text
+	await get_tree().create_timer(2.0).timeout
+	save_message.text = ""

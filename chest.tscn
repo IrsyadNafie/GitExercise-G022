@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://cwfxnnamkxe70"]
+[gd_scene format=3 uid="uid://5xfcfohfprfp"]
 
 [ext_resource type="Script" uid="uid://ddo3i2loq7i3g" path="res://chest.gd" id="1_8uwsg"]
-[ext_resource type="Texture2D" uid="uid://cf8we0f3i2g60" path="res://chestgodot.png" id="2_bp1or"]
+[ext_resource type="Texture2D" path="res://chestgodot.png" id="2_bp1or"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trlyu"]
 size = Vector2(134, 91)

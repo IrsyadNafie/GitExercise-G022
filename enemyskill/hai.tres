@@ -10,4 +10,5 @@ metadata/_custom_type_script = "uid://cxl1csb5v1m8r"
 [resource]
 script = ExtResource("1_cauqg")
 status_to_apply = SubResource("Resource_muqps")
+name = "die"
 metadata/_custom_type_script = "uid://c04p4kwhd0jof"

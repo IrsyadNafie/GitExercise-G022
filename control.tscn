@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dyhdmqm81bhp4"]
 
-[ext_resource type="Texture2D" uid="uid://dqqppc8dspppw" path="res://icon.svg" id="1_0fbet"]
+[ext_resource type="Texture2D" uid="uid://bg0ffy51sx7j1" path="res://icon.svg" id="1_0fbet"]
 [ext_resource type="Script" uid="uid://cqhoo3kidcmp5" path="res://battle_manager.gd" id="1_qtu10"]
 [ext_resource type="Script" uid="uid://caaw1u1s0vq3p" path="res://actors.gd" id="2_kbped"]
 [ext_resource type="Script" uid="uid://c3b82mndsqjip" path="res://move.gd" id="2_qtu10"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://cmrmqnjd3u4ub" path="res://skill/Square/psy.tres" id="4_sky72"]
 [ext_resource type="Resource" uid="uid://bus1adte2ib6a" path="res://skill/Square/rally.tres" id="5_0ytqx"]
 [ext_resource type="Resource" uid="uid://3a61wiqsaj3g" path="res://skill/Square/enchant.tres" id="6_pxugv"]
+[ext_resource type="Texture2D" uid="uid://ghx5uyp0158k" path="res://baseplate.png" id="9_8jbwv"]
 [ext_resource type="Resource" uid="uid://bcyup6tjom3vt" path="res://skill/Circle/run with fierce.tres" id="9_pi4e7"]
 [ext_resource type="Resource" uid="uid://djawe21ingrd3" path="res://skill/Circle/commandment.tres" id="10_kuuv8"]
 [ext_resource type="Resource" uid="uid://chhn5s7g6yi2h" path="res://skill/Circle/safeguard.tres" id="11_ou021"]
@@ -21,7 +22,9 @@
 [ext_resource type="Resource" uid="uid://dt2epdujkhgrc" path="res://enemyskill/test1.tres" id="18_kuuv8"]
 [ext_resource type="Resource" uid="uid://b6f8egt07ww7j" path="res://enemyskill/test2.tres" id="19_ou021"]
 [ext_resource type="Texture2D" uid="uid://btr557rvi03rv" path="res://dither-ripple-pixel-5s-1777867142802-ezgif.com-gif-to-sprite-converter.png" id="19_pi4e7"]
+[ext_resource type="Texture2D" uid="uid://b0l1bsgw3xgpg" path="res://UiBattleAssets/uibackgroundbattle.png" id="21_dgp6r"]
 [ext_resource type="AudioStream" uid="uid://1la6n0h5isye" path="res://His Friends Call Him Spuder (Don't Call Him Spuder) (Beta Mix) - Bug Fables_ The Everlasting Sapling.mp3" id="22_3fl80"]
+[ext_resource type="FontFile" uid="uid://vvjwj4ehes4v" path="res://Fonts/StayPuft.ttf" id="22_858bn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pi4e7"]
 bg_color = Color(0.298866, 0.5509334, 0, 0.4862745)
@@ -124,10 +127,27 @@ corner_radius_bottom_left = 6
 corner_detail = 1
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6a6wx"]
-bg_color = Color(1.3266667, 1.3266667, 1.3266667, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2pj6v"]
+texture = ExtResource("21_dgp6r")
 
-[sub_resource type="FontVariation" id="FontVariation_kbped"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6a6wx"]
+bg_color = Color(0.5669827, 0.5669827, 0.5669826, 0.525)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w5605"]
+bg_color = Color(1, 1, 1, 0.4862745)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+
+[sub_resource type="Theme" id="Theme_87wg0"]
+default_font = ExtResource("22_858bn")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sky72"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -462,6 +482,12 @@ offset_right = 956.0
 offset_bottom = 216.0
 scale = Vector2(0.6000098, 0.59999967)
 
+[node name="BattleBase" type="Sprite2D" parent="Actors/Player1" unique_id=142909101]
+z_index = -1
+position = Vector2(1017.5, 307.5)
+scale = Vector2(0.17300004, 0.09000003)
+texture = ExtResource("9_8jbwv")
+
 [node name="Player2" type="Node2D" parent="Actors" unique_id=1507940198]
 position = Vector2(-31, 151)
 script = ExtResource("2_kbped")
@@ -531,6 +557,12 @@ offset_top = 176.0
 offset_right = 950.00006
 offset_bottom = 216.0
 scale = Vector2(0.6000098, 0.59999967)
+
+[node name="BattleBase" type="Sprite2D" parent="Actors/Player2" unique_id=1567108163]
+z_index = -1
+position = Vector2(1016.99994, 305)
+scale = Vector2(0.17300004, 0.09000003)
+texture = ExtResource("9_8jbwv")
 
 [node name="Player3" type="Node2D" parent="Actors" unique_id=2036492965]
 position = Vector2(-5, 301)
@@ -602,6 +634,12 @@ offset_right = 953.00006
 offset_bottom = 217.00002
 scale = Vector2(0.6000098, 0.59999967)
 
+[node name="BattleBase" type="Sprite2D" parent="Actors/Player3" unique_id=1278260200]
+z_index = -1
+position = Vector2(1016.99994, 311)
+scale = Vector2(0.17300004, 0.09000003)
+texture = ExtResource("9_8jbwv")
+
 [node name="Enemy1" type="Node2D" parent="Actors" unique_id=907974663]
 position = Vector2(-911, 9)
 script = ExtResource("3_ee4bf")
@@ -622,10 +660,14 @@ max_value = 10.0
 value = 10.0
 show_percentage = false
 
-[node name="Sprite" type="Sprite2D" parent="Actors/Enemy1" unique_id=472621428]
-position = Vector2(1017.5, 259.24)
+[node name="Sprite" type="TextureRect" parent="Actors/Enemy1" unique_id=783201731]
+offset_left = 958.99994
+offset_top = 205.00002
+offset_right = 1087.0
+offset_bottom = 333.0
 scale = Vector2(0.8984374, 0.87125015)
 texture = ExtResource("1_0fbet")
+expand_mode = 1
 
 [node name="TurnArrow" type="Polygon2D" parent="Actors/Enemy1" unique_id=1763664194]
 z_index = 5
@@ -642,6 +684,12 @@ offset_top = 183.0
 offset_right = 1134.0
 offset_bottom = 223.0
 scale = Vector2(0.6000098, 0.59999967)
+
+[node name="BattleBase" type="Sprite2D" parent="Actors/Enemy1" unique_id=1552432889]
+z_index = -1
+position = Vector2(1018.99994, 306)
+scale = Vector2(0.17300004, 0.09000003)
+texture = ExtResource("9_8jbwv")
 
 [node name="Enemy2" type="Node2D" parent="Actors" unique_id=503890181]
 position = Vector2(-869, 157)
@@ -663,10 +711,14 @@ max_value = 10.0
 value = 10.0
 show_percentage = false
 
-[node name="Sprite" type="Sprite2D" parent="Actors/Enemy2" unique_id=1773977145]
-position = Vector2(1017.5, 259.24)
+[node name="Sprite" type="TextureRect" parent="Actors/Enemy2" unique_id=323713918]
+offset_left = 957.99994
+offset_top = 203.0
+offset_right = 1086.0
+offset_bottom = 331.0
 scale = Vector2(0.8984374, 0.87125015)
 texture = ExtResource("1_0fbet")
+expand_mode = 1
 
 [node name="TurnArrow" type="Polygon2D" parent="Actors/Enemy2" unique_id=425525242]
 z_index = 5
@@ -683,6 +735,12 @@ offset_top = 183.99998
 offset_right = 1135.0
 offset_bottom = 223.99998
 scale = Vector2(0.6000098, 0.59999967)
+
+[node name="BattleBase" type="Sprite2D" parent="Actors/Enemy2" unique_id=1373431909]
+z_index = -1
+position = Vector2(1017.99994, 305)
+scale = Vector2(0.17300004, 0.09000003)
+texture = ExtResource("9_8jbwv")
 
 [node name="Enemy3" type="Node2D" parent="Actors" unique_id=1296802778]
 position = Vector2(-911, 295)
@@ -703,10 +761,14 @@ max_value = 10.0
 value = 10.0
 show_percentage = false
 
-[node name="Sprite" type="Sprite2D" parent="Actors/Enemy3" unique_id=1616723685]
-position = Vector2(1017.5, 259.24)
+[node name="Sprite" type="TextureRect" parent="Actors/Enemy3" unique_id=489819418]
+offset_left = 958.99994
+offset_top = 203.0
+offset_right = 1087.0
+offset_bottom = 331.0
 scale = Vector2(0.8984374, 0.87125015)
 texture = ExtResource("1_0fbet")
+expand_mode = 1
 
 [node name="TurnArrow" type="Polygon2D" parent="Actors/Enemy3" unique_id=176406233]
 z_index = 5
@@ -724,6 +786,12 @@ offset_right = 1132.0
 offset_bottom = 223.00002
 scale = Vector2(0.6000098, 0.59999967)
 
+[node name="BattleBase" type="Sprite2D" parent="Actors/Enemy3" unique_id=304953214]
+z_index = -1
+position = Vector2(1020, 307)
+scale = Vector2(0.17300004, 0.09000003)
+texture = ExtResource("9_8jbwv")
+
 [node name="UI" type="CanvasLayer" parent="." unique_id=970283716]
 
 [node name="PlayerPanel" type="Panel" parent="UI" unique_id=1471211882]
@@ -736,24 +804,23 @@ offset_top = -184.0
 offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_2pj6v")
 
 [node name="MoveAction" type="Panel" parent="UI/PlayerPanel" unique_id=982045289]
-z_index = -1
 layout_mode = 0
-offset_left = 1009.0
+offset_left = 898.0
 offset_top = 17.0
-offset_right = 1243.0
-offset_bottom = 162.0
+offset_right = 1132.0
+offset_bottom = 161.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_6a6wx")
 
 [node name="BattleLog" type="Panel" parent="UI/PlayerPanel" unique_id=1329826349]
-z_index = -1
 layout_mode = 0
-offset_left = 24.0
+offset_left = 20.0
 offset_top = 17.0
-offset_right = 813.0
+offset_right = 814.0
 offset_bottom = 161.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_6a6wx")
+theme_override_styles/panel = SubResource("StyleBoxFlat_w5605")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/PlayerPanel/BattleLog" unique_id=2134862162]
 layout_mode = 0
@@ -761,36 +828,44 @@ offset_top = 3.0
 offset_right = 789.0
 offset_bottom = 141.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("22_858bn")
+theme_override_fonts/bold_font = ExtResource("22_858bn")
+theme_override_fonts/bold_italics_font = ExtResource("22_858bn")
+theme_override_fonts/italics_font = ExtResource("22_858bn")
+theme_override_fonts/mono_font = ExtResource("22_858bn")
 bbcode_enabled = true
 scroll_following = true
 
 [node name="move" type="VBoxContainer" parent="UI/PlayerPanel" unique_id=1197442552 node_paths=PackedStringArray("selection_arrow")]
 layout_mode = 0
-offset_left = 999.00006
-offset_top = 28.0
-offset_right = 1053.0
-offset_bottom = 185.0
+offset_left = 888.0
+offset_top = 25.0
+offset_right = 942.0
+offset_bottom = 182.0
 scale = Vector2(1.2013763, 0.9952018)
 pivot_offset = Vector2(-106.54437, -174.8389)
 script = ExtResource("2_qtu10")
 selection_arrow = NodePath("../arrow")
 
-[node name="attack" type="Button" parent="UI/PlayerPanel/move" unique_id=1641483636]
+[node name="attack" type="Button" parent="UI/PlayerPanel/move" unique_id=1557513485]
 layout_mode = 2
 mouse_filter = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = SubResource("FontVariation_kbped")
+theme = SubResource("Theme_87wg0")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_sky72")
 theme_override_styles/focus = SubResource("StyleBoxFlat_pxugv")
 action_mode = 0
 button_mask = 0
-text = "attack"
+text = "attack
+
+"
 alignment = 0
 
 [node name="rest" type="Button" parent="UI/PlayerPanel/move" unique_id=540296047]
 layout_mode = 2
 mouse_filter = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme = SubResource("Theme_87wg0")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_sky72")
 theme_override_styles/focus = SubResource("StyleBoxFlat_pxugv")
 action_mode = 0
@@ -802,7 +877,8 @@ alignment = 0
 [node name="special" type="Button" parent="UI/PlayerPanel/move" unique_id=122746432]
 layout_mode = 2
 mouse_filter = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme = SubResource("Theme_87wg0")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_sky72")
 theme_override_styles/focus = SubResource("StyleBoxFlat_pxugv")
 action_mode = 0
@@ -815,7 +891,8 @@ alignment = 0
 [node name="item" type="Button" parent="UI/PlayerPanel/move" unique_id=1425932116]
 layout_mode = 2
 mouse_filter = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme = SubResource("Theme_87wg0")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_sky72")
 theme_override_styles/focus = SubResource("StyleBoxFlat_pxugv")
 action_mode = 0
@@ -829,7 +906,8 @@ alignment = 0
 [node name="flee" type="Button" parent="UI/PlayerPanel/move" unique_id=690689148]
 layout_mode = 2
 mouse_filter = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme = SubResource("Theme_87wg0")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_sky72")
 theme_override_styles/focus = SubResource("StyleBoxFlat_pxugv")
 action_mode = 0
@@ -850,14 +928,72 @@ polygon = PackedVector2Array(0, 0, 7, -6.1111107, 7, 0, 7, 7.333333)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=849006240]
 modulate = Color(1, 0.61960787, 1, 1)
 z_index = -9
-position = Vector2(640.0001, 359.99997)
+position = Vector2(-732, 360)
 scale = Vector2(0.66666657, 0.66666657)
 sprite_frames = SubResource("SpriteFrames_b6gc8")
 autoplay = "default"
-frame = 1
-frame_progress = 0.034803513
+frame = 20
+frame_progress = 0.71027696
 
 [node name="BattleMusic" type="AudioStreamPlayer" parent="." unique_id=2142939030]
 stream = ExtResource("22_3fl80")
 autoplay = true
 parameters/looping = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1076998290]
+anchor_mode = 0
+
+[node name="Sprite2" type="Sprite2D" parent="." unique_id=1965797567]
+position = Vector2(172.00008, -188.23999)
+scale = Vector2(0.8984374, 0.87125015)
+texture = ExtResource("1_0fbet")
+
+[node name="BattleBase2" type="Sprite2D" parent="." unique_id=80233072]
+z_index = -1
+position = Vector2(172.50002, -142.47998)
+scale = Vector2(0.17300004, 0.09000003)
+texture = ExtResource("9_8jbwv")
+
+[node name="Sprite3" type="Sprite2D" parent="." unique_id=1366215796]
+position = Vector2(367.00006, -190.23999)
+scale = Vector2(0.8984374, 0.87125015)
+texture = ExtResource("1_0fbet")
+
+[node name="BattleBase3" type="Sprite2D" parent="." unique_id=1837046260]
+z_index = -1
+position = Vector2(367.5, -144.47998)
+scale = Vector2(0.17300004, 0.09000003)
+texture = ExtResource("9_8jbwv")
+
+[node name="Sprite4" type="Sprite2D" parent="." unique_id=932877825]
+position = Vector2(562.00006, -190.23999)
+scale = Vector2(0.8984374, 0.87125015)
+texture = ExtResource("1_0fbet")
+
+[node name="BattleBase4" type="Sprite2D" parent="." unique_id=461233168]
+z_index = -1
+position = Vector2(562.5, -144.47998)
+scale = Vector2(0.17300004, 0.09000003)
+texture = ExtResource("9_8jbwv")
+
+[node name="Sprite5" type="Sprite2D" parent="." unique_id=2090349760]
+position = Vector2(781.00006, -190.23999)
+scale = Vector2(0.8984374, 0.87125015)
+texture = ExtResource("1_0fbet")
+
+[node name="BattleBase5" type="Sprite2D" parent="." unique_id=287819042]
+z_index = -1
+position = Vector2(781.5, -144.47998)
+scale = Vector2(0.17300004, 0.09000003)
+texture = ExtResource("9_8jbwv")
+
+[node name="Sprite6" type="Sprite2D" parent="." unique_id=815973047]
+position = Vector2(998.00006, -190.23999)
+scale = Vector2(0.8984374, 0.87125015)
+texture = ExtResource("1_0fbet")
+
+[node name="BattleBase6" type="Sprite2D" parent="." unique_id=512202866]
+z_index = -1
+position = Vector2(998.5, -144.47998)
+scale = Vector2(0.17300004, 0.09000003)
+texture = ExtResource("9_8jbwv")

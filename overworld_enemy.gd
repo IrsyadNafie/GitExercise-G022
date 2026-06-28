@@ -6,7 +6,7 @@ extends CharacterBody2D
 var can_start_battle: bool = false
 var speed = 80
 var gravity = 900
-var direction = 1 
+var direction = 1
 var move_timer = 0.0
 
 func _ready() -> void:
@@ -31,11 +31,21 @@ func _physics_process(delta) -> void:
 	move_and_slide()
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	if GameManager.just_fled:
-		return 
+	if GameManager.just_fled or not can_start_battle:
+		return
 		
 	if body.name == "Player":
-		GameManager.last_player_position = body.global_position
-		GameManager.last_overworld_scene = get_tree().current_scene.scene_file_path
-		GameManager.enemy_just_defeated = enemy_id
+		var camera = body.get_node_or_null("Camera2D")
+		if camera:
+			camera.anchor_mode = Camera2D.ANCHOR_MODE_DRAG_CENTER
+			camera.limit_left = -10000000
+			camera.limit_right = 10000000
+			camera.limit_top = -10000000
+			camera.limit_bottom = 10000000
+			var tween = create_tween()
+			tween.set_parallel(true)
+			tween.tween_property(camera, "zoom", Vector2(5, 5), 0.7).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
+			tween.tween_property(camera, "global_position", body.global_position, 0.7).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
+			tween.chain() 
+			await tween.finished 
 		get_tree().change_scene_to_file(battle_scene_path)
