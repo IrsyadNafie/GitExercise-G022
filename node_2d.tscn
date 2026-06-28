@@ -2,4 +2,8 @@
 
 [node name="Node2D" type="Node2D" unique_id=1879588956]
 
+<<<<<<< HEAD
 [node name="Node2D" type="StaticBody2D" parent="." unique_id=2089755223]
+=======
+[node name="Node2D" type="StaticBody2D" parent="." unique_id=2089755223]
+>>>>>>> f79ce6e18c6d3f5be051888f73ef58dcf883cb4e
