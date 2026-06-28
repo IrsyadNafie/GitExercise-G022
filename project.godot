@@ -12,6 +12,10 @@ config_version=5
 
 config/features=PackedStringArray("4.6")
 
+[audio]
+
+buses/default_bus_layout=""
+
 [autoload]
 
 GameManager="*uid://cnd7w73b5l2ln"

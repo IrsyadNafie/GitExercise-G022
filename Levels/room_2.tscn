@@ -14,23 +14,16 @@
 [ext_resource type="Script" uid="uid://dnkktpeqel27m" path="res://overworld_enemy.gd" id="12_vdo4q"]
 [ext_resource type="Script" uid="uid://cqtim6r1iim0a" path="res://room_2.gd" id="1_f6ttu"]
 [ext_resource type="Script" uid="uid://bu6infk68sg7v" path="res://player.gd" id="2_m4i11"]
-[ext_resource type="Texture2D" uid="uid://cn4oafs7ljlev" path="res://icon.svg" id="3_8y4ya"]
+[ext_resource type="Texture2D" uid="uid://d1i2h23am0me0" path="res://character/square-idle-ow.png" id="3_f6ttu"]
 [ext_resource type="Texture2D" uid="uid://b4dbupg8jhcmr" path="res://InteractableObjects/yellowkeygodot.png" id="4_lmlth"]
-[ext_resource type="Script" path="res://door.gd" id="5_ak5d5"]
-[ext_resource type="Texture2D" uid="uid://bw8myfm63w853" path="res://InteractableObjects/door.webp" id="6_pvwcq"]
 [ext_resource type="Script" uid="uid://25n7qtud6y3r" path="res://ui.gd" id="7_xeie2"]
 [ext_resource type="PackedScene" uid="uid://maigb36gp0oq" path="res://LevelFeatures/shop_ui.tscn" id="8_6depd"]
 [ext_resource type="Texture2D" uid="uid://d341voauasuvs" path="res://LevelDesign/background2godot.png" id="9_6j6iw"]
+[ext_resource type="PackedScene" uid="uid://b8sih6ljgrddi" path="res://character/square_walk.tscn" id="9_m4i11"]
 [ext_resource type="Texture2D" uid="uid://cveoxtjt1ukje" path="res://LevelDesign/floorgodot2.png" id="10_v2all"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w3sgd"]
-size = Vector2(131, 127)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vy8vn"]
 size = Vector2(2413, 24.136215)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfw8o"]
-size = Vector2(134, 174.5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_l7adx"]
 font_size = 24
@@ -43,29 +36,11 @@ size = Vector2(128, 126)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4vpdd"]
 size = Vector2(139, 135)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8y4ya"]
+size = Vector2(131, 127)
 
 [node name="Room2" type="Node2D" unique_id=1740046475]
 script = ExtResource("1_f6ttu")
-
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1746308841]
-script = ExtResource("2_m4i11")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=275133790]
-position = Vector2(128, 544)
-texture = ExtResource("3_8y4ya")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1574175937]
-position = Vector2(127, 542)
-shape = SubResource("RectangleShape2D_w3sgd")
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1410834349]
-position = Vector2(582, 319)
-
-[node name="EquippedItem" type="Sprite2D" parent="Player" unique_id=1186414104]
-position = Vector2(194, 547)
-rotation = -2.4320476
-scale = Vector2(0.1826043, 0.15068357)
-texture = ExtResource("4_lmlth")
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=1224619748]
 z_index = 1
@@ -73,28 +48,6 @@ z_index = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1662655475]
 position = Vector2(1209, 656)
 shape = SubResource("RectangleShape2D_vy8vn")
-
-[node name="Door" type="Area2D" parent="." unique_id=1652720444]
-script = ExtResource("5_ak5d5")
-next_scene = "res://Levels/maindemo.tscn"
-
-[node name="Sprite2D" type="Sprite2D" parent="Door" unique_id=1465419252]
-z_index = -1
-position = Vector2(154.00012, 565)
-scale = Vector2(0.29416665, 0.26166666)
-texture = ExtResource("6_pvwcq")
-
-[node name="PressE" type="Label" parent="Door" unique_id=812825504]
-visible = false
-offset_left = 125.0
-offset_top = 414.0
-offset_right = 193.0
-offset_bottom = 460.0
-text = "Press E"
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Door" unique_id=774090604]
-position = Vector2(152, 536)
-shape = SubResource("RectangleShape2D_qfw8o")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1708865286]
 script = ExtResource("7_xeie2")
@@ -368,6 +321,35 @@ shape = SubResource("RectangleShape2D_4vpdd")
 
 [connection signal="body_entered" from="OverworldEnemy/Hitbox" to="OverworldEnemy" method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="OverworldEnemy2/Hitbox" to="OverworldEnemy2" method="_on_hitbox_body_entered"]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=805891176]
+z_index = 3
+position = Vector2(475, 343)
+script = ExtResource("2_m4i11")
+
+[node name="AnimatedChar" parent="Player" unique_id=1129597056 instance=ExtResource("9_m4i11")]
+position = Vector2(-398, 3.8146973e-06)
+scale = Vector2(0.408, 0.408)
+
+[node name="EquippedItem2" type="Sprite2D" parent="Player" unique_id=180300359]
+visible = false
+position = Vector2(-302, 61.000004)
+scale = Vector2(0.408, 0.408)
+texture = ExtResource("3_f6ttu")
+flip_h = true
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1331727366]
+position = Vector2(-294, 156)
+shape = SubResource("RectangleShape2D_8y4ya")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=539857532]
+
+[node name="EquippedItem" type="Sprite2D" parent="Player" unique_id=1377504198]
+position = Vector2(-257, 154)
+rotation = -2.4320476
+scale = Vector2(0.1826043, 0.15068357)
+texture = ExtResource("4_lmlth")
+
 [connection signal="pressed" from="UI/SaveMenu/SaveSlot1Btn" to="UI" method="_on_save_slot_1_btn_pressed"]
 [connection signal="pressed" from="UI/SaveMenu/LoadSlot1Btn" to="UI" method="_on_load_slot_1_btn_pressed"]
 [connection signal="pressed" from="UI/SaveMenu/SaveSlot2Btn" to="UI" method="_on_save_slot_2_btn_pressed"]

@@ -3,6 +3,10 @@ extends CharacterBody2D
 @onready var equipped_item = $EquippedItem
 @onready var camera = $Camera2D
 
+@onready var character_body_2d: CharacterBody2D = $"."
+@onready var anim = $AnimatedChar/SquareWalk/AnimationPlayer
+@onready var sprite = $AnimatedChar/SquareWalk
+
 
 # PLAYER STATES
 var stunned = false
@@ -64,6 +68,8 @@ func _process(delta):
 # EQUIPPED ITEM VISUAL
 
 func update_equipped_item(item_name):
+	if equipped_item == null:
+		return
 
 	if item_name == "Key":
 		equipped_item.texture = preload("res://InteractableObjects/yellowkeygodot.png")
@@ -94,10 +100,16 @@ func _physics_process(delta):
 	# Auto walk during level clear
 	if level_clear_mode:
 		handle_level_clear()
+		update_animation()
 		move_and_slide()
 		return
 		
+	update_animation()
+	move_and_slide()
+
 	# MOVEMENT
+	
+	
 	
 	if not stunned:
 
@@ -105,15 +117,16 @@ func _physics_process(delta):
 
 		if Input.is_action_pressed("ui_right"):
 			direction = 1
+			
 
 		if Input.is_action_pressed("ui_left"):
 			direction = -1
+			
 
 		velocity.x = direction * speed
 
 	else:
 		velocity.x = 0
-
 
 	# JUMP
 
@@ -122,6 +135,19 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+#Character Animation -- Cinda
+func update_animation():
+	if abs(velocity.x) > 5:
+		if anim.current_animation != "square_walk":
+			anim.play("square_walk")
+
+		if velocity.x > 0:
+			sprite.flip_h = true
+		elif velocity.x < 0:
+			sprite.flip_h = false
+	else:
+		if anim.current_animation != "idle":
+			anim.play("idle")
 	
 	# FALL DAMAGE CHECK
 	
