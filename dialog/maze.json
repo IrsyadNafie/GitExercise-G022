@@ -1,0 +1,25 @@
+{
+
+	"start": {
+		"text": "Looks like we're trapped in a maze.." ,
+		"name": "Square",
+		"next": "1",
+	},
+	
+	"1": {
+		"text": "I should find a way out!" ,
+		"name": "Square",
+		"next": "2",
+	},
+	
+	"2": {
+		"text": "Use A,S,W,D or Arrow key to move around" ,
+		"name": "",
+		"next": "end",
+	},
+	
+	"end": {
+		"trigger": "ENDCODE"
+	}
+	
+}

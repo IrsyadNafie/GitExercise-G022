@@ -44,6 +44,11 @@
 	"7": {
 		"text": "Respice finem!" ,
 		"name": "Future Square",
+		"next": "end"
+	},
+	
+	"end": {
+		"trigger": "ENDCODE"
 	}
 	
 }

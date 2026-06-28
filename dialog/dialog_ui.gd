@@ -16,7 +16,7 @@ var next_block: Dictionary
 
 
 func _ready() -> void:
-	get_json("res://intro.json")
+	get_json("res://dialog/dialog.json")
 	load_block(current_block)
 	
 func get_json(src: String):
@@ -26,11 +26,16 @@ func get_json(src: String):
 	
 func load_block(block : Dictionary):
 	if block.has("text"): char_text.text = block["text"]
+	if block.has("name"): char_name.text = block["name"]
 
 	if block.has("next"):
 		var key = block["next"]
 		next_block = scene_script[key]
 	pass
+	
+	if block.has("trigger"):
+		if block["trigger"] == "ENDCODE":
+			get_tree().quit()
 	
 func next():
 	current_block = next_block

@@ -1,0 +1,53 @@
+{
+	"start": {
+		"text": "Welcome traveller..." ,
+		"next": "1",
+	},
+	
+	"1": {
+		"text": "I will do a quick guide for you" ,
+		"next": "2",
+	},
+	
+	"2": {
+		"text": "Press 'A', 'D' or arrow keys to move." ,
+		"next": "3",
+	},
+	
+	"3": {
+		"text": "Press 'M' to open setting and menu, where you can also save your game" ,
+		"next": "4",
+	},
+	
+	"4": {
+		"text": "Press 'I' to open shop" ,
+		"next": "5",
+	},
+	
+	"5": {
+		"text": "Press 'G' to drop item" ,
+		"next": "6",
+	},
+	
+	"6": {
+		"text": "Press '1-5' to chose inventory slot" ,
+		"next": "7",
+	},
+	
+	"7": {
+		"text": "There will be coin scattered around the map for you to buy something" ,
+		"next": "8",
+	},
+	
+	
+	"8": {
+		"text": "I think that should be all... 
+				 Enjoy!",
+		"next": "end"
+	},
+	
+	"end": {
+		"trigger": "ENDCODE"
+	}
+
+}

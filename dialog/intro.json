@@ -10,21 +10,25 @@
 		"next": "2",
 	},
 	
-		"2": {
+	"2": {
 		"text": "Until one day, a sudden fracture tore through space and time. 
 				A large gap opened beneath the ground, revealing a tower that slowly rose toward the heavens",
 		"next": "3",
 	},
 	
-		"3": {
+	"3": {
 		"text": "CIRCLE immediately went to investigate, followed closely by TRIANGLE. 
 				But no news was ever heard from them again",
 		"next": "4",
 	},
 	
-		"4": {
+	"4": {
 		"text": "With no other choice, SQUARE committed a selfless act, 
 				deciding to delve into the Tower to solve the mysteries within",
-	}
+		"next": "end"
+	},
 	
+	"end": {
+		"trigger": "ENDCODE"
+	}
 }

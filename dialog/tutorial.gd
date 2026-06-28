@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 
 @export_file("*.json") var jsonsrc
 var scene_script: Dictionary
@@ -16,7 +16,7 @@ var next_block: Dictionary
 
 
 func _ready() -> void:
-	get_json("res://dialog.json")
+	get_json("res://dialog/tutorial.json")
 	load_block(current_block)
 	
 func get_json(src: String):
@@ -32,6 +32,10 @@ func load_block(block : Dictionary):
 		var key = block["next"]
 		next_block = scene_script[key]
 	pass
+	
+	if block.has("trigger"):
+		if block["trigger"] == "ENDCODE":
+			get_tree().quit()
 	
 func next():
 	current_block = next_block

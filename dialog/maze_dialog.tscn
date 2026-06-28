@@ -1,16 +1,16 @@
-[gd_scene format=3 uid="uid://sc1j37ad1r58"]
+[gd_scene format=3 uid="uid://c8b7wf8mw4yfk"]
 
-[ext_resource type="Script" uid="uid://csixku4krvx1x" path="res://dialog_ui.gd" id="1_ewnsd"]
+[ext_resource type="Script" uid="uid://txlmq8g32qm" path="res://dialog/maze_dialog.gd" id="1_4wqn2"]
 
-[node name="DialogUI" type="Node2D" unique_id=1322896340 node_paths=PackedStringArray("char_text", "char_name", "BaseLayer")]
-script = ExtResource("1_ewnsd")
-char_text = NodePath("CanvasLayer/Panel/text")
-char_name = NodePath("CanvasLayer/Panel/name")
-BaseLayer = NodePath("CanvasLayer")
+[node name="Node2D" type="Node2D" unique_id=543376655]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1641359744]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=229170882 node_paths=PackedStringArray("char_text", "char_name")]
+script = ExtResource("1_4wqn2")
+char_text = NodePath("Panel/text")
+char_name = NodePath("Panel/name")
 
-[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1088740594]
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=2068984654]
+self_modulate = Color(0.39215687, 0, 0, 1)
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -24,7 +24,7 @@ grow_horizontal = 2
 grow_vertical = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="name" type="Label" parent="CanvasLayer/Panel" unique_id=1104982580]
+[node name="name" type="Label" parent="CanvasLayer/Panel" unique_id=358128123]
 layout_mode = 0
 offset_left = 22.0
 offset_top = 14.0
@@ -33,7 +33,7 @@ offset_bottom = 42.0
 text = "NAME"
 metadata/_edit_use_anchors_ = true
 
-[node name="text" type="Label" parent="CanvasLayer/Panel" unique_id=2129623971]
+[node name="text" type="Label" parent="CanvasLayer/Panel" unique_id=1957793335]
 layout_mode = 0
 offset_left = 27.0
 offset_top = 60.0
@@ -42,7 +42,7 @@ offset_bottom = 123.0
 text = "text"
 metadata/_edit_use_anchors_ = true
 
-[node name="_press enter_" type="Label" parent="CanvasLayer/Panel" unique_id=952061943]
+[node name="_press enter_" type="Label" parent="CanvasLayer/Panel" unique_id=844023102]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.50498337
