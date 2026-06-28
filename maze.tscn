@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://rt6fadxcr4e2" path="res://tile_test.png" id="1_h41xc"]
 [ext_resource type="Texture2D" uid="uid://bg0ffy51sx7j1" path="res://icon.svg" id="2_u11kd"]
 [ext_resource type="Script" uid="uid://df0peoylrq541" path="res://character_body_2d.gd" id="3_u11kd"]
+[ext_resource type="PackedScene" uid="uid://cvxvijo2mu3la" path="res://LevelFeatures/end_flag.tscn" id="5_ugm30"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u11kd"]
 texture = ExtResource("1_h41xc")
@@ -92,6 +93,11 @@ size = Vector2(20, 88)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgab2"]
 size = Vector2(20, 92)
 
+[sub_resource type="GDScript" id="GDScript_1nuxl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ugm30"]
+size = Vector2(112.42731, 199.50769)
+
 [node name="Level 1" type="Node2D" unique_id=1275918379]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=163319468]
@@ -129,3 +135,19 @@ shape = SubResource("RectangleShape2D_1nuxl")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1307371556]
 position = Vector2(1965, 494)
 shape = SubResource("RectangleShape2D_pgab2")
+
+[node name="DoorExit" type="Node2D" parent="." unique_id=2132454701]
+position = Vector2(1918, 471)
+scale = Vector2(-0.42694077, 0.26565385)
+script = SubResource("GDScript_1nuxl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorExit" unique_id=1235330906]
+position = Vector2(-4.6847534, 101.63596)
+shape = SubResource("RectangleShape2D_ugm30")
+
+[node name="ExitPoint" type="Marker2D" parent="DoorExit" unique_id=1774715212]
+position = Vector2(96.032104, 131.7504)
+
+[node name="EndFlag" parent="DoorExit" unique_id=1532750655 node_paths=PackedStringArray("exit_door") instance=ExtResource("5_ugm30")]
+position = Vector2(89.00476, 82.814514)
+exit_door = NodePath("../ExitPoint")

@@ -11,3 +11,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	
+
+
+func _on_end_flag_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

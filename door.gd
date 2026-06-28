@@ -1,23 +1,25 @@
 extends Area2D
 
-var player_near = false
+@export_file("*.tscn") var next_scene : String
 
-@export var next_scene : String
+var player_inside = false
 
 func _ready():
-	body_entered.connect(_on_body_entered)
-	body_exited.connect(_on_body_exited)
+	$Label.visible = false
 
-func _process(delta):
-	if player_near and Input.is_action_just_pressed("interact"):
-		get_tree().change_scene_to_file(next_scene)
 
 func _on_body_entered(body):
 	if body.name == "Player":
-		player_near = true
-		$PressE.visible = true
+		player_inside = true
+		$Label.visible = true
+
 
 func _on_body_exited(body):
 	if body.name == "Player":
-		player_near = false
-		$PressE.visible = false
+		player_inside = false
+		$Label.visible = false
+
+
+func _process(delta):
+	if player_inside and Input.is_action_just_pressed("interact"):
+		get_tree().change_scene_to_file(next_scene)
