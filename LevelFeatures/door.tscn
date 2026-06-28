@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bayywigv1y606"]
+
+[ext_resource type="Texture2D" uid="uid://dhuv4nebuobi" path="res://LevelDesign/DoorGeometric.png" id="1_ba8gm"]
+[ext_resource type="Script" uid="uid://rqjgk0rln81" path="res://door.gd" id="1_v6xrn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0phs7"]
+size = Vector2(281, 431)
+
+[node name="Door" type="Area2D" unique_id=661557474]
+script = ExtResource("1_v6xrn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1308725075]
+modulate = Color(1.6938539, 1.6938539, 1.6938539, 1)
+texture = ExtResource("1_ba8gm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1465784163]
+position = Vector2(-3.5, 34.5)
+shape = SubResource("RectangleShape2D_0phs7")
+
+[node name="Label" type="Label" parent="." unique_id=1949144419]
+offset_left = -32.0
+offset_top = -229.0
+offset_right = 23.0
+offset_bottom = -206.0
+text = "Press E"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
