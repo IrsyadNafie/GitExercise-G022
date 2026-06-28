@@ -1,16 +1,9 @@
-<<<<<<< HEAD
-[gd_scene load_steps=11 format=3 uid="uid://bcs2j4l7daxee"]
-=======
 [gd_scene format=3 uid="uid://bcs2j4l7daxee"]
->>>>>>> cb54a30 (volume, fullscreen)
 
 [ext_resource type="Script" uid="uid://c2dr85dtd8ks4" path="res://setting.gd" id="1_110nh"]
 [ext_resource type="FontFile" uid="uid://b6lro2q7ygs7h" path="res://Symtext.ttf" id="1_a42w7"]
 [ext_resource type="Script" uid="uid://c5nevmmkqlx7y" path="res://volume.gd" id="3_lv82f"]
-<<<<<<< HEAD
-=======
 [ext_resource type="Script" uid="uid://4ytruas7que0" path="res://fullscreen.gd" id="4_q554q"]
->>>>>>> cb54a30 (volume, fullscreen)
 [ext_resource type="AudioStream" uid="uid://cnjqtw02uuyp0" path="res://Walen - Freedom Motivation (freetouse.com).wav" id="4_twti6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q554q"]
@@ -37,30 +30,17 @@ corner_radius_bottom_left = 15
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_110nh"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_8cg5j"]
-<<<<<<< HEAD
-color = Color(0.391331, 0.0587928, 0.0108181, 1)
-thickness = 2
-vertical = true
-=======
 color = Color(0.40811807, 0.06885064, 0, 1)
 thickness = 3
->>>>>>> cb54a30 (volume, fullscreen)
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_4ynqn"]
 color = Color(1, 1, 1, 1)
 thickness = 4
 
-<<<<<<< HEAD
-[node name="seting" type="CanvasLayer"]
-script = ExtResource("1_110nh")
-
-[node name="Panel" type="Panel" parent="."]
-=======
 [node name="seting" type="CanvasLayer" unique_id=1067348594]
 script = ExtResource("1_110nh")
 
 [node name="Panel" type="Panel" parent="." unique_id=152228536]
->>>>>>> cb54a30 (volume, fullscreen)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -115,19 +95,6 @@ text = "Setting"
 [node name="volume" type="HSlider" parent="Panel" unique_id=467428477]
 layout_mode = 0
 offset_left = 233.0
-<<<<<<< HEAD
-offset_top = 113.0
-offset_right = 444.0
-offset_bottom = 158.0
-theme_override_styles/slider = SubResource("StyleBoxLine_8cg5j")
-theme_override_styles/grabber_area = SubResource("StyleBoxLine_4ynqn")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_4ynqn")
-max_value = 1.0
-step = 0.05
-value = 1.0
-script = ExtResource("3_lv82f")
-audio_bus_name = "Music"
-=======
 offset_top = 137.0
 offset_right = 444.0
 offset_bottom = 182.0
@@ -138,20 +105,13 @@ max_value = 1.0
 step = 0.05
 script = ExtResource("3_lv82f")
 audio_bus_name = "Master"
->>>>>>> cb54a30 (volume, fullscreen)
 
 [node name="fullscreen" type="CheckButton" parent="Panel" unique_id=1831060887]
 layout_mode = 0
 offset_left = 53.5
-<<<<<<< HEAD
-offset_top = 164.0
-offset_right = 447.5
-offset_bottom = 239.0
-=======
 offset_top = 206.0
 offset_right = 447.5
 offset_bottom = 281.0
->>>>>>> cb54a30 (volume, fullscreen)
 theme_override_fonts/font = ExtResource("1_a42w7")
 theme_override_font_sizes/font_size = 25
 text = "Fullscreen"
@@ -160,48 +120,18 @@ script = ExtResource("4_q554q")
 [node name="\'volume\'" type="Label" parent="Panel" unique_id=2109864840]
 layout_mode = 0
 offset_left = 60.5
-<<<<<<< HEAD
-offset_top = 117.0
-offset_right = 174.5
-offset_bottom = 155.0
-=======
 offset_top = 137.0
 offset_right = 174.5
 offset_bottom = 175.0
->>>>>>> cb54a30 (volume, fullscreen)
 theme_override_fonts/font = ExtResource("1_a42w7")
 theme_override_font_sizes/font_size = 25
 text = "Volume"
 
-<<<<<<< HEAD
-[node name="\'control\'" type="Button" parent="Panel"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -198.0
-offset_top = -128.0
-offset_right = 198.0
-offset_bottom = -85.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("1_a42w7")
-theme_override_font_sizes/font_size = 20
-text = "Control"
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-=======
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=959372960]
->>>>>>> cb54a30 (volume, fullscreen)
 stream = ExtResource("4_twti6")
 autoplay = true
 
 [connection signal="pressed" from="Panel/back" to="." method="_on_back_pressed"]
 [connection signal="value_changed" from="Panel/volume" to="." method="_on_volume_value_changed"]
 [connection signal="value_changed" from="Panel/volume" to="Panel/volume" method="_on_value_changed"]
-<<<<<<< HEAD
-=======
 [connection signal="toggled" from="Panel/fullscreen" to="Panel/fullscreen" method="_on_toggled"]
->>>>>>> cb54a30 (volume, fullscreen)
