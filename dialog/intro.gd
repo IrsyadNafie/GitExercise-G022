@@ -35,7 +35,7 @@ func load_block(block : Dictionary):
 	
 	if block.has("trigger"):
 		if block["trigger"] == "ENDCODE":
-			get_tree().quit()
+			get_tree().change_scene_to_file("res://dialog/tutorial.tscn")
 	
 func next():
 	current_block = next_block

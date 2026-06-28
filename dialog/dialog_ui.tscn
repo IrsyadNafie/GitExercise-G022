@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://sc1j37ad1r58"]
 
 [ext_resource type="Script" uid="uid://csixku4krvx1x" path="res://dialog/dialog_ui.gd" id="1_ewnsd"]
+[ext_resource type="Texture2D" uid="uid://ccoqhm062ovxd" path="res://LevelDesign/king.png" id="2_tffci"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tffci"]
+bg_color = Color(0.116417594, 0, 0.004372303, 0.68235296)
 
 [node name="DialogUI" type="Node2D" unique_id=1322896340 node_paths=PackedStringArray("char_text", "char_name", "BaseLayer")]
 script = ExtResource("1_ewnsd")
@@ -56,3 +60,13 @@ offset_right = 262.0
 offset_bottom = 71.0
 text = "press \"enter\" to continue"
 metadata/_edit_use_anchors_ = true
+
+[node name="Panel2" type="Panel" parent="." unique_id=1402413151]
+offset_right = 1154.0
+offset_bottom = 649.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tffci")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=277416229]
+position = Vector2(326.00003, 316.00003)
+scale = Vector2(0.5151148, 0.5151148)
+texture = ExtResource("2_tffci")

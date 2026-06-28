@@ -1,26 +1,16 @@
-[gd_scene format=3 uid="uid://bydtqbgthicrm"]
+[gd_scene format=3 uid="uid://dcwm66fqkxywo"]
 
-[ext_resource type="Script" uid="uid://bu6infk68sg7v" path="res://player.gd" id="1_h83ob"]
-[ext_resource type="Script" path="res://room_2.gd" id="1_w3sgd"]
-[ext_resource type="Texture2D" uid="uid://dqqppc8dspppw" path="res://icon.svg" id="2_ttdm0"]
-[ext_resource type="Texture2D" uid="uid://b4dbupg8jhcmr" path="res://yellowkeygodot.png" id="4_f7hpu"]
-[ext_resource type="Script" path="res://door.gd" id="4_qfw8o"]
-[ext_resource type="Texture2D" uid="uid://bw8myfm63w853" path="res://door.webp" id="5_w3sgd"]
-[ext_resource type="Script" uid="uid://25n7qtud6y3r" path="res://ui.gd" id="7_vy8vn"]
-[ext_resource type="PackedScene" path="res://coin.tscn" id="8_1untl"]
-[ext_resource type="PackedScene" path="res://shop_ui.tscn" id="9_l7adx"]
-[ext_resource type="Texture2D" uid="uid://d341voauasuvs" path="res://background2godot.png" id="10_vdo4q"]
-[ext_resource type="Texture2D" uid="uid://cveoxtjt1ukje" path="res://floorgodot2.png" id="11_4sbp3"]
-[ext_resource type="Script" uid="uid://dnkktpeqel27m" path="res://overworld_enemy.gd" id="12_vdo4q"]
-[ext_resource type="Script" uid="uid://cqtim6r1iim0a" path="res://room_2.gd" id="1_f6ttu"]
+[ext_resource type="Script" path="res://room_2.gd" id="1_f6ttu"]
 [ext_resource type="Script" uid="uid://bu6infk68sg7v" path="res://player.gd" id="2_m4i11"]
+[ext_resource type="Texture2D" uid="uid://bg0ffy51sx7j1" path="res://icon.svg" id="2_ttdm0"]
 [ext_resource type="Texture2D" uid="uid://d1i2h23am0me0" path="res://character/square-idle-ow.png" id="3_f6ttu"]
 [ext_resource type="Texture2D" uid="uid://b4dbupg8jhcmr" path="res://InteractableObjects/yellowkeygodot.png" id="4_lmlth"]
-[ext_resource type="Script" uid="uid://25n7qtud6y3r" path="res://ui.gd" id="7_xeie2"]
+[ext_resource type="Script" path="res://ui.gd" id="7_xeie2"]
 [ext_resource type="PackedScene" uid="uid://maigb36gp0oq" path="res://LevelFeatures/shop_ui.tscn" id="8_6depd"]
 [ext_resource type="Texture2D" uid="uid://d341voauasuvs" path="res://LevelDesign/background2godot.png" id="9_6j6iw"]
 [ext_resource type="PackedScene" uid="uid://b8sih6ljgrddi" path="res://character/square_walk.tscn" id="9_m4i11"]
 [ext_resource type="Texture2D" uid="uid://cveoxtjt1ukje" path="res://LevelDesign/floorgodot2.png" id="10_v2all"]
+[ext_resource type="Script" path="res://overworld_enemy.gd" id="12_vdo4q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vy8vn"]
 size = Vector2(2413, 24.136215)
@@ -36,6 +26,7 @@ size = Vector2(128, 126)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4vpdd"]
 size = Vector2(139, 135)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8y4ya"]
 size = Vector2(131, 127)
 
@@ -319,8 +310,6 @@ scale = Vector2(1, 0.98545647)
 position = Vector2(2.5, -0.5)
 shape = SubResource("RectangleShape2D_4vpdd")
 
-[connection signal="body_entered" from="OverworldEnemy/Hitbox" to="OverworldEnemy" method="_on_hitbox_body_entered"]
-[connection signal="body_entered" from="OverworldEnemy2/Hitbox" to="OverworldEnemy2" method="_on_hitbox_body_entered"]
 [node name="Player" type="CharacterBody2D" parent="." unique_id=805891176]
 z_index = 3
 position = Vector2(475, 343)
@@ -357,3 +346,5 @@ texture = ExtResource("4_lmlth")
 [connection signal="pressed" from="UI/SaveMenu/SaveSlot3Btn" to="UI" method="_on_save_slot_3_btn_pressed"]
 [connection signal="pressed" from="UI/SaveMenu/LoadSlot3Btn" to="UI" method="_on_load_slot_3_btn_pressed"]
 [connection signal="pressed" from="UI/SaveMenu/CloseSaveBtn" to="UI" method="_on_close_save_btn_pressed"]
+[connection signal="body_entered" from="OverworldEnemy/Hitbox" to="OverworldEnemy" method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="OverworldEnemy2/Hitbox" to="OverworldEnemy2" method="_on_hitbox_body_entered"]

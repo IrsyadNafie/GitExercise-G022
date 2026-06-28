@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var enemy_id: String = "map_enemy_1"
-@export var battle_scene_path: String = "res://control.tscn"
+@export var battle_scene_path: String = "res://dialog/dialog_ui.tscn"
 
 var can_start_battle: bool = false
 var speed = 80
