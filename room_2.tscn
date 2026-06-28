@@ -332,7 +332,7 @@ scale = Vector2(105.28593, -1.8560784)
 shape = SubResource("RectangleShape2D_ol5p6")
 
 [node name="OverworldEnemy" type="CharacterBody2D" parent="." unique_id=275365266]
-position = Vector2(222, 0)
+position = Vector2(-784, 0)
 script = ExtResource("12_vdo4q")
 
 [node name="Sprite2D" type="Sprite2D" parent="OverworldEnemy" unique_id=1808312709]
@@ -368,7 +368,8 @@ position = Vector2(478.00006, 551)
 scale = Vector2(1, 0.98545647)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverworldEnemy2/Hitbox" unique_id=1542391658]
-position = Vector2(2.5, -0.5)
+position = Vector2(2.5, -0.5000305)
+scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_4vpdd")
 
 [connection signal="body_entered" from="OverworldEnemy/Hitbox" to="OverworldEnemy" method="_on_hitbox_body_entered"]

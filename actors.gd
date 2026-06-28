@@ -9,6 +9,7 @@ signal action_logged(text_to_display: String)
 @export var is_player: bool = true
 @export var attack_name: String = "attack"
 @export var is_aoe_attack: bool = false
+@export var visual_sprite: CanvasItem
 
 @export_category("Battle Stats")
 @export var max_hp: int = 10
@@ -108,6 +109,43 @@ func take_damage(amount: int) -> void:
 	print("--------------------")
 	
 	update_bars()
+	
+	var indicator_scene = preload("res://damage_indicator.tscn")
+	var indicator = indicator_scene.instantiate()
+	indicator.damage_amount = amount
+	get_tree().current_scene.add_child(indicator)
+	
+	if visual_sprite:
+		if "size" in visual_sprite:
+			indicator.global_position = visual_sprite.global_position + Vector2(visual_sprite.size.x / 2.0, -25)
+		else:
+			indicator.global_position = visual_sprite.global_position + Vector2(0, -25)
+	else:
+		indicator.global_position = self.global_position + Vector2(0, -25)
+		
+	if visual_sprite:
+		visual_sprite.modulate = Color(0.6, 0.0, 0.0) 
+		
+		var hit_tween = create_tween()
+		
+		if "offset" in visual_sprite:
+			visual_sprite.offset = Vector2.ZERO 
+			hit_tween.tween_property(visual_sprite, "offset", Vector2(-8, -15), 0.05)
+			hit_tween.tween_property(visual_sprite, "offset", Vector2(8, -5), 0.05)
+			hit_tween.tween_property(visual_sprite, "offset", Vector2(6, -5), 0.05)
+			hit_tween.tween_property(visual_sprite, "offset", Vector2(-6, 0), 0.05)
+			hit_tween.tween_property(visual_sprite, "offset", Vector2(0, 0), 0.05)
+			
+		else:
+			var base_pos = visual_sprite.position
+			hit_tween.tween_property(visual_sprite, "position", base_pos + Vector2(-8, -15), 0.05)
+			hit_tween.tween_property(visual_sprite, "position", base_pos + Vector2(8, -5), 0.05)
+			hit_tween.tween_property(visual_sprite, "position", base_pos + Vector2(6, -5), 0.05)
+			hit_tween.tween_property(visual_sprite, "position", base_pos + Vector2(-6, 0), 0.05)
+			hit_tween.tween_property(visual_sprite, "position", base_pos, 0.05)
+		
+		var color_tween = create_tween()
+		color_tween.tween_property(visual_sprite, "modulate", Color(1, 1, 1), 0.4).set_delay(0.1)
 
 func apply_status(new_effect: StatusEffect) -> void:
 	active_statuses.append({

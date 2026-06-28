@@ -414,10 +414,11 @@ script = ExtResource("1_qtu10")
 [node name="Actors" type="Node2D" parent="." unique_id=1497777895]
 position = Vector2(24, -158)
 
-[node name="Player1" type="Node2D" parent="Actors" unique_id=267814346]
+[node name="Player1" type="Node2D" parent="Actors" unique_id=267814346 node_paths=PackedStringArray("visual_sprite")]
 script = ExtResource("2_kbped")
 character_name = "Square"
 attack_name = "swing"
+visual_sprite = NodePath("Player1")
 max_sp = 8
 base_attack = 4
 sp_attack = 2
@@ -488,12 +489,13 @@ position = Vector2(1017.5, 307.5)
 scale = Vector2(0.17300004, 0.09000003)
 texture = ExtResource("9_8jbwv")
 
-[node name="Player2" type="Node2D" parent="Actors" unique_id=1507940198]
+[node name="Player2" type="Node2D" parent="Actors" unique_id=1507940198 node_paths=PackedStringArray("visual_sprite")]
 position = Vector2(-31, 151)
 script = ExtResource("2_kbped")
 character_name = "Circle"
 attack_name = "bash"
 is_aoe_attack = true
+visual_sprite = NodePath("Player2")
 max_hp = 15
 max_sp = 6
 sp_attack = 1
@@ -564,11 +566,12 @@ position = Vector2(1016.99994, 305)
 scale = Vector2(0.17300004, 0.09000003)
 texture = ExtResource("9_8jbwv")
 
-[node name="Player3" type="Node2D" parent="Actors" unique_id=2036492965]
+[node name="Player3" type="Node2D" parent="Actors" unique_id=2036492965 node_paths=PackedStringArray("visual_sprite")]
 position = Vector2(-5, 301)
 script = ExtResource("2_kbped")
 character_name = "Triangle"
 attack_name = "shoot"
+visual_sprite = NodePath("Player3")
 max_hp = 8
 max_sp = 10
 base_attack = 5
@@ -640,10 +643,11 @@ position = Vector2(1016.99994, 311)
 scale = Vector2(0.17300004, 0.09000003)
 texture = ExtResource("9_8jbwv")
 
-[node name="Enemy1" type="Node2D" parent="Actors" unique_id=907974663]
+[node name="Enemy1" type="Node2D" parent="Actors" unique_id=907974663 node_paths=PackedStringArray("visual_sprite")]
 position = Vector2(-911, 9)
 script = ExtResource("3_ee4bf")
 character_name = "Enemy1"
+visual_sprite = NodePath("Sprite")
 base_attack = 5
 skills = Array[ExtResource("3_fj5cn")]([ExtResource("18_kuuv8")])
 
@@ -691,10 +695,11 @@ position = Vector2(1018.99994, 306)
 scale = Vector2(0.17300004, 0.09000003)
 texture = ExtResource("9_8jbwv")
 
-[node name="Enemy2" type="Node2D" parent="Actors" unique_id=503890181]
+[node name="Enemy2" type="Node2D" parent="Actors" unique_id=503890181 node_paths=PackedStringArray("visual_sprite")]
 position = Vector2(-869, 157)
 script = ExtResource("3_ee4bf")
 character_name = "Enemy2"
+visual_sprite = NodePath("Sprite")
 base_attack = 5
 skills = Array[ExtResource("3_fj5cn")]([ExtResource("19_ou021")])
 
@@ -742,11 +747,12 @@ position = Vector2(1017.99994, 305)
 scale = Vector2(0.17300004, 0.09000003)
 texture = ExtResource("9_8jbwv")
 
-[node name="Enemy3" type="Node2D" parent="Actors" unique_id=1296802778]
+[node name="Enemy3" type="Node2D" parent="Actors" unique_id=1296802778 node_paths=PackedStringArray("visual_sprite")]
 position = Vector2(-911, 295)
 script = ExtResource("3_ee4bf")
 character_name = "Enemy3"
 is_aoe_attack = true
+visual_sprite = NodePath("Sprite")
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Enemy3" unique_id=289262223]
 offset_left = 944.00006
@@ -928,8 +934,8 @@ polygon = PackedVector2Array(0, 0, 7, -6.1111107, 7, 0, 7, 7.333333)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=849006240]
 modulate = Color(1, 0.61960787, 1, 1)
 z_index = -9
-position = Vector2(-732, 360)
-scale = Vector2(0.66666657, 0.66666657)
+position = Vector2(575.00006, 327.50003)
+scale = Vector2(0.6031249, 0.5953703)
 sprite_frames = SubResource("SpriteFrames_b6gc8")
 autoplay = "default"
 frame = 20
