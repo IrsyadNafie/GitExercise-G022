@@ -1,0 +1,156 @@
+[gd_scene format=3 uid="uid://dtujvdoxoyw4b"]
+
+[ext_resource type="Script" uid="uid://c2dr85dtd8ks4" path="res://setting.gd" id="1_110nh"]
+[ext_resource type="FontFile" uid="uid://b6lro2q7ygs7h" path="res://Symtext.ttf" id="1_a42w7"]
+[ext_resource type="Script" uid="uid://c5nevmmkqlx7y" path="res://volume.gd" id="3_lv82f"]
+[ext_resource type="Script" uid="uid://4ytruas7que0" path="res://fullscreen.gd" id="4_q554q"]
+[ext_resource type="AudioStream" uid="uid://cnjqtw02uuyp0" path="res://Walen - Freedom Motivation (freetouse.com).wav" id="4_twti6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q554q"]
+bg_color = Color(0.992157, 0.92549, 0.913725, 0.737255)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twti6"]
+bg_color = Color(0.188235, 0, 0.00392157, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lv82f"]
+bg_color = Color(0.384314, 0.211765, 0.192157, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_110nh"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_8cg5j"]
+color = Color(0.40811807, 0.06885064, 0, 1)
+thickness = 3
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_4ynqn"]
+color = Color(1, 1, 1, 1)
+thickness = 4
+
+[node name="seting" type="CanvasLayer" unique_id=1067348594]
+script = ExtResource("1_110nh")
+
+[node name="Panel" type="Panel" parent="." unique_id=152228536]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -253.5
+offset_top = -188.0
+offset_right = 253.5
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="back" type="Button" parent="Panel" unique_id=113958641]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -107.0
+offset_top = -59.0
+offset_right = -17.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.691357, 0.691357, 0.691357, 1)
+theme_override_colors/font_hover_color = Color(0.117959, 0.00940276, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_q554q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_twti6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lv82f")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_110nh")
+text = "Back"
+
+[node name="\'setting\'" type="Label" parent="Panel" unique_id=417231302]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -73.0
+offset_top = 45.5
+offset_right = 76.0
+offset_bottom = 90.5
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_a42w7")
+theme_override_font_sizes/font_size = 30
+text = "Setting"
+
+[node name="volume" type="HSlider" parent="Panel" unique_id=467428477]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 137.0
+offset_right = 444.0
+offset_bottom = 182.0
+theme_override_styles/slider = SubResource("StyleBoxLine_8cg5j")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_4ynqn")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_4ynqn")
+min_value = -80.0
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("3_lv82f")
+audio_bus_name = "Master"
+
+[node name="fullscreen" type="CheckButton" parent="Panel" unique_id=1831060887]
+layout_mode = 0
+offset_left = 53.5
+offset_top = 206.0
+offset_right = 447.5
+offset_bottom = 281.0
+theme_override_fonts/font = ExtResource("1_a42w7")
+theme_override_font_sizes/font_size = 25
+text = "Fullscreen"
+script = ExtResource("4_q554q")
+
+[node name="\'volume\'" type="Label" parent="Panel" unique_id=2109864840]
+layout_mode = 0
+offset_left = 60.5
+offset_top = 137.0
+offset_right = 174.5
+offset_bottom = 175.0
+theme_override_fonts/font = ExtResource("1_a42w7")
+theme_override_font_sizes/font_size = 25
+text = "Volume"
+
+[node name="\'control\'" type="Button" parent="Panel" unique_id=1373724841]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -198.0
+offset_top = -128.0
+offset_right = 198.0
+offset_bottom = -85.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_a42w7")
+theme_override_font_sizes/font_size = 20
+text = "Control"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=959372960]
+stream = ExtResource("4_twti6")
+autoplay = true
+
+[connection signal="pressed" from="Panel/back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="Panel/volume" to="." method="_on_volume_value_changed"]
+[connection signal="value_changed" from="Panel/volume" to="Panel/volume" method="_on_value_changed"]
+[connection signal="toggled" from="Panel/fullscreen" to="Panel/fullscreen" method="_on_toggled"]

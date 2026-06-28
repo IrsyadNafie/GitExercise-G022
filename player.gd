@@ -37,6 +37,19 @@ func _ready():
 	
 
 	$Camera2D.make_current()
+	
+	if GameManager.last_player_position != Vector2.ZERO:
+		global_position = GameManager.last_player_position + Vector2(0, -10)
+		GameManager.last_player_position = Vector2.ZERO 
+		
+		if GameManager.just_fled:
+			modulate = Color(1, 1, 1, 0.5) 
+			
+			await get_tree().create_timer(2.0).timeout 
+			
+			modulate = Color(1, 1, 1, 1)
+			GameManager.just_fled = false
+	
 
 	# Starting checkpoint
 	if GameManager.checkpoint_position == Vector2.ZERO:
