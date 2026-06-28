@@ -89,8 +89,11 @@ size = Vector2(41, 39)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1nuxl"]
 size = Vector2(20, 88)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pgab2"]
+size = Vector2(20, 92)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ugm30"]
-size = Vector2(36, 109)
+size = Vector2(36, 37)
 
 [node name="Level 1" type="Node2D" unique_id=1275918379]
 
@@ -126,11 +129,14 @@ position_smoothing_speed = 10.0
 position = Vector2(-10, 301)
 shape = SubResource("RectangleShape2D_1nuxl")
 
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1307371556]
+position = Vector2(1965, 494)
+shape = SubResource("RectangleShape2D_pgab2")
+
 [node name="SceneTrigger" type="Area2D" parent="." unique_id=1802197119]
-position = Vector2(1665, 194)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTrigger" unique_id=201110110]
-position = Vector2(304, 302)
+position = Vector2(257, 305)
 shape = SubResource("RectangleShape2D_ugm30")
 
 [connection signal="body_entered" from="SceneTrigger" to="player" method="_on_scene_trigger_body_entered"]
