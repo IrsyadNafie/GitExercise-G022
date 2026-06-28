@@ -56,10 +56,12 @@ script = ExtResource("1_ogcnq")
 
 [node name="Coin1" parent="." unique_id=871590875 instance=ExtResource("2_se8t4")]
 position = Vector2(197, 189)
+audio_bus_name = &"Master"
 coin_id = "main_coin_1"
 
 [node name="Coin2" parent="." unique_id=1157558685 instance=ExtResource("2_se8t4")]
 position = Vector2(305, 189)
+audio_bus_name = &"Master"
 coin_id = "main_coin_2"
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1924342707]
@@ -131,6 +133,7 @@ shape = SubResource("RectangleShape2D_r5i1b")
 
 [node name="Interactable" type="Area2D" parent="." unique_id=1685064170]
 position = Vector2(838, -2)
+audio_bus_name = &"Master"
 script = ExtResource("6_rxyaw")
 
 [node name="Sprite2D" type="Sprite2D" parent="Interactable" unique_id=1506532025]
@@ -415,9 +418,11 @@ horizontal_alignment = 1
 
 [node name="PickupItem" parent="." unique_id=1808496137 instance=ExtResource("12_cxcpp")]
 position = Vector2(-138, 806)
+audio_bus_name = &"Master"
 
 [node name="KeyPickup" parent="." unique_id=717110004 instance=ExtResource("12_cxcpp")]
 position = Vector2(1950, 175)
+audio_bus_name = &"Master"
 item_name = "Key"
 item_id = "main_key_1"
 
@@ -426,6 +431,7 @@ texture = ExtResource("5_i7qtk")
 
 [node name="AxePickup" parent="." unique_id=194775727 instance=ExtResource("12_cxcpp")]
 position = Vector2(386, 814)
+audio_bus_name = &"Master"
 item_name = "Axe"
 
 [node name="Sprite2D" parent="AxePickup" index="0" unique_id=1266786810]
@@ -433,22 +439,28 @@ texture = ExtResource("13_dbwg8")
 
 [node name="PickupItem4" parent="." unique_id=301743778 instance=ExtResource("12_cxcpp")]
 position = Vector2(728, 819)
+audio_bus_name = &"Master"
 
 [node name="PickupItem2" parent="." unique_id=85270018 instance=ExtResource("12_cxcpp")]
 position = Vector2(930, 825)
+audio_bus_name = &"Master"
 
 [node name="PickupItem3" parent="." unique_id=1995495730 instance=ExtResource("12_cxcpp")]
 position = Vector2(567, 808)
+audio_bus_name = &"Master"
 
 [node name="Checkpoint" parent="." unique_id=96501528 instance=ExtResource("16_vlo1t")]
 position = Vector2(706, 74)
 scale = Vector2(2.1999974, 2.1999974)
+audio_bus_name = &"Master"
 
 [node name="NPC" parent="." unique_id=1906512404 instance=ExtResource("17_11nc7")]
 position = Vector2(716, -474)
+audio_bus_name = &"Master"
 
 [node name="Chest" parent="." unique_id=988839848 instance=ExtResource("18_h60qf")]
 position = Vector2(-128, 194)
+audio_bus_name = &"Master"
 
 [node name="Floorgodot" type="Sprite2D" parent="." unique_id=254818999]
 position = Vector2(5.9726906, -448.49994)
@@ -472,6 +484,7 @@ texture = ExtResource("19_l44tj")
 
 [node name="Coin" parent="." unique_id=1044615110 instance=ExtResource("2_se8t4")]
 position = Vector2(67, 182)
+audio_bus_name = &"Master"
 
 [node name="DoorExit" type="Node2D" parent="." unique_id=590830687]
 position = Vector2(2686, 186)
@@ -490,6 +503,7 @@ position = Vector2(-737.80725, -33.878674)
 
 [node name="EndFlag" parent="." unique_id=1532750655 node_paths=PackedStringArray("exit_door") instance=ExtResource("21_7lkng")]
 position = Vector2(2391, 127)
+audio_bus_name = &"Master"
 exit_door = NodePath("../DoorExit/ExitPoint")
 
 [node name="MovingPlatform" parent="." unique_id=449081552 instance=ExtResource("22_2og4m")]
@@ -520,10 +534,12 @@ texture = ExtResource("27_rxyaw")
 position = Vector2(1215, 637.00006)
 rotation = 3.1415927
 scale = Vector2(1.2373745, -1.2094805)
+audio_bus_name = &"Master"
 
 [node name="Door" parent="." unique_id=661557474 instance=ExtResource("26_i7qtk")]
 position = Vector2(1205, -22)
 scale = Vector2(0.7868037, 0.7868037)
+audio_bus_name = &"Master"
 next_scene = "uid://dcwm66fqkxywo"
 
 [connection signal="pressed" from="UI/SaveMenu/SaveSlot1Btn" to="UI" method="_on_save_slot_1_btn_pressed"]
