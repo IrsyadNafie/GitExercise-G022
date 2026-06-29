@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 [gd_scene load_steps=5 format=3 uid="uid://dx7whbjljft1m"]
-=======
 [gd_scene format=3 uid="uid://dx7whbjljft1m"]
->>>>>>> f79ce6e18c6d3f5be051888f73ef58dcf883cb4e
 
 [ext_resource type="Texture2D" uid="uid://d1i2h23am0me0" path="res://character/square-idle-ow.png" id="1_vopf3"]
 
@@ -54,10 +51,7 @@ flip_h = true
 hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=1372226526]
-<<<<<<< HEAD
 libraries = {
 &"": SubResource("AnimationLibrary_hhrv4")
 }
-=======
 libraries/ = SubResource("AnimationLibrary_hhrv4")
->>>>>>> f79ce6e18c6d3f5be051888f73ef58dcf883cb4e

@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://bu6infk68sg7v" path="res://player.gd" id="1_h83ob"]
 [ext_resource type="Script" uid="uid://cqtim6r1iim0a" path="res://room_2.gd" id="1_w3sgd"]
 [ext_resource type="Texture2D" uid="uid://bg0ffy51sx7j1" path="res://icon.svg" id="2_ttdm0"]
-[ext_resource type="Script" path="res://door.gd" id="4_qfw8o"]
+[ext_resource type="Script" uid="uid://rqjgk0rln81" path="res://door.gd" id="4_qfw8o"]
+[ext_resource type="Texture2D" uid="uid://bw8myfm63w853" path="res://InteractableObjects/door.webp" id="5_vdo4q"]
 [ext_resource type="PackedScene" uid="uid://maigb36gp0oq" path="res://LevelFeatures/shop_ui.tscn" id="7_l7adx"]
 [ext_resource type="Script" uid="uid://25n7qtud6y3r" path="res://ui.gd" id="7_vy8vn"]
 [ext_resource type="PackedScene" uid="uid://bjxwcr1bkbti2" path="res://coin.tscn" id="8_1untl"]
@@ -64,12 +65,13 @@ shape = SubResource("RectangleShape2D_vy8vn")
 
 [node name="Door" type="Area2D" parent="." unique_id=1652720444]
 script = ExtResource("4_qfw8o")
-next_scene = "res://maindemo.tscn"
+next_scene = "uid://ekggwac31s7i"
 
 [node name="Sprite2D" type="Sprite2D" parent="Door" unique_id=1465419252]
 z_index = -1
 position = Vector2(154.00012, 565)
 scale = Vector2(0.29416665, 0.26166666)
+texture = ExtResource("5_vdo4q")
 
 [node name="PressE" type="Label" parent="Door" unique_id=812825504]
 visible = false
