@@ -43,7 +43,6 @@ var active_statuses: Array[Dictionary] = []
 @onready var status_container: HBoxContainer = get_node_or_null("StatusContainer")
 @onready var hp_bar: ProgressBar = get_node_or_null("HPBar")
 @onready var sp_bar: ProgressBar = get_node_or_null("SPBar")
-@onready var exp_bar: ProgressBar = get_node_or_null("EXP")
 @onready var turn_arrow: Node2D = get_node_or_null("TurnArrow")
 @export var skills: Array[Skill] = []
 @export var learnable_skills: Array[Skill] = []
@@ -78,9 +77,6 @@ func update_bars() -> void:
 	if sp_bar:
 		sp_bar.max_value = max_sp
 		sp_bar.value = current_sp
-	if exp_bar:
-		exp_bar.max_value = max_exp
-		exp_bar.value = current_exp
 
 func start_turn() -> void:
 	if turn_arrow: turn_arrow.show()
@@ -90,38 +86,21 @@ func end_turn() -> void:
 	emit_signal("turn_finished")
 
 # exp level up
-func gain_exp(amount: int) -> void:
-	if level >= 5:
+func apply_level_stats(new_level: int) -> void:
+	var diff = new_level - level
+	if diff <= 0:
 		return
 		
-	action_logged.emit("[color=cyan]>" + character_name + " gained " + str(amount) + " EXP![/color]")
-	for i in range(amount):
-		if level >= 5: break 
-		
-		current_exp += 1
-		
-		if exp_bar:
-			exp_bar.value = current_exp
-		
-		await get_tree().create_timer(0.05).timeout 
-		
-		if current_exp >= max_exp:
-			await level_up()
-
-func level_up() -> void:
-	current_exp -= max_exp
-	level += 1
-	max_exp = int(max_exp * 1.5)
-	max_hp += 5
-	max_sp += 3
-	base_attack += 2
-	sp_attack += 2 
+	level = new_level
+	max_hp += (5 * diff)
+	max_sp += (3 * diff)
+	base_attack += (2 * diff)
+	sp_attack += (2 * diff)
+	
 	current_hp = max_hp 
 	current_sp = max_sp
 	update_bars()
 	refresh_skills()
-	action_logged.emit("[color=gold]>LEVEL UP! " + character_name + " is now Level " + str(level) + "![/color]")
-	await get_tree().create_timer(1.0).timeout
 
 func take_damage(amount: int) -> void:
 	print("--- HIT DETECTED ---")

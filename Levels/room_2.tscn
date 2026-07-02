@@ -280,6 +280,10 @@ shape = SubResource("RectangleShape2D_ol5p6")
 [node name="OverworldEnemy" type="CharacterBody2D" parent="." unique_id=275365266]
 position = Vector2(222, 0)
 script = ExtResource("12_vdo4q")
+enemy_id = null
+dialog_scene_path = null
+actual_battle_scene_path = null
+skip_dialog_for_testing = null
 
 [node name="Sprite2D" type="Sprite2D" parent="OverworldEnemy" unique_id=1808312709]
 position = Vector2(1081, 551)
@@ -301,6 +305,9 @@ shape = SubResource("RectangleShape2D_4vpdd")
 position = Vector2(222, 0)
 script = ExtResource("12_vdo4q")
 enemy_id = "map_enemy_2"
+dialog_scene_path = null
+actual_battle_scene_path = null
+skip_dialog_for_testing = null
 
 [node name="Sprite2D" type="Sprite2D" parent="OverworldEnemy2" unique_id=766970975]
 position = Vector2(478, 551)

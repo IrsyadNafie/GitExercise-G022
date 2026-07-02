@@ -15,6 +15,7 @@ var is_in_skill_menu: bool = false
 var current_skills: Array[Skill] = []
 var selected_skill_to_execute: Skill = null
 
+@onready var party_exp_bar = $UI/PartyExpBar
 @onready var menu_arrow = $UI/PlayerPanel/arrow
 @onready var ui_layer = $UI
 @onready var action_menu = $UI/PlayerPanel/move

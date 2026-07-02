@@ -91,19 +91,6 @@ corner_radius_bottom_left = 3
 corner_detail = 1
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fj5cn"]
-bg_color = Color(0.5647059, 0.7372549, 0.8156863, 0)
-border_color = Color(0.36076555, 0.36076555, 0.36076555, 1)
-corner_detail = 1
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iy58a"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 1
-border_color = Color(0.6830772, 0.6830774, 0.6830771, 1)
-corner_detail = 1
-anti_aliasing = false
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ee4bf"]
 bg_color = Color(0.82544905, 0.22903332, 2.8878452e-07, 0.4862745)
 border_width_left = 1
@@ -160,6 +147,19 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pxugv"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fj5cn"]
+bg_color = Color(0.5647059, 0.7372549, 0.8156863, 0)
+border_color = Color(0.36076555, 0.36076555, 0.36076555, 1)
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iy58a"]
+bg_color = Color(0.446777, 0.44677705, 0.44677705, 1)
+border_width_left = 1
+border_color = Color(0.6830772, 0.6830774, 0.6830771, 1)
+corner_detail = 1
+anti_aliasing = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kuuv8"]
 atlas = ExtResource("19_pi4e7")
@@ -416,7 +416,6 @@ animations = [{
 
 [node name="BattleScene" type="Node2D" unique_id=1752474127]
 script = ExtResource("1_qtu10")
-fixed_enemies = null
 
 [node name="Actors" type="Node2D" parent="." unique_id=1497777895]
 position = Vector2(24, -158)
@@ -431,6 +430,7 @@ max_sp = 8
 base_attack = 4
 sp_attack = 2
 skills = Array[ExtResource("3_fj5cn")]([ExtResource("4_m4egf"), ExtResource("4_sky72"), ExtResource("5_0ytqx"), ExtResource("6_pxugv")])
+learnable_skills = Array[ExtResource("3_fj5cn")]([ExtResource("4_m4egf"), ExtResource("4_sky72"), ExtResource("5_0ytqx"), ExtResource("6_pxugv")])
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Player1" unique_id=1549539151]
 offset_left = 944.00006
@@ -456,18 +456,6 @@ theme_override_styles/background = SubResource("StyleBoxFlat_kbped")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0ytqx")
 max_value = 5.0
 value = 5.0
-show_percentage = false
-
-[node name="EXP" type="ProgressBar" parent="Actors/Player1" unique_id=1620098009]
-offset_left = 948.00006
-offset_top = 167.0
-offset_right = 985.026
-offset_bottom = 168.0
-scale = Vector2(3.6730995, 5.8853974)
-theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
-theme_override_styles/background = SubResource("StyleBoxFlat_fj5cn")
-theme_override_styles/fill = SubResource("StyleBoxFlat_iy58a")
-max_value = 10.0
 show_percentage = false
 
 [node name="TurnArrow" type="Polygon2D" parent="Actors/Player1" unique_id=617226332]
@@ -513,8 +501,10 @@ is_aoe_attack = true
 visual_sprite = NodePath("Player2")
 max_hp = 15
 max_sp = 6
+base_attack = 99
 sp_attack = 1
 skills = Array[ExtResource("3_fj5cn")]([ExtResource("9_pi4e7"), ExtResource("10_kuuv8"), ExtResource("11_ou021"), ExtResource("12_3fl80")])
+learnable_skills = Array[ExtResource("3_fj5cn")]([ExtResource("9_pi4e7"), ExtResource("10_kuuv8"), ExtResource("11_ou021"), ExtResource("12_3fl80")])
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Player2" unique_id=237377493]
 offset_left = 944.00006
@@ -540,18 +530,6 @@ theme_override_styles/background = SubResource("StyleBoxFlat_kbped")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0ytqx")
 max_value = 5.0
 value = 5.0
-show_percentage = false
-
-[node name="EXP" type="ProgressBar" parent="Actors/Player2" unique_id=1637285977]
-offset_left = 948.00006
-offset_top = 167.0
-offset_right = 985.026
-offset_bottom = 168.0
-scale = Vector2(3.6730995, 5.8853974)
-theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
-theme_override_styles/background = SubResource("StyleBoxFlat_fj5cn")
-theme_override_styles/fill = SubResource("StyleBoxFlat_iy58a")
-max_value = 10.0
 show_percentage = false
 
 [node name="TurnArrow" type="Polygon2D" parent="Actors/Player2" unique_id=1588602166]
@@ -599,6 +577,7 @@ max_sp = 10
 base_attack = 5
 sp_attack = 3
 skills = Array[ExtResource("3_fj5cn")]([ExtResource("13_8jbwv"), ExtResource("14_v61lp"), ExtResource("15_dgp6r"), ExtResource("16_858bn")])
+learnable_skills = Array[ExtResource("3_fj5cn")]([ExtResource("13_8jbwv"), ExtResource("14_v61lp"), ExtResource("15_dgp6r"), ExtResource("16_858bn")])
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Player3" unique_id=1730966093]
 offset_left = 944.00006
@@ -624,18 +603,6 @@ theme_override_styles/background = SubResource("StyleBoxFlat_kbped")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0ytqx")
 max_value = 5.0
 value = 5.0
-show_percentage = false
-
-[node name="EXP" type="ProgressBar" parent="Actors/Player3" unique_id=1430725651]
-offset_left = 948.00006
-offset_top = 167.0
-offset_right = 985.026
-offset_bottom = 168.0
-scale = Vector2(3.6730995, 5.8853974)
-theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
-theme_override_styles/background = SubResource("StyleBoxFlat_fj5cn")
-theme_override_styles/fill = SubResource("StyleBoxFlat_iy58a")
-max_value = 10.0
 show_percentage = false
 
 [node name="TurnArrow" type="Polygon2D" parent="Actors/Player3" unique_id=400633545]
@@ -964,6 +931,19 @@ top_level = true
 position = Vector2(66, -16)
 scale = Vector2(1, 0.8181818)
 polygon = PackedVector2Array(0, 0, 7, -6.1111107, 7, 0, 7, 7.333333)
+
+[node name="PartyExpBar" type="ProgressBar" parent="UI" unique_id=2025386798]
+z_index = 5
+offset_left = 897.00006
+offset_top = 474.0
+offset_right = 934.026
+offset_bottom = 475.0
+scale = Vector2(3.6730995, 5.8853974)
+theme_override_colors/font_color = Color(0, 0.6313726, 0.9490196, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_fj5cn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_iy58a")
+max_value = 10.0
+show_percentage = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=849006240]
 modulate = Color(1, 0.61960787, 1, 1)

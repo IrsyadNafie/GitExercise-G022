@@ -336,7 +336,7 @@ offset_top = 98.0
 offset_right = 479.0
 offset_bottom = 147.0
 
-[node name="\'setting\'" type="Label" parent="UI/SaveMenu" unique_id=1438100928]
+[node name="setting" type="Label" parent="UI/SaveMenu" unique_id=1438100928]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -375,7 +375,7 @@ theme_override_font_sizes/font_size = 25
 text = "Fullscreen"
 script = ExtResource("15_i7fmn")
 
-[node name="\'volume\'" type="Label" parent="UI/SaveMenu" unique_id=1174082759]
+[node name="volume" type="Label" parent="UI/SaveMenu" unique_id=1174082759]
 layout_mode = 0
 offset_left = 168.0
 offset_top = 113.0
