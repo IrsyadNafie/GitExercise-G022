@@ -4,22 +4,28 @@
 [ext_resource type="Script" uid="uid://cqhoo3kidcmp5" path="res://battle_manager.gd" id="1_qtu10"]
 [ext_resource type="Script" uid="uid://caaw1u1s0vq3p" path="res://actors.gd" id="2_kbped"]
 [ext_resource type="Script" uid="uid://c3b82mndsqjip" path="res://move.gd" id="2_qtu10"]
+[ext_resource type="AudioStream" uid="uid://b1b7kmlt5utgo" path="res://audio/Hit Normal Damage.mp3" id="3_b3rfh"]
 [ext_resource type="Script" uid="uid://bjrulpksiensb" path="res://enemy_1.gd" id="3_ee4bf"]
 [ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="3_fj5cn"]
 [ext_resource type="Resource" uid="uid://c2wjiwvprx6l0" path="res://skill/Square/courage.tres" id="4_m4egf"]
 [ext_resource type="Resource" uid="uid://cmrmqnjd3u4ub" path="res://skill/Square/psy.tres" id="4_sky72"]
 [ext_resource type="Resource" uid="uid://bus1adte2ib6a" path="res://skill/Square/rally.tres" id="5_0ytqx"]
 [ext_resource type="Resource" uid="uid://3a61wiqsaj3g" path="res://skill/Square/enchant.tres" id="6_pxugv"]
+[ext_resource type="Texture2D" uid="uid://cyy0sbnu73qr3" path="res://character/square.png" id="8_w5605"]
 [ext_resource type="Texture2D" uid="uid://ghx5uyp0158k" path="res://baseplate.png" id="9_8jbwv"]
 [ext_resource type="Resource" uid="uid://bcyup6tjom3vt" path="res://skill/Circle/run with fierce.tres" id="9_pi4e7"]
 [ext_resource type="Resource" uid="uid://djawe21ingrd3" path="res://skill/Circle/commandment.tres" id="10_kuuv8"]
+[ext_resource type="AudioStream" uid="uid://xa3qevps88tc" path="res://audio/Hit Super Effective.mp3" id="11_5axgr"]
 [ext_resource type="Resource" uid="uid://chhn5s7g6yi2h" path="res://skill/Circle/safeguard.tres" id="11_ou021"]
 [ext_resource type="Resource" uid="uid://c3bs3fv3nl5d3" path="res://skill/Circle/earthquake.tres" id="12_3fl80"]
 [ext_resource type="Resource" uid="uid://dfyc77p4j2ht7" path="res://skill/Triangle/heavy-arrow.tres" id="13_8jbwv"]
+[ext_resource type="Texture2D" uid="uid://bf4qcqtyqi4sh" path="res://character/circle.png" id="14_87wg0"]
 [ext_resource type="Resource" uid="uid://dl7r8br2evilk" path="res://skill/Triangle/heal dust.tres" id="14_v61lp"]
 [ext_resource type="Resource" uid="uid://cvo1jo4k0h2ji" path="res://skill/Triangle/arrow rain.tres" id="15_dgp6r"]
 [ext_resource type="Resource" uid="uid://yui17fuafvpq" path="res://skill/Triangle/pots o heal.tres" id="16_858bn"]
+[ext_resource type="AudioStream" uid="uid://ckxbdot0mjpiq" path="res://audio/Fake Out.mp3" id="17_wfgqd"]
 [ext_resource type="Resource" uid="uid://dt2epdujkhgrc" path="res://enemyskill/test1.tres" id="18_kuuv8"]
+[ext_resource type="Texture2D" uid="uid://civ451puijv0i" path="res://character/triangle.png" id="19_3ag6a"]
 [ext_resource type="Resource" uid="uid://b6f8egt07ww7j" path="res://enemyskill/test2.tres" id="19_ou021"]
 [ext_resource type="Texture2D" uid="uid://btr557rvi03rv" path="res://dither-ripple-pixel-5s-1777867142802-ezgif.com-gif-to-sprite-converter.png" id="19_pi4e7"]
 [ext_resource type="Texture2D" uid="uid://b0l1bsgw3xgpg" path="res://UiBattleAssets/uibackgroundbattle.png" id="21_dgp6r"]
@@ -410,12 +416,14 @@ animations = [{
 
 [node name="BattleScene" type="Node2D" unique_id=1752474127]
 script = ExtResource("1_qtu10")
+fixed_enemies = null
 
 [node name="Actors" type="Node2D" parent="." unique_id=1497777895]
 position = Vector2(24, -158)
 
 [node name="Player1" type="Node2D" parent="Actors" unique_id=267814346 node_paths=PackedStringArray("visual_sprite")]
 script = ExtResource("2_kbped")
+basic_attack_sound = ExtResource("3_b3rfh")
 character_name = "Square"
 attack_name = "swing"
 visual_sprite = NodePath("Player1")
@@ -471,10 +479,14 @@ offset = Vector2(247.77422, -13.139282)
 polygon = PackedVector2Array(-260.3462, -3.2351837, -284.86145, 12.617569, -260.30774, 28.977982, -260.3266, 13.153976)
 uv = PackedVector2Array(-264, -27, -269, 63, -216, 19)
 
-[node name="Player1" type="Sprite2D" parent="Actors/Player1" unique_id=889369376]
-position = Vector2(1017.5, 259.24)
+[node name="Player1" type="TextureRect" parent="Actors/Player1" unique_id=271875339]
+offset_left = 956.0
+offset_top = 202.00003
+offset_right = 1084.0
+offset_bottom = 330.00003
 scale = Vector2(0.926, 0.898)
-texture = ExtResource("1_0fbet")
+texture = ExtResource("8_w5605")
+expand_mode = 1
 
 [node name="StatusContainer" type="HBoxContainer" parent="Actors/Player1" unique_id=340612998]
 offset_left = 916.0
@@ -489,9 +501,12 @@ position = Vector2(1017.5, 307.5)
 scale = Vector2(0.17300004, 0.09000003)
 texture = ExtResource("9_8jbwv")
 
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="Actors/Player1" unique_id=19536822]
+
 [node name="Player2" type="Node2D" parent="Actors" unique_id=1507940198 node_paths=PackedStringArray("visual_sprite")]
 position = Vector2(-31, 151)
 script = ExtResource("2_kbped")
+basic_attack_sound = ExtResource("11_5axgr")
 character_name = "Circle"
 attack_name = "bash"
 is_aoe_attack = true
@@ -548,10 +563,14 @@ offset = Vector2(247.77422, -13.139282)
 polygon = PackedVector2Array(-260.3462, -3.2351837, -284.86145, 12.617569, -260.30774, 28.977982, -260.3266, 13.153976)
 uv = PackedVector2Array(-264, -27, -269, 63, -216, 19)
 
-[node name="Player2" type="Sprite2D" parent="Actors/Player2" unique_id=1390481869]
-position = Vector2(1017.5, 259.24)
+[node name="Player2" type="TextureRect" parent="Actors/Player2" unique_id=638089211]
+offset_left = 957.00006
+offset_top = 199.00003
+offset_right = 1085.0
+offset_bottom = 327.00003
 scale = Vector2(0.926, 0.898)
-texture = ExtResource("1_0fbet")
+texture = ExtResource("14_87wg0")
+expand_mode = 1
 
 [node name="StatusContainer" type="HBoxContainer" parent="Actors/Player2" unique_id=1903895410]
 offset_left = 910.00006
@@ -566,9 +585,12 @@ position = Vector2(1016.99994, 305)
 scale = Vector2(0.17300004, 0.09000003)
 texture = ExtResource("9_8jbwv")
 
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="Actors/Player2" unique_id=1694341024]
+
 [node name="Player3" type="Node2D" parent="Actors" unique_id=2036492965 node_paths=PackedStringArray("visual_sprite")]
 position = Vector2(-5, 301)
 script = ExtResource("2_kbped")
+basic_attack_sound = ExtResource("17_wfgqd")
 character_name = "Triangle"
 attack_name = "shoot"
 visual_sprite = NodePath("Player3")
@@ -625,10 +647,14 @@ offset = Vector2(247.77422, -13.139282)
 polygon = PackedVector2Array(-260.3462, -3.2351837, -284.86145, 12.617569, -260.30774, 28.977982, -260.3266, 13.153976)
 uv = PackedVector2Array(-264, -27, -269, 63, -216, 19)
 
-[node name="Player3" type="Sprite2D" parent="Actors/Player3" unique_id=1933053050]
-position = Vector2(1017, 261.00003)
+[node name="Player3" type="TextureRect" parent="Actors/Player3" unique_id=1123918605]
+offset_left = 958.0
+offset_top = 203.00003
+offset_right = 1086.0
+offset_bottom = 331.00003
 scale = Vector2(0.926, 0.898)
-texture = ExtResource("1_0fbet")
+texture = ExtResource("19_3ag6a")
+expand_mode = 1
 
 [node name="StatusContainer" type="HBoxContainer" parent="Actors/Player3" unique_id=1014688815]
 offset_left = 913.00006
@@ -642,6 +668,8 @@ z_index = -1
 position = Vector2(1016.99994, 311)
 scale = Vector2(0.17300004, 0.09000003)
 texture = ExtResource("9_8jbwv")
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="Actors/Player3" unique_id=1563133307]
 
 [node name="Enemy1" type="Node2D" parent="Actors" unique_id=907974663 node_paths=PackedStringArray("visual_sprite")]
 position = Vector2(-911, 9)
@@ -695,6 +723,8 @@ position = Vector2(1018.99994, 306)
 scale = Vector2(0.17300004, 0.09000003)
 texture = ExtResource("9_8jbwv")
 
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="Actors/Enemy1" unique_id=1126518703]
+
 [node name="Enemy2" type="Node2D" parent="Actors" unique_id=503890181 node_paths=PackedStringArray("visual_sprite")]
 position = Vector2(-869, 157)
 script = ExtResource("3_ee4bf")
@@ -747,6 +777,8 @@ position = Vector2(1017.99994, 305)
 scale = Vector2(0.17300004, 0.09000003)
 texture = ExtResource("9_8jbwv")
 
+[node name="SFXPlayer" type="AudioStreamPlayer2D" parent="Actors/Enemy2" unique_id=180245441]
+
 [node name="Enemy3" type="Node2D" parent="Actors" unique_id=1296802778 node_paths=PackedStringArray("visual_sprite")]
 position = Vector2(-911, 295)
 script = ExtResource("3_ee4bf")
@@ -797,6 +829,8 @@ z_index = -1
 position = Vector2(1020, 307)
 scale = Vector2(0.17300004, 0.09000003)
 texture = ExtResource("9_8jbwv")
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="Actors/Enemy3" unique_id=381069588]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=970283716]
 

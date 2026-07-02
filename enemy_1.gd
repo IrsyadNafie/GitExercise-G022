@@ -2,8 +2,6 @@ extends Actor
 
 var available_skills: Array[Skill] = []
 var is_static: bool = false
-var base_sprite_x: float = 0.0
-var sway_timer: float = 0.0
 
 func _ready() -> void:
 	super()

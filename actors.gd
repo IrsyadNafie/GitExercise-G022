@@ -4,12 +4,22 @@ extends Node2D
 signal turn_finished
 signal action_logged(text_to_display: String)
 
+var base_sprite_x: float = 0.0
+var sway_timer: float = 0.0
+var sway_speed: float = 2.0
+
+@export_category("Combat Audio")
+@export var basic_attack_sound: AudioStream
+@export var hurt_sound: AudioStream
+@onready var sfx_player = get_node_or_null("SFXPlayer")
+
 @export_category("Identity")
 @export var character_name: String = "Player"
 @export var is_player: bool = true
 @export var attack_name: String = "attack"
 @export var is_aoe_attack: bool = false
 @export var visual_sprite: CanvasItem
+@export var is_static_attacker: bool = false
 
 @export_category("Battle Stats")
 @export var max_hp: int = 10
@@ -36,14 +46,30 @@ var active_statuses: Array[Dictionary] = []
 @onready var exp_bar: ProgressBar = get_node_or_null("EXP")
 @onready var turn_arrow: Node2D = get_node_or_null("TurnArrow")
 @export var skills: Array[Skill] = []
+@export var learnable_skills: Array[Skill] = []
 
 func _ready() -> void:
+	sway_timer = randf_range(0.0, 100.0)
+	sway_speed = randf_range(1.5, 2.5)
+	
 	current_hp = max_hp
 	current_sp = max_sp
 	update_bars()
-		
+	
 	if turn_arrow:
 		turn_arrow.hide()
+		
+	await get_tree().process_frame
+	if visual_sprite:
+		base_sprite_x = visual_sprite.position.x
+		
+	refresh_skills()
+
+func refresh_skills() -> void:
+	skills.clear()
+	for i in range(min(level, learnable_skills.size())):
+		if learnable_skills[i] != null:
+			skills.append(learnable_skills[i])
 
 func update_bars() -> void:
 	if hp_bar:
@@ -93,6 +119,7 @@ func level_up() -> void:
 	current_hp = max_hp 
 	current_sp = max_sp
 	update_bars()
+	refresh_skills()
 	action_logged.emit("[color=gold]>LEVEL UP! " + character_name + " is now Level " + str(level) + "![/color]")
 	await get_tree().create_timer(1.0).timeout
 
@@ -146,6 +173,10 @@ func take_damage(amount: int) -> void:
 		
 		var color_tween = create_tween()
 		color_tween.tween_property(visual_sprite, "modulate", Color(1, 1, 1), 0.4).set_delay(0.1)
+	
+	if sfx_player != null and hurt_sound != null:
+		sfx_player.stream = hurt_sound
+		sfx_player.play()
 
 func apply_status(new_effect: StatusEffect) -> void:
 	active_statuses.append({
@@ -228,3 +259,38 @@ func execute_ai(players: Array[Actor], allies: Array[Actor]) -> Dictionary:
 			decision["target"] = self
 			
 	return decision
+
+func _process(delta: float) -> void:
+	if is_static_attacker:
+		return
+		
+	if visual_sprite:
+		sway_timer += delta
+		visual_sprite.position.x = base_sprite_x + (sin(sway_timer * sway_speed) * 2.0)
+		
+func play_attack_sound(skill_used: Skill = null) -> void:
+	if sfx_player == null: return
+	if skill_used != null and skill_used.skill_sound != null:
+		sfx_player.stream = skill_used.skill_sound
+		sfx_player.play()
+	elif basic_attack_sound != null:
+		sfx_player.stream = basic_attack_sound
+		sfx_player.play()
+
+func scale_to_party_level(party_level: int) -> void:
+	var level_difference = party_level - level
+	
+	if level_difference <= 0: 
+		return 
+		
+	level = party_level
+	
+	max_hp += (5 * level_difference)
+	max_sp += (3 * level_difference)
+	base_attack += (2 * level_difference)
+	sp_attack += (2 * level_difference)
+	
+	current_hp = max_hp
+	current_sp = max_sp
+	update_bars()
+	refresh_skills()

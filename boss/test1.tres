@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://blkh0gpgbh7hc"]
+
+[ext_resource type="Texture2D" uid="uid://bnjocfdfmwyc4" path="res://boss/3.png" id="1_6tyay"]
+[ext_resource type="Script" uid="uid://u1vhfv8hjeux" path="res://enemy_data.gd" id="2_tnugk"]
+[ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="3_7gp2e"]
+
+[resource]
+script = ExtResource("2_tnugk")
+is_static = true
+enemy_texture = ExtResource("1_6tyay")
+enemy_name = "Watcher"
+metadata/_custom_type_script = "uid://u1vhfv8hjeux"

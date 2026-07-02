@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ckxbdot0mjpiq"
+path="res://.godot/imported/Fake Out.mp3-79682a5eed5bbe383736e41f73007847.mp3str"
+
+[deps]
+
+source_file="res://audio/Fake Out.mp3"
+dest_files=["res://.godot/imported/Fake Out.mp3-79682a5eed5bbe383736e41f73007847.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

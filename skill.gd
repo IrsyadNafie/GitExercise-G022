@@ -10,3 +10,4 @@ enum TargetType { SINGLE_ENEMY, ALL_ENEMY, SINGLE_ALLY, ALL_ALLY, SELF, RANDOM }
 @export var target_type: TargetType = TargetType.SINGLE_ENEMY
 @export var hits: int = 1
 @export var effect_scene: PackedScene
+@export var skill_sound: AudioStream

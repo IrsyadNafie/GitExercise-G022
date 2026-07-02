@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ekggwac31s7i"]
 
-[ext_resource type="Script" uid="uid://bk34skrfx6gjs" path="res://maindemo.gd" id="1_ogcnq"]
+[ext_resource type="Script" path="res://maindemo.gd" id="1_ogcnq"]
 [ext_resource type="PackedScene" uid="uid://owx0maw7mufd" path="res://LevelFeatures/coin.tscn" id="2_se8t4"]
 [ext_resource type="Script" uid="uid://bu6infk68sg7v" path="res://player.gd" id="3_uje2u"]
 [ext_resource type="Texture2D" uid="uid://d1i2h23am0me0" path="res://character/square-idle-ow.png" id="4_ogcnq"]
@@ -9,12 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://b8sih6ljgrddi" path="res://character/square_walk.tscn" id="6_se8t4"]
 [ext_resource type="Texture2D" uid="uid://8hqj18qnoef1" path="res://LevelDesign/npcgodot.png" id="7_rwm56"]
 [ext_resource type="Texture2D" uid="uid://bw8myfm63w853" path="res://InteractableObjects/door.webp" id="9_4iyiw"]
-[ext_resource type="Script" uid="uid://25n7qtud6y3r" path="res://ui.gd" id="10_lorh8"]
+[ext_resource type="Script" path="res://ui.gd" id="10_lorh8"]
 [ext_resource type="PackedScene" uid="uid://maigb36gp0oq" path="res://LevelFeatures/shop_ui.tscn" id="11_vp7mk"]
 [ext_resource type="Texture2D" uid="uid://cgym4qx4agsbe" path="res://InteractableObjects/axegodot.png" id="13_dbwg8"]
 [ext_resource type="FontFile" uid="uid://b6lro2q7ygs7h" path="res://Symtext.ttf" id="13_rxyaw"]
 [ext_resource type="Script" uid="uid://c5nevmmkqlx7y" path="res://volume.gd" id="14_rwm56"]
-[ext_resource type="Script" uid="uid://4ytruas7que0" path="res://fullscreen.gd" id="15_i7fmn"]
+[ext_resource type="Script" path="res://fullscreen.gd" id="15_i7fmn"]
 [ext_resource type="AudioStream" uid="uid://cnjqtw02uuyp0" path="res://Walen - Freedom Motivation (freetouse.com).wav" id="16_4iyiw"]
 [ext_resource type="PackedScene" uid="uid://bvayd54elqvfa" path="res://LevelFeatures/checkpoint.tscn" id="16_vlo1t"]
 [ext_resource type="PackedScene" uid="uid://c8rfj43xdhn5j" path="res://LevelFeatures/pickup_item.tscn" id="17_11nc7"]
@@ -526,7 +526,7 @@ scale = Vector2(1.2373745, -1.2094805)
 [node name="Door" parent="." unique_id=661557474 instance=ExtResource("26_i7qtk")]
 position = Vector2(1205, -22)
 scale = Vector2(0.7868037, 0.7868037)
-next_scene = "uid://666yk7mvww4h"
+next_scene = "uid://c8b7wf8mw4yfk"
 
 [connection signal="pressed" from="UI/SaveMenu/SaveSlot1Btn" to="UI" method="_on_save_slot_1_btn_pressed"]
 [connection signal="pressed" from="UI/SaveMenu/LoadSlot1Btn" to="UI" method="_on_load_slot_1_btn_pressed"]

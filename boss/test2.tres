@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://bguuhfa0xs76u"]
+
+[ext_resource type="Texture2D" uid="uid://dmj6pw0w7nkef" path="res://boss/4.png" id="1_3tmfg"]
+[ext_resource type="Script" uid="uid://u1vhfv8hjeux" path="res://enemy_data.gd" id="2_4w60d"]
+[ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="3_u0ab3"]
+[ext_resource type="Resource" uid="uid://brm0r4y7jm5ot" path="res://enemyskill/hai.tres" id="4_1k7ff"]
+
+[resource]
+script = ExtResource("2_4w60d")
+is_static = true
+enemy_texture = ExtResource("1_3tmfg")
+enemy_name = "Turret"
+max_hp = 12
+special_skills = Array[ExtResource("3_u0ab3")]([ExtResource("4_1k7ff")])
+metadata/_custom_type_script = "uid://u1vhfv8hjeux"

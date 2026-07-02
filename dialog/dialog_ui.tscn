@@ -1,16 +1,23 @@
 [gd_scene format=3 uid="uid://sc1j37ad1r58"]
 
 [ext_resource type="Script" uid="uid://csixku4krvx1x" path="res://dialog/dialog_ui.gd" id="1_ewnsd"]
+[ext_resource type="Texture2D" uid="uid://ccoqhm062ovxd" path="res://LevelDesign/king.png" id="2_tffci"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tffci"]
+bg_color = Color(0.116417594, 0, 0.004372303, 0.68235296)
 
 [node name="DialogUI" type="Node2D" unique_id=1322896340 node_paths=PackedStringArray("char_text", "char_name", "BaseLayer")]
+visible = false
 script = ExtResource("1_ewnsd")
 char_text = NodePath("CanvasLayer/Panel/text")
 char_name = NodePath("CanvasLayer/Panel/name")
 BaseLayer = NodePath("CanvasLayer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1641359744]
+visible = false
 
 [node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1088740594]
+visible = false
 self_modulate = Color(0.39215687, 0, 0, 1)
 anchors_preset = 7
 anchor_left = 0.5
@@ -26,6 +33,7 @@ grow_vertical = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="name" type="Label" parent="CanvasLayer/Panel" unique_id=1104982580]
+visible = false
 layout_mode = 0
 offset_left = 22.0
 offset_top = 14.0
@@ -35,6 +43,7 @@ text = "NAME"
 metadata/_edit_use_anchors_ = true
 
 [node name="text" type="Label" parent="CanvasLayer/Panel" unique_id=2129623971]
+visible = false
 layout_mode = 0
 offset_left = 27.0
 offset_top = 60.0
@@ -44,6 +53,7 @@ text = "text"
 metadata/_edit_use_anchors_ = true
 
 [node name="_press enter_" type="Label" parent="CanvasLayer/Panel" unique_id=952061943]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.50498337
@@ -56,3 +66,15 @@ offset_right = 262.0
 offset_bottom = 71.0
 text = "press \"enter\" to continue"
 metadata/_edit_use_anchors_ = true
+
+[node name="Panel2" type="Panel" parent="." unique_id=1402413151]
+visible = false
+offset_right = 1154.0
+offset_bottom = 649.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tffci")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=277416229]
+visible = false
+position = Vector2(326.00003, 316.00003)
+scale = Vector2(0.5151148, 0.5151148)
+texture = ExtResource("2_tffci")

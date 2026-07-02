@@ -20,6 +20,7 @@ var selected_skill_to_execute: Skill = null
 @onready var action_menu = $UI/PlayerPanel/move
 @onready var battle_log = $UI/PlayerPanel/BattleLog/RichTextLabel
 @export var burn_status_resource: StatusEffect
+@export var fixed_enemies: Array[EnemyData]
 
 func _ready() -> void:
 	action_menu.hide()
@@ -29,32 +30,43 @@ func _ready() -> void:
 		var scrollbar = battle_log.get_v_scroll_bar()
 		if scrollbar: scrollbar.modulate = Color.TRANSPARENT
 		
-	var enemy_files: Array[String] = []
-	var dir = DirAccess.open("res://enemies/") 
-	
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			if file_name.ends_with(".tres"):
-				enemy_files.append("res://enemies/" + file_name)
-			file_name = dir.get_next()
-			
 	var enemy_nodes = [$Actors/Enemy1, $Actors/Enemy2, $Actors/Enemy3]
 	
-	for enemy_node in enemy_nodes:
-		if enemy_node != null:
-			if enemy_files.size() > 0:
-				var random_file = enemy_files.pick_random()
-				var random_data = load(random_file) as EnemyData
-				
-				if random_data:
-					enemy_node.setup_from_data(random_data)
-					print("Slot: " + enemy_node.name + " spawned " + enemy_node.character_name)
-					_on_actor_logged("[color=red]> A wild " + enemy_node.character_name + " appears![/color]")
-			else:
-				enemy_node.queue_free()
+	if fixed_enemies.size() > 0:
+		for i in range(enemy_nodes.size()):
+			var enemy_node = enemy_nodes[i]
+			if enemy_node != null:
+				if i < fixed_enemies.size() and fixed_enemies[i] != null:
+					enemy_node.setup_from_data(fixed_enemies[i])
+					print("Slot: " + enemy_node.name + " spawned BOSS " + enemy_node.character_name)
+					_on_actor_logged("[color=red]> WARNING: " + enemy_node.character_name + " blocks your path![/color]")
+				else:
+					enemy_node.queue_free()
+	else:
+		var enemy_files: Array[String] = []
+		var dir = DirAccess.open("res://enemies/") 
 		
+		if dir:
+			dir.list_dir_begin()
+			var file_name = dir.get_next()
+			while file_name != "":
+				if file_name.ends_with(".tres"):
+					enemy_files.append("res://enemies/" + file_name)
+				file_name = dir.get_next()
+				
+		for enemy_node in enemy_nodes:
+			if enemy_node != null:
+				if enemy_files.size() > 0:
+					var random_file = enemy_files.pick_random()
+					var random_data = load(random_file) as EnemyData
+					
+					if random_data:
+						enemy_node.setup_from_data(random_data)
+						print("Slot: " + enemy_node.name + " spawned " + enemy_node.character_name)
+						_on_actor_logged("[color=red]> A wild " + enemy_node.character_name + " appears![/color]")
+				else:
+					enemy_node.queue_free()
+					
 	var camera = get_node_or_null("Camera2D")
 	if camera:
 		camera.anchor_mode = Camera2D.ANCHOR_MODE_DRAG_CENTER
@@ -67,13 +79,21 @@ func _ready() -> void:
 		tween.tween_property(camera, "global_position", center_position, 0.7).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 		tween.chain()
 		await tween.finished
+		
 	var actor_nodes = $Actors.get_children()
+	var current_party_level = 1
+	
 	for node in actor_nodes:
 		if node is Actor:
 			turn_queue.append(node)
 			node.action_logged.connect(_on_actor_logged)
 			if not node.is_player:
 				active_enemies.append(node)
+			else:
+				current_party_level = node.level
+				
+	for enemy in active_enemies:
+		enemy.scale_to_party_level(current_party_level)
 	
 	_on_actor_logged("Battle Start!")
 	start_next_turn()
@@ -311,6 +331,7 @@ func execute_targeted_attack() -> void:
 		msg = " strikes with a FLAMING weapon at "
 		
 	current_actor.action_logged.emit("[color=black]>" + current_actor.character_name + msg + target.character_name + "![/color]")
+	current_actor.play_attack_sound(selected_skill_to_execute)
 	
 	for i in range(hits):
 		if not is_instance_valid(target) or target.current_hp <= 0:
@@ -336,6 +357,8 @@ func execute_aoe_attack() -> void:
 	var current_actor: Actor = turn_queue[current_actor_index]
 	current_actor.action_logged.emit("[color=black]>" + current_actor.character_name + " uses " + current_actor.attack_name + " on EVERYONE![/color]")
 	current_actor.action_logged.emit("[color=black]>dealing " + str(current_actor.base_attack) + " damage to all![/color]")
+	
+	current_actor.play_attack_sound()
 	
 	var enemies_to_hit = active_enemies.duplicate()
 	for enemy in enemies_to_hit:
@@ -555,9 +578,10 @@ func distribute_victory_exp() -> void:
 		
 	_on_actor_logged("[color=yellow]>Battle Won! Earned " + str(total_battle_exp) + " EXP![/color]")
 	
-	for player in get_active_players():
-		await player.gain_exp(total_battle_exp)
-		
+	for actor in turn_queue: 
+		if actor.is_player:
+			await actor.gain_exp(total_battle_exp)
+			
 	await get_tree().create_timer(2.0).timeout
 	_on_actor_logged(">Returning to map...")
 	await get_tree().create_timer(1.0).timeout

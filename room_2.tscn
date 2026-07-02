@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bu6infk68sg7v" path="res://player.gd" id="1_h83ob"]
 [ext_resource type="Script" uid="uid://cqtim6r1iim0a" path="res://room_2.gd" id="1_w3sgd"]
 [ext_resource type="Texture2D" uid="uid://bg0ffy51sx7j1" path="res://icon.svg" id="2_ttdm0"]
+[ext_resource type="PackedScene" uid="uid://b8sih6ljgrddi" path="res://character/square_walk.tscn" id="4_4sbp3"]
 [ext_resource type="Script" uid="uid://rqjgk0rln81" path="res://door.gd" id="4_qfw8o"]
 [ext_resource type="Texture2D" uid="uid://bw8myfm63w853" path="res://InteractableObjects/door.webp" id="5_vdo4q"]
 [ext_resource type="PackedScene" uid="uid://maigb36gp0oq" path="res://LevelFeatures/shop_ui.tscn" id="7_l7adx"]
@@ -56,6 +57,10 @@ position = Vector2(194, 547)
 rotation = -2.4320476
 scale = Vector2(0.1826043, 0.15068357)
 
+[node name="AnimatedChar" parent="Player" unique_id=1129597056 instance=ExtResource("4_4sbp3")]
+position = Vector2(-398, 3.8146973e-06)
+scale = Vector2(0.408, 0.408)
+
 [node name="Ground" type="StaticBody2D" parent="." unique_id=1224619748]
 z_index = 1
 
@@ -73,7 +78,7 @@ position = Vector2(154.00012, 565)
 scale = Vector2(0.29416665, 0.26166666)
 texture = ExtResource("5_vdo4q")
 
-[node name="PressE" type="Label" parent="Door" unique_id=812825504]
+[node name="Label" type="Label" parent="Door" unique_id=812825504]
 visible = false
 offset_left = 125.0
 offset_top = 414.0
