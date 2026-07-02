@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://ekggwac31s7i"]
 
-[ext_resource type="Script" path="res://maindemo.gd" id="1_ogcnq"]
+[ext_resource type="Script" uid="uid://bk34skrfx6gjs" path="res://maindemo.gd" id="1_ogcnq"]
 [ext_resource type="PackedScene" uid="uid://owx0maw7mufd" path="res://LevelFeatures/coin.tscn" id="2_se8t4"]
 [ext_resource type="Script" uid="uid://bu6infk68sg7v" path="res://player.gd" id="3_uje2u"]
 [ext_resource type="Texture2D" uid="uid://d1i2h23am0me0" path="res://character/square-idle-ow.png" id="4_ogcnq"]
 [ext_resource type="Texture2D" uid="uid://b4dbupg8jhcmr" path="res://InteractableObjects/yellowkeygodot.png" id="5_i7qtk"]
-[ext_resource type="Script" path="res://interactable.gd" id="6_rxyaw"]
+[ext_resource type="Script" uid="uid://cu7qik8cmlvju" path="res://interactable.gd" id="6_rxyaw"]
 [ext_resource type="PackedScene" uid="uid://b8sih6ljgrddi" path="res://character/square_walk.tscn" id="6_se8t4"]
 [ext_resource type="Texture2D" uid="uid://8hqj18qnoef1" path="res://LevelDesign/npcgodot.png" id="7_rwm56"]
 [ext_resource type="Texture2D" uid="uid://bw8myfm63w853" path="res://InteractableObjects/door.webp" id="9_4iyiw"]
-[ext_resource type="Script" path="res://ui.gd" id="10_lorh8"]
+[ext_resource type="Script" uid="uid://25n7qtud6y3r" path="res://ui.gd" id="10_lorh8"]
 [ext_resource type="PackedScene" uid="uid://maigb36gp0oq" path="res://LevelFeatures/shop_ui.tscn" id="11_vp7mk"]
 [ext_resource type="Texture2D" uid="uid://cgym4qx4agsbe" path="res://InteractableObjects/axegodot.png" id="13_dbwg8"]
 [ext_resource type="FontFile" uid="uid://b6lro2q7ygs7h" path="res://Symtext.ttf" id="13_rxyaw"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bvayd54elqvfa" path="res://LevelFeatures/checkpoint.tscn" id="16_vlo1t"]
 [ext_resource type="PackedScene" uid="uid://c8rfj43xdhn5j" path="res://LevelFeatures/pickup_item.tscn" id="17_11nc7"]
 [ext_resource type="PackedScene" uid="uid://cwfxnnamkxe70" path="res://LevelFeatures/chest.tscn" id="18_h60qf"]
+[ext_resource type="Texture2D" uid="uid://7vay88im8nml" path="res://LevelDesign/floorgodot.png" id="19_l44tj"]
 [ext_resource type="PackedScene" uid="uid://cbexr00mj6ot7" path="res://LevelFeatures/lava.tscn" id="20_ylb1t"]
 [ext_resource type="PackedScene" uid="uid://cvxvijo2mu3la" path="res://LevelFeatures/end_flag.tscn" id="21_7lkng"]
 [ext_resource type="PackedScene" uid="uid://cs06ws5ieeg6e" path="res://LevelFeatures/moving_platform.tscn" id="22_2og4m"]
@@ -403,6 +404,28 @@ grow_vertical = 0
 label_settings = SubResource("LabelSettings_8ss1e")
 horizontal_alignment = 1
 
+[node name="CoinPanel" type="Panel" parent="UI" unique_id=1235843538]
+offset_left = 927.0
+offset_top = 12.0
+offset_right = 1087.0
+offset_bottom = 52.0
+
+[node name="CoinLabel" type="Label" parent="UI/CoinPanel" unique_id=422446382]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 150.0
+offset_bottom = 33.0
+text = "🪙 0"
+
+[node name="IrsyadHealthBar" type="ProgressBar" parent="UI" unique_id=1350118675]
+offset_left = 925.0
+offset_top = 62.0
+offset_right = 1145.0
+offset_bottom = 89.0
+value = 100.0
+show_percentage = false
+
 [node name="PickupItem" parent="." unique_id=1808496137 instance=ExtResource("17_11nc7")]
 position = Vector2(-138, 806)
 
@@ -495,6 +518,12 @@ move_speed = 1.0
 modulate = Color(1.7686467, 1.7686467, 1.7686467, 1)
 z_index = -3
 position = Vector2(3210, -17)
+texture = ExtResource("27_rxyaw")
+
+[node name="BackgroundForGeometric8" type="Sprite2D" parent="Background" unique_id=276243204]
+modulate = Color(1.7686467, 1.7686467, 1.7686467, 1)
+z_index = -3
+position = Vector2(4853, -17)
 texture = ExtResource("27_rxyaw")
 
 [node name="BackgroundForGeometric6" type="Sprite2D" parent="Background" unique_id=205202335]

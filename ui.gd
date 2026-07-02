@@ -8,6 +8,8 @@ extends CanvasLayer
 @onready var interaction_label = $InteractionLabel
 @onready var irsyad_health_bar = get_node_or_null("IrsyadHealthBar")
 @onready var coin_label = $CoinLabel
+@onready var coin_label = $CoinPanel/CoinLabel
+@onready var irsyad_health_bar = $IrsyadHealthBar
 
 func _ready():
 	connect_slots()
@@ -46,15 +48,9 @@ func _process(delta):
 		drop_item()
 
 # Health Bar
-func update_irsyad_health_bar(value):
-	if irsyad_health_bar == null:
-		irsyad_health_bar = get_node_or_null("IrsyadHealthBar")
-
-	if irsyad_health_bar == null:
-		print("ERROR: IrsyadHealthBar not found in this UI scene")
-		return
-
-	irsyad_health_bar.value = clamp(value, 0, 100)
+func update_irsyad_health_bar(current_health):
+	if irsyad_health_bar:
+		irsyad_health_bar.value = clamp(current_health, 0, 100)
 	
 
 # =========================
