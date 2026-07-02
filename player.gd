@@ -49,7 +49,8 @@ func _ready():
 			
 			modulate = Color(1, 1, 1, 1)
 			GameManager.just_fled = false
-	
+			
+
 
 	# Starting checkpoint
 	if GameManager.checkpoint_position == Vector2.ZERO:
@@ -168,6 +169,7 @@ func take_lava_damage(damage):
 	
 	var ui = get_tree().current_scene.get_node("UI")
 	ui.update_irsyad_health_bar(health)
+
 
 	print("Lava Damage:", damage)
 	print("HP Left:", health)
