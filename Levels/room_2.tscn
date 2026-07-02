@@ -223,6 +223,13 @@ horizontal_alignment = 1
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="IrsyadHealthBar" type="ProgressBar" parent="UI" unique_id=1495522797]
+offset_left = 898.0
+offset_top = 54.0
+offset_right = 1141.0
+offset_bottom = 81.0
+value = 100.0
+
 [node name="ShopUI" parent="." unique_id=2053593405 instance=ExtResource("8_6depd")]
 
 [node name="Background2Godot" type="Sprite2D" parent="." unique_id=626405759]

@@ -1,12 +1,13 @@
 extends CanvasLayer
 
-@onready var coin_label = $CoinLabel
 @onready var item_name = $ItemName
 @onready var full_message = $FullMessage
 @onready var fade = $Fade
 @onready var save_menu = $SaveMenu
 @onready var save_message = $SaveMenu/SaveMessage
 @onready var interaction_label = $InteractionLabel
+@onready var irsyad_health_bar = get_node_or_null("IrsyadHealthBar")
+@onready var coin_label = $CoinPanel/CoinLabel
 
 func _ready():
 	connect_slots()
@@ -16,7 +17,7 @@ func _ready():
 	
 
 func _process(delta):
-	coin_label.text = "Coins: " + str(GameManager.coins)
+	coin_label.text = "🪙 " + str(GameManager.coins)
 
 	if Input.is_action_just_pressed("slot_1"):
 		GameManager.selected_slot = 0
@@ -44,6 +45,17 @@ func _process(delta):
 	if Input.is_action_just_pressed("drop_item"):
 		drop_item()
 
+# Health Bar
+func update_irsyad_health_bar(value):
+	if irsyad_health_bar == null:
+		irsyad_health_bar = get_node_or_null("IrsyadHealthBar")
+
+	if irsyad_health_bar == null:
+		print("ERROR: IrsyadHealthBar not found in this UI scene")
+		return
+
+	irsyad_health_bar.value = clamp(value, 0, 100)
+	
 
 # =========================
 # INTERACTION PROMPT
