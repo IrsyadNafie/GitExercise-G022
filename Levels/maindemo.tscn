@@ -500,6 +500,12 @@ z_index = -3
 position = Vector2(3210, -17)
 texture = ExtResource("27_rxyaw")
 
+[node name="BackgroundForGeometric8" type="Sprite2D" parent="Background" unique_id=276243204]
+modulate = Color(1.7686467, 1.7686467, 1.7686467, 1)
+z_index = -3
+position = Vector2(4853, -17)
+texture = ExtResource("27_rxyaw")
+
 [node name="BackgroundForGeometric6" type="Sprite2D" parent="Background" unique_id=205202335]
 modulate = Color(1.769, 1.769, 1.769, 1)
 z_index = -3
