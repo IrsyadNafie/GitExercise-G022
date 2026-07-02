@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://hc0wgfuq6bwt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uqd4a"]
+
+[node name="Blunt" type="AnimatedSprite2D" unique_id=1369636711]
+sprite_frames = SubResource("SpriteFrames_uqd4a")

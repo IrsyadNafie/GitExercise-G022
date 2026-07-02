@@ -2,10 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://d1i2h23am0me0" path="res://character/square-idle-ow.png" id="1_vopf3"]
 
-[gd_scene format=3 uid="uid://dkipojohkask3"]
-
-[ext_resource type="Texture2D" path="res://character/square-idle-ow.png" id="1_vopf3"]
-
 [sub_resource type="Animation" id="Animation_877xc"]
 length = 0.001
 tracks/0/type = "value"
@@ -20,7 +16,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
-
 
 [sub_resource type="Animation" id="Animation_ldh0u"]
 resource_name = "square idle"

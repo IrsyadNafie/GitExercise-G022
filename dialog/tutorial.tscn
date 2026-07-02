@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://c2gjuj5g3w25l"]
 
 [ext_resource type="Script" uid="uid://4yttcnxgq4pg" path="res://dialog/tutorial.gd" id="1_7n6eb"]
+[ext_resource type="Texture2D" uid="uid://bi6sgpkcbt2dn" path="res://Screenshot 2026-06-29 000935.png" id="2_hkgt5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i531q"]
+texture = ExtResource("2_hkgt5")
 
 [node name="Node2D" type="Node2D" unique_id=712191082]
 
@@ -45,3 +49,14 @@ offset_right = 262.0
 offset_bottom = 71.0
 text = "press \"enter\" to continue"
 metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="." unique_id=1045833688]
+offset_right = 1150.0
+offset_bottom = 650.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_i531q")
+
+[node name="Panel2" type="Panel" parent="." unique_id=1873455469]
+offset_left = -2181.0
+offset_top = -1460.0
+offset_right = 3466.0
+offset_bottom = 1905.0

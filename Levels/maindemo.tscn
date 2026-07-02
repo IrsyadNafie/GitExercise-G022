@@ -1,24 +1,23 @@
 [gd_scene format=3 uid="uid://ekggwac31s7i"]
 
-[ext_resource type="Script" uid="uid://bk34skrfx6gjs" path="res://maindemo.gd" id="1_ogcnq"]
+[ext_resource type="Script" path="res://maindemo.gd" id="1_ogcnq"]
 [ext_resource type="PackedScene" uid="uid://owx0maw7mufd" path="res://LevelFeatures/coin.tscn" id="2_se8t4"]
 [ext_resource type="Script" uid="uid://bu6infk68sg7v" path="res://player.gd" id="3_uje2u"]
 [ext_resource type="Texture2D" uid="uid://d1i2h23am0me0" path="res://character/square-idle-ow.png" id="4_ogcnq"]
 [ext_resource type="Texture2D" uid="uid://b4dbupg8jhcmr" path="res://InteractableObjects/yellowkeygodot.png" id="5_i7qtk"]
-[ext_resource type="Script" uid="uid://cu7qik8cmlvju" path="res://interactable.gd" id="6_rxyaw"]
+[ext_resource type="Script" path="res://interactable.gd" id="6_rxyaw"]
 [ext_resource type="PackedScene" uid="uid://b8sih6ljgrddi" path="res://character/square_walk.tscn" id="6_se8t4"]
 [ext_resource type="Texture2D" uid="uid://8hqj18qnoef1" path="res://LevelDesign/npcgodot.png" id="7_rwm56"]
 [ext_resource type="Texture2D" uid="uid://bw8myfm63w853" path="res://InteractableObjects/door.webp" id="9_4iyiw"]
-[ext_resource type="Script" uid="uid://25n7qtud6y3r" path="res://ui.gd" id="10_lorh8"]
+[ext_resource type="Script" path="res://ui.gd" id="10_lorh8"]
 [ext_resource type="PackedScene" uid="uid://maigb36gp0oq" path="res://LevelFeatures/shop_ui.tscn" id="11_vp7mk"]
-[ext_resource type="PackedScene" uid="uid://c8rfj43xdhn5j" path="res://LevelFeatures/pickup_item.tscn" id="12_cxcpp"]
 [ext_resource type="Texture2D" uid="uid://cgym4qx4agsbe" path="res://InteractableObjects/axegodot.png" id="13_dbwg8"]
 [ext_resource type="FontFile" uid="uid://b6lro2q7ygs7h" path="res://Symtext.ttf" id="13_rxyaw"]
 [ext_resource type="Script" uid="uid://c5nevmmkqlx7y" path="res://volume.gd" id="14_rwm56"]
 [ext_resource type="Script" path="res://fullscreen.gd" id="15_i7fmn"]
 [ext_resource type="AudioStream" uid="uid://cnjqtw02uuyp0" path="res://Walen - Freedom Motivation (freetouse.com).wav" id="16_4iyiw"]
 [ext_resource type="PackedScene" uid="uid://bvayd54elqvfa" path="res://LevelFeatures/checkpoint.tscn" id="16_vlo1t"]
-[ext_resource type="PackedScene" uid="uid://dl4r2nr1jqdsk" path="res://LevelFeatures/npc.tscn" id="17_11nc7"]
+[ext_resource type="PackedScene" uid="uid://c8rfj43xdhn5j" path="res://LevelFeatures/pickup_item.tscn" id="17_11nc7"]
 [ext_resource type="PackedScene" uid="uid://cwfxnnamkxe70" path="res://LevelFeatures/chest.tscn" id="18_h60qf"]
 [ext_resource type="PackedScene" uid="uid://cbexr00mj6ot7" path="res://LevelFeatures/lava.tscn" id="20_ylb1t"]
 [ext_resource type="PackedScene" uid="uid://cvxvijo2mu3la" path="res://LevelFeatures/end_flag.tscn" id="21_7lkng"]
@@ -404,35 +403,10 @@ grow_vertical = 0
 label_settings = SubResource("LabelSettings_8ss1e")
 horizontal_alignment = 1
 
-[node name="IrsyadHealthBar" type="ProgressBar" parent="UI" unique_id=1395943249]
-offset_left = 898.0
-offset_top = 54.0
-offset_right = 1141.0
-offset_bottom = 81.0
-value = 100.0
-
-[node name="CoinPanel" type="Panel" parent="UI" unique_id=85457530]
-offset_left = -73.0
-offset_top = 9.0
-offset_right = 107.0
-offset_bottom = 29.0
-
-[node name="CoinLabel" type="Label" parent="UI/CoinPanel" unique_id=1110180801]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 982.0
-offset_top = 9.0
-offset_right = 1060.0
-offset_bottom = 86.0
-text = "🪙 0"
-metadata/_edit_use_anchors_ = true
-
-[node name="PickupItem" parent="." unique_id=1808496137 instance=ExtResource("12_cxcpp")]
+[node name="PickupItem" parent="." unique_id=1808496137 instance=ExtResource("17_11nc7")]
 position = Vector2(-138, 806)
 
-[node name="KeyPickup" parent="." unique_id=717110004 instance=ExtResource("12_cxcpp")]
+[node name="KeyPickup" parent="." unique_id=717110004 instance=ExtResource("17_11nc7")]
 position = Vector2(1950, 175)
 item_name = "Key"
 item_id = "main_key_1"
@@ -440,31 +414,54 @@ item_id = "main_key_1"
 [node name="Sprite2D" parent="KeyPickup" index="0" unique_id=1266786810]
 texture = ExtResource("5_i7qtk")
 
-[node name="AxePickup" parent="." unique_id=194775727 instance=ExtResource("12_cxcpp")]
+[node name="AxePickup" parent="." unique_id=194775727 instance=ExtResource("17_11nc7")]
 position = Vector2(386, 814)
 item_name = "Axe"
 
 [node name="Sprite2D" parent="AxePickup" index="0" unique_id=1266786810]
 texture = ExtResource("13_dbwg8")
 
-[node name="PickupItem4" parent="." unique_id=301743778 instance=ExtResource("12_cxcpp")]
+[node name="PickupItem4" parent="." unique_id=301743778 instance=ExtResource("17_11nc7")]
 position = Vector2(728, 819)
 
-[node name="PickupItem2" parent="." unique_id=85270018 instance=ExtResource("12_cxcpp")]
+[node name="PickupItem2" parent="." unique_id=85270018 instance=ExtResource("17_11nc7")]
 position = Vector2(930, 825)
 
-[node name="PickupItem3" parent="." unique_id=1995495730 instance=ExtResource("12_cxcpp")]
+[node name="PickupItem3" parent="." unique_id=1995495730 instance=ExtResource("17_11nc7")]
 position = Vector2(567, 808)
 
-[node name="Checkpoint" parent="." unique_id=96501528 instance=ExtResource("16_vlo1t")]
+[node name="Checkpoint" parent="." unique_id=96501528 instance=ExtResource("17_11nc7")]
+position = Vector2(434, 164)
+
+[node name="Checkpoint2" parent="." unique_id=2035483309 instance=ExtResource("16_vlo1t")]
 position = Vector2(706, 74)
 scale = Vector2(2.1999974, 2.1999974)
 
 [node name="NPC" parent="." unique_id=1906512404 instance=ExtResource("17_11nc7")]
-position = Vector2(696, -574)
+position = Vector2(716, -474)
 
 [node name="Chest" parent="." unique_id=988839848 instance=ExtResource("18_h60qf")]
 position = Vector2(-128, 194)
+
+[node name="Floorgodot" type="Sprite2D" parent="." unique_id=254818999]
+position = Vector2(5.9726906, -448.49994)
+scale = Vector2(0.31989077, 0.14369994)
+texture = ExtResource("19_l44tj")
+
+[node name="Floorgodot6" type="Sprite2D" parent="." unique_id=775513876]
+position = Vector2(-20, -796.99994)
+scale = Vector2(0.21799995, 0.18400002)
+texture = ExtResource("19_l44tj")
+
+[node name="Floorgodot7" type="Sprite2D" parent="." unique_id=1414804339]
+position = Vector2(-17.99997, -1083)
+scale = Vector2(0.3, 0.142)
+texture = ExtResource("19_l44tj")
+
+[node name="Floorgodot8" type="Sprite2D" parent="." unique_id=1821013067]
+position = Vector2(-16.000004, -1314)
+scale = Vector2(0.324, 0.246)
+texture = ExtResource("19_l44tj")
 
 [node name="Coin" parent="." unique_id=1044615110 instance=ExtResource("2_se8t4")]
 position = Vector2(67, 182)
@@ -527,7 +524,7 @@ scale = Vector2(1.2373745, -1.2094805)
 [node name="Door" parent="." unique_id=661557474 instance=ExtResource("26_i7qtk")]
 position = Vector2(1205, -22)
 scale = Vector2(0.7868037, 0.7868037)
-next_scene = "uid://666yk7mvww4h"
+next_scene = "uid://c8b7wf8mw4yfk"
 
 [connection signal="pressed" from="UI/SaveMenu/SaveSlot1Btn" to="UI" method="_on_save_slot_1_btn_pressed"]
 [connection signal="pressed" from="UI/SaveMenu/LoadSlot1Btn" to="UI" method="_on_load_slot_1_btn_pressed"]

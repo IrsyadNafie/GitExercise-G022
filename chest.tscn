@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://5xfcfohfprfp"]
+
+[ext_resource type="Script" uid="uid://ddo3i2loq7i3g" path="res://chest.gd" id="1_8uwsg"]
+[ext_resource type="Texture2D" path="res://chestgodot.png" id="2_bp1or"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trlyu"]
+size = Vector2(134, 91)
+
+[node name="Chest" type="Area2D" unique_id=988839848]
+script = ExtResource("1_8uwsg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1576341054]
+position = Vector2(3, -7.0000153)
+scale = Vector2(0.438, 0.388)
+texture = ExtResource("2_bp1or")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=504654050]
+position = Vector2(3, -6.5)
+shape = SubResource("RectangleShape2D_trlyu")
+
+[node name="Label" type="Label" parent="." unique_id=823930440]
+offset_left = -60.0
+offset_top = -118.0
+offset_right = -20.0
+offset_bottom = -95.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
