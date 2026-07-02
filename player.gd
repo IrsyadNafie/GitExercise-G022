@@ -41,6 +41,10 @@ func _ready():
 	# Starting checkpoint
 	if GameManager.checkpoint_position == Vector2.ZERO:
 		GameManager.checkpoint_position = global_position
+		
+	var ui = get_tree().current_scene.get_node("UI")
+	ui.update_irsyad_health_bar(health)
+
 	
 
 #Save/Load Game
@@ -148,6 +152,9 @@ func update_animation():
 #Hit by a Lava
 func take_lava_damage(damage):
 	health -= damage
+	
+	var ui = get_tree().current_scene.get_node("UI")
+	ui.update_irsyad_health_bar(health)
 
 	print("Lava Damage:", damage)
 	print("HP Left:", health)
@@ -167,6 +174,8 @@ func take_fall_damage():
 	var damage = int((max_fall_speed - 700) / 20)
 
 	health -= damage
+	var ui = get_tree().current_scene.get_node("UI")
+	ui.update_irsyad_health_bar(health)
 
 	print("Fall Damage:", damage)
 	print("HP Left:", health)
@@ -240,6 +249,7 @@ func die():
 
 	# Reset HP after death
 	health = 100
+	ui.update_irsyad_health_bar(health)
 
 	await get_tree().create_timer(0.2).timeout
 
