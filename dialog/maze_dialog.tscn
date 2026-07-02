@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://c8b7wf8mw4yfk"]
 
 [ext_resource type="Script" uid="uid://txlmq8g32qm" path="res://dialog/maze_dialog.gd" id="1_4wqn2"]
+[ext_resource type="Texture2D" uid="uid://b7e0k4gh07eru" path="res://dialog/Screenshot 2026-06-29 001349.png" id="2_8mvty"]
+[ext_resource type="Texture2D" uid="uid://d1i2h23am0me0" path="res://character/square-idle-ow.png" id="3_51yl1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_51yl1"]
+texture = ExtResource("2_8mvty")
 
 [node name="Node2D" type="Node2D" unique_id=543376655]
 
@@ -55,3 +60,14 @@ offset_right = 262.0
 offset_bottom = 71.0
 text = "press \"enter\" to continue"
 metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="." unique_id=1369431476]
+offset_right = 1148.0
+offset_bottom = 650.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_51yl1")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=437287124]
+position = Vector2(940, 350.99994)
+scale = Vector2(0.56322944, 0.56322944)
+texture = ExtResource("3_51yl1")
+hframes = 2

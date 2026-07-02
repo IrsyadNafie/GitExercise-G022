@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cillc0qp180um"]
+
+[ext_resource type="FontFile" uid="uid://b6lro2q7ygs7h" path="res://Symtext.ttf" id="1_f72eu"]
+[ext_resource type="Script" uid="uid://ixnpgs6eqhi8" path="res://damage_indicator.gd" id="1_nibuy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nibuy"]
+font = ExtResource("1_f72eu")
+font_color = Color(0.93296427, 0, 0.2197378, 1)
+outline_size = 5
+outline_color = Color(0.46186197, 1.0588765e-06, 2.6471912e-07, 1)
+
+[node name="DamageIndicator" type="Marker2D" unique_id=548355249]
+z_index = 50
+script = ExtResource("1_nibuy")
+
+[node name="Label" type="Label" parent="." unique_id=1204395447]
+z_index = 50
+offset_left = -20.0
+offset_top = -12.0
+offset_right = 20.0
+offset_bottom = 12.0
+text = "999"
+label_settings = SubResource("LabelSettings_nibuy")
+horizontal_alignment = 1
+vertical_alignment = 1

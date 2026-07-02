@@ -9,6 +9,7 @@ radius = 36.221542
 
 [node name="Coin" type="Area2D" unique_id=871590875]
 script = ExtResource("1_0t63x")
+coin_id = "CoinSound"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=865219831]
 position = Vector2(-9.536743e-07, 2)
