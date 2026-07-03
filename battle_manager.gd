@@ -498,32 +498,72 @@ func open_skill_sub_menu(actor: Actor):
 func open_item_sub_menu():
 	is_in_item_menu = true
 	var items = GameManager.inventory
-	
+	var first_visible_btn = null
+
 	for i in range(action_menu.get_child_count()):
 		var btn = action_menu.get_child(i)
 		if i < items.size() and items[i] != "":
 			btn.text = items[i]
 			btn.show()
+			if first_visible_btn == null:
+				first_visible_btn = btn
 		else:
 			btn.hide()
-			
-	action_menu.get_child(0).grab_focus()
+	if first_visible_btn != null:
+		first_visible_btn.grab_focus()
+	else:
+		_on_actor_logged("[color=black]>Your inventory is empty![/color]")
+		go_back()
 
 func handle_item_choice(action: String):
 	var current_actor: Actor = turn_queue[current_actor_index]
+	var actual_item_name = action
+	for i in range(action_menu.get_child_count()):
+		var btn = action_menu.get_child(i)
+		if action == btn.name or action == btn.text:
+			actual_item_name = btn.text
+			break
 	
-	if action == "Potion":
-		var item_index = GameManager.inventory.find("Potion")
+	var item_index = GameManager.inventory.find(actual_item_name)
+	
+	if "Health" in actual_item_name:
 		if item_index != -1:
 			GameManager.inventory[item_index] = "" 
 			
-		current_actor.current_hp = min(current_actor.current_hp + 20, current_actor.max_hp)
+		var heal_amount = int(current_actor.max_hp * 0.25)
+		current_actor.current_hp = mini(current_actor.current_hp + heal_amount, current_actor.max_hp)
 		current_actor.update_bars()
 		
 		is_in_item_menu = false
 		action_menu.hide()
-		current_actor.action_logged.emit("[color=green]>" + current_actor.character_name + " drinks a Potion! Restored 20 HP![/color]")
+		current_actor.action_logged.emit("[color=green]>" + current_actor.character_name + " drinks a Health Potion! Restored HP![/color]")
 		finish_action()
+		
+	elif "Streng" in actual_item_name: 
+		if item_index != -1:
+			GameManager.inventory[item_index] = "" 
+			
+		var attack_buff = maxi(1, int(current_actor.base_attack * 0.25))
+		current_actor.base_attack += attack_buff
+		
+		is_in_item_menu = false
+		action_menu.hide()
+		current_actor.action_logged.emit("[color=darkorange]>" + current_actor.character_name + " drinks a Strength Potion! Attack power increased![/color]")
+		finish_action()
+		
+	elif "Luck" in actual_item_name:
+		if item_index != -1:
+			GameManager.inventory[item_index] = "" 
+			
+		current_actor.crit_chance = 0.5
+		
+		is_in_item_menu = false
+		action_menu.hide()
+		current_actor.action_logged.emit("[color=purple]>" + current_actor.character_name + " drinks a Lucky Potion! Critical chance [/color]")
+		finish_action()
+		
+	else:
+		current_actor.action_logged.emit("[color=black]>This item does nothing to the battle.[/color]")
 
 func reset_main_menu(actor: Actor):
 	var labels = [actor.attack_name, "rest", "special", "item", "flee"]
@@ -623,8 +663,31 @@ func distribute_victory_exp() -> void:
 		GameManager.defeated_enemies.append(GameManager.enemy_just_defeated)
 		GameManager.enemy_just_defeated = ""
 	
-	if GameManager.last_overworld_scene != "":
-		get_tree().change_scene_to_file(GameManager.last_overworld_scene)
+	var current_scene_path = get_tree().current_scene.scene_file_path
+	
+	if "boss_battle" in current_scene_path:
+		_on_actor_logged("> The Boss is defeated...")
+		
+		var canvas = CanvasLayer.new()
+		canvas.layer = 100
+		get_tree().current_scene.add_child(canvas)
+		
+		var fade = ColorRect.new()
+		fade.color = Color(0, 0, 0, 0)
+		fade.set_anchors_preset(Control.PRESET_FULL_RECT)
+		canvas.add_child(fade)
+		
+		var tween = create_tween()
+		tween.tween_property(fade, "color", Color(0, 0, 0, 1), 3.0) 
+		
+		await tween.finished 
+		
+		get_tree().change_scene_to_file("res://ending.tscn")
+		
+	else:
+		await get_tree().create_timer(1.0).timeout
+		if GameManager.last_overworld_scene != "":
+			get_tree().change_scene_to_file(GameManager.last_overworld_scene)
 
 func execute_enemy_ai() -> void:
 	if is_ending_turn or battle_won: return

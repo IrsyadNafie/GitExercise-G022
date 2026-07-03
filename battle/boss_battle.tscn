@@ -33,7 +33,7 @@
 [ext_resource type="FontFile" uid="uid://vvjwj4ehes4v" path="res://Fonts/StayPuft.ttf" id="28_44vj8"]
 [ext_resource type="Script" uid="uid://c3b82mndsqjip" path="res://move.gd" id="29_gv0uu"]
 [ext_resource type="Texture2D" uid="uid://btr557rvi03rv" path="res://dither-ripple-pixel-5s-1777867142802-ezgif.com-gif-to-sprite-converter.png" id="30_duu5y"]
-[ext_resource type="AudioStream" uid="uid://1la6n0h5isye" path="res://His Friends Call Him Spuder (Don't Call Him Spuder) (Beta Mix) - Bug Fables_ The Everlasting Sapling.mp3" id="31_5yjud"]
+[ext_resource type="AudioStream" uid="uid://bkxt8wjmh6y28" path="res://Small Saga Soundtrack_ Manus Domini.mp3" id="34_itkcf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pi4e7"]
 bg_color = Color(0.298866, 0.5509334, 0, 0.4862745)
@@ -430,10 +430,12 @@ basic_attack_sound = ExtResource("3_8uthg")
 character_name = "Square"
 attack_name = "swing"
 visual_sprite = NodePath("Player1")
-max_sp = 8
-base_attack = 4
+max_hp = 14
+max_sp = 12
+base_attack = 99
 sp_attack = 2
 skills = Array[ExtResource("4_itkcf")]([ExtResource("5_733i4"), ExtResource("6_wsqla"), ExtResource("7_otck5"), ExtResource("8_joojt")])
+learnable_skills = Array[ExtResource("4_itkcf")]([ExtResource("5_733i4"), ExtResource("6_wsqla"), ExtResource("7_otck5"), ExtResource("8_joojt")])
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Player1" unique_id=1549539151]
 offset_left = 944.00006
@@ -502,10 +504,11 @@ character_name = "Circle"
 attack_name = "bash"
 is_aoe_attack = true
 visual_sprite = NodePath("Player2")
-max_hp = 15
-max_sp = 6
+max_hp = 16
+max_sp = 10
 sp_attack = 1
 skills = Array[ExtResource("4_itkcf")]([ExtResource("12_dwesk"), ExtResource("13_nrjtp"), ExtResource("14_cnkp1"), ExtResource("15_wtuds")])
+learnable_skills = Array[ExtResource("4_itkcf")]([ExtResource("12_dwesk"), ExtResource("13_nrjtp"), ExtResource("14_cnkp1"), ExtResource("15_wtuds")])
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Player2" unique_id=237377493]
 offset_left = 944.00006
@@ -573,11 +576,12 @@ basic_attack_sound = ExtResource("17_mslcd")
 character_name = "Triangle"
 attack_name = "shoot"
 visual_sprite = NodePath("Player3")
-max_hp = 8
-max_sp = 10
+max_hp = 12
+max_sp = 14
 base_attack = 5
 sp_attack = 3
 skills = Array[ExtResource("4_itkcf")]([ExtResource("18_m353r"), ExtResource("19_nvgj0"), ExtResource("20_kthn5"), ExtResource("21_g6i5v")])
+learnable_skills = Array[ExtResource("4_itkcf")]([ExtResource("18_m353r"), ExtResource("19_nvgj0"), ExtResource("20_kthn5"), ExtResource("21_g6i5v")])
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Player3" unique_id=1730966093]
 offset_left = 944.00006
@@ -966,7 +970,7 @@ frame = 20
 frame_progress = 0.71027696
 
 [node name="BattleMusic" type="AudioStreamPlayer" parent="." unique_id=2142939030]
-stream = ExtResource("31_5yjud")
+stream = ExtResource("34_itkcf")
 autoplay = true
 parameters/looping = true
 

@@ -416,7 +416,6 @@ animations = [{
 
 [node name="BattleScene" type="Node2D" unique_id=1752474127]
 script = ExtResource("1_qtu10")
-fixed_enemies = null
 
 [node name="Actors" type="Node2D" parent="." unique_id=1497777895]
 position = Vector2(24, -158)
@@ -427,8 +426,8 @@ basic_attack_sound = ExtResource("3_b3rfh")
 character_name = "Square"
 attack_name = "swing"
 visual_sprite = NodePath("Player1")
-max_hp = 1
-max_sp = 8
+max_hp = 14
+max_sp = 12
 base_attack = 4
 sp_attack = 2
 skills = Array[ExtResource("3_fj5cn")]([ExtResource("4_m4egf"), ExtResource("4_sky72"), ExtResource("5_0ytqx"), ExtResource("6_pxugv")])
@@ -501,8 +500,8 @@ character_name = "Circle"
 attack_name = "bash"
 is_aoe_attack = true
 visual_sprite = NodePath("Player2")
-max_hp = 1
-max_sp = 6
+max_hp = 16
+max_sp = 10
 sp_attack = 1
 skills = Array[ExtResource("3_fj5cn")]([ExtResource("9_pi4e7"), ExtResource("10_kuuv8"), ExtResource("11_ou021"), ExtResource("12_3fl80")])
 learnable_skills = Array[ExtResource("3_fj5cn")]([ExtResource("9_pi4e7"), ExtResource("10_kuuv8"), ExtResource("11_ou021"), ExtResource("12_3fl80")])
@@ -573,8 +572,8 @@ basic_attack_sound = ExtResource("17_wfgqd")
 character_name = "Triangle"
 attack_name = "shoot"
 visual_sprite = NodePath("Player3")
-max_hp = 1
-max_sp = 10
+max_hp = 12
+max_sp = 14
 base_attack = 5
 sp_attack = 3
 skills = Array[ExtResource("3_fj5cn")]([ExtResource("13_8jbwv"), ExtResource("14_v61lp"), ExtResource("15_dgp6r"), ExtResource("16_858bn")])

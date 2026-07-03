@@ -13,37 +13,37 @@
 	
 	"2": {
 		"text": "And yet, it seems you and your puny friend have made it all the way to the end." ,
-		"name": "Future Square",
+		"name": "Magus Domini",
 		"next": "3",
 	},
 	
 	"3": {
 		"text": "I am no god, perhaps... but look at how pathetic your shapes are compared to mine." ,
-		"name": "Future Square",
+		"name": "Magus Domini",
 		"next": "4",
 	},
 	
 	"4": {
 		"text": "Your two-dimensional forms were simply made to be crushed." ,
-		"name": "Future Square",
+		"name": "Magus Domini",
 		"next": "5",
 	},
 	
 	"5": {
 		"text": "Do not take revenge, my dear friends, but leave room for my fury." ,
-		"name": "Future Square",
+		"name": "Magus Domini",
 		"next": "6",
 	},
 	
 	"6": {
 		"text": "Fear not, for I am your forthcoming being; I will uphold you with my righteous right hand." ,
-		"name": "Future Square",
+		"name": "Magus Domini",
 		"next": "7",
 	},
 	
 	"7": {
 		"text": "Respice finem!" ,
-		"name": "Future Square",
+		"name": "Magus Domini",
 		"next": "end"
 	},
 	
