@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="Skill" format=3 uid="uid://dt2epdujkhgrc"]
 
-[ext_resource type="Script" path="res://skill.gd" id="1_kg2kq"]
+[ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="1_kg2kq"]
 
 [resource]
 script = ExtResource("1_kg2kq")
-name = "die"
-sp_cost = 0
-damage = 5
+name = "Blunt"
+sp_cost = 3
+damage = 3

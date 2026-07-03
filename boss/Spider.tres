@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://b3klyi6osdt67"]
+
+[ext_resource type="Texture2D" uid="uid://dv3w187p7gecx" path="res://boss/2.png" id="1_wraey"]
+[ext_resource type="Script" uid="uid://u1vhfv8hjeux" path="res://enemy_data.gd" id="2_kwr64"]
+[ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="3_18cyg"]
+[ext_resource type="Resource" uid="uid://brm0r4y7jm5ot" path="res://enemyskill/Flare.tres" id="4_o40rb"]
+
+[resource]
+script = ExtResource("2_kwr64")
+enemy_texture = ExtResource("1_wraey")
+enemy_name = "Spider"
+max_hp = 18
+special_skills = Array[ExtResource("3_18cyg")]([null, ExtResource("4_o40rb")])
+metadata/_custom_type_script = "uid://u1vhfv8hjeux"

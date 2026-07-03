@@ -27,7 +27,7 @@ var sway_speed: float = 2.0
 @export var base_attack: int = 3
 @export var sp_attack: int = 5
 
-@export var crit_chance: float = 0.5
+@export var crit_chance: float = 0.2
 @export var crit_multiplier: float = 1.5
 
 @export_category("Progression")

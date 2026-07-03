@@ -3,12 +3,14 @@
 [ext_resource type="Texture2D" uid="uid://cxergay1rfo1e" path="res://boss/1.png" id="1_rljn8"]
 [ext_resource type="Script" uid="uid://u1vhfv8hjeux" path="res://enemy_data.gd" id="2_utt5q"]
 [ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="3_4wvo5"]
-[ext_resource type="Resource" uid="uid://brm0r4y7jm5ot" path="res://enemyskill/hai.tres" id="4_3nwpd"]
 
 [resource]
 script = ExtResource("2_utt5q")
 enemy_texture = ExtResource("1_rljn8")
-enemy_name = "Spider"
-max_hp = 18
-special_skills = Array[ExtResource("3_4wvo5")]([null, ExtResource("4_3nwpd")])
+enemy_name = "Magus Domini"
+max_hp = 45
+max_sp = 20
+base_attack = 4
+sp_attack = 3
+special_skills = Array[ExtResource("3_4wvo5")]([null, null, null])
 metadata/_custom_type_script = "uid://u1vhfv8hjeux"

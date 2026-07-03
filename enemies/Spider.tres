@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b56x5etux65ju" path="res://enemies/2.png" id="1_xyfy2"]
 [ext_resource type="Script" uid="uid://u1vhfv8hjeux" path="res://enemy_data.gd" id="2_6uuoa"]
 [ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="3_sgtkj"]
-[ext_resource type="Resource" uid="uid://brm0r4y7jm5ot" path="res://enemyskill/hai.tres" id="4_3bkko"]
+[ext_resource type="Resource" uid="uid://brm0r4y7jm5ot" path="res://enemyskill/Flare.tres" id="4_3bkko"]
 
 [resource]
 script = ExtResource("2_6uuoa")

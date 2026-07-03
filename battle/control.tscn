@@ -24,9 +24,9 @@
 [ext_resource type="Resource" uid="uid://cvo1jo4k0h2ji" path="res://skill/Triangle/arrow rain.tres" id="15_dgp6r"]
 [ext_resource type="Resource" uid="uid://yui17fuafvpq" path="res://skill/Triangle/pots o heal.tres" id="16_858bn"]
 [ext_resource type="AudioStream" uid="uid://ckxbdot0mjpiq" path="res://audio/Fake Out.mp3" id="17_wfgqd"]
-[ext_resource type="Resource" uid="uid://dt2epdujkhgrc" path="res://enemyskill/test1.tres" id="18_kuuv8"]
+[ext_resource type="Resource" uid="uid://dt2epdujkhgrc" path="res://enemyskill/Blunt.tres" id="18_kuuv8"]
 [ext_resource type="Texture2D" uid="uid://civ451puijv0i" path="res://character/triangle.png" id="19_3ag6a"]
-[ext_resource type="Resource" uid="uid://b6f8egt07ww7j" path="res://enemyskill/test2.tres" id="19_ou021"]
+[ext_resource type="Resource" uid="uid://b6f8egt07ww7j" path="res://enemyskill/Heal.tres" id="19_ou021"]
 [ext_resource type="Texture2D" uid="uid://btr557rvi03rv" path="res://dither-ripple-pixel-5s-1777867142802-ezgif.com-gif-to-sprite-converter.png" id="19_pi4e7"]
 [ext_resource type="Texture2D" uid="uid://b0l1bsgw3xgpg" path="res://UiBattleAssets/uibackgroundbattle.png" id="21_dgp6r"]
 [ext_resource type="AudioStream" uid="uid://1la6n0h5isye" path="res://His Friends Call Him Spuder (Don't Call Him Spuder) (Beta Mix) - Bug Fables_ The Everlasting Sapling.mp3" id="22_3fl80"]
@@ -429,7 +429,6 @@ visual_sprite = NodePath("Player1")
 max_sp = 8
 base_attack = 4
 sp_attack = 2
-crit_chance = 0.2
 skills = Array[ExtResource("3_fj5cn")]([ExtResource("4_m4egf"), ExtResource("4_sky72"), ExtResource("5_0ytqx"), ExtResource("6_pxugv")])
 learnable_skills = Array[ExtResource("3_fj5cn")]([ExtResource("4_m4egf"), ExtResource("4_sky72"), ExtResource("5_0ytqx"), ExtResource("6_pxugv")])
 
@@ -503,7 +502,6 @@ visual_sprite = NodePath("Player2")
 max_hp = 15
 max_sp = 6
 sp_attack = 1
-crit_chance = 0.2
 skills = Array[ExtResource("3_fj5cn")]([ExtResource("9_pi4e7"), ExtResource("10_kuuv8"), ExtResource("11_ou021"), ExtResource("12_3fl80")])
 learnable_skills = Array[ExtResource("3_fj5cn")]([ExtResource("9_pi4e7"), ExtResource("10_kuuv8"), ExtResource("11_ou021"), ExtResource("12_3fl80")])
 
@@ -577,7 +575,6 @@ max_hp = 8
 max_sp = 10
 base_attack = 5
 sp_attack = 3
-crit_chance = 0.2
 skills = Array[ExtResource("3_fj5cn")]([ExtResource("13_8jbwv"), ExtResource("14_v61lp"), ExtResource("15_dgp6r"), ExtResource("16_858bn")])
 learnable_skills = Array[ExtResource("3_fj5cn")]([ExtResource("13_8jbwv"), ExtResource("14_v61lp"), ExtResource("15_dgp6r"), ExtResource("16_858bn")])
 

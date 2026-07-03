@@ -451,7 +451,7 @@ func check_death(dead_actor: Actor) -> void:
 	if dead_actor.current_hp > 0:
 		return 
 		
-	_on_actor_logged("[color=gray]>" + dead_actor.character_name + " was defeated![/color]")
+	_on_actor_logged("[color=slategray]>" + dead_actor.character_name + " was defeated![/color]")
 	
 	var dead_index = turn_queue.find(dead_actor)
 	if dead_index != -1:
@@ -465,7 +465,7 @@ func check_death(dead_actor: Actor) -> void:
 		
 	if active_enemies.size() == 0:
 		battle_won = true
-		_on_actor_logged("[color=gold]--- BATTLE WON! ---[/color]")
+		_on_actor_logged("[color=indigo]--- BATTLE WON! ---[/color]")
 		
 		distribute_victory_exp() 
 		
@@ -583,7 +583,7 @@ func distribute_victory_exp() -> void:
 	if music != null:
 		music.stop() 
 		
-	_on_actor_logged("[color=yellow]>Battle Won! Earned " + str(total_battle_exp) + " EXP![/color]")
+	_on_actor_logged("[color=indigo]>Battle Won! Earned " + str(total_battle_exp) + " EXP![/color]")
 	
 	if GameManager.party_level < 5:
 		GameManager.party_current_exp += total_battle_exp
@@ -602,7 +602,7 @@ func distribute_victory_exp() -> void:
 				party_exp_bar.max_value = GameManager.party_max_exp
 				party_exp_bar.value = GameManager.party_current_exp
 				
-			_on_actor_logged("[color=gold]>PARTY LEVEL UP! The team is now Level " + str(GameManager.party_level) + "![/color]")
+			_on_actor_logged("[color=darkmagenta]>PARTY LEVEL UP! The team is now Level " + str(GameManager.party_level) + "![/color]")
 			
 			for actor in turn_queue:
 				if actor.is_player:
