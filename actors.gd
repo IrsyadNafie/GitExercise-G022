@@ -48,6 +48,13 @@ var active_statuses: Array[Dictionary] = []
 @export var learnable_skills: Array[Skill] = []
 
 func _ready() -> void:
+	if is_player and GameManager.party_level > level:
+		apply_level_stats(GameManager.party_level)
+	else:
+		current_hp = max_hp
+		current_sp = max_sp
+		update_bars()
+		refresh_skills()
 	sway_timer = randf_range(0.0, 100.0)
 	sway_speed = randf_range(1.5, 2.5)
 	

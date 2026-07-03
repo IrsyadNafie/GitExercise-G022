@@ -21,6 +21,7 @@ func setup_from_data(data: EnemyData) -> void:
 	self.max_sp = data.max_sp
 	self.current_sp = data.max_sp
 	self.base_attack = data.base_attack
+	self.sp_attack = data.sp_attack 
 	
 	self.available_skills = data.special_skills
 	self.skills = self.available_skills 

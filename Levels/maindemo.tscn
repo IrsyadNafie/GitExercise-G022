@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bu6infk68sg7v" path="res://player.gd" id="3_uje2u"]
 [ext_resource type="Texture2D" uid="uid://d1i2h23am0me0" path="res://character/square-idle-ow.png" id="4_ogcnq"]
 [ext_resource type="Texture2D" uid="uid://b4dbupg8jhcmr" path="res://InteractableObjects/yellowkeygodot.png" id="5_i7qtk"]
-[ext_resource type="Script" uid="uid://cu7qik8cmlvju" path="res://interactable.gd" id="6_rxyaw"]
+[ext_resource type="Script" path="res://interactable.gd" id="6_rxyaw"]
 [ext_resource type="PackedScene" uid="uid://b8sih6ljgrddi" path="res://character/square_walk.tscn" id="6_se8t4"]
 [ext_resource type="Texture2D" uid="uid://8hqj18qnoef1" path="res://LevelDesign/npcgodot.png" id="7_rwm56"]
 [ext_resource type="Texture2D" uid="uid://bw8myfm63w853" path="res://InteractableObjects/door.webp" id="9_4iyiw"]
@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cgym4qx4agsbe" path="res://InteractableObjects/axegodot.png" id="13_dbwg8"]
 [ext_resource type="FontFile" uid="uid://b6lro2q7ygs7h" path="res://Symtext.ttf" id="13_rxyaw"]
 [ext_resource type="Script" uid="uid://c5nevmmkqlx7y" path="res://volume.gd" id="14_rwm56"]
-[ext_resource type="Script" path="res://fullscreen.gd" id="15_i7fmn"]
+[ext_resource type="Script" uid="uid://4ytruas7que0" path="res://fullscreen.gd" id="15_i7fmn"]
 [ext_resource type="AudioStream" uid="uid://cnjqtw02uuyp0" path="res://Walen - Freedom Motivation (freetouse.com).wav" id="16_4iyiw"]
 [ext_resource type="PackedScene" uid="uid://bvayd54elqvfa" path="res://LevelFeatures/checkpoint.tscn" id="16_vlo1t"]
 [ext_resource type="PackedScene" uid="uid://c8rfj43xdhn5j" path="res://LevelFeatures/pickup_item.tscn" id="17_11nc7"]
@@ -376,7 +376,7 @@ theme_override_font_sizes/font_size = 25
 text = "Fullscreen"
 script = ExtResource("15_i7fmn")
 
-[node name="volume" type="Label" parent="UI/SaveMenu" unique_id=1174082759]
+[node name="volume2" type="Label" parent="UI/SaveMenu" unique_id=1174082759]
 layout_mode = 0
 offset_left = 168.0
 offset_top = 113.0

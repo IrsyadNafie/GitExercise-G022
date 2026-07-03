@@ -10,6 +10,7 @@ class_name EnemyData
 @export var max_hp: int = 10
 @export var max_sp: int = 5
 @export var base_attack: int = 5
+@export var sp_attack: int = 2
 
 @export_group("Skills")
 @export var special_skills: Array[Skill] = []

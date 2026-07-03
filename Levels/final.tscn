@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bu6infk68sg7v" path="res://player.gd" id="2_fvv57"]
 [ext_resource type="Texture2D" uid="uid://bg0ffy51sx7j1" path="res://icon.svg" id="3_wya21"]
 [ext_resource type="Texture2D" uid="uid://b4dbupg8jhcmr" path="res://InteractableObjects/yellowkeygodot.png" id="4_a4or1"]
-[ext_resource type="Script" path="res://door.gd" id="5_tm5b3"]
+[ext_resource type="Script" uid="uid://rqjgk0rln81" path="res://door.gd" id="5_tm5b3"]
 [ext_resource type="Texture2D" uid="uid://bw8myfm63w853" path="res://InteractableObjects/door.webp" id="6_gs5fi"]
 [ext_resource type="Script" uid="uid://25n7qtud6y3r" path="res://ui.gd" id="7_3quce"]
 [ext_resource type="PackedScene" uid="uid://maigb36gp0oq" path="res://LevelFeatures/shop_ui.tscn" id="8_ivtma"]
@@ -108,13 +108,6 @@ shape = SubResource("RectangleShape2D_qfw8o")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1708865286]
 script = ExtResource("7_3quce")
-
-[node name="CoinLabel" type="Label" parent="UI" unique_id=245404416]
-offset_left = 1023.0
-offset_top = 9.0
-offset_right = 1241.0
-offset_bottom = 121.0
-text = "Coins: 0"
 
 [node name="Hotbar" type="Control" parent="UI" unique_id=902448952]
 layout_mode = 3
@@ -288,6 +281,27 @@ horizontal_alignment = 1
 [node name="Fade" type="ColorRect" parent="UI" unique_id=1970942917]
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="IrsyadHealthBar" type="ProgressBar" parent="UI" unique_id=634871192]
+offset_left = 898.0
+offset_top = 54.0
+offset_right = 1141.0
+offset_bottom = 81.0
+value = 100.0
+
+[node name="CoinPanel" type="Panel" parent="UI" unique_id=1453631289]
+offset_left = 927.0
+offset_top = 12.0
+offset_right = 1087.0
+offset_bottom = 52.0
+
+[node name="CoinLabel" type="Label" parent="UI/CoinPanel" unique_id=873702931]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 150.0
+offset_bottom = 33.0
+text = "🪙 0"
 
 [node name="ShopUI" parent="." unique_id=2053593405 instance=ExtResource("8_ivtma")]
 

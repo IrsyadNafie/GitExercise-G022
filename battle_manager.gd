@@ -27,6 +27,10 @@ func _ready() -> void:
 	action_menu.hide()
 	action_menu.action_selected.connect(_on_ui_action_selected)
 	
+	if party_exp_bar:
+		party_exp_bar.max_value = GameManager.party_max_exp
+		party_exp_bar.value = GameManager.party_current_exp
+	
 	if battle_log:
 		var scrollbar = battle_log.get_v_scroll_bar()
 		if scrollbar: scrollbar.modulate = Color.TRANSPARENT
@@ -55,15 +59,17 @@ func _ready() -> void:
 					enemy_files.append("res://enemies/" + file_name)
 				file_name = dir.get_next()
 				
-		for enemy_node in enemy_nodes:
+		var number_of_enemies = randi_range(1, 3)
+				
+		for i in range(enemy_nodes.size()):
+			var enemy_node = enemy_nodes[i]
 			if enemy_node != null:
-				if enemy_files.size() > 0:
+				if i < number_of_enemies and enemy_files.size() > 0:
 					var random_file = enemy_files.pick_random()
 					var random_data = load(random_file) as EnemyData
 					
 					if random_data:
 						enemy_node.setup_from_data(random_data)
-						print("Slot: " + enemy_node.name + " spawned " + enemy_node.character_name)
 						_on_actor_logged("[color=red]> A wild " + enemy_node.character_name + " appears![/color]")
 				else:
 					enemy_node.queue_free()
@@ -579,11 +585,32 @@ func distribute_victory_exp() -> void:
 		
 	_on_actor_logged("[color=yellow]>Battle Won! Earned " + str(total_battle_exp) + " EXP![/color]")
 	
-	for actor in turn_queue: 
-		if actor.is_player:
-			await actor.gain_exp(total_battle_exp)
+	if GameManager.party_level < 5:
+		GameManager.party_current_exp += total_battle_exp
+		
+		if party_exp_bar:
+			party_exp_bar.value = GameManager.party_current_exp
 			
-	await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(1.0).timeout
+		
+		if GameManager.party_current_exp >= GameManager.party_max_exp:
+			GameManager.party_current_exp -= GameManager.party_max_exp
+			GameManager.party_level += 1
+			GameManager.party_max_exp = int(GameManager.party_max_exp * 1.5)
+			
+			if party_exp_bar:
+				party_exp_bar.max_value = GameManager.party_max_exp
+				party_exp_bar.value = GameManager.party_current_exp
+				
+			_on_actor_logged("[color=gold]>PARTY LEVEL UP! The team is now Level " + str(GameManager.party_level) + "![/color]")
+			
+			for actor in turn_queue:
+				if actor.is_player:
+					actor.apply_level_stats(GameManager.party_level)
+					
+			await get_tree().create_timer(1.5).timeout
+
+	await get_tree().create_timer(1.0).timeout
 	_on_actor_logged(">Returning to map...")
 	await get_tree().create_timer(1.0).timeout
 	
@@ -593,8 +620,6 @@ func distribute_victory_exp() -> void:
 	
 	if GameManager.last_overworld_scene != "":
 		get_tree().change_scene_to_file(GameManager.last_overworld_scene)
-	else:
-		_on_actor_logged("[color=red]ERROR: No map memory! Did you test the battle scene directly?[/color]")
 
 func execute_enemy_ai() -> void:
 	if is_ending_turn or battle_won: return
@@ -649,10 +674,12 @@ func execute_enemy_ai() -> void:
 		current_actor.current_sp -= skill.sp_cost
 		current_actor.update_bars()
 		
+		var total_skill_dmg = skill.damage + current_actor.sp_attack
+		
 		if skill.target_type == Skill.TargetType.SINGLE_ENEMY or skill.target_type == Skill.TargetType.RANDOM:
 			_on_actor_logged("[color=black]>" + current_actor.character_name + " uses " + skill.name + " on " + target.character_name + "![/color]")
 			for i in range(skill.hits):
-				target.take_damage(skill.damage)
+				target.take_damage(total_skill_dmg)
 				if skill.status_to_apply: target.apply_status(skill.status_to_apply)
 				check_death(target)
 				if skill.hits > 1: await get_tree().create_timer(0.2).timeout
@@ -660,7 +687,7 @@ func execute_enemy_ai() -> void:
 		elif skill.target_type == Skill.TargetType.ALL_ENEMY:
 			_on_actor_logged("[color=black]>" + current_actor.character_name + " uses " + skill.name + " on EVERYONE![/color]")
 			for p in players:
-				p.take_damage(skill.damage)
+				p.take_damage(total_skill_dmg)
 				if skill.status_to_apply: p.apply_status(skill.status_to_apply)
 				check_death(p)
 				
