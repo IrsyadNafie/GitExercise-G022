@@ -1,19 +1,45 @@
 [gd_scene format=3 uid="uid://cbexr00mj6ot7"]
 
 [ext_resource type="Script" uid="uid://y376bk0wqak" path="res://lava.gd" id="1_gil3p"]
-[ext_resource type="Texture2D" uid="uid://me3ucybocble" path="res://LevelDesign/lava-removebg-preview.png" id="2_jefjt"]
+[ext_resource type="Texture2D" uid="uid://g8gxroddgrlx" path="res://LevelDesign/Spike.png" id="2_20blw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_duv81"]
-size = Vector2(457, 72)
+size = Vector2(950.7356, 176)
 
 [node name="Lava" type="Area2D" unique_id=1195944981]
 script = ExtResource("1_gil3p")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=8267985]
+position = Vector2(-326.99997, -45.000004)
 scale = Vector2(0.56, 0.44000053)
-texture = ExtResource("2_jefjt")
+texture = ExtResource("2_20blw")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=2016465128]
+position = Vector2(-160.99995, -45.000004)
+scale = Vector2(0.56, 0.44000053)
+texture = ExtResource("2_20blw")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=2077744418]
+position = Vector2(4.000061, -45.000004)
+scale = Vector2(0.56, 0.44000053)
+texture = ExtResource("2_20blw")
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=1054335307]
+position = Vector2(166.00009, -45.000004)
+scale = Vector2(0.56, 0.44000053)
+texture = ExtResource("2_20blw")
+
+[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=1855374056]
+position = Vector2(331, -45.000004)
+scale = Vector2(0.56, 0.44000053)
+texture = ExtResource("2_20blw")
+
+[node name="Sprite2D6" type="Sprite2D" parent="." unique_id=257387874]
+position = Vector2(496, -45.000004)
+scale = Vector2(0.56, 0.44000053)
+texture = ExtResource("2_20blw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1718354054]
-position = Vector2(0.5, 0)
+position = Vector2(69.75, -59)
 scale = Vector2(0.99764854, 1)
 shape = SubResource("RectangleShape2D_duv81")

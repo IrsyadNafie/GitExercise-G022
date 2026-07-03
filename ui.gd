@@ -105,6 +105,15 @@ func update_inventory():
 		elif GameManager.inventory[i] == "Axe":
 			icon.texture = preload("res://InteractableObjects/axegodot.png")
 
+		elif GameManager.inventory[i] == "Health Potion":
+			icon.texture = preload("res://LevelDesign/RedPotion2.png")
+
+		elif GameManager.inventory[i] == "Strength Potion":
+			icon.texture = preload("res://LevelDesign/YellowPotion2.png")
+
+		elif GameManager.inventory[i] == "Luck Potion":
+			icon.texture = preload("res://LevelDesign/GreenPotion2.png")
+
 		else:
 			icon.texture = null
 
@@ -113,8 +122,6 @@ func update_inventory():
 	get_parent().get_node("Player").update_equipped_item(
 		GameManager.inventory[GameManager.selected_slot]
 	)
-
-
 # =========================
 # ADD ITEM
 # =========================

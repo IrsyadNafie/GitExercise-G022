@@ -73,17 +73,21 @@ func _process(delta):
 # EQUIPPED ITEM VISUAL
 
 func update_equipped_item(item_name):
-	if equipped_item == null:
-		return
 
 	if item_name == "Key":
 		equipped_item.texture = preload("res://InteractableObjects/yellowkeygodot.png")
 
-	elif item_name == "Potion":
-		equipped_item.texture = preload("res://potiongodot.png")
-
 	elif item_name == "Axe":
 		equipped_item.texture = preload("res://InteractableObjects/axegodot.png")
+
+	elif item_name == "Health Potion":
+		equipped_item.texture = preload("res://LevelDesign/RedPotion2.png")
+
+	elif item_name == "Strength Potion":
+		equipped_item.texture = preload("res://LevelDesign/YellowPotion2.png")
+
+	elif item_name == "Luck Potion":
+		equipped_item.texture = preload("res://LevelDesign/GreenPotion2.png")
 
 	else:
 		equipped_item.texture = null
@@ -148,8 +152,16 @@ func update_animation():
 
 		if velocity.x > 0:
 			sprite.flip_h = true
+			equipped_item.position = Vector2(-257, 155)
+			equipped_item.rotation_degrees = -30
+			equipped_item.flip_h = true
+
 		elif velocity.x < 0:
 			sprite.flip_h = false
+			equipped_item.position = Vector2(-330, 155)
+			equipped_item.rotation_degrees = 30
+			equipped_item.flip_h = false
+
 	else:
 		if anim.current_animation != "idle":
 			anim.play("idle")
