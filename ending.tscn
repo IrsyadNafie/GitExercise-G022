@@ -1,12 +1,17 @@
 [gd_scene format=3 uid="uid://cbkpe1rlskxvt"]
 
 [ext_resource type="Script" uid="uid://bd0wadxwmpeko" path="res://ending.gd" id="1_dmh3q"]
-[ext_resource type="Texture2D" uid="uid://riqfetys2edu" path="res://yay.png" id="2_iggq8"]
+[ext_resource type="Texture2D" uid="uid://bwkhid64qu7eu" path="res://ending.jpeg" id="2_dmh3q"]
 
 [node name="Ending" type="Node2D" unique_id=66687177]
 script = ExtResource("1_dmh3q")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2011314193]
-position = Vector2(578.5, 323)
-scale = Vector2(1.163, 0.644)
-texture = ExtResource("2_iggq8")
+position = Vector2(576.99994, 325.5)
+scale = Vector2(0.7237499, 0.82624996)
+texture = ExtResource("2_dmh3q")
+
+[node name="Label" type="Label" parent="." unique_id=1145410151]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "press z to go back to main menu"

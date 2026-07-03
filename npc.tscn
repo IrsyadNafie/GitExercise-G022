@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dwd3p322mhe27"]
 
-[ext_resource type="Script" path="res://npc.gd" id="1_xxcha"]
-[ext_resource type="Texture2D" uid="uid://8hqj18qnoef1" path="res://LevelDesign/npcgodot.png" id="2_kh24r"]
+[ext_resource type="Script" uid="uid://cwoho622gxwo0" path="res://npc.gd" id="1_xxcha"]
+[ext_resource type="Texture2D" uid="uid://c1dwrnbr3yfxu" path="res://tophatboi.png" id="2_xxcha"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xxcha"]
 size = Vector2(92, 101)
@@ -11,9 +11,9 @@ scale = Vector2(1.4311829, 1.4306915)
 script = ExtResource("1_xxcha")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=649740066]
-position = Vector2(9, -5)
-scale = Vector2(1.3385416, 1.2818182)
-texture = ExtResource("2_kh24r")
+position = Vector2(0, -4.8927393)
+scale = Vector2(0.36033076, 0.30327034)
+texture = ExtResource("2_xxcha")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=611367507]
 position = Vector2(-5, -6.5)

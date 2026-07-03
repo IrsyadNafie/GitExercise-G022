@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://rt6fadxcr4e2" path="res://tile_test.png" id="1_h41xc"]
 [ext_resource type="Texture2D" uid="uid://yupq8yi8qtr6" path="res://square head.png" id="3_1nuxl"]
 [ext_resource type="Script" uid="uid://df0peoylrq541" path="res://character_body_2d.gd" id="3_u11kd"]
+[ext_resource type="PackedScene" uid="uid://c8rfj43xdhn5j" path="res://LevelFeatures/pickup_item.tscn" id="4_ugm30"]
+[ext_resource type="Texture2D" uid="uid://b4dbupg8jhcmr" path="res://InteractableObjects/yellowkeygodot.png" id="5_pgab2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u11kd"]
 texture = ExtResource("1_h41xc")
@@ -133,4 +135,26 @@ position = Vector2(1665, 194)
 position = Vector2(304, 302)
 shape = SubResource("RectangleShape2D_ugm30")
 
+[node name="KeyPickup" parent="." unique_id=1808496137 instance=ExtResource("4_ugm30")]
+position = Vector2(1889, 496)
+item_id = "main_key_1"
+
+[node name="Sprite2D" parent="KeyPickup" index="0" unique_id=1266786810]
+position = Vector2(-94.99999, -84.99999)
+texture = ExtResource("5_pgab2")
+
+[node name="CollisionShape2D" parent="KeyPickup" index="1" unique_id=1722968951]
+position = Vector2(-93.5, -92)
+
+[node name="Label" parent="KeyPickup" index="2" unique_id=1721886597]
+offset_left = -127.0
+offset_top = -193.0
+offset_right = -71.0
+offset_bottom = -144.0
+text = "press e
+for key"
+horizontal_alignment = 1
+
 [connection signal="body_entered" from="SceneTrigger" to="player" method="_on_scene_trigger_body_entered"]
+
+[editable path="KeyPickup"]

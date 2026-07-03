@@ -6,9 +6,7 @@
 [ext_resource type="Script" uid="uid://bu6infk68sg7v" path="res://player.gd" id="3_uje2u"]
 [ext_resource type="Texture2D" uid="uid://d1i2h23am0me0" path="res://character/square-idle-ow.png" id="4_ogcnq"]
 [ext_resource type="Texture2D" uid="uid://b4dbupg8jhcmr" path="res://InteractableObjects/yellowkeygodot.png" id="5_i7qtk"]
-[ext_resource type="Script" path="res://interactable.gd" id="6_rxyaw"]
 [ext_resource type="PackedScene" uid="uid://b8sih6ljgrddi" path="res://character/square_walk.tscn" id="6_se8t4"]
-[ext_resource type="Texture2D" uid="uid://8hqj18qnoef1" path="res://LevelDesign/npcgodot.png" id="7_rwm56"]
 [ext_resource type="Script" uid="uid://25n7qtud6y3r" path="res://ui.gd" id="10_lorh8"]
 [ext_resource type="PackedScene" uid="uid://maigb36gp0oq" path="res://LevelFeatures/shop_ui.tscn" id="11_vp7mk"]
 [ext_resource type="Texture2D" uid="uid://cgym4qx4agsbe" path="res://InteractableObjects/axegodot.png" id="13_dbwg8"]
@@ -20,9 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://c8rfj43xdhn5j" path="res://LevelFeatures/pickup_item.tscn" id="17_11nc7"]
 [ext_resource type="PackedScene" uid="uid://cwfxnnamkxe70" path="res://LevelFeatures/chest.tscn" id="18_h60qf"]
 [ext_resource type="Texture2D" uid="uid://7vay88im8nml" path="res://LevelDesign/floorgodot.png" id="19_l44tj"]
-[ext_resource type="PackedScene" uid="uid://cbexr00mj6ot7" path="res://LevelFeatures/lava.tscn" id="20_ylb1t"]
 [ext_resource type="PackedScene" uid="uid://cvxvijo2mu3la" path="res://LevelFeatures/end_flag.tscn" id="21_7lkng"]
-[ext_resource type="PackedScene" uid="uid://cs06ws5ieeg6e" path="res://LevelFeatures/moving_platform.tscn" id="22_2og4m"]
 [ext_resource type="Texture2D" uid="uid://dhuv4nebuobi" path="res://LevelDesign/DoorGeometric.png" id="22_rxyaw"]
 [ext_resource type="PackedScene" uid="uid://bayywigv1y606" path="res://LevelFeatures/door.tscn" id="26_i7qtk"]
 [ext_resource type="PackedScene" uid="uid://das1ag8tt7mu8" path="res://potion_shop_ui.tscn" id="27_rwm56"]
@@ -35,9 +31,6 @@ size = Vector2(131, 127)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r5i1b"]
 size = Vector2(2413, 24.136215)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5bvf"]
-size = Vector2(133.5, 157.5)
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_lorh8"]
 color = Color(0.40811807, 0.06885064, 0, 1)
@@ -63,10 +56,6 @@ size = Vector2(139, 135)
 position = Vector2(428, 383)
 script = ExtResource("1_ogcnq")
 
-[node name="Lava" parent="." unique_id=1195944981 instance=ExtResource("20_ylb1t")]
-position = Vector2(2186, 214)
-scale = Vector2(0.35377178, 0.35377178)
-
 [node name="NPC2" parent="." unique_id=1906512404 instance=ExtResource("2_rxyaw")]
 position = Vector2(917, 128.99998)
 
@@ -74,8 +63,24 @@ position = Vector2(917, 128.99998)
 position = Vector2(197, 189)
 coin_id = "main_coin_1"
 
+[node name="Coin3" parent="." unique_id=1113847010 instance=ExtResource("2_se8t4")]
+position = Vector2(418, 189)
+coin_id = "main_coin_1"
+
 [node name="Coin2" parent="." unique_id=1157558685 instance=ExtResource("2_se8t4")]
 position = Vector2(305, 189)
+coin_id = "main_coin_2"
+
+[node name="Coin4" parent="." unique_id=988583234 instance=ExtResource("2_se8t4")]
+position = Vector2(2203, 189)
+coin_id = "main_coin_1"
+
+[node name="Coin5" parent="." unique_id=1734453321 instance=ExtResource("2_se8t4")]
+position = Vector2(2424, 189)
+coin_id = "main_coin_1"
+
+[node name="Coin6" parent="." unique_id=1121412875 instance=ExtResource("2_se8t4")]
+position = Vector2(2311, 189)
 coin_id = "main_coin_2"
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1924342707]
@@ -144,36 +149,6 @@ shape = SubResource("RectangleShape2D_r5i1b")
 position = Vector2(-440.00003, -42)
 rotation = -1.5631804
 shape = SubResource("RectangleShape2D_r5i1b")
-
-[node name="Interactable" type="Area2D" parent="." unique_id=1685064170]
-position = Vector2(838, -2)
-script = ExtResource("6_rxyaw")
-
-[node name="Sprite2D" type="Sprite2D" parent="Interactable" unique_id=1506532025]
-z_index = -1
-position = Vector2(785, 170)
-scale = Vector2(-1.7380016, 1.7494246)
-texture = ExtResource("7_rwm56")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=2051976323]
-position = Vector2(792, 164)
-shape = SubResource("RectangleShape2D_u5bvf")
-
-[node name="PressE" type="Label" parent="Interactable" unique_id=1820131098]
-visible = false
-offset_left = 768.0
-offset_top = 54.0
-offset_right = 836.0
-offset_bottom = 100.0
-text = "Press E"
-
-[node name="Message" type="Label" parent="Interactable" unique_id=1658575778]
-visible = false
-offset_left = 736.0
-offset_top = 19.0
-offset_right = 855.0
-offset_bottom = 42.0
-text = "Help! I'm Lost :("
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=2110791678]
 script = ExtResource("10_lorh8")
@@ -451,14 +426,6 @@ metadata/_edit_use_anchors_ = true
 [node name="PickupItem" parent="." unique_id=1808496137 instance=ExtResource("17_11nc7")]
 position = Vector2(-138, 806)
 
-[node name="KeyPickup" parent="." unique_id=717110004 instance=ExtResource("17_11nc7")]
-position = Vector2(1950, 175)
-item_name = "Key"
-item_id = "main_key_1"
-
-[node name="Sprite2D" parent="KeyPickup" index="0" unique_id=1266786810]
-texture = ExtResource("5_i7qtk")
-
 [node name="AxePickup" parent="." unique_id=194775727 instance=ExtResource("17_11nc7")]
 position = Vector2(386, 814)
 item_name = "Axe"
@@ -475,10 +442,7 @@ position = Vector2(930, 825)
 [node name="PickupItem3" parent="." unique_id=1995495730 instance=ExtResource("17_11nc7")]
 position = Vector2(567, 808)
 
-[node name="Checkpoint" parent="." unique_id=96501528 instance=ExtResource("17_11nc7")]
-position = Vector2(434, 164)
-
-[node name="Checkpoint2" parent="." unique_id=2035483309 instance=ExtResource("16_vlo1t")]
+[node name="Checkpoint" parent="." unique_id=2035483309 instance=ExtResource("16_vlo1t")]
 position = Vector2(706, 74)
 scale = Vector2(2.1999974, 2.1999974)
 
@@ -508,16 +472,13 @@ position = Vector2(-16.000004, -1314)
 scale = Vector2(0.324, 0.246)
 texture = ExtResource("19_l44tj")
 
-[node name="Coin" parent="." unique_id=1044615110 instance=ExtResource("2_se8t4")]
-position = Vector2(67, 182)
-
 [node name="DoorExit" type="Node2D" parent="." unique_id=590830687]
 position = Vector2(4515, 178)
 scale = Vector2(-0.42694077, 0.26565385)
 
 [node name="Sprite2D" type="Sprite2D" parent="DoorExit" unique_id=83169517]
 modulate = Color(2.2700198, 2.2700198, 2.2700198, 1)
-position = Vector2(0, -749.0951)
+position = Vector2(0, -1027.6532)
 scale = Vector2(3.42944, 4.0487704)
 texture = ExtResource("22_rxyaw")
 
@@ -533,10 +494,6 @@ position = Vector2(3701, 148)
 scale = Vector2(0.63688207, 0.63688207)
 next_scene = "res://Levels/stage2.tscn"
 exit_door = NodePath("../DoorExit/ExitPoint")
-
-[node name="MovingPlatform" parent="." unique_id=449081552 instance=ExtResource("22_2og4m")]
-position = Vector2(2120, 104)
-move_speed = 1.0
 
 [node name="Background" type="Node2D" parent="." unique_id=816928912]
 
@@ -643,30 +600,6 @@ collision_layer = 0
 position = Vector2(2.5, -0.5)
 shape = SubResource("RectangleShape2D_vp7mk")
 
-[node name="OverworldEnemy4" type="CharacterBody2D" parent="." unique_id=613845854]
-position = Vector2(548, -397)
-collision_layer = 5
-script = ExtResource("28_i7fmn")
-enemy_id = "map_enemy_10"
-
-[node name="Sprite2D" type="Sprite2D" parent="OverworldEnemy4" unique_id=1477237732]
-position = Vector2(913, 551)
-texture = ExtResource("29_4iyiw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OverworldEnemy4" unique_id=597041810]
-position = Vector2(915, 551)
-scale = Vector2(0.04000002, 1)
-shape = SubResource("RectangleShape2D_lorh8")
-
-[node name="Hitbox" type="Area2D" parent="OverworldEnemy4" unique_id=38737811]
-position = Vector2(913, 551)
-scale = Vector2(1, 0.98545647)
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OverworldEnemy4/Hitbox" unique_id=146327084]
-position = Vector2(2.5, -0.5)
-shape = SubResource("RectangleShape2D_vp7mk")
-
 [connection signal="pressed" from="UI/SaveMenu/SaveSlot1Btn" to="UI" method="_on_save_slot_1_btn_pressed"]
 [connection signal="pressed" from="UI/SaveMenu/LoadSlot1Btn" to="UI" method="_on_load_slot_1_btn_pressed"]
 [connection signal="pressed" from="UI/SaveMenu/SaveSlot2Btn" to="UI" method="_on_save_slot_2_btn_pressed"]
@@ -680,7 +613,5 @@ shape = SubResource("RectangleShape2D_vp7mk")
 [connection signal="body_entered" from="OverworldEnemy1/Hitbox" to="OverworldEnemy1" method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="OverworldEnemy2/Hitbox" to="OverworldEnemy2" method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="OverworldEnemy3/Hitbox" to="OverworldEnemy3" method="_on_hitbox_body_entered"]
-[connection signal="body_entered" from="OverworldEnemy4/Hitbox" to="OverworldEnemy4" method="_on_hitbox_body_entered"]
 
-[editable path="KeyPickup"]
 [editable path="AxePickup"]

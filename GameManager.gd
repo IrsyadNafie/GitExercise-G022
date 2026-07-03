@@ -1,7 +1,7 @@
 extends Node
 
 
-var coins = 100000
+var coins = 0
 var checkpoint_position = Vector2.ZERO
 var last_overworld_scene: String = ""
 var last_player_position: Vector2 = Vector2.ZERO
