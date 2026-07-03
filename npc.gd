@@ -7,13 +7,14 @@ func _ready():
 
 func _process(delta):
 	if player_near and Input.is_action_just_pressed("interact"):
-		var shop = get_tree().current_scene.get_node_or_null("UI/ShopUI")
-
+		var shop = get_tree().current_scene.get_node_or_null("PotionShopUI")
+		
 		if shop:
-			print("Opening Shop")
-			shop.visible = true
+			print("Shop Found!")
+			shop.open_shop()
 		else:
-			print("ERROR: ShopUI not found! Check node path")
+			print("PotionShopUI NOT FOUND!")
+			
 
 func _on_body_entered(body):
 	print("Entered:", body.name)

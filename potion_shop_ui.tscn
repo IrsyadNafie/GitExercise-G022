@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://das1ag8tt7mu8"]
+
+[ext_resource type="Script" uid="uid://256cpoo5iidk" path="res://potion_shop_ui.gd" id="1_go3x4"]
+[ext_resource type="Texture2D" uid="uid://dc76ne53of83q" path="res://LevelDesign/ShopMenu.png" id="2_ndhy6"]
+[ext_resource type="Texture2D" uid="uid://6qglwr4el5y4" path="res://LevelDesign/YellowPotion2.png" id="2_ngdvw"]
+[ext_resource type="Texture2D" uid="uid://b5tbpame58vd" path="res://LevelDesign/RedPotion2.png" id="3_ndhy6"]
+[ext_resource type="Texture2D" uid="uid://4xllj0l06yak" path="res://LevelDesign/GreenPotion2.png" id="4_jxtmv"]
+
+[node name="PotionShopUI" type="CanvasLayer" unique_id=1932476949]
+visible = false
+script = ExtResource("1_go3x4")
+
+[node name="Panel" type="Panel" parent="." unique_id=996668358]
+offset_left = 130.0
+offset_top = 69.0
+offset_right = 1048.0
+offset_bottom = 584.0
+
+[node name="TitleLable" type="Label" parent="Panel" unique_id=255827341]
+layout_mode = 0
+offset_left = 417.0
+offset_top = 28.0
+offset_right = 511.0
+offset_bottom = 51.0
+
+[node name="CoinLabel" type="Label" parent="Panel" unique_id=1920270004]
+layout_mode = 0
+offset_left = 843.0
+offset_top = 56.0
+offset_right = 904.0
+offset_bottom = 79.0
+text = "Coins: 0"
+
+[node name="HealthPotionBtn" type="Button" parent="Panel" unique_id=246157486]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 383.0
+offset_right = 278.0
+offset_bottom = 414.0
+text = "Buy Health Potion - 25 Coins"
+
+[node name="StrengthPotionBtn" type="Button" parent="Panel" unique_id=744699592]
+layout_mode = 0
+offset_left = 353.0
+offset_top = 379.0
+offset_right = 595.0
+offset_bottom = 410.0
+text = "Buy Strength Potion - 40 Coins"
+
+[node name="LuckPotionBtn" type="Button" parent="Panel" unique_id=599062008]
+layout_mode = 0
+offset_left = 659.0
+offset_top = 377.0
+offset_right = 870.0
+offset_bottom = 408.0
+text = "Buy Luck Potion - 35 Coins"
+
+[node name="CloseBtn" type="Button" parent="Panel" unique_id=1942841935]
+layout_mode = 0
+offset_left = 457.0
+offset_top = 461.0
+offset_right = 507.0
+offset_bottom = 492.0
+text = "Close"
+
+[node name="YellowPotion2" type="Sprite2D" parent="." unique_id=1086914179]
+position = Vector2(595, 313)
+scale = Vector2(0.48403588, 0.48403588)
+texture = ExtResource("2_ngdvw")
+
+[node name="RedPotion2" type="Sprite2D" parent="." unique_id=220760816]
+position = Vector2(300, 310)
+scale = Vector2(0.56286675, 0.56286675)
+texture = ExtResource("3_ndhy6")
+
+[node name="GreenPotion2" type="Sprite2D" parent="." unique_id=226027116]
+position = Vector2(890, 302)
+scale = Vector2(0.52415, 0.52415)
+texture = ExtResource("4_jxtmv")
+
+[node name="ShopMenu" type="Sprite2D" parent="." unique_id=209349037]
+z_index = -2
+position = Vector2(592, 344)
+scale = Vector2(0.68791634, 0.7090601)
+texture = ExtResource("2_ndhy6")
+
+[connection signal="pressed" from="Panel/HealthPotionBtn" to="." method="_on_health_potion_btn_pressed"]
+[connection signal="pressed" from="Panel/StrengthPotionBtn" to="." method="_on_strength_potion_btn_pressed"]
+[connection signal="pressed" from="Panel/LuckPotionBtn" to="." method="_on_luck_potion_btn_pressed"]
+[connection signal="pressed" from="Panel/CloseBtn" to="." method="_on_close_btn_pressed"]
