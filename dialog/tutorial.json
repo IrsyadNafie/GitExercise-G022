@@ -39,8 +39,22 @@
 		"next": "8",
 	},
 	
+		"8": {
+		"text": "When in battle. Press Z to interact, To cancel press X." ,
+		"next": "9",
+	},
 	
-	"8": {
+			"9": {
+		"text": "Drag your mouse cursor onto the info box" ,
+		"next": "10",
+	},
+	
+				"10": {
+		"text": "Scroll up/down to show info in battle" ,
+		"next": "11",
+	},
+	
+	"11": {
 		"text": "I think that should be all... 
 				 Enjoy!",
 		"next": "end"
