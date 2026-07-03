@@ -51,9 +51,9 @@ func update_irsyad_health_bar(current_health):
 		irsyad_health_bar.value = clamp(current_health, 0, 100)
 	
 
-# =========================
+
 # INTERACTION PROMPT
-# =========================
+
 func show_interaction(text):
 	interaction_label.text = text
 
@@ -61,9 +61,9 @@ func hide_interaction():
 	interaction_label.text = ""
 
 
-# =========================
+
 # SLOT CONNECTION
-# =========================
+
 func connect_slots():
 	for i in range(5):
 		var slot = $Hotbar/Slots.get_child(i)
@@ -88,9 +88,9 @@ func show_item_name(index):
 	item_name.text = GameManager.inventory[index]
 
 
-# =========================
+
 # INVENTORY UPDATE
-# =========================
+
 func update_inventory():
 	for i in range(5):
 		var slot = $Hotbar/Slots.get_child(i)
@@ -122,9 +122,9 @@ func update_inventory():
 	get_parent().get_node("Player").update_equipped_item(
 		GameManager.inventory[GameManager.selected_slot]
 	)
-# =========================
+
 # ADD ITEM
-# =========================
+
 func add_item(new_item):
 	for i in range(5):
 		if GameManager.inventory[i] == "":
@@ -144,9 +144,9 @@ func show_full_message():
 	full_message.text = ""
 
 
-# =========================
+
 # DROP ITEM
-# =========================
+
 func drop_item():
 	if GameManager.inventory[GameManager.selected_slot] != "":
 		var dropped_name = GameManager.inventory[GameManager.selected_slot]
@@ -167,9 +167,9 @@ func drop_item():
 		print("Dropped:", dropped_name)
 
 
-# =========================
+
 # ITEM CHECKING
-# =========================
+
 func has_item(item_name):
 	for item in GameManager.inventory:
 		if item == item_name:
@@ -187,9 +187,9 @@ func remove_item(item_name):
 	return false
 
 
-# =========================
+
 # FADE SYSTEM
-# =========================
+
 func fade_out():
 	var tween = create_tween()
 	tween.tween_property(fade, "color:a", 1.0, 0.5)
@@ -202,9 +202,9 @@ func fade_in():
 	await tween.finished
 
 
-# =========================
+
 # SAVE / LOAD
-# =========================
+
 func _on_save_slot_1_btn_pressed():
 	SaveManager.save_game(1)
 	show_save_message("Saved Slot 1!")

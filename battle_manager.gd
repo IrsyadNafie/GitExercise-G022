@@ -3,6 +3,7 @@ extends Node2D
 var turn_queue: Array[Actor] = []
 var current_actor_index: int = 0
 
+var coins: int = 0
 var active_enemies: Array[Actor] = []
 var is_targeting: bool = false
 var is_targeting_ally: bool = false
@@ -629,6 +630,10 @@ func distribute_victory_exp() -> void:
 		music.stop() 
 		
 	_on_actor_logged("[color=indigo]>Battle Won! Earned " + str(total_battle_exp) + " EXP![/color]")
+	
+	var coins_dropped = randi_range(10, 15)
+	GameManager.coins += coins_dropped
+	_on_actor_logged("[color=darkyellow]>The enemies dropped " + str(coins_dropped) + " coins![/color]")
 	
 	if GameManager.party_level < 5:
 		GameManager.party_current_exp += total_battle_exp
