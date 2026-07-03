@@ -6,8 +6,8 @@ extends CanvasLayer
 @onready var save_menu = $SaveMenu
 @onready var save_message = $SaveMenu/SaveMessage
 @onready var interaction_label = $InteractionLabel
+@onready var irsyad_health_bar = get_node_or_null("IrsyadHealthBar")
 @onready var coin_label = $CoinPanel/CoinLabel
-@onready var irsyad_health_bar = $IrsyadHealthBar
 
 func _ready():
 	connect_slots()

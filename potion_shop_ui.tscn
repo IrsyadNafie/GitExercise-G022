@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://das1ag8tt7mu8"]
 
-[ext_resource type="Script" uid="uid://256cpoo5iidk" path="res://potion_shop_ui.gd" id="1_go3x4"]
+[ext_resource type="Script" path="res://potion_shop_ui.gd" id="1_go3x4"]
 [ext_resource type="Texture2D" uid="uid://dc76ne53of83q" path="res://LevelDesign/ShopMenu.png" id="2_ndhy6"]
 [ext_resource type="Texture2D" uid="uid://6qglwr4el5y4" path="res://LevelDesign/YellowPotion2.png" id="2_ngdvw"]
 [ext_resource type="Texture2D" uid="uid://b5tbpame58vd" path="res://LevelDesign/RedPotion2.png" id="3_ndhy6"]

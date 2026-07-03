@@ -4,12 +4,22 @@ extends Node2D
 signal turn_finished
 signal action_logged(text_to_display: String)
 
+var base_sprite_x: float = 0.0
+var sway_timer: float = 0.0
+var sway_speed: float = 2.0
+
+@export_category("Combat Audio")
+@export var basic_attack_sound: AudioStream
+@export var hurt_sound: AudioStream
+@onready var sfx_player = get_node_or_null("SFXPlayer")
+
 @export_category("Identity")
 @export var character_name: String = "Player"
 @export var is_player: bool = true
 @export var attack_name: String = "attack"
 @export var is_aoe_attack: bool = false
 @export var visual_sprite: CanvasItem
+@export var is_static_attacker: bool = false
 
 @export_category("Battle Stats")
 @export var max_hp: int = 10
@@ -17,7 +27,7 @@ signal action_logged(text_to_display: String)
 @export var base_attack: int = 3
 @export var sp_attack: int = 5
 
-@export var crit_chance: float = 0.5
+@export var crit_chance: float = 0.2
 @export var crit_multiplier: float = 1.5
 
 @export_category("Progression")
@@ -33,17 +43,39 @@ var active_statuses: Array[Dictionary] = []
 @onready var status_container: HBoxContainer = get_node_or_null("StatusContainer")
 @onready var hp_bar: ProgressBar = get_node_or_null("HPBar")
 @onready var sp_bar: ProgressBar = get_node_or_null("SPBar")
-@onready var exp_bar: ProgressBar = get_node_or_null("EXP")
 @onready var turn_arrow: Node2D = get_node_or_null("TurnArrow")
 @export var skills: Array[Skill] = []
+@export var learnable_skills: Array[Skill] = []
 
 func _ready() -> void:
+	if is_player and GameManager.party_level > level:
+		apply_level_stats(GameManager.party_level)
+	else:
+		current_hp = max_hp
+		current_sp = max_sp
+		update_bars()
+		refresh_skills()
+	sway_timer = randf_range(0.0, 100.0)
+	sway_speed = randf_range(1.5, 2.5)
+	
 	current_hp = max_hp
 	current_sp = max_sp
 	update_bars()
-		
+	
 	if turn_arrow:
 		turn_arrow.hide()
+		
+	await get_tree().process_frame
+	if visual_sprite:
+		base_sprite_x = visual_sprite.position.x
+		
+	refresh_skills()
+
+func refresh_skills() -> void:
+	skills.clear()
+	for i in range(min(level, learnable_skills.size())):
+		if learnable_skills[i] != null:
+			skills.append(learnable_skills[i])
 
 func update_bars() -> void:
 	if hp_bar:
@@ -52,9 +84,6 @@ func update_bars() -> void:
 	if sp_bar:
 		sp_bar.max_value = max_sp
 		sp_bar.value = current_sp
-	if exp_bar:
-		exp_bar.max_value = max_exp
-		exp_bar.value = current_exp
 
 func start_turn() -> void:
 	if turn_arrow: turn_arrow.show()
@@ -64,37 +93,21 @@ func end_turn() -> void:
 	emit_signal("turn_finished")
 
 # exp level up
-func gain_exp(amount: int) -> void:
-	if level >= 5:
+func apply_level_stats(new_level: int) -> void:
+	var diff = new_level - level
+	if diff <= 0:
 		return
 		
-	action_logged.emit("[color=cyan]>" + character_name + " gained " + str(amount) + " EXP![/color]")
-	for i in range(amount):
-		if level >= 5: break 
-		
-		current_exp += 1
-		
-		if exp_bar:
-			exp_bar.value = current_exp
-		
-		await get_tree().create_timer(0.05).timeout 
-		
-		if current_exp >= max_exp:
-			await level_up()
-
-func level_up() -> void:
-	current_exp -= max_exp
-	level += 1
-	max_exp = int(max_exp * 1.5)
-	max_hp += 5
-	max_sp += 3
-	base_attack += 2
-	sp_attack += 2 
+	level = new_level
+	max_hp += (5 * diff)
+	max_sp += (3 * diff)
+	base_attack += (2 * diff)
+	sp_attack += (2 * diff)
+	
 	current_hp = max_hp 
 	current_sp = max_sp
 	update_bars()
-	action_logged.emit("[color=gold]>LEVEL UP! " + character_name + " is now Level " + str(level) + "![/color]")
-	await get_tree().create_timer(1.0).timeout
+	refresh_skills()
 
 func take_damage(amount: int) -> void:
 	print("--- HIT DETECTED ---")
@@ -146,6 +159,10 @@ func take_damage(amount: int) -> void:
 		
 		var color_tween = create_tween()
 		color_tween.tween_property(visual_sprite, "modulate", Color(1, 1, 1), 0.4).set_delay(0.1)
+	
+	if sfx_player != null and hurt_sound != null:
+		sfx_player.stream = hurt_sound
+		sfx_player.play()
 
 func apply_status(new_effect: StatusEffect) -> void:
 	active_statuses.append({
@@ -228,3 +245,38 @@ func execute_ai(players: Array[Actor], allies: Array[Actor]) -> Dictionary:
 			decision["target"] = self
 			
 	return decision
+
+func _process(delta: float) -> void:
+	if is_static_attacker:
+		return
+		
+	if visual_sprite:
+		sway_timer += delta
+		visual_sprite.position.x = base_sprite_x + (sin(sway_timer * sway_speed) * 2.0)
+		
+func play_attack_sound(skill_used: Skill = null) -> void:
+	if sfx_player == null: return
+	if skill_used != null and skill_used.skill_sound != null:
+		sfx_player.stream = skill_used.skill_sound
+		sfx_player.play()
+	elif basic_attack_sound != null:
+		sfx_player.stream = basic_attack_sound
+		sfx_player.play()
+
+func scale_to_party_level(party_level: int) -> void:
+	var level_difference = party_level - level
+	
+	if level_difference <= 0: 
+		return 
+		
+	level = party_level
+	
+	max_hp += (5 * level_difference)
+	max_sp += (3 * level_difference)
+	base_attack += (2 * level_difference)
+	sp_attack += (2 * level_difference)
+	
+	current_hp = max_hp
+	current_sp = max_sp
+	update_bars()
+	refresh_skills()

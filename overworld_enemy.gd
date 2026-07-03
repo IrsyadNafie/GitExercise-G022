@@ -1,7 +1,11 @@
 extends CharacterBody2D
 
 @export var enemy_id: String = "map_enemy_1"
-@export var battle_scene_path: String = "res://dialog/dialog_ui.tscn"
+
+@export var dialog_scene_path: String = "res://dialog/dialog_ui.tscn"
+@export var actual_battle_scene_path: String = "res://battle/control.tscn" 
+
+@export var skip_dialog_for_testing: bool = true 
 
 var can_start_battle: bool = false
 var speed = 80
@@ -48,4 +52,12 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 			tween.tween_property(camera, "global_position", body.global_position, 0.7).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
 			tween.chain() 
 			await tween.finished 
-		get_tree().change_scene_to_file(battle_scene_path)
+			
+			GameManager.last_overworld_scene = get_tree().current_scene.scene_file_path
+			GameManager.last_player_position = body.global_position
+			GameManager.enemy_just_defeated = enemy_id
+			
+		if skip_dialog_for_testing:
+			get_tree().change_scene_to_file(actual_battle_scene_path)
+		else:
+			get_tree().change_scene_to_file(dialog_scene_path)

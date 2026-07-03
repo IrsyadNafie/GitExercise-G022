@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://kmid2gjxsfvu"]
+
+[ext_resource type="Texture2D" uid="uid://b56x5etux65ju" path="res://enemies/2.png" id="1_xyfy2"]
+[ext_resource type="Script" uid="uid://u1vhfv8hjeux" path="res://enemy_data.gd" id="2_6uuoa"]
+[ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="3_sgtkj"]
+[ext_resource type="Resource" uid="uid://ch6o8vdspfr3c" path="res://enemyskill/Web.tres" id="4_xyfy2"]
+
+[sub_resource type="Resource" id="Resource_g1fhx"]
+script = ExtResource("3_sgtkj")
+name = "Apply"
+sp_cost = 0
+heal_amount = 5
+target_type = 2
+
+[resource]
+script = ExtResource("2_6uuoa")
+enemy_texture = ExtResource("1_xyfy2")
+enemy_name = "Spider"
+max_hp = 7
+max_sp = 10
+base_attack = 4
+sp_attack = 3
+special_skills = Array[ExtResource("3_sgtkj")]([ExtResource("4_xyfy2"), SubResource("Resource_g1fhx")])
+metadata/_custom_type_script = "uid://u1vhfv8hjeux"

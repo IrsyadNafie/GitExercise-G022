@@ -2,8 +2,6 @@ extends Actor
 
 var available_skills: Array[Skill] = []
 var is_static: bool = false
-var base_sprite_x: float = 0.0
-var sway_timer: float = 0.0
 
 func _ready() -> void:
 	super()
@@ -23,9 +21,13 @@ func setup_from_data(data: EnemyData) -> void:
 	self.max_sp = data.max_sp
 	self.current_sp = data.max_sp
 	self.base_attack = data.base_attack
+	self.sp_attack = data.sp_attack 
 	
 	self.available_skills = data.special_skills
 	self.skills = self.available_skills 
+	
+	if GameManager.party_level > 1:
+		apply_level_stats(GameManager.party_level)
 	
 	self.is_player = false
 	is_static = data.is_static

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://caa73hbsmqwns"]
+
+[ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="1_wf5oj"]
+
+[resource]
+script = ExtResource("1_wf5oj")
+name = "The Hand"
+sp_cost = 0
+damage = 2
+target_type = 1
+hits = 2

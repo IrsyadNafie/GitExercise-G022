@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bu6infk68sg7v" path="res://player.gd" id="3_uje2u"]
 [ext_resource type="Texture2D" uid="uid://d1i2h23am0me0" path="res://character/square-idle-ow.png" id="4_ogcnq"]
 [ext_resource type="Texture2D" uid="uid://b4dbupg8jhcmr" path="res://InteractableObjects/yellowkeygodot.png" id="5_i7qtk"]
-[ext_resource type="Script" uid="uid://cu7qik8cmlvju" path="res://interactable.gd" id="6_rxyaw"]
+[ext_resource type="Script" path="res://interactable.gd" id="6_rxyaw"]
 [ext_resource type="PackedScene" uid="uid://b8sih6ljgrddi" path="res://character/square_walk.tscn" id="6_se8t4"]
 [ext_resource type="Texture2D" uid="uid://8hqj18qnoef1" path="res://LevelDesign/npcgodot.png" id="7_rwm56"]
 [ext_resource type="Script" uid="uid://25n7qtud6y3r" path="res://ui.gd" id="10_lorh8"]
@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cgym4qx4agsbe" path="res://InteractableObjects/axegodot.png" id="13_dbwg8"]
 [ext_resource type="FontFile" uid="uid://b6lro2q7ygs7h" path="res://Symtext.ttf" id="13_rxyaw"]
 [ext_resource type="Script" uid="uid://c5nevmmkqlx7y" path="res://volume.gd" id="14_rwm56"]
-[ext_resource type="Script" path="res://fullscreen.gd" id="15_i7fmn"]
+[ext_resource type="Script" uid="uid://4ytruas7que0" path="res://fullscreen.gd" id="15_i7fmn"]
 [ext_resource type="AudioStream" uid="uid://cnjqtw02uuyp0" path="res://Walen - Freedom Motivation (freetouse.com).wav" id="16_4iyiw"]
 [ext_resource type="PackedScene" uid="uid://bvayd54elqvfa" path="res://LevelFeatures/checkpoint.tscn" id="16_vlo1t"]
 [ext_resource type="PackedScene" uid="uid://c8rfj43xdhn5j" path="res://LevelFeatures/pickup_item.tscn" id="17_11nc7"]
@@ -27,6 +27,8 @@
 [ext_resource type="PackedScene" uid="uid://bayywigv1y606" path="res://LevelFeatures/door.tscn" id="26_i7qtk"]
 [ext_resource type="PackedScene" uid="uid://das1ag8tt7mu8" path="res://potion_shop_ui.tscn" id="27_rwm56"]
 [ext_resource type="Texture2D" uid="uid://wos3b5s4y8pm" path="res://LevelDesign/Background for Geometric2.png" id="27_rxyaw"]
+[ext_resource type="Script" uid="uid://dnkktpeqel27m" path="res://overworld_enemy.gd" id="28_i7fmn"]
+[ext_resource type="Texture2D" uid="uid://b8qhgg64kj7en" path="res://assetsbattle/enemy.png" id="29_4iyiw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fv7m"]
 size = Vector2(131, 127)
@@ -50,6 +52,12 @@ font_size = 24
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5doro"]
 size = Vector2(112.42731, 199.50769)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lorh8"]
+size = Vector2(128, 126)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vp7mk"]
+size = Vector2(139, 135)
 
 [node name="Main" type="Node2D" unique_id=1948883537]
 position = Vector2(428, 383)
@@ -347,7 +355,7 @@ offset_top = 98.0
 offset_right = 479.0
 offset_bottom = 147.0
 
-[node name="\'setting\'" type="Label" parent="UI/SaveMenu" unique_id=1438100928]
+[node name="setting" type="Label" parent="UI/SaveMenu" unique_id=1438100928]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -386,7 +394,7 @@ theme_override_font_sizes/font_size = 25
 text = "Fullscreen"
 script = ExtResource("15_i7fmn")
 
-[node name="\'volume\'" type="Label" parent="UI/SaveMenu" unique_id=1174082759]
+[node name="volume2" type="Label" parent="UI/SaveMenu" unique_id=1174082759]
 layout_mode = 0
 offset_left = 168.0
 offset_top = 113.0
@@ -563,6 +571,102 @@ next_scene = "uid://c8b7wf8mw4yfk"
 
 [node name="PotionShopUI" parent="." unique_id=1932476949 instance=ExtResource("27_rwm56")]
 
+[node name="OverworldEnemy1" type="CharacterBody2D" parent="." unique_id=1502811455]
+position = Vector2(253, -395)
+collision_layer = 5
+script = ExtResource("28_i7fmn")
+enemy_id = "map_enemy_7"
+
+[node name="Sprite2D" type="Sprite2D" parent="OverworldEnemy1" unique_id=626680183]
+position = Vector2(913, 551)
+texture = ExtResource("29_4iyiw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OverworldEnemy1" unique_id=530002715]
+position = Vector2(915, 551)
+scale = Vector2(0.04000002, 1)
+shape = SubResource("RectangleShape2D_lorh8")
+
+[node name="Hitbox" type="Area2D" parent="OverworldEnemy1" unique_id=1949578458]
+position = Vector2(913, 551)
+scale = Vector2(1, 0.98545647)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OverworldEnemy1/Hitbox" unique_id=1580271134]
+position = Vector2(2.5, -0.5)
+shape = SubResource("RectangleShape2D_vp7mk")
+
+[node name="OverworldEnemy2" type="CharacterBody2D" parent="." unique_id=740661053]
+position = Vector2(1791, -397)
+collision_layer = 5
+script = ExtResource("28_i7fmn")
+enemy_id = "map_enemy_8"
+
+[node name="Sprite2D" type="Sprite2D" parent="OverworldEnemy2" unique_id=1344677898]
+position = Vector2(913, 551)
+texture = ExtResource("29_4iyiw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OverworldEnemy2" unique_id=24582116]
+position = Vector2(915, 551)
+scale = Vector2(0.04000002, 1)
+shape = SubResource("RectangleShape2D_lorh8")
+
+[node name="Hitbox" type="Area2D" parent="OverworldEnemy2" unique_id=298629450]
+position = Vector2(913, 551)
+scale = Vector2(1, 0.98545647)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OverworldEnemy2/Hitbox" unique_id=1762466704]
+position = Vector2(2.5, -0.5)
+shape = SubResource("RectangleShape2D_vp7mk")
+
+[node name="OverworldEnemy3" type="CharacterBody2D" parent="." unique_id=950003416]
+position = Vector2(2354, -397)
+collision_layer = 5
+script = ExtResource("28_i7fmn")
+enemy_id = "map_enemy_9"
+
+[node name="Sprite2D" type="Sprite2D" parent="OverworldEnemy3" unique_id=834166853]
+position = Vector2(913, 551)
+texture = ExtResource("29_4iyiw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OverworldEnemy3" unique_id=247983671]
+position = Vector2(915, 551)
+scale = Vector2(0.04000002, 1)
+shape = SubResource("RectangleShape2D_lorh8")
+
+[node name="Hitbox" type="Area2D" parent="OverworldEnemy3" unique_id=1991458306]
+position = Vector2(913, 551)
+scale = Vector2(1, 0.98545647)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OverworldEnemy3/Hitbox" unique_id=156097522]
+position = Vector2(2.5, -0.5)
+shape = SubResource("RectangleShape2D_vp7mk")
+
+[node name="OverworldEnemy4" type="CharacterBody2D" parent="." unique_id=613845854]
+position = Vector2(548, -397)
+collision_layer = 5
+script = ExtResource("28_i7fmn")
+enemy_id = "map_enemy_10"
+
+[node name="Sprite2D" type="Sprite2D" parent="OverworldEnemy4" unique_id=1477237732]
+position = Vector2(913, 551)
+texture = ExtResource("29_4iyiw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OverworldEnemy4" unique_id=597041810]
+position = Vector2(915, 551)
+scale = Vector2(0.04000002, 1)
+shape = SubResource("RectangleShape2D_lorh8")
+
+[node name="Hitbox" type="Area2D" parent="OverworldEnemy4" unique_id=38737811]
+position = Vector2(913, 551)
+scale = Vector2(1, 0.98545647)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OverworldEnemy4/Hitbox" unique_id=146327084]
+position = Vector2(2.5, -0.5)
+shape = SubResource("RectangleShape2D_vp7mk")
+
 [connection signal="pressed" from="UI/SaveMenu/SaveSlot1Btn" to="UI" method="_on_save_slot_1_btn_pressed"]
 [connection signal="pressed" from="UI/SaveMenu/LoadSlot1Btn" to="UI" method="_on_load_slot_1_btn_pressed"]
 [connection signal="pressed" from="UI/SaveMenu/SaveSlot2Btn" to="UI" method="_on_save_slot_2_btn_pressed"]
@@ -573,6 +677,10 @@ next_scene = "uid://c8b7wf8mw4yfk"
 [connection signal="value_changed" from="UI/SaveMenu/volume" to="UI/SaveMenu/volume" method="_on_value_changed"]
 [connection signal="toggled" from="UI/SaveMenu/fullscreen" to="UI/SaveMenu/fullscreen" method="_on_toggled"]
 [connection signal="child_entered_tree" from="NPC" to="." method="_on_npc_child_entered_tree"]
+[connection signal="body_entered" from="OverworldEnemy1/Hitbox" to="OverworldEnemy1" method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="OverworldEnemy2/Hitbox" to="OverworldEnemy2" method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="OverworldEnemy3/Hitbox" to="OverworldEnemy3" method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="OverworldEnemy4/Hitbox" to="OverworldEnemy4" method="_on_hitbox_body_entered"]
 
 [editable path="KeyPickup"]
 [editable path="AxePickup"]

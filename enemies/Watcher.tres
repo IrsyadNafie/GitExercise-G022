@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://gygpue02ndle"]
+
+[ext_resource type="Texture2D" uid="uid://cy7l67be553ls" path="res://enemies/3.png" id="1_sdgd7"]
+[ext_resource type="Script" uid="uid://u1vhfv8hjeux" path="res://enemy_data.gd" id="2_3xmhb"]
+[ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="3_hqpn6"]
+[ext_resource type="Resource" uid="uid://dt2epdujkhgrc" path="res://enemyskill/Blunt.tres" id="4_3xmhb"]
+[ext_resource type="Resource" uid="uid://bvcjen54ah8h2" path="res://enemyskill/Double X.tres" id="5_hqpn6"]
+
+[resource]
+script = ExtResource("2_3xmhb")
+is_static = true
+enemy_texture = ExtResource("1_sdgd7")
+enemy_name = "Watcher"
+base_attack = 3
+special_skills = Array[ExtResource("3_hqpn6")]([ExtResource("4_3xmhb"), ExtResource("5_hqpn6")])
+metadata/_custom_type_script = "uid://u1vhfv8hjeux"

@@ -11,6 +11,10 @@ var defeated_enemies: Array[String] = []
 var just_fled: bool = false
 var load_player_position = Vector2.ZERO
 var picked_items = []
+var party_level: int = 1
+var party_current_exp: int = 0
+var party_max_exp: int = 10
+var party_wiped: bool = false
 
 # 5 inventory slots
 var inventory = ["", "", "", "", ""]

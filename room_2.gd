@@ -18,3 +18,6 @@ func _on_load_slot_3_btn_pressed() -> void:
 
 func _on_close_save_btn_pressed() -> void:
 	pass # Replace with function body.
+
+func _on_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://ctbbw54bnl5r6"]
+
+[ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="1_t3k5f"]
+
+[resource]
+script = ExtResource("1_t3k5f")
+name = "Shoot"
+sp_cost = 0
+damage = 1
+target_type = 2
+hits = 3

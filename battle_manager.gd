@@ -15,46 +15,65 @@ var is_in_skill_menu: bool = false
 var current_skills: Array[Skill] = []
 var selected_skill_to_execute: Skill = null
 
+@onready var party_exp_bar = $UI/PartyExpBar
 @onready var menu_arrow = $UI/PlayerPanel/arrow
 @onready var ui_layer = $UI
 @onready var action_menu = $UI/PlayerPanel/move
 @onready var battle_log = $UI/PlayerPanel/BattleLog/RichTextLabel
 @export var burn_status_resource: StatusEffect
+@export var fixed_enemies: Array[EnemyData]
 
 func _ready() -> void:
 	action_menu.hide()
 	action_menu.action_selected.connect(_on_ui_action_selected)
 	
+	if party_exp_bar:
+		party_exp_bar.max_value = GameManager.party_max_exp
+		party_exp_bar.value = GameManager.party_current_exp
+	
 	if battle_log:
 		var scrollbar = battle_log.get_v_scroll_bar()
 		if scrollbar: scrollbar.modulate = Color.TRANSPARENT
 		
-	var enemy_files: Array[String] = []
-	var dir = DirAccess.open("res://enemies/") 
-	
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			if file_name.ends_with(".tres"):
-				enemy_files.append("res://enemies/" + file_name)
-			file_name = dir.get_next()
-			
 	var enemy_nodes = [$Actors/Enemy1, $Actors/Enemy2, $Actors/Enemy3]
 	
-	for enemy_node in enemy_nodes:
-		if enemy_node != null:
-			if enemy_files.size() > 0:
-				var random_file = enemy_files.pick_random()
-				var random_data = load(random_file) as EnemyData
-				
-				if random_data:
-					enemy_node.setup_from_data(random_data)
-					print("Slot: " + enemy_node.name + " spawned " + enemy_node.character_name)
-					_on_actor_logged("[color=red]> A wild " + enemy_node.character_name + " appears![/color]")
-			else:
-				enemy_node.queue_free()
+	if fixed_enemies.size() > 0:
+		for i in range(enemy_nodes.size()):
+			var enemy_node = enemy_nodes[i]
+			if enemy_node != null:
+				if i < fixed_enemies.size() and fixed_enemies[i] != null:
+					enemy_node.setup_from_data(fixed_enemies[i])
+					print("Slot: " + enemy_node.name + " spawned BOSS " + enemy_node.character_name)
+					_on_actor_logged("[color=red]> WARNING: " + enemy_node.character_name + " Has Arrived![/color]")
+				else:
+					enemy_node.queue_free()
+	else:
+		var enemy_files: Array[String] = []
+		var dir = DirAccess.open("res://enemies/") 
 		
+		if dir:
+			dir.list_dir_begin()
+			var file_name = dir.get_next()
+			while file_name != "":
+				if file_name.ends_with(".tres"):
+					enemy_files.append("res://enemies/" + file_name)
+				file_name = dir.get_next()
+				
+		var number_of_enemies = randi_range(1, 3)
+				
+		for i in range(enemy_nodes.size()):
+			var enemy_node = enemy_nodes[i]
+			if enemy_node != null:
+				if i < number_of_enemies and enemy_files.size() > 0:
+					var random_file = enemy_files.pick_random()
+					var random_data = load(random_file) as EnemyData
+					
+					if random_data:
+						enemy_node.setup_from_data(random_data)
+						_on_actor_logged("[color=red]> A wild " + enemy_node.character_name + " appears![/color]")
+				else:
+					enemy_node.queue_free()
+					
 	var camera = get_node_or_null("Camera2D")
 	if camera:
 		camera.anchor_mode = Camera2D.ANCHOR_MODE_DRAG_CENTER
@@ -67,18 +86,28 @@ func _ready() -> void:
 		tween.tween_property(camera, "global_position", center_position, 0.7).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 		tween.chain()
 		await tween.finished
+		
 	var actor_nodes = $Actors.get_children()
+	var current_party_level = 1
+	
 	for node in actor_nodes:
 		if node is Actor:
 			turn_queue.append(node)
 			node.action_logged.connect(_on_actor_logged)
 			if not node.is_player:
 				active_enemies.append(node)
+			else:
+				current_party_level = node.level
+				
+	for enemy in active_enemies:
+		enemy.scale_to_party_level(current_party_level)
 	
 	_on_actor_logged("Battle Start!")
 	start_next_turn()
 
 func start_next_turn() -> void:
+	if battle_won: 
+		return
 	is_in_skill_menu = false
 	selected_skill_to_execute = null
 	
@@ -311,6 +340,7 @@ func execute_targeted_attack() -> void:
 		msg = " strikes with a FLAMING weapon at "
 		
 	current_actor.action_logged.emit("[color=black]>" + current_actor.character_name + msg + target.character_name + "![/color]")
+	current_actor.play_attack_sound(selected_skill_to_execute)
 	
 	for i in range(hits):
 		if not is_instance_valid(target) or target.current_hp <= 0:
@@ -336,6 +366,8 @@ func execute_aoe_attack() -> void:
 	var current_actor: Actor = turn_queue[current_actor_index]
 	current_actor.action_logged.emit("[color=black]>" + current_actor.character_name + " uses " + current_actor.attack_name + " on EVERYONE![/color]")
 	current_actor.action_logged.emit("[color=black]>dealing " + str(current_actor.base_attack) + " damage to all![/color]")
+	
+	current_actor.play_attack_sound()
 	
 	var enemies_to_hit = active_enemies.duplicate()
 	for enemy in enemies_to_hit:
@@ -384,6 +416,7 @@ func execute_party_heal(skill: Skill):
 	finish_action()
 
 func finish_action() -> void:
+	if battle_won: return
 	if is_ending_turn or battle_won: return
 	is_ending_turn = true
 	
@@ -421,7 +454,7 @@ func check_death(dead_actor: Actor) -> void:
 	if dead_actor.current_hp > 0:
 		return 
 		
-	_on_actor_logged("[color=gray]>" + dead_actor.character_name + " was defeated![/color]")
+	_on_actor_logged("[color=slategray]>" + dead_actor.character_name + " was defeated![/color]")
 	
 	var dead_index = turn_queue.find(dead_actor)
 	if dead_index != -1:
@@ -433,11 +466,13 @@ func check_death(dead_actor: Actor) -> void:
 		total_battle_exp += dead_actor.exp_reward
 		active_enemies.erase(dead_actor)
 		
-	if active_enemies.size() == 0:
-		battle_won = true
-		_on_actor_logged("[color=gold]--- BATTLE WON! ---[/color]")
-		
-		distribute_victory_exp() 
+		if active_enemies.size() == 0:
+			battle_won = true
+			_on_actor_logged("[color=indigo]--- BATTLE WON! ---[/color]")
+			
+			distribute_victory_exp() 
+	else:
+		check_party_wipe()
 		
 	dead_actor.queue_free()
 
@@ -463,32 +498,72 @@ func open_skill_sub_menu(actor: Actor):
 func open_item_sub_menu():
 	is_in_item_menu = true
 	var items = GameManager.inventory
-	
+	var first_visible_btn = null
+
 	for i in range(action_menu.get_child_count()):
 		var btn = action_menu.get_child(i)
 		if i < items.size() and items[i] != "":
 			btn.text = items[i]
 			btn.show()
+			if first_visible_btn == null:
+				first_visible_btn = btn
 		else:
 			btn.hide()
-			
-	action_menu.get_child(0).grab_focus()
+	if first_visible_btn != null:
+		first_visible_btn.grab_focus()
+	else:
+		_on_actor_logged("[color=black]>Your inventory is empty![/color]")
+		go_back()
 
 func handle_item_choice(action: String):
 	var current_actor: Actor = turn_queue[current_actor_index]
+	var actual_item_name = action
+	for i in range(action_menu.get_child_count()):
+		var btn = action_menu.get_child(i)
+		if action == btn.name or action == btn.text:
+			actual_item_name = btn.text
+			break
 	
-	if action == "Potion":
-		var item_index = GameManager.inventory.find("Potion")
+	var item_index = GameManager.inventory.find(actual_item_name)
+	
+	if "Health" in actual_item_name:
 		if item_index != -1:
 			GameManager.inventory[item_index] = "" 
 			
-		current_actor.current_hp = min(current_actor.current_hp + 20, current_actor.max_hp)
+		var heal_amount = int(current_actor.max_hp * 0.25)
+		current_actor.current_hp = mini(current_actor.current_hp + heal_amount, current_actor.max_hp)
 		current_actor.update_bars()
 		
 		is_in_item_menu = false
 		action_menu.hide()
-		current_actor.action_logged.emit("[color=green]>" + current_actor.character_name + " drinks a Potion! Restored 20 HP![/color]")
+		current_actor.action_logged.emit("[color=green]>" + current_actor.character_name + " drinks a Health Potion! Restored HP![/color]")
 		finish_action()
+		
+	elif "Streng" in actual_item_name: 
+		if item_index != -1:
+			GameManager.inventory[item_index] = "" 
+			
+		var attack_buff = maxi(1, int(current_actor.base_attack * 0.25))
+		current_actor.base_attack += attack_buff
+		
+		is_in_item_menu = false
+		action_menu.hide()
+		current_actor.action_logged.emit("[color=darkorange]>" + current_actor.character_name + " drinks a Strength Potion! Attack power increased![/color]")
+		finish_action()
+		
+	elif "Luck" in actual_item_name:
+		if item_index != -1:
+			GameManager.inventory[item_index] = "" 
+			
+		current_actor.crit_chance = 0.5
+		
+		is_in_item_menu = false
+		action_menu.hide()
+		current_actor.action_logged.emit("[color=purple]>" + current_actor.character_name + " drinks a Lucky Potion! Critical chance [/color]")
+		finish_action()
+		
+	else:
+		current_actor.action_logged.emit("[color=black]>This item does nothing to the battle.[/color]")
 
 func reset_main_menu(actor: Actor):
 	var labels = [actor.attack_name, "rest", "special", "item", "flee"]
@@ -553,12 +628,34 @@ func distribute_victory_exp() -> void:
 	if music != null:
 		music.stop() 
 		
-	_on_actor_logged("[color=yellow]>Battle Won! Earned " + str(total_battle_exp) + " EXP![/color]")
+	_on_actor_logged("[color=indigo]>Battle Won! Earned " + str(total_battle_exp) + " EXP![/color]")
 	
-	for player in get_active_players():
-		await player.gain_exp(total_battle_exp)
+	if GameManager.party_level < 5:
+		GameManager.party_current_exp += total_battle_exp
 		
-	await get_tree().create_timer(2.0).timeout
+		if party_exp_bar:
+			party_exp_bar.value = GameManager.party_current_exp
+			
+		await get_tree().create_timer(1.0).timeout
+		
+		if GameManager.party_current_exp >= GameManager.party_max_exp:
+			GameManager.party_current_exp -= GameManager.party_max_exp
+			GameManager.party_level += 1
+			GameManager.party_max_exp = int(GameManager.party_max_exp * 1.5)
+			
+			if party_exp_bar:
+				party_exp_bar.max_value = GameManager.party_max_exp
+				party_exp_bar.value = GameManager.party_current_exp
+				
+			_on_actor_logged("[color=darkmagenta]>PARTY LEVEL UP! The team is now Level " + str(GameManager.party_level) + "![/color]")
+			
+			for actor in turn_queue:
+				if actor.is_player:
+					actor.apply_level_stats(GameManager.party_level)
+					
+			await get_tree().create_timer(1.5).timeout
+
+	await get_tree().create_timer(1.0).timeout
 	_on_actor_logged(">Returning to map...")
 	await get_tree().create_timer(1.0).timeout
 	
@@ -566,10 +663,31 @@ func distribute_victory_exp() -> void:
 		GameManager.defeated_enemies.append(GameManager.enemy_just_defeated)
 		GameManager.enemy_just_defeated = ""
 	
-	if GameManager.last_overworld_scene != "":
-		get_tree().change_scene_to_file(GameManager.last_overworld_scene)
+	var current_scene_path = get_tree().current_scene.scene_file_path
+	
+	if "boss_battle" in current_scene_path:
+		_on_actor_logged("> The Boss is defeated...")
+		
+		var canvas = CanvasLayer.new()
+		canvas.layer = 100
+		get_tree().current_scene.add_child(canvas)
+		
+		var fade = ColorRect.new()
+		fade.color = Color(0, 0, 0, 0)
+		fade.set_anchors_preset(Control.PRESET_FULL_RECT)
+		canvas.add_child(fade)
+		
+		var tween = create_tween()
+		tween.tween_property(fade, "color", Color(0, 0, 0, 1), 3.0) 
+		
+		await tween.finished 
+		
+		get_tree().change_scene_to_file("res://ending.tscn")
+		
 	else:
-		_on_actor_logged("[color=red]ERROR: No map memory! Did you test the battle scene directly?[/color]")
+		await get_tree().create_timer(1.0).timeout
+		if GameManager.last_overworld_scene != "":
+			get_tree().change_scene_to_file(GameManager.last_overworld_scene)
 
 func execute_enemy_ai() -> void:
 	if is_ending_turn or battle_won: return
@@ -577,7 +695,6 @@ func execute_enemy_ai() -> void:
 	
 	var players = get_active_players()
 	if players.size() == 0:
-		finish_action()
 		return
 		
 	var decision = current_actor.execute_ai(players, active_enemies)
@@ -624,10 +741,14 @@ func execute_enemy_ai() -> void:
 		current_actor.current_sp -= skill.sp_cost
 		current_actor.update_bars()
 		
+		var total_skill_dmg = skill.damage + current_actor.sp_attack
+		
 		if skill.target_type == Skill.TargetType.SINGLE_ENEMY or skill.target_type == Skill.TargetType.RANDOM:
 			_on_actor_logged("[color=black]>" + current_actor.character_name + " uses " + skill.name + " on " + target.character_name + "![/color]")
 			for i in range(skill.hits):
-				target.take_damage(skill.damage)
+				if target.current_hp <= 0: 
+					break
+				target.take_damage(total_skill_dmg)
 				if skill.status_to_apply: target.apply_status(skill.status_to_apply)
 				check_death(target)
 				if skill.hits > 1: await get_tree().create_timer(0.2).timeout
@@ -635,7 +756,7 @@ func execute_enemy_ai() -> void:
 		elif skill.target_type == Skill.TargetType.ALL_ENEMY:
 			_on_actor_logged("[color=black]>" + current_actor.character_name + " uses " + skill.name + " on EVERYONE![/color]")
 			for p in players:
-				p.take_damage(skill.damage)
+				p.take_damage(total_skill_dmg)
 				if skill.status_to_apply: p.apply_status(skill.status_to_apply)
 				check_death(p)
 				
@@ -701,3 +822,38 @@ func go_back() -> void:
 		action_menu.get_child(0).grab_focus()
 		var back_btn = get_node_or_null("UI/PlayerPanel/BackButton")
 		if back_btn: back_btn.hide()
+
+func check_party_wipe() -> void:
+	if battle_won: return
+	
+	var alive_players = get_active_players()
+	
+	if alive_players.size() == 0:
+		battle_won = true
+		action_menu.hide()
+		menu_arrow.hide()
+		
+		_on_actor_logged("[color=darkred]> YOUR WHOLE PARTY DIED![/color]")
+		
+		if GameManager.checkpoint_position != Vector2.ZERO:
+			GameManager.last_player_position = GameManager.checkpoint_position
+			
+		var canvas = CanvasLayer.new()
+		canvas.layer = 100
+		get_tree().current_scene.add_child(canvas)
+		
+		var fade = ColorRect.new()
+		fade.color = Color(0, 0, 0, 0)
+		fade.set_anchors_preset(Control.PRESET_FULL_RECT)
+		canvas.add_child(fade)
+		
+		var tween = create_tween()
+		tween.tween_property(fade, "color", Color(0, 0, 0, 1), 3.0) 
+		
+		await tween.finished 
+		
+		GameManager.party_wiped = true 
+		if GameManager.last_overworld_scene != "":
+			get_tree().change_scene_to_file(GameManager.last_overworld_scene)
+		else:
+			_on_actor_logged("[color=red]System Error: No map to return to![/color]")

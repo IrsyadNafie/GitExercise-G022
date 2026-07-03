@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://dntoqh7cdp62j"]
+
+[ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="1_gfojn"]
+
+[resource]
+script = ExtResource("1_gfojn")
+name = "Forward"
+sp_cost = 0
+heal_amount = 3
+target_type = 3

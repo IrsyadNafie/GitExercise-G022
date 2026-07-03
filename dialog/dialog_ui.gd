@@ -13,8 +13,6 @@ var next_block: Dictionary
 @export var BaseLayer: CanvasLayer
 @export var ChoiceLayer: TextureRect
 
-
-
 func _ready() -> void:
 	get_json("res://dialog/dialog.json")
 	load_block(current_block)
@@ -35,7 +33,7 @@ func load_block(block : Dictionary):
 	
 	if block.has("trigger"):
 		if block["trigger"] == "ENDCODE":
-			get_tree().change_scene_to_file("res://control.tscn")
+			get_tree().change_scene_to_file("res://battle/boss_battle.tscn")
 	
 func next():
 	current_block = next_block

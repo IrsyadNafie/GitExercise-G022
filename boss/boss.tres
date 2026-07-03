@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://bij6557hl81i8"]
+
+[ext_resource type="Texture2D" uid="uid://cxergay1rfo1e" path="res://boss/1.png" id="1_rljn8"]
+[ext_resource type="Script" uid="uid://u1vhfv8hjeux" path="res://enemy_data.gd" id="2_utt5q"]
+[ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="3_4wvo5"]
+[ext_resource type="Resource" uid="uid://caa73hbsmqwns" path="res://enemyskill/The Hand.tres" id="4_utt5q"]
+[ext_resource type="Resource" uid="uid://moj4bfeqynuv" path="res://enemyskill/Bomb.tres" id="5_4wvo5"]
+
+[resource]
+script = ExtResource("2_utt5q")
+enemy_texture = ExtResource("1_rljn8")
+enemy_name = "Magus Domini"
+max_hp = 45
+max_sp = 20
+base_attack = 4
+sp_attack = 3
+special_skills = Array[ExtResource("3_4wvo5")]([ExtResource("4_utt5q"), ExtResource("5_4wvo5"), null])
+metadata/_custom_type_script = "uid://u1vhfv8hjeux"
