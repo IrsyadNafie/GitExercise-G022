@@ -4,8 +4,7 @@
 [ext_resource type="Script" uid="uid://bu6infk68sg7v" path="res://player.gd" id="2_fvv57"]
 [ext_resource type="Texture2D" uid="uid://bg0ffy51sx7j1" path="res://icon.svg" id="3_wya21"]
 [ext_resource type="Texture2D" uid="uid://b4dbupg8jhcmr" path="res://InteractableObjects/yellowkeygodot.png" id="4_a4or1"]
-[ext_resource type="Script" uid="uid://rqjgk0rln81" path="res://door.gd" id="5_tm5b3"]
-[ext_resource type="Texture2D" uid="uid://bw8myfm63w853" path="res://InteractableObjects/door.webp" id="6_gs5fi"]
+[ext_resource type="PackedScene" uid="uid://b8sih6ljgrddi" path="res://character/square_walk.tscn" id="5_a4or1"]
 [ext_resource type="Script" uid="uid://25n7qtud6y3r" path="res://ui.gd" id="7_3quce"]
 [ext_resource type="PackedScene" uid="uid://maigb36gp0oq" path="res://LevelFeatures/shop_ui.tscn" id="8_ivtma"]
 [ext_resource type="Texture2D" uid="uid://drb0gxqybpkcb" path="res://LevelDesign/blackscreen.png" id="10_wya21"]
@@ -23,9 +22,6 @@ size = Vector2(2280, 76)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4or1"]
 size = Vector2(77, 364.53406)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfw8o"]
-size = Vector2(134, 174.5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_l7adx"]
 font_size = 24
@@ -69,6 +65,10 @@ rotation = -2.4320476
 scale = Vector2(0.1826043, 0.15068357)
 texture = ExtResource("4_a4or1")
 
+[node name="AnimatedChar" parent="Player" unique_id=1129597056 instance=ExtResource("5_a4or1")]
+position = Vector2(-398, 3.8146973e-06)
+scale = Vector2(0.408, 0.408)
+
 [node name="Ground" type="StaticBody2D" parent="." unique_id=1224619748]
 z_index = 1
 
@@ -83,28 +83,6 @@ shape = SubResource("RectangleShape2D_vy8vn")
 [node name="Wall2" type="CollisionShape2D" parent="Ground" unique_id=2010333443]
 position = Vector2(-25.5, 522.733)
 shape = SubResource("RectangleShape2D_a4or1")
-
-[node name="Door" type="Area2D" parent="." unique_id=1652720444]
-script = ExtResource("5_tm5b3")
-next_scene = "res://Levels/maindemo.tscn"
-
-[node name="Sprite2D" type="Sprite2D" parent="Door" unique_id=1465419252]
-z_index = -1
-position = Vector2(154.00012, 565)
-scale = Vector2(0.29416665, 0.26166666)
-texture = ExtResource("6_gs5fi")
-
-[node name="PressE" type="Label" parent="Door" unique_id=812825504]
-visible = false
-offset_left = 125.0
-offset_top = 414.0
-offset_right = 193.0
-offset_bottom = 460.0
-text = "Press E"
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Door" unique_id=774090604]
-position = Vector2(152, 536)
-shape = SubResource("RectangleShape2D_qfw8o")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1708865286]
 script = ExtResource("7_3quce")

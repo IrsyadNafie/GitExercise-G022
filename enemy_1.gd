@@ -26,6 +26,9 @@ func setup_from_data(data: EnemyData) -> void:
 	self.available_skills = data.special_skills
 	self.skills = self.available_skills 
 	
+	if GameManager.party_level > 1:
+		apply_level_stats(GameManager.party_level)
+	
 	self.is_player = false
 	is_static = data.is_static
 	update_bars()

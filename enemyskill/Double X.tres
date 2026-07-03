@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://bvcjen54ah8h2"]
+
+[ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="1_7abgq"]
+
+[resource]
+script = ExtResource("1_7abgq")
+name = "Double X"
+sp_cost = 0
+damage = 2
+target_type = 2
+hits = 2
