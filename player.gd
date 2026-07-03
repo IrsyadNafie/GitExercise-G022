@@ -34,9 +34,17 @@ var max_fall_speed = 0
 
 
 func _ready():
-	
-
 	$Camera2D.make_current()
+	
+	if GameManager.party_wiped:
+		var ui = get_tree().current_scene.get_node_or_null("UI")
+		if ui:
+			var fade_rect = ui.get_node_or_null("Fade")
+			if fade_rect:
+				fade_rect.color = Color(0, 0, 0, 1)
+				
+				var tween = create_tween()
+				tween.tween_property(fade_rect, "color", Color(0, 0, 0, 0), 2.0)
 	
 	if GameManager.last_player_position != Vector2.ZERO:
 		global_position = GameManager.last_player_position + Vector2(0, -10)
@@ -73,6 +81,8 @@ func _process(delta):
 # EQUIPPED ITEM VISUAL
 
 func update_equipped_item(item_name):
+	if equipped_item == null:
+		return
 
 	if item_name == "Key":
 		equipped_item.texture = preload("res://InteractableObjects/yellowkeygodot.png")

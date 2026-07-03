@@ -44,7 +44,7 @@ func _ready() -> void:
 				if i < fixed_enemies.size() and fixed_enemies[i] != null:
 					enemy_node.setup_from_data(fixed_enemies[i])
 					print("Slot: " + enemy_node.name + " spawned BOSS " + enemy_node.character_name)
-					_on_actor_logged("[color=red]> WARNING: " + enemy_node.character_name + " blocks your path![/color]")
+					_on_actor_logged("[color=red]> WARNING: " + enemy_node.character_name + " Has Arrived![/color]")
 				else:
 					enemy_node.queue_free()
 	else:
@@ -106,6 +106,8 @@ func _ready() -> void:
 	start_next_turn()
 
 func start_next_turn() -> void:
+	if battle_won: 
+		return
 	is_in_skill_menu = false
 	selected_skill_to_execute = null
 	
@@ -414,6 +416,7 @@ func execute_party_heal(skill: Skill):
 	finish_action()
 
 func finish_action() -> void:
+	if battle_won: return
 	if is_ending_turn or battle_won: return
 	is_ending_turn = true
 	
@@ -463,11 +466,13 @@ func check_death(dead_actor: Actor) -> void:
 		total_battle_exp += dead_actor.exp_reward
 		active_enemies.erase(dead_actor)
 		
-	if active_enemies.size() == 0:
-		battle_won = true
-		_on_actor_logged("[color=indigo]--- BATTLE WON! ---[/color]")
-		
-		distribute_victory_exp() 
+		if active_enemies.size() == 0:
+			battle_won = true
+			_on_actor_logged("[color=indigo]--- BATTLE WON! ---[/color]")
+			
+			distribute_victory_exp() 
+	else:
+		check_party_wipe()
 		
 	dead_actor.queue_free()
 
@@ -627,7 +632,6 @@ func execute_enemy_ai() -> void:
 	
 	var players = get_active_players()
 	if players.size() == 0:
-		finish_action()
 		return
 		
 	var decision = current_actor.execute_ai(players, active_enemies)
@@ -679,6 +683,8 @@ func execute_enemy_ai() -> void:
 		if skill.target_type == Skill.TargetType.SINGLE_ENEMY or skill.target_type == Skill.TargetType.RANDOM:
 			_on_actor_logged("[color=black]>" + current_actor.character_name + " uses " + skill.name + " on " + target.character_name + "![/color]")
 			for i in range(skill.hits):
+				if target.current_hp <= 0: 
+					break
 				target.take_damage(total_skill_dmg)
 				if skill.status_to_apply: target.apply_status(skill.status_to_apply)
 				check_death(target)
@@ -753,3 +759,38 @@ func go_back() -> void:
 		action_menu.get_child(0).grab_focus()
 		var back_btn = get_node_or_null("UI/PlayerPanel/BackButton")
 		if back_btn: back_btn.hide()
+
+func check_party_wipe() -> void:
+	if battle_won: return
+	
+	var alive_players = get_active_players()
+	
+	if alive_players.size() == 0:
+		battle_won = true
+		action_menu.hide()
+		menu_arrow.hide()
+		
+		_on_actor_logged("[color=darkred]> YOUR WHOLE PARTY DIED![/color]")
+		
+		if GameManager.checkpoint_position != Vector2.ZERO:
+			GameManager.last_player_position = GameManager.checkpoint_position
+			
+		var canvas = CanvasLayer.new()
+		canvas.layer = 100
+		get_tree().current_scene.add_child(canvas)
+		
+		var fade = ColorRect.new()
+		fade.color = Color(0, 0, 0, 0)
+		fade.set_anchors_preset(Control.PRESET_FULL_RECT)
+		canvas.add_child(fade)
+		
+		var tween = create_tween()
+		tween.tween_property(fade, "color", Color(0, 0, 0, 1), 3.0) 
+		
+		await tween.finished 
+		
+		GameManager.party_wiped = true 
+		if GameManager.last_overworld_scene != "":
+			get_tree().change_scene_to_file(GameManager.last_overworld_scene)
+		else:
+			_on_actor_logged("[color=red]System Error: No map to return to![/color]")

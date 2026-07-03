@@ -416,6 +416,7 @@ animations = [{
 
 [node name="BattleScene" type="Node2D" unique_id=1752474127]
 script = ExtResource("1_qtu10")
+fixed_enemies = null
 
 [node name="Actors" type="Node2D" parent="." unique_id=1497777895]
 position = Vector2(24, -158)
@@ -426,6 +427,7 @@ basic_attack_sound = ExtResource("3_b3rfh")
 character_name = "Square"
 attack_name = "swing"
 visual_sprite = NodePath("Player1")
+max_hp = 1
 max_sp = 8
 base_attack = 4
 sp_attack = 2
@@ -499,7 +501,7 @@ character_name = "Circle"
 attack_name = "bash"
 is_aoe_attack = true
 visual_sprite = NodePath("Player2")
-max_hp = 15
+max_hp = 1
 max_sp = 6
 sp_attack = 1
 skills = Array[ExtResource("3_fj5cn")]([ExtResource("9_pi4e7"), ExtResource("10_kuuv8"), ExtResource("11_ou021"), ExtResource("12_3fl80")])
@@ -571,7 +573,7 @@ basic_attack_sound = ExtResource("17_wfgqd")
 character_name = "Triangle"
 attack_name = "shoot"
 visual_sprite = NodePath("Player3")
-max_hp = 8
+max_hp = 1
 max_sp = 10
 base_attack = 5
 sp_attack = 3
@@ -641,23 +643,9 @@ texture = ExtResource("9_8jbwv")
 position = Vector2(-911, 9)
 script = ExtResource("3_ee4bf")
 character_name = "Enemy1"
-is_player = null
-attack_name = null
-is_aoe_attack = null
 visual_sprite = NodePath("Sprite")
-is_static_attacker = null
-max_hp = null
-max_sp = null
 base_attack = 5
-sp_attack = null
-crit_chance = null
-crit_multiplier = null
-level = null
-current_exp = null
-max_exp = null
-exp_reward = null
 skills = Array[ExtResource("3_fj5cn")]([ExtResource("18_kuuv8")])
-learnable_skills = null
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Enemy1" unique_id=1405507110]
 offset_left = 944.00006
@@ -709,23 +697,9 @@ texture = ExtResource("9_8jbwv")
 position = Vector2(-869, 157)
 script = ExtResource("3_ee4bf")
 character_name = "Enemy2"
-is_player = null
-attack_name = null
-is_aoe_attack = null
 visual_sprite = NodePath("Sprite")
-is_static_attacker = null
-max_hp = null
-max_sp = null
 base_attack = 5
-sp_attack = null
-crit_chance = null
-crit_multiplier = null
-level = null
-current_exp = null
-max_exp = null
-exp_reward = null
 skills = Array[ExtResource("3_fj5cn")]([ExtResource("19_ou021")])
-learnable_skills = null
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Enemy2" unique_id=1893942757]
 offset_left = 944.00006
@@ -777,23 +751,8 @@ texture = ExtResource("9_8jbwv")
 position = Vector2(-911, 295)
 script = ExtResource("3_ee4bf")
 character_name = "Enemy3"
-is_player = null
-attack_name = null
 is_aoe_attack = true
 visual_sprite = NodePath("Sprite")
-is_static_attacker = null
-max_hp = null
-max_sp = null
-base_attack = null
-sp_attack = null
-crit_chance = null
-crit_multiplier = null
-level = null
-current_exp = null
-max_exp = null
-exp_reward = null
-skills = null
-learnable_skills = null
 
 [node name="HPBar" type="ProgressBar" parent="Actors/Enemy3" unique_id=289262223]
 offset_left = 944.00006

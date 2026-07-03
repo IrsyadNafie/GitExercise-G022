@@ -3,7 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://cqxikpud4pulw" path="res://enemies/4.png" id="1_fiy3m"]
 [ext_resource type="Script" uid="uid://u1vhfv8hjeux" path="res://enemy_data.gd" id="2_bfc4j"]
 [ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="3_b60fp"]
-[ext_resource type="Resource" uid="uid://brm0r4y7jm5ot" path="res://enemyskill/Flare.tres" id="4_qnodx"]
+[ext_resource type="Resource" uid="uid://brm0r4y7jm5ot" path="res://enemyskill/Flare.tres" id="4_fiy3m"]
+[ext_resource type="Resource" uid="uid://ctbbw54bnl5r6" path="res://enemyskill/Shoot.tres" id="5_bfc4j"]
 
 [resource]
 script = ExtResource("2_bfc4j")
@@ -13,5 +14,5 @@ enemy_name = "Turret"
 max_hp = 7
 max_sp = 10
 sp_attack = 4
-special_skills = Array[ExtResource("3_b60fp")]([ExtResource("4_qnodx")])
+special_skills = Array[ExtResource("3_b60fp")]([ExtResource("4_fiy3m"), ExtResource("5_bfc4j")])
 metadata/_custom_type_script = "uid://u1vhfv8hjeux"

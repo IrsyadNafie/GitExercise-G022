@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b8hr0ridq65ka"]
+[gd_scene format=3 uid="uid://dvekijpjnqyow"]
 
 [ext_resource type="Script" uid="uid://bk34skrfx6gjs" path="res://maindemo.gd" id="1_1scql"]
 [ext_resource type="PackedScene" uid="uid://cbexr00mj6ot7" path="res://LevelFeatures/lava.tscn" id="2_3wxwr"]
@@ -8,13 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://b8sih6ljgrddi" path="res://character/square_walk.tscn" id="6_ca3on"]
 [ext_resource type="Texture2D" uid="uid://d1i2h23am0me0" path="res://character/square-idle-ow.png" id="7_klbb4"]
 [ext_resource type="Texture2D" uid="uid://b4dbupg8jhcmr" path="res://InteractableObjects/yellowkeygodot.png" id="8_ce8y3"]
-[ext_resource type="Script" uid="uid://cu7qik8cmlvju" path="res://interactable.gd" id="9_w83no"]
+[ext_resource type="Script" path="res://interactable.gd" id="9_w83no"]
 [ext_resource type="Texture2D" uid="uid://8hqj18qnoef1" path="res://LevelDesign/npcgodot.png" id="10_q2age"]
 [ext_resource type="Script" uid="uid://25n7qtud6y3r" path="res://ui.gd" id="11_cb0y8"]
 [ext_resource type="PackedScene" uid="uid://maigb36gp0oq" path="res://LevelFeatures/shop_ui.tscn" id="12_r51xw"]
 [ext_resource type="FontFile" uid="uid://b6lro2q7ygs7h" path="res://Symtext.ttf" id="13_xyh2u"]
 [ext_resource type="Script" uid="uid://c5nevmmkqlx7y" path="res://volume.gd" id="14_fbeb6"]
-[ext_resource type="Script" path="res://fullscreen.gd" id="15_7epfr"]
+[ext_resource type="Script" uid="uid://4ytruas7que0" path="res://fullscreen.gd" id="15_7epfr"]
 [ext_resource type="AudioStream" uid="uid://cnjqtw02uuyp0" path="res://Walen - Freedom Motivation (freetouse.com).wav" id="16_qwuga"]
 [ext_resource type="PackedScene" uid="uid://c8rfj43xdhn5j" path="res://LevelFeatures/pickup_item.tscn" id="17_3dgeo"]
 [ext_resource type="Texture2D" uid="uid://cgym4qx4agsbe" path="res://InteractableObjects/axegodot.png" id="18_7wpw3"]
@@ -26,7 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://cs06ws5ieeg6e" path="res://LevelFeatures/moving_platform.tscn" id="24_std8d"]
 [ext_resource type="Texture2D" uid="uid://wos3b5s4y8pm" path="res://LevelDesign/Background for Geometric2.png" id="25_h0ref"]
 [ext_resource type="PackedScene" uid="uid://bayywigv1y606" path="res://LevelFeatures/door.tscn" id="26_hgi5m"]
-[ext_resource type="PackedScene" uid="uid://das1ag8tt7mu8" path="res://potion_shop_ui.tscn" id="27_kr3hx"]
+[ext_resource type="PackedScene" path="res://potion_shop_ui.tscn" id="27_kr3hx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fv7m"]
 size = Vector2(131, 127)

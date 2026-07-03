@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://bvayd54elqvfa"]
 
-[ext_resource type="Script" uid="uid://6sj550oqdao8" path="res://checkpoint.gd" id="1_r6hke"]
-[ext_resource type="Texture2D" uid="uid://pne7kr2jijrp" path="res://flag.png" id="2_tnhlw"]
-[ext_resource type="Texture2D" uid="uid://pne7kr2jijrp" path="res://InteractableObjects/flag.png" id="2_tnhlw"]
+[ext_resource type="Script" path="res://checkpoint.gd" id="1_r6hke"]
 [ext_resource type="Texture2D" uid="uid://dbt78w6ab1xhj" path="res://InteractableObjects/CheckpointGeometric.png" id="2_abylg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s20m7"]

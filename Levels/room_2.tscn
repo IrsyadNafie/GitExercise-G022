@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cqtim6r1iim0a" path="res://room_2.gd" id="1_f6ttu"]
 [ext_resource type="Script" uid="uid://bu6infk68sg7v" path="res://player.gd" id="2_m4i11"]
-[ext_resource type="Texture2D" uid="uid://d1i2h23am0me0" path="res://character/square-idle-ow.png" id="3_f6ttu"]
 [ext_resource type="Texture2D" uid="uid://b4dbupg8jhcmr" path="res://InteractableObjects/yellowkeygodot.png" id="4_lmlth"]
 [ext_resource type="Texture2D" uid="uid://b8qhgg64kj7en" path="res://assetsbattle/enemy.png" id="7_m4i11"]
 [ext_resource type="Script" uid="uid://25n7qtud6y3r" path="res://ui.gd" id="7_xeie2"]
@@ -284,29 +283,6 @@ position = Vector2(441.07043, 665)
 scale = Vector2(105.28593, -1.8560784)
 shape = SubResource("RectangleShape2D_ol5p6")
 
-[node name="OverworldEnemy" type="CharacterBody2D" parent="." unique_id=275365266]
-position = Vector2(222, 0)
-collision_layer = 5
-script = ExtResource("12_vdo4q")
-
-[node name="Sprite2D" type="Sprite2D" parent="OverworldEnemy" unique_id=1808312709]
-position = Vector2(1080, 550)
-texture = ExtResource("7_m4i11")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OverworldEnemy" unique_id=1459743873]
-position = Vector2(1083, 551)
-scale = Vector2(0.4, 1)
-shape = SubResource("RectangleShape2D_4sbp3")
-
-[node name="Hitbox" type="Area2D" parent="OverworldEnemy" unique_id=1825431109]
-position = Vector2(1081, 551)
-scale = Vector2(1, 0.98545647)
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OverworldEnemy/Hitbox" unique_id=1807977123]
-position = Vector2(2.5, -0.5)
-shape = SubResource("RectangleShape2D_4vpdd")
-
 [node name="OverworldEnemy2" type="CharacterBody2D" parent="." unique_id=1307837104]
 position = Vector2(222, 0)
 collision_layer = 5
@@ -328,6 +304,29 @@ scale = Vector2(1, 0.98545647)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverworldEnemy2/Hitbox" unique_id=1542391658]
+position = Vector2(2.5, -0.5)
+shape = SubResource("RectangleShape2D_4vpdd")
+
+[node name="OverworldEnemy1" type="CharacterBody2D" parent="." unique_id=1211862379]
+position = Vector2(222, 0)
+collision_layer = 5
+script = ExtResource("12_vdo4q")
+
+[node name="Sprite2D" type="Sprite2D" parent="OverworldEnemy1" unique_id=962822952]
+position = Vector2(913, 551)
+texture = ExtResource("7_m4i11")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OverworldEnemy1" unique_id=750847391]
+position = Vector2(915, 551)
+scale = Vector2(0.04000002, 1)
+shape = SubResource("RectangleShape2D_4sbp3")
+
+[node name="Hitbox" type="Area2D" parent="OverworldEnemy1" unique_id=467762605]
+position = Vector2(913, 551)
+scale = Vector2(1, 0.98545647)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OverworldEnemy1/Hitbox" unique_id=1171313297]
 position = Vector2(2.5, -0.5)
 shape = SubResource("RectangleShape2D_4vpdd")
 
@@ -353,6 +352,7 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverworldEnemy3/Hitbox" unique_id=695782084]
 position = Vector2(2.5, -0.5)
+scale = Vector2(1.0062796, 0.99999976)
 shape = SubResource("RectangleShape2D_4vpdd")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=805891176]
@@ -363,14 +363,6 @@ script = ExtResource("2_m4i11")
 [node name="AnimatedChar" parent="Player" unique_id=1129597056 instance=ExtResource("9_m4i11")]
 position = Vector2(-398, 3.8146973e-06)
 scale = Vector2(0.408, 0.408)
-
-[node name="EquippedItem2" type="Sprite2D" parent="Player" unique_id=180300359]
-visible = false
-position = Vector2(-302, 61.000004)
-scale = Vector2(0.408, 0.408)
-texture = ExtResource("3_f6ttu")
-flip_h = true
-hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1331727366]
 position = Vector2(-294, 156)
@@ -391,6 +383,6 @@ texture = ExtResource("4_lmlth")
 [connection signal="pressed" from="UI/SaveMenu/SaveSlot3Btn" to="UI" method="_on_save_slot_3_btn_pressed"]
 [connection signal="pressed" from="UI/SaveMenu/LoadSlot3Btn" to="UI" method="_on_load_slot_3_btn_pressed"]
 [connection signal="pressed" from="UI/SaveMenu/CloseSaveBtn" to="UI" method="_on_close_save_btn_pressed"]
-[connection signal="body_entered" from="OverworldEnemy/Hitbox" to="OverworldEnemy" method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="OverworldEnemy2/Hitbox" to="OverworldEnemy2" method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="OverworldEnemy1/Hitbox" to="OverworldEnemy1" method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="OverworldEnemy3/Hitbox" to="OverworldEnemy3" method="_on_hitbox_body_entered"]

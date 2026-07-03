@@ -3,7 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://cpg2lddcoioq2" path="res://enemies/5.png" id="1_7haqq"]
 [ext_resource type="Script" uid="uid://u1vhfv8hjeux" path="res://enemy_data.gd" id="2_3wii1"]
 [ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="3_j0iw7"]
-[ext_resource type="Resource" uid="uid://brm0r4y7jm5ot" path="res://enemyskill/Flare.tres" id="4_164n7"]
+[ext_resource type="Resource" uid="uid://brm0r4y7jm5ot" path="res://enemyskill/Flare.tres" id="4_3wii1"]
+[ext_resource type="Resource" uid="uid://dntoqh7cdp62j" path="res://enemyskill/Forward.tres" id="5_j0iw7"]
 
 [resource]
 script = ExtResource("2_3wii1")
@@ -13,5 +14,5 @@ max_hp = 15
 max_sp = 4
 base_attack = 2
 sp_attack = 1
-special_skills = Array[ExtResource("3_j0iw7")]([null, ExtResource("4_164n7")])
+special_skills = Array[ExtResource("3_j0iw7")]([ExtResource("4_3wii1"), ExtResource("5_j0iw7")])
 metadata/_custom_type_script = "uid://u1vhfv8hjeux"

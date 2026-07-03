@@ -3,12 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://dv3w187p7gecx" path="res://boss/2.png" id="1_wraey"]
 [ext_resource type="Script" uid="uid://u1vhfv8hjeux" path="res://enemy_data.gd" id="2_kwr64"]
 [ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="3_18cyg"]
-[ext_resource type="Resource" uid="uid://brm0r4y7jm5ot" path="res://enemyskill/Flare.tres" id="4_o40rb"]
+[ext_resource type="Resource" uid="uid://b6f8egt07ww7j" path="res://enemyskill/Apply.tres" id="4_kwr64"]
+[ext_resource type="Resource" uid="uid://ch6o8vdspfr3c" path="res://enemyskill/Web.tres" id="5_18cyg"]
 
 [resource]
 script = ExtResource("2_kwr64")
 enemy_texture = ExtResource("1_wraey")
 enemy_name = "Spider"
-max_hp = 18
-special_skills = Array[ExtResource("3_18cyg")]([null, ExtResource("4_o40rb")])
+max_hp = 7
+max_sp = 10
+base_attack = 4
+sp_attack = 3
+special_skills = Array[ExtResource("3_18cyg")]([ExtResource("4_kwr64"), ExtResource("5_18cyg")])
 metadata/_custom_type_script = "uid://u1vhfv8hjeux"

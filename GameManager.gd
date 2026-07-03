@@ -14,6 +14,7 @@ var picked_items = []
 var party_level: int = 1
 var party_current_exp: int = 0
 var party_max_exp: int = 10
+var party_wiped: bool = false
 
 # 5 inventory slots
 var inventory = ["", "", "", "", ""]

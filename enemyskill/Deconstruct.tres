@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://b51telyubsq83"]
+
+[ext_resource type="Script" uid="uid://c04p4kwhd0jof" path="res://skill.gd" id="1_dp341"]
+[ext_resource type="Resource" uid="uid://cfnerqamjouef" path="res://status/burn.tres" id="2_53l7l"]
+
+[resource]
+script = ExtResource("1_dp341")
+status_to_apply = ExtResource("2_53l7l")
+name = "Deconstruct"
+sp_cost = 0
+damage = 5
+hits = 2

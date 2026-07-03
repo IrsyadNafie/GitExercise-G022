@@ -14,7 +14,11 @@ func save_game(slot):
 		"checkpoint_y": GameManager.checkpoint_position.y,
 		"player_x": player.global_position.x,
 		"player_y": player.global_position.y,
-		"scene": scene_path
+		"scene": scene_path,
+		"party_level": GameManager.party_level,
+		"party_current_exp": GameManager.party_current_exp,
+		"party_max_exp": GameManager.party_max_exp,
+		"defeated_enemies": GameManager.defeated_enemies
 	}
 
 	var file = FileAccess.open(SAVE_PATH + str(slot) + ".save", FileAccess.WRITE)
@@ -40,6 +44,10 @@ func load_game(slot):
 	GameManager.inventory = data["inventory"]
 	GameManager.picked_items = data["picked_items"]
 	GameManager.checkpoint_position = Vector2(data["checkpoint_x"], data["checkpoint_y"])
+	GameManager.party_level = data.get("party_level", 1)
+	GameManager.party_current_exp = data.get("party_current_exp", 0)
+	GameManager.party_max_exp = data.get("party_max_exp", 100)
+	GameManager.defeated_enemies = data.get("defeated_enemies", [])
 
 	var saved_position = Vector2(data["player_x"], data["player_y"])
 	var saved_scene = data["scene"]
